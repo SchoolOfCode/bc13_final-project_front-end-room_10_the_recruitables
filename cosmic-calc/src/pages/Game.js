@@ -31,9 +31,13 @@ export default function Game() {
   }
 
   function handleSubmitAnswer(answerInputNumber) {
+    setAnswerVisible(true);
+  }
+
+  function handleNextQuestion(answerInputNumber) {
+    setAnswerVisible(false);
     timesTableCalculator(12);
     setAnswerInput(answerInputNumber);
-    //setAnswerVisible(true);
   }
 
   return (
@@ -41,13 +45,18 @@ export default function Game() {
       <div>
         <QuestionCard questionValues={newQuestionValues} />
         <AnswerInput onChange={onChangeInput} />
-        <button onClick={handleSubmitAnswer}>Submit Answer</button>
+        {answerVisible === false && (
+          <button onClick={handleSubmitAnswer}>Submit Answer</button>
+        )}
+        {answerVisible === true && (
+          <button onClick={handleNextQuestion}>Next Question</button>
+        )}
       </div>
-      {/* {checkAnswer(newQuestionValues, answerInput) && ( */}
-      <div>
-        <AnswerCard answerValue={answerValue} answerVisible={answerVisible} />
-      </div>
-      {/* )} */}
+      {answerVisible === true && (
+        <div>
+          <AnswerCard answerValue={answerValue} answerVisible={answerVisible} />
+        </div>
+      )}
     </div>
   );
 }
