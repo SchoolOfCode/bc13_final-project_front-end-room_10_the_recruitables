@@ -3,15 +3,15 @@ import { NavLink as Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const Nav = styled.nav`
-  background: #193ecf;
+  background: #52366c;
   height: 85px;
   display: flex;
   justify-content: right;
   z-index: 12;
   textdecoration: ;
-  font-family: "Trebuchet", sans-serif;
+  font-family: "Bubblegum Sans", sans-serif;
   font-weight: 900;
-  border-radius: 1%;
+  border-radius: 9%;
   border: 1px solid darkblue;
   font-size: 18px;
 `;

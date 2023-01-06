@@ -6,10 +6,10 @@ import Progress from "./pages/Progress";
 import NavBar from "./components/navBar/NavBar";
 
 export default function App() {
+
   return (
     <div>
       <div>
-        <NavBar />
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/profile" element={<Profile />} />
