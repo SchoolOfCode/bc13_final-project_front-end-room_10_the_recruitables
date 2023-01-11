@@ -6,14 +6,12 @@ import {
 } from "firebase/auth";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import NavBarLogin from "../components/navBar/NavBarLogin";
 import "./registerPage.css";
 
 function Register() {
   const [registerEmail, setRegisterEmail] = useState("");
   const [registerPassword, setRegisterPassword] = useState("");
   const [registerName, setRegisterName] = useState("");
-  const [score, setScore] = useState(0);
   const [, setUser] = useState(null);
 
   useEffect(() => {
@@ -64,7 +62,6 @@ function Register() {
 
   return (
     <div className="register">
-      {/* <NavBarLogin /> */}
       <form onSubmit={handleRegister}>
         <input
           type="text"

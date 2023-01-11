@@ -43,7 +43,6 @@ function Login() {
   return (
     <div className="Login">
       <div>
-        {/* <NavBarLogin /> */}
         <form onSubmit={handleLogin}>
           <input
             type="text"
