@@ -12,10 +12,9 @@ import Game from "./Game";
 import profileImage from "../images/Background_Buttons/MonsterRed.png";
 
 function Profile() {
-
-const [userData, setUserData] = useState({});
-useEffect(()=>{
-onAuthStateChanged(auth, (user) => {
+  const [userData, setUserData] = useState({});
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
       retrieveUserData(user);
     });
 
@@ -29,7 +28,7 @@ onAuthStateChanged(auth, (user) => {
   const retrieveUserData = async (user) => {
     let email = user.email;
     const response = await fetch(
-      `http://localhost:3001/api/users/email/${email}`
+      `https://cosmic-calculations-backend.onrender.com/api/users/email/${email}`
     );
     const data = await response.json();
     console.log(data.payload);
@@ -45,7 +44,6 @@ onAuthStateChanged(auth, (user) => {
   };
 
   return (
-
     <div>
       <NavBar />
       <h3>Profile</h3>
@@ -53,25 +51,24 @@ onAuthStateChanged(auth, (user) => {
       {/* <h4>{userData.displayName}</h4> */}
       <h4>{userData.total_score} </h4>
 
-    <div className="profilePageDiv">
-      <img className="profileImage" src={profileImage} alt="profileImage" />
+      <div className="profilePageDiv">
+        <img className="profileImage" src={profileImage} alt="profileImage" />
 
-      <div className="profileDiv">
-        {/* <h3 className="welcome">Welcome</h3> */}
-        {/* <h4 className="name">Lucy McHugh</h4> */}
-        <h4 className="username">Welcome MonsterLu!</h4>
-        <h4 className="score">Total score: 8 </h4>
-        <button className="gameButton" onClick={handleGame}>
-          Let's play!
-        </button>
+        <div className="profileDiv">
+          {/* <h3 className="welcome">Welcome</h3> */}
+          {/* <h4 className="name">Lucy McHugh</h4> */}
+          <h4 className="username">{userData.email}</h4>
+          <h4 className="score">Total score: 8 </h4>
+          <button className="gameButton" onClick={handleGame}>
+            Let's play!
+          </button>
+        </div>
+        <Routes>
+          <Route path="/game" element={<Game />} />
+        </Routes>
       </div>
-
-      <Routes>
-        <Route path="/game" element={<Game />} />
-      </Routes>
-
     </div>
   );
-};
+}
 
 export default Profile;
