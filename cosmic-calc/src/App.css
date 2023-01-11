@@ -1,14 +1,12 @@
-/* <?xml version="1.0" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#0099ff" fill-opacity="1" d="M0,256L48,229.3C96,203,192,149,288,128C384,107,480,117,576,112C672,107,768,85,864,80C960,75,1056,85,1152,112C1248,139,1344,181,1392,202.7L1440,224L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path></svg> */
-
 
 .navBar{
     color: #ffffff;
-    background: url(./images/wave.svg);
+    /* background: url(./images/wave2.svg); */
     /* background-size: cover; */
-    background-size: 100vw 100vw;
+    /* background-size: 100vw 100vw;
     background-repeat: no-repeat;
     background-position: center;
-    background-color: #ffffff;
+    background-color: #f8cf39f8; */
     padding: 10px;
     display: flex;
     justify-content: space-between;
@@ -19,7 +17,7 @@
     text-transform: uppercase;
     position: fixed;
     top: 0;
-    width: 100%;
+    width: 100vw;
     height: 20vh;
     z-index: 1;
 }
@@ -71,7 +69,7 @@
 }
 
 .navButtonProfileHighlighted {
-  background-image: url(./images/Background_Buttons/ProfileButtonTextYellow.png);
+  background-image: url(./images/Background_Buttons/ProfileButtonTextBlue.png);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -84,7 +82,7 @@
 }
 
 .navButtonGameHighlighted {
-  background-image: url(./images/Background_Buttons/GameButtonYellow.png);
+  background-image: url(./images/Background_Buttons/GameButtonBlue.png);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -92,11 +90,12 @@
   width: 10vw;
   height: 10vh;
   min-width: 100px;
+  min-height: 70px;
   text-align: center;
 }
 
 .navButtonProgressHighlighted {
-  background-image: url(./images/Background_Buttons/ProgressButtonTextYellow.png);
+  background-image: url(./images/Background_Buttons/ProgressButtonTextBlue.png);
   background-size: cover; 
   background-repeat: no-repeat;
   background-position: center;
