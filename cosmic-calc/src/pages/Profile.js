@@ -45,11 +45,11 @@ function Profile() {
 
   return (
     <div>
-      <NavBar />
-      <h3>Profile</h3>
+      {/* <NavBar /> */}
+      {/* <h3>Profile</h3>
       <h4>{userData.email}</h4>
       {/* <h4>{userData.displayName}</h4> */}
-      <h4>{userData.total_score} </h4>
+      {/* <h4>{userData.total_score} </h4> */} 
 
       <div className="profilePageDiv">
         <img className="profileImage" src={profileImage} alt="profileImage" />
@@ -57,15 +57,15 @@ function Profile() {
         <div className="profileDiv">
           {/* <h3 className="welcome">Welcome</h3> */}
           {/* <h4 className="name">Lucy McHugh</h4> */}
-          <h4 className="username">{userData.email}</h4>
-          <h4 className="score">Total score: 8 </h4>
+          <h4 className="username">Welcome {userData.name}</h4>
+          <h4 className="score">Total score: {userData.total_score} </h4>
           <button className="gameButton" onClick={handleGame}>
             Let's play!
           </button>
         </div>
-        <Routes>
+        {/* <Routes>
           <Route path="/game" element={<Game />} />
-        </Routes>
+        </Routes> */}
       </div>
     </div>
   );

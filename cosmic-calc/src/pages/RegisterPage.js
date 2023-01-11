@@ -8,6 +8,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import NavBarLogin from "../components/navBar/NavBarLogin";
 import "./registerPage.css";
+import logo from "../images/Logo/cosmic_calcs_logo.png";
 
 function Register() {
   const [registerEmail, setRegisterEmail] = useState("");
@@ -29,7 +30,7 @@ function Register() {
   let navigate = useNavigate();
 
   const createUser = async (user) => {
-    const response = await fetch(`http://localhost:3001/api/users`, {
+    const response = await fetch(`https://cosmic-calculations-backend.onrender.com/api/users`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -63,28 +64,40 @@ function Register() {
 
   return (
     <div className="register">
-      {/* <NavBarLogin /> */}
+      <div>
+        {/* <NavBarLogin /> */}
+        <div className="registerLogoDiv">
+        <img className="registerLogo" src={logo} alt="logo" />
+        </div>
       <form onSubmit={handleRegister}>
+       <div className="inputRegisterDiv">
         <input
+          className="registerNameInput"
           type="text"
-          placeholder="name"
+          placeholder="Name"
           value={registerName}
           onChange={(e) => setRegisterName(e.target.value)}
         />
         <input
+          className="registerEmailInput"
           type="text"
-          placeholder="email"
+          placeholder="Email"
           value={registerEmail}
           onChange={(e) => setRegisterEmail(e.target.value)}
         />
         <input
-          type="text"
-          placeholder="password"
+          className="registerPasswordInput"
+          type="password"
+          placeholder="Password"
           value={registerPassword}
           onChange={(e) => setRegisterPassword(e.target.value)}
         />
-        <button type="submit">Register</button>
+        </div>
+        <div className="registerButtonDiv">
+        <button className="registerButton" type="submit">Register</button>
+        </div>
       </form>
+    </div>
     </div>
   );
 }
