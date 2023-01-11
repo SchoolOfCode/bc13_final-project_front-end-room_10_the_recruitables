@@ -29,6 +29,8 @@ function Register() {
   let navigate = useNavigate();
 
   const createUser = async (user) => {
+    console.log("user",user)
+  
     const response = await fetch(`http://localhost:3001/api/users`, {
       method: "POST",
       headers: {
@@ -36,6 +38,7 @@ function Register() {
       },
       body: JSON.stringify({
         email: user.email,
+        name: "hello",
         total_score: 0,
       }),
     });
@@ -55,7 +58,10 @@ function Register() {
       setRegisterPassword("");
       setRegisterName("");
       createUser(user);
-      navigate("/profile");
+  
+        navigate("/profile");
+    
+      // navigate("/profile") 
     } catch (error) {
       console.log(error);
     }

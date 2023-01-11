@@ -11,6 +11,7 @@ import { UserContext } from "../Context/useUser";
 
 function Profile() {
   const userData = useContext(UserContext);
+
   console.log(userData);
   // useEffect(() => {
   //   onAuthStateChanged(auth, (user) => {
@@ -35,6 +36,7 @@ function Profile() {
     navigate("/game");
   };
 
+
   return (
     <div>
       {/* <NavBar /> */}
@@ -55,6 +57,7 @@ function Profile() {
       </div>
     </div>
   );
+  
 }
 
 export default Profile;

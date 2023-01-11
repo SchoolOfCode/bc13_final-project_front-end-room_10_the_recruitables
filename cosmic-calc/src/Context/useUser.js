@@ -13,10 +13,10 @@ export function UserContextProvider(props) {
     const retrieveUserData = async (user) => {
       let email = user.email;
       const response = await fetch(
-        `http://localhost:4000/api/users/email/${email}`
+        `http://localhost:3001/api/users/email/${email}`
       );
       const data = await response.json();
-
+      console.log(data)
       setUserData(data.payload);
 
       return data.payload;
@@ -24,16 +24,20 @@ export function UserContextProvider(props) {
     onAuthStateChanged(auth, (user) => {
       if (user) {
         retrieveUserData(user);
+        console.log("hello")
       }
     });
   }, []);
 
   console.log(userData);
+  
   return (
     <UserContext.Provider value={userData}>
       {props.children}
     </UserContext.Provider>
   );
 }
+
+
 
 // export { UserContext, UserContextProvider };
