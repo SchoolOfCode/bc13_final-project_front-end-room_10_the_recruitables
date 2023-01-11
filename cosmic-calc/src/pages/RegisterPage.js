@@ -7,6 +7,7 @@ import {
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import NavBarLogin from "../components/navBar/NavBarLogin";
+import "./registerPage.css";
 
 function Register() {
   const [registerEmail, setRegisterEmail] = useState("");
@@ -61,7 +62,7 @@ function Register() {
   };
 
   return (
-    <div>
+    <div className="register">
       {/* <NavBarLogin /> */}
       <form onSubmit={handleRegister}>
         <input
