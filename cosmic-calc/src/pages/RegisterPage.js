@@ -36,6 +36,7 @@ function Register() {
       },
       body: JSON.stringify({
         email: user.email,
+        name: user.displayName,
         total_score: 0,
       }),
     });
