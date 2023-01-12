@@ -1,4 +1,10 @@
 
+@font-face {
+  font-family: "Varela";
+  src: url(./images/Fonts/VarelaRound-Regular.ttf);
+}
+ *{font-family: "Varela", Tahoma;
+  }
 .navBar{
     color: #ffffff;
     /* background: url(./images/wave2.svg); */
@@ -28,6 +34,20 @@
     align-items: center;
     height: 20vh;
 }
+
+.navButtonLogin{
+  background-image: url(./images/Background_Buttons/log_out_button_alien.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: rgba(0, 0, 255, 0);
+  width: 10vw;
+  height: 10vh;
+  min-width: 100px;
+  min-height: 70px;
+  text-align: center;
+}
+
 
 .navButtonProfile{
   background-image: url(./images/Background_Buttons/profile_wire_frame.png);
@@ -69,7 +89,7 @@
 }
 
 .navButtonProfileHighlighted {
-  background-image: url(./images/Background_Buttons/ProfileButtonTextBlue.png);
+  background-image: url(./images/Background_Buttons/profile_wire_frame_hover.png);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -82,7 +102,7 @@
 }
 
 .navButtonGameHighlighted {
-  background-image: url(./images/Background_Buttons/GameButtonBlue.png);
+  background-image: url(./images/Background_Buttons/game_page_from_wireframe_glow.png);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -95,7 +115,7 @@
 }
 
 .navButtonProgressHighlighted {
-  background-image: url(./images/Background_Buttons/ProgressButtonTextBlue.png);
+  background-image: url(./images/Background_Buttons/progress_button_from_wireframe_glow.png);
   background-size: cover; 
   background-repeat: no-repeat;
   background-position: center;
