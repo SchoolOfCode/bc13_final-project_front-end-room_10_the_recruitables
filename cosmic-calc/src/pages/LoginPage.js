@@ -45,27 +45,29 @@ function Login() {
       <div>
         {/* <NavBarLogin /> */}
         <div className="loginLogoDiv">
-        <img className="loginLogo" src={logo} alt="logo" />
+          <img className="loginLogo" src={logo} alt="logo" />
         </div>
         <form onSubmit={handleLogin}>
-        <div className="inputLoginDiv">
-          <input
-            type="email"
-            placeholder="email"
-            className="loginInput"
-            value={loginEmail}
-            onChange={(e) => setLoginEmail(e.target.value)}
-          />
-          <input
-            type="password"
-            placeholder="password"
-            className="passwordInput"
-            value={loginPassword}
-            onChange={(e) => setLoginPassword(e.target.value)}
-          />
+          <div className="inputLoginDiv">
+            <input
+              type="email"
+              placeholder="email"
+              className="loginInput"
+              value={loginEmail}
+              onChange={(e) => setLoginEmail(e.target.value)}
+            />
+            <input
+              type="password"
+              placeholder="password"
+              className="passwordInput"
+              value={loginPassword}
+              onChange={(e) => setLoginPassword(e.target.value)}
+            />
           </div>
           <div className="loginButtonDiv">
-          <button className="loginButton" type="submit">Login</button>
+            <button className="loginButton" type="submit">
+              Login
+            </button>
           </div>
         </form>
       </div>
