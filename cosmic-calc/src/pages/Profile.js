@@ -37,7 +37,6 @@ function Profile() {
 
   return (
     <div>
-      {/* <NavBar /> */}
       <div className="profilePageDiv">
         <img className="profileImage" src={profileImage} alt="profileImage" />
         <div className="profileDiv">
@@ -49,9 +48,6 @@ function Profile() {
             Let's play!
           </button>
         </div>
-        <Routes>
-          <Route path="/game" element={<Game />} />
-        </Routes>
       </div>
     </div>
   );

@@ -4,6 +4,7 @@ import { createUserDocument } from "./firebaseConfig";
 import { auth } from "./firebaseConfig";
 import { useNavigate } from "react-router-dom";
 import "./loginPage.css";
+import logo from "../images/Logo/cosmic_calcs_logo.png";
 
 function Login() {
   const [loginEmail, setLoginEmail] = useState("");
@@ -42,20 +43,30 @@ function Login() {
   return (
     <div className="Login">
       <div>
+        {/* <NavBarLogin /> */}
+        <div className="loginLogoDiv">
+        <img className="loginLogo" src={logo} alt="logo" />
+        </div>
         <form onSubmit={handleLogin}>
+        <div className="inputLoginDiv">
           <input
             type="email"
             placeholder="email"
+            className="loginInput"
             value={loginEmail}
             onChange={(e) => setLoginEmail(e.target.value)}
           />
           <input
             type="password"
             placeholder="password"
+            className="passwordInput"
             value={loginPassword}
             onChange={(e) => setLoginPassword(e.target.value)}
           />
-          <button type="submit">Login</button>
+          </div>
+          <div className="loginButtonDiv">
+          <button className="loginButton" type="submit">Login</button>
+          </div>
         </form>
       </div>
     </div>
