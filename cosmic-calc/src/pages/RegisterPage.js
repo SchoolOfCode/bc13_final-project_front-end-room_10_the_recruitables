@@ -34,7 +34,7 @@ function Register() {
       },
       body: JSON.stringify({
         email: user.email,
-        name: user.displayName,
+        name: registerName,
         total_score: 0,
       }),
     });
@@ -54,7 +54,10 @@ function Register() {
       setRegisterPassword("");
       setRegisterName("");
       createUser(user);
-      navigate("/profile");
+      alert("loading profile...");
+      setTimeout(() => {
+        navigate("/profile");
+      }, 2000);
     } catch (error) {
       console.log(error);
     }
@@ -70,13 +73,13 @@ function Register() {
           onChange={(e) => setRegisterName(e.target.value)}
         />
         <input
-          type="text"
+          type="email"
           placeholder="email"
           value={registerEmail}
           onChange={(e) => setRegisterEmail(e.target.value)}
         />
         <input
-          type="text"
+          type="password"
           placeholder="password"
           value={registerPassword}
           onChange={(e) => setRegisterPassword(e.target.value)}

@@ -3,7 +3,6 @@ import { signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
 import { createUserDocument } from "./firebaseConfig";
 import { auth } from "./firebaseConfig";
 import { useNavigate } from "react-router-dom";
-import NavBarLogin from "../components/navBar/NavBarLogin";
 import "./loginPage.css";
 
 function Login() {

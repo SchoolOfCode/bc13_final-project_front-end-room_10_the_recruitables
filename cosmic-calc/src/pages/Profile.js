@@ -27,6 +27,7 @@ function Profile() {
     console.log(data.payload);
     setUserData(data.payload);
     console.log(userData);
+    this.forceUpdate();
     return data.payload;
   };
   const navigate = useNavigate();

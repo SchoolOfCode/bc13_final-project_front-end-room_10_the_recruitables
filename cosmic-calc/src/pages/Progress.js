@@ -1,9 +1,8 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import LevelButtons from "../components/buttons/LevelButtons";
 import "./progress.css";
 import { useNavigate } from "react-router-dom";
-import NavBar from "../components/navBar/NavBar";
 
 // icon/image array to be used instead/aswell as buttons. Passed as a prop to levelButtons.
 // const icons = ["😀", "😁", "😂", "🤣", "😃", "😆", "😎", "👽", "👾", "🤖"];
