@@ -6,7 +6,6 @@ import {
 } from "firebase/auth";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import NavBarLogin from "../components/navBar/NavBarLogin";
 import "./registerPage.css";
 import logo from "../images/Logo/cosmic_calcs_logo.png";
 
@@ -14,7 +13,6 @@ function Register() {
   const [registerEmail, setRegisterEmail] = useState("");
   const [registerPassword, setRegisterPassword] = useState("");
   const [registerName, setRegisterName] = useState("");
-  const [score, setScore] = useState(0);
   const [, setUser] = useState(null);
 
   useEffect(() => {
@@ -37,6 +35,7 @@ function Register() {
       },
       body: JSON.stringify({
         email: user.email,
+        name: registerName,
         total_score: 0,
       }),
     });
@@ -55,8 +54,10 @@ function Register() {
       setRegisterEmail("");
       setRegisterPassword("");
       setRegisterName("");
-      createUser(user);
-      navigate("/profile");
+      await createUser(user);
+      setTimeout(() => {
+        navigate("/profile");
+      }, 2000);
     } catch (error) {
       console.log(error);
     }
@@ -80,15 +81,15 @@ function Register() {
         />
         <input
           className="registerEmailInput"
-          type="text"
-          placeholder="Email"
+          type="email"
+          placeholder="email"
           value={registerEmail}
           onChange={(e) => setRegisterEmail(e.target.value)}
         />
         <input
           className="registerPasswordInput"
           type="password"
-          placeholder="Password"
+          placeholder="password"
           value={registerPassword}
           onChange={(e) => setRegisterPassword(e.target.value)}
         />

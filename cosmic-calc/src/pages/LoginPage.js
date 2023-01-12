@@ -3,7 +3,6 @@ import { signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
 import { createUserDocument } from "./firebaseConfig";
 import { auth } from "./firebaseConfig";
 import { useNavigate } from "react-router-dom";
-import NavBarLogin from "../components/navBar/NavBarLogin";
 import "./loginPage.css";
 import logo from "../images/Logo/cosmic_calcs_logo.png";
 
@@ -48,20 +47,19 @@ function Login() {
         <div className="loginLogoDiv">
         <img className="loginLogo" src={logo} alt="logo" />
         </div>
-        
         <form onSubmit={handleLogin}>
         <div className="inputLoginDiv">
           <input
+            type="email"
+            placeholder="email"
             className="loginInput"
-            type="text"
-            placeholder="Email"
             value={loginEmail}
             onChange={(e) => setLoginEmail(e.target.value)}
           />
           <input
-            className="passwordInput"
             type="password"
-            placeholder="Password"
+            placeholder="password"
+            className="passwordInput"
             value={loginPassword}
             onChange={(e) => setLoginPassword(e.target.value)}
           />
