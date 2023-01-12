@@ -3,7 +3,8 @@ import ReactDOM from "react-dom/client";
 import { BrowserRouter as Router } from "react-router-dom";
 import App from "./App";
 import "./index.css";
-import Background from "./images/Background_Buttons/Background2.png"
+import Background from "./images/Background_Buttons/Background2.png";
+import ScoreProvider from "./components/score/ScoreContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -14,8 +15,10 @@ document.body.style.backgroundAttachment = "fixed";
 
 root.render(
   <React.StrictMode>
-  <Router>
-    <App />
-    </Router>
+    <ScoreProvider>
+      <Router>
+        <App />
+      </Router>
+    </ScoreProvider>
   </React.StrictMode>
 );
