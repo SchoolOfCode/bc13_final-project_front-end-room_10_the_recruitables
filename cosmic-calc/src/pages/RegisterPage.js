@@ -53,8 +53,7 @@ function Register() {
       setRegisterEmail("");
       setRegisterPassword("");
       setRegisterName("");
-      createUser(user);
-      alert("loading profile...");
+      await createUser(user);
       setTimeout(() => {
         navigate("/profile");
       }, 2000);
