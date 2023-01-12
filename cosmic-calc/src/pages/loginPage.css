@@ -12,10 +12,11 @@
     justify-content: center;
     align-items: center;
     padding-bottom: 3vh;
+    
 }
 
 .loginLogo {
-    width: 30vw;
+    width: 20vw;
     height: 30vh;
     display: flex;
     justify-content: center;
@@ -40,11 +41,14 @@
 }
 
 .loginButton {
-    width: 15vw;
+    background-image: url(../images/Background_Buttons/log_in_button_no_alien.png);
+    background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 10vw;
+  background-color: rgba(0, 0, 255, 0);
     height: 7vh;
     border-radius: 10px;
-    background: var(--colour-red);
-    color: #fff;
     margin: 2vw;
-    font-size: 3vw;
+    
 }
