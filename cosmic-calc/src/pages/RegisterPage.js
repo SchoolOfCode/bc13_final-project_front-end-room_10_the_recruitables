@@ -4,10 +4,11 @@ import {
   createUserWithEmailAndPassword,
   onAuthStateChanged,
 } from "firebase/auth";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import "./registerPage.css";
 import logo from "../images/Logo/cosmic_calcs_logo.png";
+// import { ScoreContext } from "../context/ScoreContext";
 
 function Register() {
   const [registerEmail, setRegisterEmail] = useState("");
@@ -28,7 +29,7 @@ function Register() {
   let navigate = useNavigate();
 
   const createUser = async (user) => {
-    const response = await fetch(`https://cosmic-calculations-backend.onrender.com/api/users`, {
+    const response = await fetch(`http://localhost:3001/api/users/`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -55,50 +56,55 @@ function Register() {
       setRegisterPassword("");
       setRegisterName("");
       await createUser(user);
-      setTimeout(() => {
-        navigate("/profile");
-      }, 2000);
+
+      // setTimeout(() => {
+      navigate("/profile");
+      // }, 2000);
     } catch (error) {
       console.log(error);
     }
   };
+  //create useContext to store user score and name
+  //example
 
   return (
     <div className="register">
       <div>
         {/* <NavBarLogin /> */}
         <div className="registerLogoDiv">
-        <img className="registerLogo" src={logo} alt="logo" />
+          <img className="registerLogo" src={logo} alt="logo" />
         </div>
-      <form onSubmit={handleRegister}>
-       <div className="inputRegisterDiv">
-        <input
-          className="registerNameInput"
-          type="text"
-          placeholder="Name"
-          value={registerName}
-          onChange={(e) => setRegisterName(e.target.value)}
-        />
-        <input
-          className="registerEmailInput"
-          type="email"
-          placeholder="email"
-          value={registerEmail}
-          onChange={(e) => setRegisterEmail(e.target.value)}
-        />
-        <input
-          className="registerPasswordInput"
-          type="password"
-          placeholder="password"
-          value={registerPassword}
-          onChange={(e) => setRegisterPassword(e.target.value)}
-        />
-        </div>
-        <div className="registerButtonDiv">
-        <button className="registerButton" type="submit">Register</button>
-        </div>
-      </form>
-    </div>
+        <form onSubmit={handleRegister}>
+          <div className="inputRegisterDiv">
+            <input
+              className="registerNameInput"
+              type="text"
+              placeholder="Name"
+              value={registerName}
+              onChange={(e) => setRegisterName(e.target.value)}
+            />
+            <input
+              className="registerEmailInput"
+              type="email"
+              placeholder="email"
+              value={registerEmail}
+              onChange={(e) => setRegisterEmail(e.target.value)}
+            />
+            <input
+              className="registerPasswordInput"
+              type="password"
+              placeholder="password"
+              value={registerPassword}
+              onChange={(e) => setRegisterPassword(e.target.value)}
+            />
+          </div>
+          <div className="registerButtonDiv">
+            <button className="registerButton" type="submit">
+              Register
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 }

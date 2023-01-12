@@ -9,7 +9,6 @@ import ProtectedRoute from "./components/Authentication/requireAuth";
 import "./App.css";
 import { auth } from "./pages/firebaseConfig";
 import Logout from "./components/Authentication/Logout";
-// import ProfileButton from "./images/Background_Buttons/ProfileButtonTextYellow.png";
 
 const authed = auth;
 
