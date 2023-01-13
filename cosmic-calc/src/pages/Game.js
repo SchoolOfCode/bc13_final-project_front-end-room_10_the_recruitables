@@ -1,9 +1,12 @@
+
 import React, { useState, useEffect, useNavigate } from "react";
+
 import "./game.css";
 import astronaut from "../images/Background_Buttons/Astronaut.png";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "./firebaseConfig";
 
 export default function Game() {
-  let id = 6;
   const [num1, setNum1] = useState(Math.floor(Math.random() * 12) + 1);
   const [num2, setNum2] = useState(Math.floor(Math.random() * 12) + 1);
   const [answer, setAnswer] = useState("");
@@ -14,10 +17,14 @@ export default function Game() {
   
 
   useEffect(() => {
-    if (noOfQuestions === 5) {
-      updateScore(score, id);
+
+    if (noOfQuestions === 4) {
+      onAuthStateChanged(auth, (user) => {
+        updateScore(score, user);
+      });
+
     }
-  }, [noOfQuestions, score, id]);
+  }, [noOfQuestions]);
 
   const checkAnswer = () => {
     setNoOfQuestions(noOfQuestions + 1);
@@ -38,13 +45,11 @@ export default function Game() {
     setAnswerVisible(false);
   };
 
-  const navigateToPage = () => {
-    window.location.href = "/profile";
-  };
+  const updateScore = async (score, user) => {
+    let email = await user.email;
 
-  const updateScore = async (score, id) => {
     const response = await fetch(
-      `http://localhost:3001/api/users/${id}`,
+      `http://localhost:3001/api/users/email/${email}`,
       {
         method: "POST",
         headers: {
@@ -57,7 +62,9 @@ export default function Game() {
     console.log(data);
   };
 
-  if (noOfQuestions < 6) {
+
+  if (noOfQuestions < 4) {
+
     return (
       <div className="gameDiv">
         <div
@@ -90,7 +97,7 @@ export default function Game() {
             value={answer}
             onChange={(e) => setAnswer(e.target.value)}
             onKeyDown={(e) => {
-              console.log(e);
+              // console.log(e);
               if (e.key === "Enter") {
                 checkAnswer();
                 setAnswer("");

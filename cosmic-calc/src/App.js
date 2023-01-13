@@ -1,60 +1,65 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import Profile from "./pages/Profile";
 import Game from "./pages/Game";
 import Progress from "./pages/Progress";
-// import NavBar from "./components/navBar/NavBar";
 import Login from "./pages/LoginPage";
 import Register from "./pages/RegisterPage";
 import ProtectedRoute from "./components/Authentication/requireAuth";
 import Logout from "./components/Authentication/Logout";
 import ProfileButton from './images/Background_Buttons/ProfileButtonTextYellow.png'
 import "./App.css";
-
+import { auth } from "./pages/firebaseConfig";
+import Logout from "./components/Authentication/Logout";
+import { ScoreContext } from "./components/score/ScoreContext";
 
 export default function App() {
+  let context = useContext(ScoreContext);
   const navigate = useNavigate();
- const [profileHighlighted, setProfileHighlighted] = useState(false);
+  const [profileHighlighted, setProfileHighlighted] = useState(false);
   const [progressHighlighted, setProgressHighlighted] = useState(false);
   const [gameHighlighted, setGameHighlighted] = useState(false);
 
-  
 
-  const navigateToProfile = ()  => {
-    navigate("/profile");  
+  const navigateToProfile = () => {
+    navigate("/profile");
+
     setProfileHighlighted(true);
     setProgressHighlighted(false);
     setGameHighlighted(false);
+    context.update();
   };
 
-  const navigateToProgress = ()  => {
+  const navigateToProgress = () => {
     navigate("/progress");
     setProfileHighlighted(false);
     setProgressHighlighted(true);
     setGameHighlighted(false);
+    context.update();
+  };
 
-  }
-
-  const navigateToGame = ()  => {
+  const navigateToGame = () => {
     navigate("/game");
     setProfileHighlighted(false);
     setProgressHighlighted(false);
     setGameHighlighted(true);
-  }
+    context.update();
+    console.log(navigate);
+  };
 
-  const navigateToLogin = ()  => {
+  const navigateToLogin = () => {
     navigate("/");
-  }
+  };
 
-  const navigateToRegister = ()  => {
+  const navigateToRegister = () => {
     navigate("/register");
-  }
+  };
+  console.log(authed.currentUser);
 
   return (
     <div className="App">
-
-      {/* <NavBar /> */}
       <div className="navBar">
+
       <div className="navBarLoginDiv">
       <button className="navButtonLogin" onClick={navigateToLogin}>_______________</button>
       <button className="navButtonRegister" onClick={navigateToRegister}>_______________</button>
@@ -65,159 +70,74 @@ export default function App() {
         <button onClick={navigateToProfile} className={profileHighlighted ? "navButtonProfileHighlighted" : "navButtonProfile"}></button>
         <button onClick={navigateToProgress} className={progressHighlighted ? "navButtonProgressHighlighted" : "navButtonProgress"}></button>
         <button onClick={navigateToGame} className={gameHighlighted ? "navButtonGameHighlighted" : "navButtonGame"}></button>
+        {authed.currentUser ? (
+          <div className="navBarPageDiv">
+            <Logout />
+            <button
+              onClick={navigateToProfile}
+              className={
+                profileHighlighted
+                  ? "navButtonProfileHighlighted"
+                  : "navButtonProfile"
+              }
+            ></button>
+            <button
+              onClick={navigateToProgress}
+              className={
+                progressHighlighted
+                  ? "navButtonProgressHighlighted"
+                  : "navButtonProgress"
+              }
+            ></button>
+            <button
+              onClick={navigateToGame}
+              className={
+                gameHighlighted ? "navButtonGameHighlighted" : "navButtonGame"
+              }
+            ></button>
+          </div>
+        ) : (
+          <div className="navBarLoginDiv">
+            <button className="navButtonLogin" onClick={navigateToLogin}>
+              Login
+            </button>
+            <button className="navButtonRegister" onClick={navigateToRegister}>
+              Register
+            </button>
+          </div>
+        )}
       </div>
-      </div>
-      
-      {/* <BrowserRouter> */}
-        <Routes>
-          <Route path="/" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/progress" element={<Progress />} />
-          <Route path="/game" element={<Game />} />
-        </Routes>
 
-          {/* <Route
-            path="/profile"
-            element={
-              <ProtectedRoute>
-                {" "}
-                <Profile />{" "}
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/progress"
-            element={
-              <ProtectedRoute>
-                {" "}
-                <Progress />{" "}
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/game"
-            element={
-              <ProtectedRoute>
-                {" "}
-                <Game />{" "}
-              </ProtectedRoute>
-            }
-          /> 
-        </Routes>
-    </BrowserRouter> */}
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route
+          path="/profile"
+          element={
+            <ProtectedRoute>
+              <Profile />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/progress"
+          element={
+            <ProtectedRoute>
+              <Progress />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/game"
+          element={
+            <ProtectedRoute>
+              <Game />
+            </ProtectedRoute>
+          }
+        />
+      </Routes>
+
     </div>
   ); 
 
 }
-
-// import React, { useState } from "react";
-// import { Routes, Route, useNavigate } from "react-router-dom";
-// import Profile from "./pages/Profile";
-// import Game from "./pages/Game";
-// import Progress from "./pages/Progress";
-// import Login from "./pages/LoginPage";
-// import Register from "./pages/RegisterPage";
-// import ProtectedRoute from "./components/Authentication/requireAuth";
-// import "./App.css";
-// import { auth } from "./pages/firebaseConfig";
-// import Logout from "./components/Authentication/Logout";
-// // import ProfileButton from "./images/Background_Buttons/ProfileButtonTextYellow.png";
-// const authed = auth;
-// export default function App() {
-//   const navigate = useNavigate();
-//   const [profileHighlighted, setProfileHighlighted] = useState(false);
-//   const [progressHighlighted, setProgressHighlighted] = useState(false);
-//   const [gameHighlighted, setGameHighlighted] = useState(false);
-//   const navigateToProfile = () => {
-//     navigate("/profile");
-//     setProfileHighlighted(true);
-//     setProgressHighlighted(false);
-//     setGameHighlighted(false);
-//   };
-//   const navigateToProgress = () => {
-//     navigate("/progress");
-//     setProfileHighlighted(false);
-//     setProgressHighlighted(true);
-//     setGameHighlighted(false);
-//   };
-//   const navigateToGame = () => {
-//     navigate("/game");
-//     setProfileHighlighted(false);
-//     setProgressHighlighted(false);
-//     setGameHighlighted(true);
-//   };
-//   const navigateToLogin = () => {
-//     navigate("/");
-//   };
-//   const navigateToRegister = () => {
-//     navigate("/register");
-//   };
-//   console.log(`User:${authed.currentUser}`);
-//   return (
-//     <div className="App">
-//       <div className="navBar">
-//         {authed.currentUser ? (
-//           <div className="navBarPageDiv">
-//             <Logout />
-//             <button
-//               onClick={navigateToProfile}
-//               className={
-//                 profileHighlighted
-//                   ? "navButtonProfileHighlighted"
-//                   : "navButtonProfile"
-//               }
-//             ></button>
-//             <button
-//               onClick={navigateToProgress}
-//               className={
-//                 progressHighlighted
-//                   ? "navButtonProgressHighlighted"
-//                   : "navButtonProgress"
-//               }
-//             ></button>
-//             <button
-//               onClick={navigateToGame}
-//               className={
-//                 gameHighlighted ? "navButtonGameHighlighted" : "navButtonGame"
-//               }
-//             ></button>
-//           </div>
-//         ) : (
-//           <div className="navBarLoginDiv">
-//           <button className="navButtonLogin" onClick={navigateToLogin}></button>
-//        <button className="navButtonRegister" onClick={navigateToRegister}>_______________</button>
-//           </div>
-//         )}
-//       </div>
-//       <Routes>
-//         <Route path="/" element={<Login />} />
-//         <Route path="/register" element={<Register />} />
-//         <Route
-//           path="/profile"
-//           element={
-//             <ProtectedRoute>
-//               <Profile />
-//             </ProtectedRoute>
-//           }
-//         />
-//         <Route
-//           path="/progress"
-//           element={
-//             <ProtectedRoute>
-//               <Progress />
-//             </ProtectedRoute>
-//           }
-//         />
-//         <Route
-//           path="/game"
-//           element={
-//             <ProtectedRoute>
-//               <Game />
-//             </ProtectedRoute>
-//           }
-//         />
-//       </Routes>
-//     </div>
-//   );
-// }

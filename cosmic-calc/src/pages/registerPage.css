@@ -1,9 +1,4 @@
-/* .register{
-        display: flex;
-            justify-content: center;
-            align-items: center;
-            padding-top: 20%;
-} */
+
 
 .register {
     display: flex;
@@ -13,13 +8,17 @@
     height: 100vh;
     flex-direction: row;
 }
+
+
+
 .registerLogoDiv{
-    margin-top:5vh;
+margin-top:5vh;
     display: flex;
     justify-content: center;
     align-items: center;
     padding-bottom: 3vh;
 }
+
 .registerLogo {
     width: 30vw;
     height: 30vw;
@@ -27,6 +26,7 @@
     justify-content: center;
     align-items: center;
 }
+
 .registerNameInput, .registerPasswordInput, .registerEmailInput {
     width: 30vw;
     height: 5vh;
@@ -37,11 +37,13 @@
     font-weight: 300;
     text-align: center;
 }
+
 .registerButtonDiv{
     display: flex;
     justify-content: center;
     align-items: center;
 }
+
 .registerButton {
     width: 15vw;
     height: 7vh;

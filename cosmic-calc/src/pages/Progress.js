@@ -1,16 +1,17 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState, useContext } from "react";
 import LevelButtons from "../components/buttons/LevelButtons";
 import "./progress.css";
 import { useNavigate } from "react-router-dom";
-import NavBar from "../components/navBar/NavBar";
+import { ScoreContext } from "../../src/components/score/ScoreContext";
 
 // icon/image array to be used instead/aswell as buttons. Passed as a prop to levelButtons.
 // const icons = ["😀", "😁", "😂", "🤣", "😃", "😆", "😎", "👽", "👾", "🤖"];
 
 export const Progress = () => {
   // state for score count of player
-  const [score, setScore] = useState(0);
+  const context = useContext(ScoreContext);
+
   // count for array of levels. New level pushed into array ever X amount of points. Then mapped below to return a new button each time score level reached.
   const [levels, setLevels] = useState([1]);
   const [lockLevels, setLockLevels] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
@@ -68,6 +69,9 @@ export const Progress = () => {
         {lockLevels.map((level, index) => (
           <LevelButtons key={levels.level} ButtonNumber={index + 1 + "-lock"} />
         ))}
+      </div>
+      <div className="score">
+        <h1>Score: {context.score}</h1>
       </div>
     </div>
   );

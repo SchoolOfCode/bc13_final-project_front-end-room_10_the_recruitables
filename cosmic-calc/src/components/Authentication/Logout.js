@@ -3,7 +3,12 @@
 import { signOut } from "firebase/auth";
 import { auth } from "../../pages/firebaseConfig";
 import { useNavigate } from "react-router-dom";
+
 import "./Logout.css";
+
+import ScoreProvider from "../score/ScoreContext";
+import { useContext } from "react";
+
 
 function Logout() {
   let navigate = useNavigate();
@@ -15,6 +20,7 @@ function Logout() {
       console.log(error);
     }
   };
+  useContext(ScoreProvider);
 
   return (
     <div>

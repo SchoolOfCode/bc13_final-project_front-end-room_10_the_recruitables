@@ -1,5 +1,12 @@
+
 .navBar{
     color: #ffffff;
+    /* background: url(./images/wave2.svg); */
+    /* background-size: cover; */
+    /* background-size: 100vw 100vw;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: #f8cf39f8; */
     padding: 10px;
     display: flex;
     justify-content: space-between;
@@ -10,9 +17,16 @@
     text-transform: uppercase;
     position: fixed;
     top: 0;
-    width: 100%;
+    width: 100vw;
     height: 20vh;
     z-index: 1;
+}
+
+.navBarPageDiv{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 20vh;
 }
 
 .navButtonProfile{
@@ -23,6 +37,8 @@
   background-color: rgba(0, 0, 255, 0);
   width: 10vw;
   height: 10vh;
+  min-width: 100px;
+  min-height: 70px;
   text-align: center;
 }
 
@@ -34,6 +50,8 @@
   background-color: rgba(0, 0, 255, 0);
   width: 10vw;
   height: 10vh;
+  min-width: 100px;
+  min-height: 70px;
   text-align: center;
 }
 
@@ -45,39 +63,53 @@
   background-color: rgba(0, 0, 255, 0);
   width: 10vw;
   height: 10vh;
+  min-width: 100px;
+  min-height: 70px;
   text-align: center;
 }
 
 .navButtonProfileHighlighted {
-  background-image: url(./images/Background_Buttons/profile_button_glow.png);
+
+  background-image: url(./images/Background_Buttons/ProfileButtonTextBlue.png);
+
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   background-color: rgba(255, 251, 0, 0);
   width: 10vw;
   height: 10vh;
+  min-width: 100px;
+  min-height: 70px;
   text-align: center;
 }
 
 .navButtonGameHighlighted {
-  background-image: url(./images/Background_Buttons/game_button_glow.png);
+
+  background-image: url(./images/Background_Buttons/GameButtonBlue.png);
+
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   background-color: rgba(0, 0, 255, 0);
   width: 10vw;
   height: 10vh;
+  min-width: 100px;
+  min-height: 70px;
   text-align: center;
 }
 
 .navButtonProgressHighlighted {
-  background-image: url(./images/Background_Buttons/progress_button_glow.png);
+
+  background-image: url(./images/Background_Buttons/ProgressButtonTextBlue.png);
+
   background-size: cover; 
   background-repeat: no-repeat;
   background-position: center;
   background-color: rgba(0, 0, 255, 0);
   width: 10vw;
   height: 10vh;
+  min-width: 100px;
+  min-height: 70px;
   text-align: center;
 }
 
