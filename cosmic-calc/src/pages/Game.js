@@ -11,7 +11,7 @@ export default function Game() {
   const [score, setScore] = useState(0);
   const [answerVisible, setAnswerVisible] = useState(false);
   const [noOfQuestions, setNoOfQuestions] = useState(1);
-  
+
   useEffect(() => {
     if (noOfQuestions === 4) {
       updateScore(score, id);
@@ -100,15 +100,16 @@ export default function Game() {
       </div>
     );
   } else {
-
     return (
       <div className="endDiv">
-      <img className="astronaut" src={astronaut} alt="astronaut" />
-      <div className="endGameDiv">
-        <h1>Game Over!</h1>
-        <h2>Your final score was {score}</h2>
-        <button className="endGameButton" onClick={newQuestion}>Play Again</button>
-      </div>
+        <img className="astronaut" src={astronaut} alt="astronaut" />
+        <div className="endGameDiv">
+          <h1>Game Over!</h1>
+          <h2>Your final score was {score}</h2>
+          <button className="endGameButton" onClick={newQuestion}>
+            Play Again
+          </button>
+        </div>
       </div>
     );
   }

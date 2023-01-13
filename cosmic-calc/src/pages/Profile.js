@@ -7,6 +7,38 @@ import "./profile.css";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import Game from "./Game";
 import profileImage from "../images/Background_Buttons/MonsterRed.png";
+import { UserContext } from "../Context/useUser";
+
+
+function Profile() {
+  const userData = useContext(UserContext);
+  // const [loading, setLoading] = useState(true);
+
+  console.log(userData);
+
+  // if (userData) {
+  //   setLoading(false);
+  // }
+
+  // useEffect(() => {
+  //   onAuthStateChanged(auth, (user) => {
+  //     retrieveUserData(user);
+  //   });
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, []);
+
+  // const retrieveUserData = async (user) => {
+  //   let email = user.email;
+  //   const response = await fetch(
+  //     `http://localhost:3001/api/users/email/${email}`
+  //   );
+  //   const data = await response.json();
+  //   console.log(data.payload);
+  //   setUserData(data.payload);
+  //   console.log(userData);
+  //   return data.payload;
+  // };
+
 import { ScoreContext } from "../components/score/ScoreContext";
 
 function Profile() {
@@ -36,6 +68,7 @@ function Profile() {
   };
   const scores = useContext(ScoreContext);
 
+
   return (
     <div>
       <div className="profilePageDiv">
@@ -44,7 +77,10 @@ function Profile() {
           <h3 className="welcome">Welcome</h3>
           <h4 className="name">{userData.name}</h4>
           <h4 className="username">{userData.email}</h4>
-          <h4 className="score">Total score: {scores} </h4>
+          <h4 className="score">Total score: {userData.total_score} </h4>
+
+          /*<h4 className="score">Total score: {scores} </h4>*/
+
           <button className="gameButton" onClick={handleGame}>
             Let's play!
           </button>
@@ -53,5 +89,6 @@ function Profile() {
     </div>
   );
 }
+
 
 export default Profile;

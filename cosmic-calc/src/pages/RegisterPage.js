@@ -16,6 +16,7 @@ function Register() {
   const [registerName, setRegisterName] = useState("");
   const [, setUser] = useState(null);
 
+
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -29,6 +30,7 @@ function Register() {
   let navigate = useNavigate();
 
   const createUser = async (user) => {
+
     const response = await fetch(`http://localhost:3001/api/users/`, {
       method: "POST",
       headers: {
@@ -55,11 +57,13 @@ function Register() {
       setRegisterEmail("");
       setRegisterPassword("");
       setRegisterName("");
-      await createUser(user);
 
-      // setTimeout(() => {
-      navigate("/profile");
-      // }, 2000);
+      await createUser(user);
+     
+        navigate("/profile");
+      
+
+
     } catch (error) {
       console.log(error);
     }
