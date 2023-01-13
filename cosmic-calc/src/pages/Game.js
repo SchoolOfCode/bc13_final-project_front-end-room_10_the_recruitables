@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useReducer } from "react";
 import "./game.css";
 import astronaut from "../images/Background_Buttons/Astronaut.png";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "./firebaseConfig";
 
 export default function Game() {
-  let id = 6;
   const [num1, setNum1] = useState(Math.floor(Math.random() * 12) + 1);
   const [num2, setNum2] = useState(Math.floor(Math.random() * 12) + 1);
   const [answer, setAnswer] = useState("");
@@ -11,12 +12,14 @@ export default function Game() {
   const [score, setScore] = useState(0);
   const [answerVisible, setAnswerVisible] = useState(false);
   const [noOfQuestions, setNoOfQuestions] = useState(1);
-  
+
   useEffect(() => {
     if (noOfQuestions === 4) {
-      updateScore(score, id);
+      onAuthStateChanged(auth, (user) => {
+        updateScore(score, user);
+      });
     }
-  }, [noOfQuestions, score, id]);
+  }, [noOfQuestions]);
 
   const checkAnswer = () => {
     setNoOfQuestions(noOfQuestions + 1);
@@ -36,10 +39,10 @@ export default function Game() {
     setResult("");
     setAnswerVisible(false);
   };
-
-  const updateScore = async (score, id) => {
+  const updateScore = async (score, user) => {
+    let email = await user.email;
     const response = await fetch(
-      `http://localhost:3001/api/users/${id}`,
+      `http://localhost:3001/api/users/email/${email}`,
       {
         method: "POST",
         headers: {
@@ -51,6 +54,7 @@ export default function Game() {
     const data = await response.json();
     console.log(data);
   };
+
   if (noOfQuestions < 4) {
     return (
       <div className="gameDiv">
@@ -84,9 +88,10 @@ export default function Game() {
             value={answer}
             onChange={(e) => setAnswer(e.target.value)}
             onKeyDown={(e) => {
-              console.log(e);
+              // console.log(e);
               if (e.key === "Enter") {
                 checkAnswer();
+                setAnswer("");
               }
             }}
           />
@@ -100,15 +105,16 @@ export default function Game() {
       </div>
     );
   } else {
-
     return (
       <div className="endDiv">
-      <img className="astronaut" src={astronaut} alt="astronaut" />
-      <div className="endGameDiv">
-        <h1>Game Over!</h1>
-        <h2>Your final score was {score}</h2>
-        <button className="endGameButton" onClick={newQuestion}>Play Again</button>
-      </div>
+        <img className="astronaut" src={astronaut} alt="astronaut" />
+        <div className="endGameDiv">
+          <h1>Game Over!</h1>
+          <h2>Your final score was {score}</h2>
+          <button className="endGameButton" onClick={newQuestion}>
+            Play Again
+          </button>
+        </div>
       </div>
     );
   }

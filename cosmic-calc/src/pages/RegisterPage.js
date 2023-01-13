@@ -8,7 +8,7 @@ import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import "./registerPage.css";
 import logo from "../images/Logo/cosmic_calcs_logo.png";
-// import { ScoreContext } from "../context/ScoreContext";
+import { ScoreContext } from "../components/score/ScoreContext";
 
 function Register() {
   const [registerEmail, setRegisterEmail] = useState("");
@@ -56,16 +56,16 @@ function Register() {
       setRegisterPassword("");
       setRegisterName("");
       await createUser(user);
-
-      // setTimeout(() => {
-      navigate("/profile");
-      // }, 2000);
+      setTimeout(() => {
+        navigate("/profile");
+      }, 1000);
+      console.log(scores);
     } catch (error) {
       console.log(error);
     }
   };
-  //create useContext to store user score and name
-  //example
+
+  const scores = useContext(ScoreContext);
 
   return (
     <div className="register">

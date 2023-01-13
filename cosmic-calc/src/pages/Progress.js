@@ -10,7 +10,7 @@ import { ScoreContext } from "../../src/components/score/ScoreContext";
 
 export const Progress = () => {
   // state for score count of player
-  const scores = useContext(ScoreContext);
+  const context = useContext(ScoreContext);
 
   // count for array of levels. New level pushed into array ever X amount of points. Then mapped below to return a new button each time score level reached.
   const [levels, setLevels] = useState([1]);
@@ -70,7 +70,7 @@ export const Progress = () => {
         ))}
       </div>
       <div className="score">
-        <h1>Score: {scores}</h1>
+        <h1>Score: {context.score}</h1>
       </div>
     </div>
   );
