@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import Profile from "./pages/Profile";
 import Game from "./pages/Game";
@@ -11,10 +11,12 @@ import ProfileButton from './images/Background_Buttons/ProfileButtonTextYellow.p
 import "./App.css";
 import { auth } from "./pages/firebaseConfig";
 import Logout from "./components/Authentication/Logout";
+import { ScoreContext } from "./components/score/ScoreContext";
 
 const authed = auth;
 
 export default function App() {
+  let context = useContext(ScoreContext);
   const navigate = useNavigate();
   const [profileHighlighted, setProfileHighlighted] = useState(false);
   const [progressHighlighted, setProgressHighlighted] = useState(false);
@@ -25,6 +27,7 @@ export default function App() {
     setProfileHighlighted(true);
     setProgressHighlighted(false);
     setGameHighlighted(false);
+    context.update();
   };
 
   const navigateToProgress = () => {
@@ -32,6 +35,7 @@ export default function App() {
     setProfileHighlighted(false);
     setProgressHighlighted(true);
     setGameHighlighted(false);
+    context.update();
   };
 
   const navigateToGame = () => {
@@ -39,6 +43,8 @@ export default function App() {
     setProfileHighlighted(false);
     setProgressHighlighted(false);
     setGameHighlighted(true);
+    context.update();
+    console.log(navigate);
   };
 
   const navigateToLogin = () => {
@@ -48,7 +54,6 @@ export default function App() {
   const navigateToRegister = () => {
     navigate("/register");
   };
-
   console.log(authed.currentUser);
 
   return (
