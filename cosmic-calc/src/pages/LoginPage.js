@@ -4,7 +4,7 @@ import { createUserDocument } from "./firebaseConfig";
 import { auth } from "./firebaseConfig";
 import { useNavigate } from "react-router-dom";
 import "./loginPage.css";
-import logo from "../images/Logo/cosmic_calcs_logo.png";
+import logo from "../images/Logo/logo.png";
 
 function Login() {
   const [loginEmail, setLoginEmail] = useState("");

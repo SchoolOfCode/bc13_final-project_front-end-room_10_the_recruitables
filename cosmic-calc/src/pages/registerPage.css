@@ -11,12 +11,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 12vh;
     padding-bottom: 3vh;
 }
 
 .registerLogo {
-    width: 30vw;
-    height: 30vh;
+    width: 20vw;
+    height: 20vw;
     display: flex;
     justify-content: center;
     align-items: center;

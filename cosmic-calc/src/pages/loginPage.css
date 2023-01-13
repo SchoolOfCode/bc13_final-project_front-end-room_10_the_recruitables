@@ -11,13 +11,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 12vh;
     padding-bottom: 3vh;
-    
 }
 
 .loginLogo {
     width: 20vw;
-    height: 30vh;
+    height: 20vw;
     display: flex;
     justify-content: center;
     align-items: center;

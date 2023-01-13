@@ -7,7 +7,7 @@ import {
 import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import "./registerPage.css";
-import logo from "../images/Logo/cosmic_calcs_logo.png";
+import logo from "../images/Logo/logo.png";
 // import { ScoreContext } from "../context/ScoreContext";
 
 function Register() {
