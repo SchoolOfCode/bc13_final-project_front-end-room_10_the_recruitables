@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useNavigate } from "react";
 import "./game.css";
 import astronaut from "../images/Background_Buttons/Astronaut.png";
 
@@ -11,9 +11,10 @@ export default function Game() {
   const [score, setScore] = useState(0);
   const [answerVisible, setAnswerVisible] = useState(false);
   const [noOfQuestions, setNoOfQuestions] = useState(1);
+  
 
   useEffect(() => {
-    if (noOfQuestions === 4) {
+    if (noOfQuestions === 5) {
       updateScore(score, id);
     }
   }, [noOfQuestions, score, id]);
@@ -37,6 +38,10 @@ export default function Game() {
     setAnswerVisible(false);
   };
 
+  const navigateToPage = () => {
+    window.location.href = "/profile";
+  };
+
   const updateScore = async (score, id) => {
     const response = await fetch(
       `http://localhost:3001/api/users/${id}`,
@@ -51,7 +56,8 @@ export default function Game() {
     const data = await response.json();
     console.log(data);
   };
-  if (noOfQuestions < 4) {
+
+  if (noOfQuestions < 6) {
     return (
       <div className="gameDiv">
         <div
@@ -87,10 +93,11 @@ export default function Game() {
               console.log(e);
               if (e.key === "Enter") {
                 checkAnswer();
+                setAnswer("");
               }
             }}
           />
-          <button className="buttonGame" onClick={checkAnswer}>
+          <button className="buttonGame" onClick={navigateToPage}>
             Check Answer
           </button>
         </div>

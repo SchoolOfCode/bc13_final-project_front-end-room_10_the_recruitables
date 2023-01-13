@@ -1,0 +1,10 @@
+.navButtonLogout{
+    background-image: url(../../images/Background_Buttons/logoutButton.png);
+    background-size: cover; 
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: rgba(0, 0, 255, 0);
+    width: 10vw;
+    height: 10vh;
+    text-align: center;
+  }

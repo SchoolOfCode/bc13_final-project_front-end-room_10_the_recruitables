@@ -50,9 +50,9 @@ function Profile() {
       <div className="profilePageDiv">
         <img className="profileImage" src={profileImage} alt="profileImage" />
         <div className="profileDiv">
-          <h3 className="welcome">Welcome</h3>
-          <h4 className="name">{userData.name}</h4>
-          <h4 className="username">{userData.email}</h4>
+          <h3 className="welcome">Welcome {userData.name}</h3>
+          {/* <h4 className="name">{userData.name}</h4> */}
+          {/* <h4 className="username">{userData.email}</h4> */}
           <h4 className="score">Total score: {userData.total_score} </h4>
           <button className="gameButton" onClick={handleGame}>
             Let's play!
