@@ -13,8 +13,6 @@ import { auth } from "./pages/firebaseConfig";
 import Logout from "./components/Authentication/Logout";
 import { ScoreContext } from "./components/score/ScoreContext";
 
-const authed = auth;
-
 export default function App() {
   let context = useContext(ScoreContext);
   const navigate = useNavigate();
@@ -22,8 +20,10 @@ export default function App() {
   const [progressHighlighted, setProgressHighlighted] = useState(false);
   const [gameHighlighted, setGameHighlighted] = useState(false);
 
+
   const navigateToProfile = () => {
     navigate("/profile");
+
     setProfileHighlighted(true);
     setProgressHighlighted(false);
     setGameHighlighted(false);
@@ -61,8 +61,8 @@ export default function App() {
       <div className="navBar">
 
       <div className="navBarLoginDiv">
-      <button className="navButtonLogin" onClick={navigateToLogin}>Login</button>
-      <button className="navButtonRegister" onClick={navigateToRegister}>Register</button>
+      <button className="navButtonLogin" onClick={navigateToLogin}>_______________</button>
+      <button className="navButtonRegister" onClick={navigateToRegister}>_______________</button>
         {/* <button className="navButtonLogout" onClick={navigateToLogin}>Logout</button> */}
         <Logout  />
         </div>
@@ -107,6 +107,7 @@ export default function App() {
           </div>
         )}
       </div>
+
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/register" element={<Register />} />
@@ -135,6 +136,8 @@ export default function App() {
           }
         />
       </Routes>
+
     </div>
-  );
+  ); 
+
 }

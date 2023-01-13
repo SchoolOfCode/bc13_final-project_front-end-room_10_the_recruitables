@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 import { BrowserRouter as Router } from "react-router-dom";
 import App from "./App";
 import "./index.css";
-import starBackground from "./images/Background_Buttons/Background.png";
+import starBackground from "./images/Background2.png";
 import { UserContextProvider } from "./Context/useUser";
 import Background from "./images/Background_Buttons/Background2.png";
 import ScoreProvider from "./components/score/ScoreContext";

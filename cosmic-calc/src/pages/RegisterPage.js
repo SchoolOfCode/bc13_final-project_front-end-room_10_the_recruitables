@@ -6,9 +6,12 @@ import {
 } from "firebase/auth";
 import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+
+// import NavBarLogin from "../components/navBar/NavBarLogin";
 import "./registerPage.css";
-import logo from "../images/Logo/cosmic_calcs_logo.png";
+import logo from "../images/Logo.png"
 import { ScoreContext } from "../components/score/ScoreContext";
+
 
 function Register() {
   const [registerEmail, setRegisterEmail] = useState("");
@@ -68,6 +71,46 @@ function Register() {
     }
   };
 
+
+ 
+*/return (
+  <div className="register">
+    <div>
+      {/* <NavBarLogin /> */}
+      <div className="registerLogoDiv">
+        <img className="registerLogo" src={logo} alt="logo" />
+      </div>
+      <form onSubmit={handleRegister}>
+        <div className="inputRegisterDiv">
+          <input
+            className="registerNameInput"
+            type="text"
+            placeholder="Name"
+            value={registerName}
+            onChange={(e) => setRegisterName(e.target.value)}
+          />
+          <input
+            className="registerEmailInput"
+            type="email"
+            placeholder="email"
+            value={registerEmail}
+            onChange={(e) => setRegisterEmail(e.target.value)}
+          />
+          <input
+            className="registerPasswordInput"
+            type="password"
+            placeholder="password"
+            value={registerPassword}
+            onChange={(e) => setRegisterPassword(e.target.value)}
+          />
+        </div>
+        <div className="registerButtonDiv">
+          <button className="registerButton" type="submit">
+            Register
+          </button>
+        </div>
+      </form>
+*/
   const scores = useContext(ScoreContext);
 
   return (
@@ -109,7 +152,8 @@ function Register() {
         </form>
       </div>
     </div>
-  );
+  </div>
+);
 }
 
 export default Register;
