@@ -4,16 +4,16 @@ import {
   createUserWithEmailAndPassword,
   onAuthStateChanged,
 } from "firebase/auth";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import NavBarLogin from "../components/navBar/NavBarLogin";
 import "./registerPage.css";
+import logo from "../images/Logo/cosmic_calcs_logo.png";
+// import { ScoreContext } from "../context/ScoreContext";
 
 function Register() {
   const [registerEmail, setRegisterEmail] = useState("");
   const [registerPassword, setRegisterPassword] = useState("");
   const [registerName, setRegisterName] = useState("");
-  const [score, setScore] = useState(0);
   const [, setUser] = useState(null);
 
 
@@ -30,9 +30,8 @@ function Register() {
   let navigate = useNavigate();
 
   const createUser = async (user) => {
-    console.log("user", user);
 
-    const response = await fetch(`http://localhost:3001/api/users`, {
+    const response = await fetch(`http://localhost:3001/api/users/`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -58,41 +57,58 @@ function Register() {
       setRegisterEmail("");
       setRegisterPassword("");
       setRegisterName("");
-      createUser(user);
+
+      await createUser(user);
      
         navigate("/profile");
       
 
-      // navigate("/profile")
+
     } catch (error) {
       console.log(error);
     }
   };
+  //create useContext to store user score and name
+  //example
 
   return (
     <div className="register">
-      {/* <NavBarLogin /> */}
-      <form onSubmit={handleRegister}>
-        <input
-          type="text"
-          placeholder="name"
-          value={registerName}
-          onChange={(e) => setRegisterName(e.target.value)}
-        />
-        <input
-          type="text"
-          placeholder="email"
-          value={registerEmail}
-          onChange={(e) => setRegisterEmail(e.target.value)}
-        />
-        <input
-          type="text"
-          placeholder="password"
-          value={registerPassword}
-          onChange={(e) => setRegisterPassword(e.target.value)}
-        />
-        <button type="submit">Register</button>
-      </form>
+      <div>
+        {/* <NavBarLogin /> */}
+        <div className="registerLogoDiv">
+          <img className="registerLogo" src={logo} alt="logo" />
+        </div>
+        <form onSubmit={handleRegister}>
+          <div className="inputRegisterDiv">
+            <input
+              className="registerNameInput"
+              type="text"
+              placeholder="Name"
+              value={registerName}
+              onChange={(e) => setRegisterName(e.target.value)}
+            />
+            <input
+              className="registerEmailInput"
+              type="email"
+              placeholder="email"
+              value={registerEmail}
+              onChange={(e) => setRegisterEmail(e.target.value)}
+            />
+            <input
+              className="registerPasswordInput"
+              type="password"
+              placeholder="password"
+              value={registerPassword}
+              onChange={(e) => setRegisterPassword(e.target.value)}
+            />
+          </div>
+          <div className="registerButtonDiv">
+            <button className="registerButton" type="submit">
+              Register
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 }
