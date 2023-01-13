@@ -19,25 +19,26 @@ export const Progress = () => {
 
   // handles bringing in new buttons when the score increases. Set to new button every 5 points. Added button to manually increase score in the mean time - will remove later.
 
-  function handleScoreIncrease() {
+  // function handleScoreIncrease() {
     // get request to get total_score
-    const getScore = async (id) => {
-      const response = await fetch(`http://localhost:4000/api/users/${id}`);
-      const data = await response.json();
-      console.log(data.payload.total_score);
-      setPayload(data.payload);
-      setTotalScore(data.payload.total_score);
-      return data.payload.total_score;
-    };
+    useEffect(() => {
+      const getScore = async (id) => {
+        const response = await fetch(`http://localhost:3001/api/users/${id}`);
+        const data = await response.json();
+        setPayload(data.payload);
+        setTotalScore(data.payload.total_score);
+        console.log("data", data.payload.total_score)
+        return data.payload.total_score;
+      };
+      getScore(1);
+      if (payload.total_score >= 50) {
+        let unlockedLevels = [
+          ...lockLevels.slice(0, Math.floor(payload.total_score / 50)),
+        ];
+        setLevels(unlockedLevels);
+      } else setLevels([1]);
+    }, [totalScore]);
 
-    getScore(4);
-    if (payload.total_score >= 100) {
-      let unlockedLevels = [
-        ...lockLevels.slice(0, Math.floor(payload.total_score / 100)),
-      ];
-      setLevels(unlockedLevels);
-    } else setLevels([1]);
-  }
   // every 100 points or more new planet
   // set up the navigation variables and function
   const navigate = useNavigate();
@@ -55,7 +56,7 @@ export const Progress = () => {
   return (
     <div className="progress-page">
       {/* <NavBar /> */}
-      <button onClick={handleScoreIncrease}>MANUAL SCORE INCREASE</button>
+      {/* <button onClick={handleScoreIncrease}>MANUAL SCORE INCREASE</button> */}
       <div className="grid-container">
         {levels.map((levels, index) => (
           <LevelButtons

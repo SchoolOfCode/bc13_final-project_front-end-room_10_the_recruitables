@@ -39,7 +39,7 @@ export default function Game() {
 
   const updateScore = async (score, id) => {
     const response = await fetch(
-      `http://localhost:4000/api/users/${id}/updateTotalScore`,
+      `http://localhost:3001/api/users/${id}`,
       {
         method: "POST",
         headers: {

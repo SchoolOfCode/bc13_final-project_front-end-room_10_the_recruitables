@@ -8,6 +8,7 @@ export const UserContext = createContext({});
 
 export function UserContextProvider(props) {
   const [userData, setUserData] = useState({});
+  // const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const retrieveUserData = async (user) => {
@@ -18,25 +19,33 @@ export function UserContextProvider(props) {
       const data = await response.json();
       console.log(data)
       setUserData(data.payload);
+      console.log(userData, "user data");
 
+
+      // setIsLoading(false);
       return data.payload;
     };
     onAuthStateChanged(auth, (user) => {
       if (user) {
         retrieveUserData(user);
         console.log("hello")
+       
       }
     });
   }, []);
 
   console.log(userData);
-  
+  // if (isLoading) {
+  //   return <div>Loading...</div>;
+  // }
+  // else{
   return (
     <UserContext.Provider value={userData}>
       {props.children}
     </UserContext.Provider>
   );
-}
+  }
+
 
 
 

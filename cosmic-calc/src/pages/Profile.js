@@ -8,11 +8,18 @@ import { Routes, Route, useNavigate } from "react-router-dom";
 import Game from "./Game";
 import profileImage from "../images/Background_Buttons/MonsterRed.png";
 import { UserContext } from "../Context/useUser";
+import { useState } from "react";
 
 function Profile() {
   const userData = useContext(UserContext);
+  // const [loading, setLoading] = useState(true);
 
   console.log(userData);
+
+  // if (userData) {
+  //   setLoading(false);
+  // }
+
   // useEffect(() => {
   //   onAuthStateChanged(auth, (user) => {
   //     retrieveUserData(user);
@@ -57,7 +64,7 @@ function Profile() {
       </div>
     </div>
   );
-  
 }
+
 
 export default Profile;

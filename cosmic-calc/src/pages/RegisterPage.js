@@ -16,6 +16,7 @@ function Register() {
   const [score, setScore] = useState(0);
   const [, setUser] = useState(null);
 
+
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
@@ -58,9 +59,9 @@ function Register() {
       setRegisterPassword("");
       setRegisterName("");
       createUser(user);
-      setTimeout(() => {
+     
         navigate("/profile");
-      }, 2000);
+      
 
       // navigate("/profile")
     } catch (error) {
