@@ -3,8 +3,8 @@ import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./firebaseConfig";
 import React from "react";
 import "./profile.css";
+import profileImage from "../images/Background_Buttons/MonsterRed.png";
 import { useNavigate } from "react-router-dom";
-import { UserContext } from "../Context/useUser";
 import { ScoreContext } from "../components/score/ScoreContext";
 
 function Profile() {
@@ -14,7 +14,6 @@ function Profile() {
     onAuthStateChanged(auth, (user) => {
       retrieveUserData(user);
     });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   let context = useContext(ScoreContext);
@@ -36,7 +35,6 @@ function Profile() {
 
   console.log(useContext(ScoreContext));
 
-
   return (
     <div>
       <div className="profilePageDiv">
@@ -55,6 +53,5 @@ function Profile() {
     </div>
   );
 }
-
 
 export default Profile;

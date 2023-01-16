@@ -7,10 +7,8 @@ import Login from "./pages/LoginPage";
 import Register from "./pages/RegisterPage";
 import ProtectedRoute from "./components/Authentication/requireAuth";
 import Logout from "./components/Authentication/Logout";
-import ProfileButton from './images/Background_Buttons/ProfileButtonTextYellow.png'
 import "./App.css";
 import { auth } from "./pages/firebaseConfig";
-import Logout from "./components/Authentication/Logout";
 import { ScoreContext } from "./components/score/ScoreContext";
 
 export default function App() {
@@ -58,55 +56,44 @@ export default function App() {
 
   return (
     <div className="App">
-      <div className="navBar">
 
-      <div className="navBarLoginDiv">
-      <button className="navButtonLogin" onClick={navigateToLogin}>_______________</button>
-      <button className="navButtonRegister" onClick={navigateToRegister}>_______________</button>
-        {/* <button className="navButtonLogout" onClick={navigateToLogin}>Logout</button> */}
-        <Logout  />
-        </div>
+      {authed.currentUser ? (
         <div className="navBarPageDiv">
-        <button onClick={navigateToProfile} className={profileHighlighted ? "navButtonProfileHighlighted" : "navButtonProfile"}></button>
-        <button onClick={navigateToProgress} className={progressHighlighted ? "navButtonProgressHighlighted" : "navButtonProgress"}></button>
-        <button onClick={navigateToGame} className={gameHighlighted ? "navButtonGameHighlighted" : "navButtonGame"}></button>
-        {authed.currentUser ? (
-          <div className="navBarPageDiv">
-            <Logout />
-            <button
-              onClick={navigateToProfile}
-              className={
-                profileHighlighted
-                  ? "navButtonProfileHighlighted"
-                  : "navButtonProfile"
-              }
-            ></button>
-            <button
-              onClick={navigateToProgress}
-              className={
-                progressHighlighted
-                  ? "navButtonProgressHighlighted"
-                  : "navButtonProgress"
-              }
-            ></button>
-            <button
-              onClick={navigateToGame}
-              className={
-                gameHighlighted ? "navButtonGameHighlighted" : "navButtonGame"
-              }
-            ></button>
-          </div>
-        ) : (
-          <div className="navBarLoginDiv">
-            <button className="navButtonLogin" onClick={navigateToLogin}>
-              Login
-            </button>
-            <button className="navButtonRegister" onClick={navigateToRegister}>
-              Register
-            </button>
-          </div>
-        )}
-      </div>
+          <Logout />
+          <button
+            onClick={navigateToProfile}
+            className={
+              profileHighlighted
+                ? "navButtonProfileHighlighted"
+                : "navButtonProfile"
+            }
+          ></button>
+          <button
+            onClick={navigateToProgress}
+            className={
+              progressHighlighted
+                ? "navButtonProgressHighlighted"
+                : "navButtonProgress"
+            }
+          ></button>
+          <button
+            onClick={navigateToGame}
+            className={
+              gameHighlighted ? "navButtonGameHighlighted" : "navButtonGame"
+            }
+          ></button>
+        </div>
+      ) : (
+        <div className="navBarLoginDiv">
+          <button className="navButtonLogin" onClick={navigateToLogin}>
+            Login
+          </button>
+          <button className="navButtonRegister" onClick={navigateToRegister}>
+            Register
+          </button>
+        </div>
+      )}
+
 
       <Routes>
         <Route path="/" element={<Login />} />
