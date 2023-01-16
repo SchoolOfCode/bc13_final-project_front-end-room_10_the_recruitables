@@ -10,6 +10,10 @@ import Logout from "./components/Authentication/Logout";
 import "./App.css";
 import { auth } from "./pages/firebaseConfig";
 import { ScoreContext } from "./components/score/ScoreContext";
+import TimedGame from "./pages/TimedGame";
+import Avatars from "./pages/Avatars";
+import Level1 from "./pages/Level1";
+import Level5 from "./pages/Level5";
 
 export default function App() {
   const authed = auth;
@@ -44,6 +48,22 @@ export default function App() {
     context.update();
     console.log(navigate);
   };
+
+  const navigateToTimedGame = () => {
+    navigate("/timedGame");
+  }
+
+  const navigateToAvatars = () => {
+    navigate("/avatars");
+  }
+
+  const navigateToLevel1 = () => {
+    navigate("/level1");
+  }
+
+  const navigateToLevel5 = () => {
+    navigate("/level5");
+  }
 
   const navigateToLogin = () => {
     navigate("/");
@@ -81,6 +101,10 @@ export default function App() {
               gameHighlighted ? "navButtonGameHighlighted" : "navButtonGame"
             }
           ></button>
+          <button onClick={navigateToTimedGame} className="navButtonTimedGame">TimedGame</button>
+            <button onClick={navigateToAvatars} className="navButtonAvatars">Avatars</button>
+            <button onClick={navigateToLevel1} className="navButtonLevel1">Level1</button>
+            <button onClick={navigateToLevel5} className="navButtonLevel5">Level5</button>
         </div>
       ) : (
         <div className="navBarLoginDiv">
@@ -117,6 +141,38 @@ export default function App() {
           element={
             <ProtectedRoute>
               <Game />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/timedGame"
+          element={
+            <ProtectedRoute>
+              <TimedGame />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/avatars"
+          element={
+            <ProtectedRoute>
+              <Avatars />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/level1"
+          element={
+            <ProtectedRoute>  
+              <Level1 />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/level5"
+          element={
+            <ProtectedRoute>  
+              <Level5 />
             </ProtectedRoute>
           }
         />
