@@ -73,10 +73,10 @@ const AvatarBuilder = () => {
   //   onclick change body colour to red
   const changeBodyColor = (e) => {
     console.log(e);
-    //setAvatarColor(e);
+    setAvatarColor(e.target.value);
     document.documentElement.style.setProperty(
       "--avatar-body-color",
-      avatarColor
+        avatarColor
     );
     console.log("hhellloo");
   };
@@ -138,7 +138,7 @@ const AvatarBuilder = () => {
       >
         Submit
       </button>
-      <button onClick={changeBodyColor()}>Change Colour</button>
+      <input type="color" onChange={changeBodyColor} />
       <div className="head-selector">
         <button onClick={() => handleHeadClick("head", "left")}>⬅</button>
         Head
@@ -161,7 +161,7 @@ const AvatarBuilder = () => {
         <button onClick={() => getAvatars(context.user.email)}>TEST</button>
       </div>
       <div className="avatar-color-selector">
-        <input type="color" value={avatarColor} onChange={changeBodyColor} />
+
       </div>
 
       <div class="container">
