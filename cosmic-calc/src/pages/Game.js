@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useNavigate } from "react";
 
 import "./game.css";
@@ -14,17 +13,14 @@ export default function Game() {
   const [score, setScore] = useState(0);
   const [answerVisible, setAnswerVisible] = useState(false);
   const [noOfQuestions, setNoOfQuestions] = useState(1);
-  
 
   useEffect(() => {
-
     if (noOfQuestions === 4) {
       onAuthStateChanged(auth, (user) => {
         updateScore(score, user);
       });
-
     }
-  }, [noOfQuestions]);
+  }, [noOfQuestions, score]);
 
   const checkAnswer = () => {
     setNoOfQuestions(noOfQuestions + 1);
@@ -62,9 +58,7 @@ export default function Game() {
     console.log(data);
   };
 
-
   if (noOfQuestions < 4) {
-
     return (
       <div className="gameDiv">
         <div
@@ -104,9 +98,9 @@ export default function Game() {
               }
             }}
           />
-          <button className="buttonGame" onClick={navigateToPage}>
-            Check Answer
-          </button>
+          {/* <button className="buttonGame" onClick={navigateToPage}> */}
+          {/* Check Answer
+          </button> */}
         </div>
         <div className="scoreDiv">
           <h2 className="h2ScoreGame">Score: {score}</h2>
