@@ -75,6 +75,63 @@ const AvatarBuilder = () => {
         <br />
         <p>{legParts[selectedLegs]}</p>
       </div>
+
+      <div class="container">
+  
+  <div class="avatarWrap">
+    <div class="avatar">
+      <div class="headWrap">
+        <div class="antenna">
+        <div class="curlyHair"></div>
+            <div class="antenna_line"></div>
+            <div class="antenna_circle_4"></div>
+        </div>
+        <div class="ears">
+          <div class="ear"></div>
+          <div class="ear"></div>
+        </div>
+        <div class="face_3">
+          <div class="eyebrows">
+            <div class="eyebrows_brow1"></div>
+            <div class="eyebrows_brow2"></div> 
+          </div>
+          <div class="eyes"></div>
+          
+          <div class="nose"></div>
+          <div class="mouth">
+            <div class="mouth"></div>
+            <div class="tooth_1"></div>
+            <div class="tooth_2"></div>
+            <div class="tooth_3"></div>
+            <div class="tooth_4"></div>
+            <div class="tooth_5"> </div>
+            <div class="tongue"></div>
+          </div>
+        </div>
+        <div class="neck"></div>
+      </div>
+      <div class="bodyWrap">
+        <div class="bodyWrap_body_4">
+          <div class="bodyWrap_bottom">
+          </div>
+            <div class="legs">
+                <div class="legs_leftLeg"></div>
+                <div class="legs_rightLeg"></div>
+                <div class="legs_leftShoe"></div>
+                <div class="legs_rightShoe"></div>
+                </div>
+        </div>
+        <div class="arms">
+          <div class="arms_leftArm"></div>
+          <div class="arms_rightArm"></div> 
+          <div class="arms_leftSleeve"></div>
+            <div class="arms_rightSleeve"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</div>
     </div>
   );
 };
