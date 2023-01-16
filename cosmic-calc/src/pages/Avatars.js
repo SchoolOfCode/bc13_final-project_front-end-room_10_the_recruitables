@@ -1,14 +1,17 @@
 import React, { useState } from "react";
+import "./Avatars.css";
 
-let headParts = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-let bodyParts = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-let legParts = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+let headParts = [1, 2, 3 ];
+let bodyParts = [1, 2, 3, 4];
+let antParts = [1, 2, 3, 4 ];
+let teethParts = [1, 2, 3, 4, 5];
 
 const AvatarBuilder = () => {
   // initialize state for the selected head, body, and legs options
   const [selectedHead, setSelectedHead] = useState(1);
   const [selectedBody, setSelectedBody] = useState(1);
-  const [selectedLegs, setSelectedLegs] = useState(1);
+  const [selectedAnt, setSelectedAnt] = useState(1);
+  const [selectedTeeth, setSelectedTeeth] = useState(1);
 
   // import the context
 
@@ -26,11 +29,19 @@ const AvatarBuilder = () => {
       setSelectedBody(selectedBody + 1);
     }
 
-    if (bodypart === "legs" && direction === "left") {
-      setSelectedLegs(selectedLegs - 1);
-    } else if (bodypart === "legs" && direction === "right") {
-      setSelectedLegs(selectedLegs + 1);
-    }
+    if (bodypart === "ant" && direction === "left") {
+        setSelectedAnt(selectedAnt - 1);
+      } else if (bodypart === "ant" && direction === "right") {
+        setSelectedAnt(selectedAnt + 1);
+      }
+
+      if (bodypart === "teeth" && direction === "left") {
+        setSelectedTeeth(selectedTeeth - 1);
+      } else if (bodypart === "teeth" && direction === "right") {
+        setSelectedTeeth(selectedTeeth + 1);
+      }
+
+    
   }
 
   // async function handleSubmit() {
@@ -68,14 +79,12 @@ const AvatarBuilder = () => {
         legs
         <button onClick={() => handleHeadClick("legs", "right")}>➡</button>
       </div>
-      <div>
-        <p>{headParts[selectedHead]}</p>
-        <br />
-        <p>{bodyParts[selectedBody]}</p>
-        <br />
-        <p>{legParts[selectedLegs]}</p>
+      <div className="ants-selector">
+        <button onClick={() => handleHeadClick("ant", "left")}>⬅</button>
+        Antenna
+        <button onClick={() => handleHeadClick("ant", "right")}>➡</button>
       </div>
-
+      
       <div class="container">
   
   <div class="avatarWrap">
@@ -84,13 +93,13 @@ const AvatarBuilder = () => {
         <div class="antenna">
         <div class="curlyHair"></div>
             <div class="antenna_line"></div>
-            <div class="antenna_circle_4"></div>
+            <div class={"antenna_circle_"+selectedAnt}></div>
         </div>
         <div class="ears">
           <div class="ear"></div>
           <div class="ear"></div>
         </div>
-        <div class="face_3">
+        <div class={"face_" +selectedHead}git >
           <div class="eyebrows">
             <div class="eyebrows_brow1"></div>
             <div class="eyebrows_brow2"></div> 
@@ -111,7 +120,7 @@ const AvatarBuilder = () => {
         <div class="neck"></div>
       </div>
       <div class="bodyWrap">
-        <div class="bodyWrap_body_4">
+        <div class={"bodyWrap_body_" + selectedBody}>
           <div class="bodyWrap_bottom">
           </div>
             <div class="legs">
