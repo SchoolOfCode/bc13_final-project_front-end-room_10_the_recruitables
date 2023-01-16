@@ -62,9 +62,36 @@ const AvatarBuilder = () => {
   //   console.log(data);
   // }
 
+  async function getAvatars (email){
+    const response = await fetch(`http://localhost:3001/api/users/avatars/${email}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const data = await response.json();
+    console.log(data);
+  }
+
+  async function patchAvatars (email, bodyNum, antNum, headNum) {
+    console.log("hello")
+    const response = await fetch(`http://localhost:3001/api/users/avatars/${email}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ bodyId: bodyNum , antId: antNum, headId: headNum }),
+    });
+    const data = await response.json();
+    console.log(data);
+  }
+
   return (
     <div>
-      <div className="submit">Submit</div>
+    <br/>
+    <br/>
+
+      <button onClick={() => patchAvatars(context.user.email, selectedBody, selectedAnt, selectedHead)}>Submit</button>
       <div className="head-selector">
         <button onClick={() => handleHeadClick("head", "left")}>⬅</button>
         Head
