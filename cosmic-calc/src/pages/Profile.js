@@ -44,6 +44,7 @@ function Profile() {
           <h4 className="name">{userData.name}</h4>
           <h4 className="username">{userData.email}</h4>
           <h4 className="score">Total score: {context.score} </h4>
+
           <button className="gameButton" onClick={handleGame}>
             Let's play!
           </button>

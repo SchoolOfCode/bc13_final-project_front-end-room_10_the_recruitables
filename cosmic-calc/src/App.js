@@ -11,8 +11,6 @@ import "./App.css";
 import { auth } from "./pages/firebaseConfig";
 import { ScoreContext } from "./components/score/ScoreContext";
 
-const authed = auth;
-
 export default function App() {
   let context = useContext(ScoreContext);
   const navigate = useNavigate();
@@ -20,8 +18,10 @@ export default function App() {
   const [progressHighlighted, setProgressHighlighted] = useState(false);
   const [gameHighlighted, setGameHighlighted] = useState(false);
 
+
   const navigateToProfile = () => {
     navigate("/profile");
+
     setProfileHighlighted(true);
     setProgressHighlighted(false);
     setGameHighlighted(false);
@@ -56,6 +56,7 @@ export default function App() {
 
   return (
     <div className="App">
+
       {authed.currentUser ? (
         <div className="navBarPageDiv">
           <Logout />
@@ -93,6 +94,7 @@ export default function App() {
         </div>
       )}
 
+
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/register" element={<Register />} />
@@ -121,6 +123,8 @@ export default function App() {
           }
         />
       </Routes>
+
     </div>
-  );
+  ); 
+
 }

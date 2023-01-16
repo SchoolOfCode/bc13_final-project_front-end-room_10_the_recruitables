@@ -1,4 +1,6 @@
-import React, { useState, useEffect, useReducer } from "react";
+
+import React, { useState, useEffect, useNavigate } from "react";
+
 import "./game.css";
 import astronaut from "../images/Background_Buttons/Astronaut.png";
 import { onAuthStateChanged } from "firebase/auth";
@@ -12,12 +14,15 @@ export default function Game() {
   const [score, setScore] = useState(0);
   const [answerVisible, setAnswerVisible] = useState(false);
   const [noOfQuestions, setNoOfQuestions] = useState(1);
+  
 
   useEffect(() => {
+
     if (noOfQuestions === 4) {
       onAuthStateChanged(auth, (user) => {
         updateScore(score, user);
       });
+
     }
   }, [noOfQuestions]);
 
@@ -39,8 +44,10 @@ export default function Game() {
     setResult("");
     setAnswerVisible(false);
   };
+
   const updateScore = async (score, user) => {
     let email = await user.email;
+
     const response = await fetch(
       `http://localhost:3001/api/users/email/${email}`,
       {
@@ -55,7 +62,9 @@ export default function Game() {
     console.log(data);
   };
 
+
   if (noOfQuestions < 4) {
+
     return (
       <div className="gameDiv">
         <div
@@ -95,7 +104,7 @@ export default function Game() {
               }
             }}
           />
-          <button className="buttonGame" onClick={checkAnswer}>
+          <button className="buttonGame" onClick={navigateToPage}>
             Check Answer
           </button>
         </div>

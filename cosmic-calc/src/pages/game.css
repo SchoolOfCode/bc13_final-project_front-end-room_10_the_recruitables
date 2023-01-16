@@ -18,7 +18,8 @@
     justify-content: center;
     height: auto;
     width: 70vw;
-    padding: 2vh;
+    margin-top: 20vh;
+    padding: 1vh;
     color: #fff;
 }
 
@@ -47,7 +48,7 @@
     height: auto;
     width: 30vw;
     background-color: var(--colour-blue-transparent);
-    padding: 1.5vh;
+    padding: 0.5vh;
     border-radius: 10px;
     border-color: var(--colour-blue);
     border-style: solid;
@@ -132,12 +133,12 @@
 }
 
 .endDiv{
-    margin-top: 10vw;
+    margin-top: 20vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh;
+    height: 70vh;
 
 }
 
@@ -154,7 +155,7 @@
 }
 
 .astronaut {
-    width: 20vw;
+    width: 25vw;
     height: 20vw;
     align-self: flex-end;
 }
