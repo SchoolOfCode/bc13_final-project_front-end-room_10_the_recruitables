@@ -70,7 +70,7 @@
 
 .navButtonProfileHighlighted {
 
-  background-image: url(./images/Background_Buttons/ProfileButtonTextBlue.png);
+  background-image: url(./images/Background_Buttons/profile_button_glow.png);
 
   background-size: cover;
   background-repeat: no-repeat;
@@ -85,7 +85,7 @@
 
 .navButtonGameHighlighted {
 
-  background-image: url(./images/Background_Buttons/GameButtonBlue.png);
+  background-image: url(./images/Background_Buttons/game_button_glow.png);
 
   background-size: cover;
   background-repeat: no-repeat;
@@ -100,7 +100,7 @@
 
 .navButtonProgressHighlighted {
 
-  background-image: url(./images/Background_Buttons/ProgressButtonTextBlue.png);
+  background-image: url(./images/Background_Buttons/progress_button_glow.png);
 
   background-size: cover; 
   background-repeat: no-repeat;
