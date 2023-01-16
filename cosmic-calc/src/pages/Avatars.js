@@ -71,7 +71,7 @@ const AvatarBuilder = () => {
 
 //   onclick change body colour to red
 function changeBodyColor () {
-    element.style.setProperty("--avatar-body-color",  "#FF0000");
+    document.documentElement.style.setProperty("--avatar-body-color",  "#FF0000");
     };
 
 
