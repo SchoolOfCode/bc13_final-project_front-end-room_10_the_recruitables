@@ -69,6 +69,13 @@ const AvatarBuilder = () => {
     console.log("This is user Context", context.user.email);
   }
 
+//   onclick change body colour to red
+function changeBodyColor () {
+    element.style.setProperty("--avatar-body-color",  "#FF0000");
+    };
+
+
+
   async function getAvatars(email) {
     const response = await fetch(
       `http://localhost:3001/api/users/avatars/${email}`,
@@ -122,6 +129,7 @@ const AvatarBuilder = () => {
       >
         Submit
       </button>
+      <button onClick={changeBodyColor()}>Change Colour</button>
       <div className="head-selector">
         <button onClick={() => handleHeadClick("head", "left")}>⬅</button>
         Head

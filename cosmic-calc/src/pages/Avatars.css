@@ -28,7 +28,7 @@
       width: 10px;
       height: 60px;
       border-radius: 0px 0px 50px 50px;
-      background-color: rgb(12, 156, 12);
+      background-color: var(--avatar-body-color);
   }
   
   .antenna_circle_1{
@@ -39,7 +39,7 @@
       width: 30px;
       height: 30px;
       border-radius: 50%;
-      background-color: darkgreen;
+      background-color: var(--avatar-body-color);
   }
   
   .antenna_circle_2{
@@ -117,7 +117,7 @@
     width: 140px;
     height: 181px;
     border-radius: 60px 60px 100px 100px;
-    background-color: green;
+    background-color: var(--avatar-body-color);
   }
   
   .face_2 {
@@ -192,7 +192,7 @@
   
   .nose {
     position: absolute;
-    bottom: 72px;
+    bottom: 92px;
     left: 50%;
     transform: translateX(-50%);
     width: 30px;
@@ -209,7 +209,7 @@
     width: 40px;
     height: 20px;
     border-radius: 0 0 10px 10px;
-    background-color: #000;
+    background-color: rgb(182, 33, 33);
   }
   
   .mouthShape {
