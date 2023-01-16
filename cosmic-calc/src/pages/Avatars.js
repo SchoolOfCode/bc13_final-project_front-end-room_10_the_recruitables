@@ -13,6 +13,7 @@ const AvatarBuilder = () => {
   const [selectedBody, setSelectedBody] = useState(1);
   const [selectedAnt, setSelectedAnt] = useState(1);
   const [selectedTeeth, setSelectedTeeth] = useState(1);
+  const [avatarColor, setAvatarColor] = useState("#000000");
 
   // body part amounts
   let bodyPartAmounts = {
@@ -69,12 +70,20 @@ const AvatarBuilder = () => {
     console.log("This is user Context", context.user.email);
   }
 
-//   onclick change body colour to red
-function changeBodyColor () {
-    document.documentElement.style.setProperty("--avatar-body-color",  "#FF0000");
-    };
-
-
+  //   onclick change body colour to red
+  const changeBodyColor = (e) => {
+    console.log(e);
+    //setAvatarColor(e);
+    document.documentElement.style.setProperty(
+      "--avatar-body-color",
+      avatarColor
+    );
+    console.log("hhellloo");
+  };
+  // const changeBodyColor = (e) => {
+  //   console.log(e.target.value);
+  //   // setAvatarColor(e.target.value);
+  // };
 
   async function getAvatars(email) {
     const response = await fetch(
@@ -150,6 +159,9 @@ function changeBodyColor () {
         Antenna
         <button onClick={() => handleHeadClick("ant", "right")}>➡</button>
         <button onClick={() => getAvatars(context.user.email)}>TEST</button>
+      </div>
+      <div className="avatar-color-selector">
+        <input type="color" value={avatarColor} onChange={changeBodyColor} />
       </div>
 
       <div class="container">
