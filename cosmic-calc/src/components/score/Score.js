@@ -1,12 +1,10 @@
-//TT
-// import React from "react";
-// //display the score using pops passed from the game component
-// ;
-// const Score = ({ score }) => {
-//   return (
-//     <div>
-//       <h4 className="score">Score: {score}</h4>
-//     </div>
-//   );
-// }
-// export default Score;
+import React from "react";
+import "./score.css";
+
+export default function Score(props) {
+  return (
+    <div className="scoreDiv">
+      <h2 className="h2ScoreGame">Score: {props.score}</h2>
+    </div>
+  );
+}

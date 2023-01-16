@@ -1,0 +1,42 @@
+.answerDiv {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+    width: 70vw;
+    margin-top: 20vh;
+    padding: 1vh;
+    color: #fff;
+}
+
+.statementDiv{
+    display: flex;
+    flex-direction: row;
+    padding: 2vh;
+    border-radius: 10px;
+    background: var(--colour-green-transparent);
+    border-color: var(--colour-green);
+    border-style: solid;
+    border-width: 10px;
+    color: #fff;
+    margin: 2vw;
+}
+
+.h3ResultAnswerGame{
+    font-size: 4vw;
+    margin-left: 2vw;
+    text-decoration: underline;
+}
+
+.newQuestionGameButton{
+    padding: 2vw;
+    border-radius: 10px;
+    background: var(--colour-red-transparent);
+    border-color:   var(--colour-red);
+    border-style: solid;
+    border-width: 10px;
+    color: #fff;
+    margin: 2vw;
+    font-size: 2vw;
+}

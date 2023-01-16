@@ -4,7 +4,9 @@ import "./game.css";
 import astronaut from "../images/Background_Buttons/Astronaut.png";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./firebaseConfig";
-
+import AnswerCard from "../components/answercard/AnswerCard";
+import QuestionCard from "../components/questioncard/QuestionCard";
+import Score from "../components/score/Score";
 export default function Game() {
   const [num1, setNum1] = useState(Math.floor(Math.random() * 12) + 1);
   const [num2, setNum2] = useState(Math.floor(Math.random() * 12) + 1);
@@ -61,50 +63,22 @@ export default function Game() {
   if (noOfQuestions < 4) {
     return (
       <div className="gameDiv">
-        <div
-          className="answerDiv"
-          style={{ visibility: answerVisible ? "visible" : "hidden" }}
-        >
-          <div
-            className="statementDiv"
-            style={{ visibility: answerVisible ? "visible" : "hidden" }}
-          >
-            <h3 className="h3ResultGame">The correct answer is: </h3>
-            <h3 className="h3ResultAnswerGame">{result}</h3>
-          </div>
-          <button
-            className="newQuestionGameButton"
-            onClick={newQuestion}
-            style={{ visibility: answerVisible ? "visible" : "hidden" }}
-          >
-            Next Question
-          </button>
-        </div>
-        <div className="questionDiv">
-          <h2 className="h2QuestionGame">{noOfQuestions + ")  "}</h2>
-          <h2 className="h2QuestionGame">
-            {num1} x {num2} =
-          </h2>
-          <input
-            className="inputGame"
-            type="number"
-            value={answer}
-            onChange={(e) => setAnswer(e.target.value)}
-            onKeyDown={(e) => {
-              // console.log(e);
-              if (e.key === "Enter") {
-                checkAnswer();
-                setAnswer("");
-              }
-            }}
-          />
-          {/* <button className="buttonGame" onClick={navigateToPage}> */}
-          {/* Check Answer
-          </button> */}
-        </div>
-        <div className="scoreDiv">
+        <AnswerCard
+          answerVisible={answerVisible}
+          result={result}
+          newQuestion={newQuestion}
+        />
+        <QuestionCard
+          noOfQuestions={noOfQuestions}
+          num1={num1}
+          num2={num2}
+          setAnswer={setAnswer}
+          checkAnswer={checkAnswer}
+        />
+        <Score score={score} />
+        {/* <div className="scoreDiv">
           <h2 className="h2ScoreGame">Score: {score}</h2>
-        </div>
+        </div> */}
       </div>
     );
   } else {
