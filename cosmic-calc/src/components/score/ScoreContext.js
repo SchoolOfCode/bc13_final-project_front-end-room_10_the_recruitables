@@ -25,7 +25,9 @@ function ScoreProvider({ children }) {
   };
 
   return (
-    <ScoreContext.Provider value={{ score: score, update: retrieveUserData }}>
+    <ScoreContext.Provider
+      value={{ score: score, update: retrieveUserData, user: user }}
+    >
       {children}
     </ScoreContext.Provider>
   );
