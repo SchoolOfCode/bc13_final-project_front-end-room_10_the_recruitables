@@ -6,7 +6,7 @@ export default function QuestionCard(props) {
     <div className="questionDiv">
       <h2 className="h2QuestionGame">{props.noOfQuestions + ")  "}</h2>
       <h2 className="h2QuestionGame">
-        {props.value1} {props.operation} {props.value2} =
+        {props.value1} {props.operation} {props.value2} {props.equals}
       </h2>
       <input
         className="inputGame"

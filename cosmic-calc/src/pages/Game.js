@@ -17,7 +17,7 @@ import {
 } from "../components/functions/yearOneFunctions";
 
 export default function Game() {
-  let points = 45;
+  let points = 65;
   const [score, setScore] = useState(0);
 
   const [answerInput, setAnswerInput] = useState("");
@@ -156,6 +156,7 @@ export default function Game() {
             value1={value1}
             operation={operation}
             value2={value2}
+            equals={"="}
             setAnswerInput={setAnswerInput}
             checkAnswer={checkAnswer5}
           />

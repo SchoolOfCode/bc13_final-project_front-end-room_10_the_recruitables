@@ -36,7 +36,7 @@ export function yearOnePlanetFiveAnswer(values, playerAnswer) {
   } else {
     correctAnswer = values[0] - values[2];
   }
-  return parseInt(playerAnswer) === correctAnswer, correctAnswer;
+  return [parseInt(playerAnswer) === correctAnswer, correctAnswer];
 }
 
 export function yearOnePlanetSixQuestion() {
