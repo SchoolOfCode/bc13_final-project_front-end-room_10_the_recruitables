@@ -72,13 +72,13 @@ const AvatarBuilder = () => {
 
   //   onclick change body colour to red
   const changeBodyColor = (e) => {
-    console.log(e);
+    console.log(e.target.value);
     setAvatarColor(e.target.value);
     document.documentElement.style.setProperty(
       "--avatar-body-color",
         avatarColor
     );
-    console.log("hhellloo");
+    
   };
   // const changeBodyColor = (e) => {
   //   console.log(e.target.value);
@@ -100,9 +100,10 @@ const AvatarBuilder = () => {
     setSelectedAnt(data.payload.antid);
     setSelectedBody(data.payload.bodyid);
     setSelectedHead(data.payload.headid);
+    setAvatarColor(data.payload.avcolour);
   }
 
-  async function patchAvatars(email, bodyNum, antNum, headNum) {
+  async function patchAvatars(email, bodyNum, antNum, headNum, avatarColor) {
     console.log("hello");
     const response = await fetch(
       `http://localhost:3001/api/users/avatars/${email}`,
@@ -115,6 +116,7 @@ const AvatarBuilder = () => {
           bodyId: bodyNum,
           antId: antNum,
           headId: headNum,
+         avColour: avatarColor,
         }),
       }
     );
@@ -132,7 +134,8 @@ const AvatarBuilder = () => {
             context.user.email,
             selectedBody,
             selectedAnt,
-            selectedHead
+            selectedHead,
+            avatarColor
           )
         }
       >
