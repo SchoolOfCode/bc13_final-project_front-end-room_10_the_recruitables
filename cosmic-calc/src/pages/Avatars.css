@@ -3,10 +3,20 @@
     margin: 0;
     box-sizing: border-box;
   }
+
+  .avatarPageDiv{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+  }
   
   .avatarWrap {
     position: absolute;
-    top: 70%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 250px;
@@ -556,22 +566,36 @@
 
   /* selectors for buttons */
   .ants-selector{
+    margin-left: 2vw;
     display: flex;
     position: relative;
-    justify-content: center;
+    justify-content: space-between;
+    /* border: 1px solid black; */
+    width: 63vw;
+    max-width: 20cm;
+    
+    
   }
   
   .head-selector{
+    margin-left: 2vw;
     display: flex;
     position: relative;
-    justify-content: center;
+    justify-content: space-between;
+    /* border: 1px solid rgb(17, 156, 183); */
+    width: 63vw;
+    max-width: 20cm;
   }
 
 
   .body-selector{
+    margin-left: 2vw;
     display: flex;
     position: relative;
-    justify-content: center;
+    justify-content: space-between;
+    /* border: 1px solid rgb(113, 18, 18); */
+    width: 63vw;
+    max-width: 20cm;
   }
 
 
@@ -584,60 +608,118 @@
   /* Actual buttons for body parts */
   .head-button-left{
     display: flex;
-    position: absolute;
-    top: 70%;
-    left: 30%;
-    transform: translate(-50%, -50%);
-    z-index: 1;
+    background-image: url(../images/Background_Buttons/Avatars/Arrow-left1.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 10%;
+    max-width: 20cm;
+    height: 300%;
+    background-color: rgba(0, 0, 0, 0);
+    color:rgba(0, 8, 100, 0);
   }
 
   .head-button-right {
     display: flex;
-    position: absolute;
-    top: 70%;
-    left: 70%;
-    transform: translate(-50%, -50%);
-    z-index: 1;
+    background-image: url(../images/Background_Buttons/Avatars/Arrow-right1.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 10%;
+    max-width: 20cm;
+    height: 300%;
+    background-color: rgba(0, 0, 0, 0);
+    color:rgba(0, 8, 100, 0);
   }
 
   .body-button-left{
     display: flex;
+    background-image: url(../images/Background_Buttons/Avatars/Arrow-left1.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 10%;
+    max-width: 20cm;
+    height: 300%;
+    background-color: rgba(0, 0, 0, 0);
+    color:rgba(0, 8, 100, 0);
   }
 
   .body-button-right{
     display: flex;
+    background-image: url(../images/Background_Buttons/Avatars/Arrow-right1.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 10%;
+    max-width: 20cm;
+    height: 300%;
+    background-color: rgba(0, 0, 0, 0);
+    color:rgba(0, 8, 100, 0);
   }
 
 
-  .legs-button-left{
+  .ants-button-left{
     display: flex;
+    background-image: url(../images/Background_Buttons/Avatars/Arrow-left1.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 10%;
+    max-width: 20cm;
+    height: 300%;
+    background-color: rgba(0, 0, 0, 0);
+    color:rgba(0, 8, 100, 0);
   }
 
-  .legs-button-right{
+  .ants-button-right{
     display: flex;
+    background-image: url(../images/Background_Buttons/Avatars/Arrow-right1.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 10%;
+    max-width: 20cm;
+    height: 300%;
+    background-color: rgba(0, 0, 0, 0);
+    color:rgba(0, 8, 100, 0);
   }
 
   .avatar-wardrobe-div{
     /* display: flex; */
     position: absolute;
-    top: 70%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 250px;
-    height: 356px;
+    width: 15px;
+    height: 100px;
     z-index: -1;
   }
 
   .avatar-wardrobe{
     /* display: flex; */
-    position: absolute;
     top: 70%;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: -1;
+    width: 70vw;
+    max-width: 20cm;
+    height: 15cm;
+    
   }
 
-  
-  /* hairstyles */
-  
-  
+  .avatarButtonDiv{
+    display:flex;
+    position: relative;
+    flex-direction: column;
+    justify-content: space-between;
+    /* border: 5px solid red; */
+    height: 50%;
+    bottom: 15%;
+    width: 70vw;
+    max-width: 20cm;
+    
+  }
+
+ 
+

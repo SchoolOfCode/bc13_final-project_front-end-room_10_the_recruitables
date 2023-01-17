@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import "./Avatars.css";
 import { ScoreContext } from "../components/score/ScoreContext";
-import wardrobe from "../images/Background_Buttons/Avatars/wardrobe.png";
+import wardrobe from "../images/Background_Buttons/Avatars/wardrobeAst.png";
 
 // let headParts = [1, 2, 3];
 // let bodyParts = [1, 2, 3, 4];
@@ -146,7 +146,7 @@ const AvatarBuilder = () => {
   }
 
   return (
-    <div>
+    <div className="avatarPageDiv">
       <br />
       <br />
       <button
@@ -162,7 +162,24 @@ const AvatarBuilder = () => {
       >
         Submit
       </button>
+      <div className="avatarButtonDiv">
       <input type="color" onChange={changeBodyColor} />
+      <div className="ants-selector">
+        <button
+          className="ants-button-left"
+          onClick={() => handleHeadClick("ant", "left")}
+        >
+          ⬅
+        </button>
+        
+        <button
+          className="ants-button-right"
+          onClick={() => handleHeadClick("ant", "right")}
+        >
+          ➡
+        </button>
+        {/* <button onClick={() => getAvatars(context.user.email)}>TEST</button> */}
+      </div>
       <div className="head-selector">
         <button
           className="head-button-left"
@@ -170,7 +187,7 @@ const AvatarBuilder = () => {
         >
           ⬅
         </button>
-        Head
+        
         <button
           className="head-button-right"
           onClick={() => handleHeadClick("head", "right")}
@@ -185,7 +202,7 @@ const AvatarBuilder = () => {
         >
           ⬅
         </button>
-        Body
+        
         <button
           className="body-button-right"
           onClick={() => handleHeadClick("body", "right")}
@@ -193,22 +210,7 @@ const AvatarBuilder = () => {
           ➡
         </button>
       </div>
-      <div className="ants-selector">
-        <button
-          className="ants-button-left"
-          onClick={() => handleHeadClick("ant", "left")}
-        >
-          ⬅
-        </button>
-        Antenna
-        <button
-          className="ants-button-right"
-          onClick={() => handleHeadClick("ant", "right")}
-        >
-          ➡
-        </button>
-        {/* <button onClick={() => getAvatars(context.user.email)}>TEST</button> */}
-      </div>
+</div>
       <div className="avatar-color-selector"></div>
       <div class="avatar-wardrobe-div">
         <img src={wardrobe} alt="wardrobe" className="avatar-wardrobe"></img>
