@@ -5,21 +5,36 @@ import { auth } from "./firebaseConfig";
 import { useNavigate } from "react-router-dom";
 import "./loginPage.css";
 import logo from "../images/Logo.png";
-
+import useSound from "use-sound";
+import buttonFX from "../components/sound/FX/buttonFX.mp3";
+import intro from "../components/sound/FX/intro.mp3";
+import open from "../components/sound/FX/open.mp3";
 
 function Login() {
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
   const [, setUser] = useState(null);
+  const [play, { stop }] = useSound(intro, { volume: 0.2 });
+  const [playHover] = useSound(buttonFX, {
+    volume: 0.3,
+    playbackRate: Math.random() * (2 - 0.8) + 0.8,
+  });
+  const [playOpen] = useSound(open, { volume: 0.4 });
+
+  useEffect(() => {
+    play();
+  }, [play]);
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
         setUser(user);
       } else {
+        // play();
         setUser(null);
       }
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   let navigate = useNavigate();
@@ -66,12 +81,23 @@ function Login() {
             />
           </div>
           <div className="loginButtonDiv">
-            <button className="loginButton" type="submit">
+            <button
+              className="loginButton"
+              onMouseOver={playHover}
+              onClick={() => {
+                playOpen();
+                stop();
+              }}
+              type="submit"
+            >
               Login
             </button>
           </div>
         </form>
       </div>
+      {/* <button className="playMusicButton" onClick={handleClick}>
+        Play Music
+      </button> */}
     </div>
   );
 }

@@ -7,48 +7,59 @@
 } */
 
 .Login {
-    display: flex;
-    justify-content: center;
-    align-items: center;}
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-.loginLogoDiv{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-bottom: 3vh;
+.loginLogoDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 3vh;
+  padding-top: 2cm;
 }
 
 .loginLogo {
-    width: 30vw;
-    height: 30vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  animation: rotation 2s infinite linear;
+  width: 100%;
+  object-fit: scale-down;
+  height: 40vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 3s ease-in-out;
 }
 
-.loginInput, .passwordInput {
-    width: 30vw;
-    height: 5vh;
-    margin: 1vh;
-    border-radius: 10px;
-    color: rgb(13, 13, 13);
-    font-size: 3vh;
-    font-weight: 300;
-    text-align: center;
+.loginLogo:hover {
+  transition: 10s;
+  transform: rotate(360deg);
 }
 
-.loginButtonDiv{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.loginInput,
+.passwordInput {
+  width: 30vw;
+  height: 5vh;
+  margin: 1vh;
+  border-radius: 10px;
+  color: rgb(13, 13, 13);
+  font-size: 3vh;
+  font-weight: 300;
+  text-align: center;
+}
+
+.loginButtonDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .loginButton {
-    width: 15vw;
-    height: 7vh;
-    border-radius: 10px;
-    background: var(--colour-red);
-    color: #fff;
-    margin: 2vw;
-    font-size: 3vw;
+  width: 15vw;
+  height: 7vh;
+  border-radius: 10px;
+  background: var(--colour-red);
+  color: #fff;
+  margin: 2vw;
+  font-size: 3vw;
 }

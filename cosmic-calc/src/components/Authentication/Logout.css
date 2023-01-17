@@ -1,10 +1,13 @@
-.navButtonLogout{
-    background-image: url(../../images/Background_Buttons/logoutButton.png);
-    background-size: cover; 
-    background-repeat: no-repeat;
-    background-position: center;
-    background-color: rgba(0, 0, 255, 0);
-    width: 10vw;
-    height: 10vh;
-    text-align: center;
-  }
+.navButtonLogout {
+  background-image: url(../../images/Background_Buttons/logoutButton.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: rgba(0, 0, 255, 0);
+  width: 10vw;
+  height: 10vh;
+  min-width: 140px;
+  min-height: 100px;
+  text-align: center;
+  margin-top: 0.3%;
+}
