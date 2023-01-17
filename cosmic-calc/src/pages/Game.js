@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
-
 import "./game.css";
 import astronaut from "../images/Background_Buttons/Astronaut.png";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./firebaseConfig";
+import useSound from "use-sound";
+import correct from ".././components/sound/FX/correct.mp3";
+import wrong from ".././components/sound/FX/wrong.mp3";
+import win from ".././components/sound/FX/win.mp3";
 
 import AnswerCard from "../components/answercard/AnswerCard";
 import QuestionCard from "../components/questioncard/QuestionCard";
@@ -21,12 +24,19 @@ import {
 export default function Game() {
   let points = 120;
   const [score, setScore] = useState(0);
-
   const [answerInput, setAnswerInput] = useState("");
   const [answerVisible, setAnswerVisible] = useState(false);
   const [noOfQuestions, setNoOfQuestions] = useState(1);
+  const [playCorrect] = useSound(correct, { interrupt: true, volume: 0.3 });
+  const [playWrong] = useSound(wrong, { interrupt: true, volume: 0.3 });
+  const [playWin] = useSound(win, {
+    playbackRate: +1.1,
+    interrupt: true,
+    volume: 0.5,
+  });
   const [result, setResult] = useState("");
   console.log("Points = ", points);
+
   useEffect(() => {
     if (noOfQuestions === 4) {
       onAuthStateChanged(auth, (user) => {
@@ -34,6 +44,10 @@ export default function Game() {
       });
     }
   }, [noOfQuestions, score]);
+
+  if (noOfQuestions === 4) {
+    playWin();
+  }
 
   // yearOnePlanetFour 
   const [Y1P4knownValue, setY1P4knownValue] = useState(0);
@@ -53,10 +67,12 @@ export default function Game() {
     );
 
     if (questionResult === true) {
+    playCorrect();
       setResult("Correct!");
       setScore(Number(score) + 1);
       newQuestion4();
     } else {
+    playWrong();
       setResult(correctAnswer);
       setAnswerVisible(true);
     }
@@ -99,10 +115,12 @@ export default function Game() {
     console.log(questionResult, correctAnswer);
 
     if (questionResult === true) {
+    playCorrect();
       setResult("Correct!");
       setScore(Number(score) + 1);
       newQuestion5();
     } else {
+    playWrong();
       setResult(correctAnswer);
       setAnswerVisible(true);
     }
@@ -143,10 +161,12 @@ export default function Game() {
     );
 
     if (questionResult === true) {
+      playCorrect();
       setResult("Correct!");
       setScore(Number(score) + 1);
       newQuestion6();
     } else {
+      playWrong();
       setResult(correctAnswer);
       setAnswerVisible(true);
     }
@@ -184,10 +204,12 @@ export default function Game() {
     );
 
     if (questionResult === true) {
+    playCorrect();
       setResult("Correct!");
       setScore(Number(score) + 1);
       newQuestion8();
     } else {
+    playWrong;
       setResult(correctAnswer);
       setAnswerVisible(true);
     }

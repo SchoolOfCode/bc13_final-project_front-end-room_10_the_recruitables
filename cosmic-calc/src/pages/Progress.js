@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { ScoreContext } from "../../src/components/score/ScoreContext";
 import useSound from "use-sound";
 import progressFX from ".././components/sound/FX/progressFX.mp3";
+import woosh from ".././components/sound/FX/woosh.mp3";
 
 // icon/image array to be used instead/aswell as buttons. Passed as a prop to levelButtons.
 // const icons = ["😀", "😁", "😂", "🤣", "😃", "😆", "😎", "👽", "👾", "🤖"];
@@ -20,9 +21,10 @@ export const Progress = () => {
   const [payload, setPayload] = useState([]);
   const [totalScore, setTotalScore] = useState();
 
-  const [playProgress] = useSound(progressFX, {
+  const [playProgress, { stop }] = useSound(progressFX, {
     volume: 0.1,
   });
+  const [playWoosh] = useSound(woosh, { playbackRate: 1.8, volume: 0.3 });
 
   playProgress();
 
@@ -57,6 +59,8 @@ export const Progress = () => {
 
   // onClick event handler to pass to buttons. If need to go depending on levels can add conditions based on button index 1-10
   function handleGotoLevel(level) {
+    stop();
+    playWoosh();
     navigateToGame();
   }
 

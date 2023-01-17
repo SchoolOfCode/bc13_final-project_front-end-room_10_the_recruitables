@@ -2,15 +2,15 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-evenly;
+  flex: 1;
   margin: 0;
   width: 100vw;
-  /* max-height: 50vh; */
+  height: 16cm;
   margin-top: 2cm;
 }
 
 h4 {
-  font-size: 6vw;
+  font-size: 4vw;
   font-weight: 500;
   color: #fff;
   margin: 10px;
@@ -18,23 +18,23 @@ h4 {
 
 .profileDiv {
   display: flex;
+  flex: 1;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  width: 40vw;
-  margin-top: 1cm;
-  /* padding: 2vh; */
-  /* height: 10cm; */
+  justify-content: space-around;
+  width: 100vw;
+  max-width: 20cm;
+  max-height: 16cm;
+  margin-right: 1cm;
   background-color: var(--colour-green-transparent);
   color: #fff;
-  font-size: 6vh;
+  font-size: 3vw;
   font-weight: 500;
   text-align: center;
   border-color: var(--colour-green);
   border-style: solid;
   border-width: 10px;
   border-radius: 10px;
-  /* margin-top: 20vh; */
 }
 
 .gameButton {
@@ -59,11 +59,17 @@ h4 {
 }
 
 .avatarWrapProfile {
-    position: absolute;
-    top: 60%;
-    left: 20%;
-    transform: translate(-50%, -50%);
-    width: 250px;
-    height: 356px;
-    /*   background-color: #fdf4e3; */
-  }
+  left: 2cm;
+  width: 7cm;
+  border-radius: 50%;
+  border: black double 5px;
+  background-color: var(--colour-green-transparent);
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  max-width: 12cm;
+}
