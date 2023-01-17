@@ -32,6 +32,7 @@
   --container-width-md: 85%;
   --container-width-ms: 90%;
   --transition: 400ms;
+  --avatar-body-color: rgb(8, 179, 8);
 }
 
 /* html {
