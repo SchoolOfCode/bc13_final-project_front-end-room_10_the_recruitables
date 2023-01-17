@@ -147,8 +147,8 @@ const AvatarBuilder = () => {
 
   return (
     <div className="avatarPageDiv">
-      <br />
-      <br />
+     
+      <br /> 
       <button
         onClick={() =>
           patchAvatars(
