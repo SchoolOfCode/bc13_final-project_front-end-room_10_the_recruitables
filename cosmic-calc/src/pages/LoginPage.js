@@ -14,21 +14,23 @@ function Login() {
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
   const [, setUser] = useState(null);
-  const [play] = useSound(intro, { volume: 0.2 });
+  const [play, { stop }] = useSound(intro, { volume: 0.2 });
   const [playHover] = useSound(buttonFX, {
     volume: 0.3,
     playbackRate: Math.random() * (2 - 0.8) + 0.8,
   });
   const [playOpen] = useSound(open, { volume: 0.4 });
 
-  play();
+  useEffect(() => {
+    play();
+  }, [play]);
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
         setUser(user);
       } else {
-        play();
+        // play();
         setUser(null);
       }
     });
@@ -82,7 +84,10 @@ function Login() {
             <button
               className="loginButton"
               onMouseOver={playHover}
-              onClick={playOpen}
+              onClick={() => {
+                playOpen();
+                stop();
+              }}
               type="submit"
             >
               Login
