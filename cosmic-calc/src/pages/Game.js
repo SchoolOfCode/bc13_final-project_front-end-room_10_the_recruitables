@@ -4,17 +4,26 @@ import "./game.css";
 import astronaut from "../images/Background_Buttons/Astronaut.png";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./firebaseConfig";
+
 import AnswerCard from "../components/answercard/AnswerCard";
 import QuestionCard from "../components/questioncard/QuestionCard";
 import Score from "../components/score/Score";
+
+import {
+  yearOnePlanetFive,
+  yearOnePlanetFiveAnswer,
+} from "../components/functions/yearOneFunctions";
+
 export default function Game() {
-  const [num1, setNum1] = useState(Math.floor(Math.random() * 12) + 1);
-  const [num2, setNum2] = useState(Math.floor(Math.random() * 12) + 1);
-  const [answer, setAnswer] = useState("");
-  const [result, setResult] = useState("");
   const [score, setScore] = useState(0);
+
+  const [answerInput, setAnswerInput] = useState("");
   const [answerVisible, setAnswerVisible] = useState(false);
   const [noOfQuestions, setNoOfQuestions] = useState(1);
+  const [result, setResult] = useState("");
+
+  let [value1, operation, value2] = yearOnePlanetFive();
+  console.log(value1, operation, value2);
 
   useEffect(() => {
     if (noOfQuestions === 4) {
@@ -22,25 +31,36 @@ export default function Game() {
         updateScore(score, user);
       });
     }
-  }, [noOfQuestions, score]);
+  }, [noOfQuestions]);
 
   const checkAnswer = () => {
+    console.log("Check answer called");
+    let [questionResult, correctAnswer] = yearOnePlanetFiveAnswer(
+      [value1, operation, value2],
+      answerInput
+    );
+    console.log(questionResult, correctAnswer);
     setNoOfQuestions(noOfQuestions + 1);
-    if (parseInt(answer) === num1 * num2) {
+    if (questionResult === true) {
       setResult("Correct!");
       setScore(Number(score) + 1);
       newQuestion();
     } else {
-      setResult(num1 * num2);
+      setResult(correctAnswer);
       setAnswerVisible(true);
     }
   };
+
   const newQuestion = () => {
-    setNum1(Math.floor(Math.random() * 12) + 1);
-    setNum2(Math.floor(Math.random() * 12) + 1);
-    setAnswer("");
+    let [value1, operation, value2] = yearOnePlanetFive();
+    let [questionResult, correctAnswer] = yearOnePlanetFiveAnswer(
+      [value1, operation, value2],
+      answerInput
+    );
+    setAnswerInput("");
     setResult("");
     setAnswerVisible(false);
+    return [questionResult, correctAnswer];
   };
 
   const updateScore = async (score, user) => {
@@ -70,15 +90,13 @@ export default function Game() {
         />
         <QuestionCard
           noOfQuestions={noOfQuestions}
-          num1={num1}
-          num2={num2}
-          setAnswer={setAnswer}
+          value1={value1}
+          operation={operation}
+          value2={value2}
+          setAnswerInput={setAnswerInput}
           checkAnswer={checkAnswer}
         />
         <Score score={score} />
-        {/* <div className="scoreDiv">
-          <h2 className="h2ScoreGame">Score: {score}</h2>
-        </div> */}
       </div>
     );
   } else {
