@@ -234,8 +234,8 @@ const AvatarBuilder = () => {
               <div class="arms">
                 <div class="arms_leftArm"></div>
                 <div class="arms_rightArm"></div>
-                <div class="arms_leftSleeve"></div>
-                <div class="arms_rightSleeve"></div>
+                <div class={"arms_leftSleeve_" + selectedBody}></div>
+                <div class={"arms_rightSleeve" + selectedBody}></div>
               </div>
             </div>
           </div>
