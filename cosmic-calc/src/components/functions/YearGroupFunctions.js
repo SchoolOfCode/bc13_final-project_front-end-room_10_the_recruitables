@@ -167,7 +167,45 @@ export function yearTwoPlanetSixAnswer(values, playerAnswer) {
 
 // Year 2 Planet 7 - "Sort a set of numbers into order"
 export function yearTwoPlanetSevenQuestion() {
+    let values = [];
+    for (let i = 0; i < 5; i++) {
+        let randomNumber = randomNumberGenerator(101);
+        while (values.includes(randomNumber)) {
+            randomNumber = randomNumberGenerator(101);
+        }
+        values.push(randomNumber);
+    }
+    return values;
+}
+export function yearTwoPlanetSevenAnswer(values, playerAnswer) {
+    let sortedValues = values.sort((a, b) => {return a - b});
+    for (let i = 0; i < values.length; i++) {
+        if (sortedValues[i] !== playerAnswer[i]) {
+            return [false, sortedValues];
+        }
+    }
+    return [true, sortedValues];
+}
 
+// Year 2 Planet 8 - "Compare numbers (<, =, >)"
+export function yearTwoPlanetEightQuestion() {
+    let value1 = randomNumberGenerator(21);
+    if (Math.random() < (1 / 3)) {
+        return [value1, "=", value1];
+    } else {
+        let value2 = randomNumberGenerator(21);
+        while (value1 === value2) {
+            value2 = randomNumberGenerator(21);
+        }
+        if (value1 > value2) {
+            return [value1, ">", value2];
+        } else {
+            return [value1, "<", value2];
+        }
+    }
+}
+export function yearTwoPlanetEightAnswer(values, playerAnswer) {
+    return [playerAnswer === values[1], values[1]];
 }
 
 
