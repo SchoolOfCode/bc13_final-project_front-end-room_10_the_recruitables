@@ -6,7 +6,7 @@ import "./profile.css";
 import profileImage from "../images/Background_Buttons/MonsterRed.png";
 import { useNavigate } from "react-router-dom";
 import { ScoreContext } from "../components/score/ScoreContext";
-import "./Avatars.css"
+
 
 function Profile() {
   const [userData, setUserData] = useState({});
@@ -67,7 +67,7 @@ function Profile() {
       <div className="profilePageDiv">
         {/* <img className="profileImage" src={profileImage} alt="profileImage" /> */}
         <div class="container">
-        <div class="avatarWrap">
+        <div class="avatarWrapProfile">
           <div class="avatar">
             <div class="headWrap">
               <div class="antenna">
