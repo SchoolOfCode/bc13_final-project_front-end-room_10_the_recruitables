@@ -6,7 +6,7 @@
   
   .avatarWrap {
     position: absolute;
-    top: 50%;
+    top: 70%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 250px;
@@ -553,7 +553,89 @@
     border-radius: 0px 50px 50px 50px;
     background-color: var(--avatar-body-color);
   }
+
+  /* selectors for buttons */
+  .ants-selector{
+    display: flex;
+    position: relative;
+    justify-content: center;
+  }
   
+  .head-selector{
+    display: flex;
+    position: relative;
+    justify-content: center;
+  }
+
+
+  .body-selector{
+    display: flex;
+    position: relative;
+    justify-content: center;
+  }
+
+
+  .legs-selector{
+    z-index: 2;
+    position: relative;
+    justify-content: center;
+  }
+
+  /* Actual buttons for body parts */
+  .head-button-left{
+    display: flex;
+    position: absolute;
+    top: 70%;
+    left: 30%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+  }
+
+  .head-button-right {
+    display: flex;
+    position: absolute;
+    top: 70%;
+    left: 70%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+  }
+
+  .body-button-left{
+    display: flex;
+  }
+
+  .body-button-right{
+    display: flex;
+  }
+
+
+  .legs-button-left{
+    display: flex;
+  }
+
+  .legs-button-right{
+    display: flex;
+  }
+
+  .avatar-wardrobe-div{
+    /* display: flex; */
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 250px;
+    height: 356px;
+    z-index: -1;
+  }
+
+  .avatar-wardrobe{
+    /* display: flex; */
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+  }
 
   
   /* hairstyles */

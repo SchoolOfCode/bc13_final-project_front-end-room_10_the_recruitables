@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import "./Avatars.css";
 import { ScoreContext } from "../components/score/ScoreContext";
+import wardrobe from "../images/Background_Buttons/Avatars/wardrobe.png";
 
 // let headParts = [1, 2, 3];
 // let bodyParts = [1, 2, 3, 4];
@@ -76,9 +77,8 @@ const AvatarBuilder = () => {
     setAvatarColor(e.target.value);
     document.documentElement.style.setProperty(
       "--avatar-body-color",
-        avatarColor
+      avatarColor
     );
-    
   };
   // const changeBodyColor = (e) => {
   //   console.log(e.target.value);
@@ -103,9 +103,8 @@ const AvatarBuilder = () => {
       setSelectedHead(data.payload.headid);
       setAvatarColor(data.payload.avcolour);
     }
-    getAvatars(context.user.email)
-  }, [])
-
+    getAvatars(context.user.email);
+  }, []);
 
   // async function getAvatars(email) {
   //   const response = await fetch(
@@ -138,7 +137,7 @@ const AvatarBuilder = () => {
           bodyId: bodyNum,
           antId: antNum,
           headId: headNum,
-         avColour: avatarColor,
+          avColour: avatarColor,
         }),
       }
     );
@@ -165,28 +164,54 @@ const AvatarBuilder = () => {
       </button>
       <input type="color" onChange={changeBodyColor} />
       <div className="head-selector">
-        <button onClick={() => handleHeadClick("head", "left")}>⬅</button>
+        <button
+          className="head-button-left"
+          onClick={() => handleHeadClick("head", "left")}
+        >
+          ⬅
+        </button>
         Head
-        <button onClick={() => handleHeadClick("head", "right")}>➡</button>
+        <button
+          className="head-button-right"
+          onClick={() => handleHeadClick("head", "right")}
+        >
+          ➡
+        </button>
       </div>
       <div className="body-selector">
-        <button onClick={() => handleHeadClick("body", "left")}>⬅</button>
+        <button
+          className="body-button-left"
+          onClick={() => handleHeadClick("body", "left")}
+        >
+          ⬅
+        </button>
         Body
-        <button onClick={() => handleHeadClick("body", "right")}>➡</button>
-      </div>
-      <div className="legs-selector">
-        <button onClick={() => handleHeadClick("legs", "left")}>⬅</button>
-        legs
-        <button onClick={() => handleHeadClick("legs", "right")}>➡</button>
+        <button
+          className="body-button-right"
+          onClick={() => handleHeadClick("body", "right")}
+        >
+          ➡
+        </button>
       </div>
       <div className="ants-selector">
-        <button onClick={() => handleHeadClick("ant", "left")}>⬅</button>
+        <button
+          className="ants-button-left"
+          onClick={() => handleHeadClick("ant", "left")}
+        >
+          ⬅
+        </button>
         Antenna
-        <button onClick={() => handleHeadClick("ant", "right")}>➡</button>
+        <button
+          className="ants-button-right"
+          onClick={() => handleHeadClick("ant", "right")}
+        >
+          ➡
+        </button>
         {/* <button onClick={() => getAvatars(context.user.email)}>TEST</button> */}
       </div>
-      <div className="avatar-color-selector">
-
+      <div className="avatar-color-selector"></div>
+      <div class="avatar-wardrobe-div">
+        <img src={wardrobe} alt="wardrobe" className="avatar-wardrobe"></img>
       </div>
 
       <div class="container">
