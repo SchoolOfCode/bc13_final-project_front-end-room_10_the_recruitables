@@ -69,7 +69,7 @@ export const Progress = () => {
           <LevelButtons key={levels.level} ButtonNumber={index + 1 + "-lock"} />
         ))}
       </div>
-      <div className="score">
+      <div className="progress-score">
         <h1>Score: {context.score}</h1>
       </div>
     </div>

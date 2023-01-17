@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useNavigate } from "react";
+import React, { useState, useEffect } from "react";
 
 import "./game.css";
 import astronaut from "../images/Background_Buttons/Astronaut.png";
@@ -41,6 +41,12 @@ export default function Game() {
     setAnswerVisible(false);
   };
 
+  const newGame = () => {
+    setNoOfQuestions(1);
+    setScore(0);
+    newQuestion();
+  };
+
   const updateScore = async (score, user) => {
     let email = await user.email;
 
@@ -70,7 +76,7 @@ export default function Game() {
             style={{ visibility: answerVisible ? "visible" : "hidden" }}
           >
             <h3 className="h3ResultGame">The correct answer is: </h3>
-            <h3 className="h3ResultAnswerGame">{result}</h3>
+            <h3 className="h3ResultAnswerGame"> {result}</h3>
           </div>
           <button
             className="newQuestionGameButton"
@@ -113,8 +119,9 @@ export default function Game() {
         <img className="astronaut" src={astronaut} alt="astronaut" />
         <div className="endGameDiv">
           <h1>Game Over!</h1>
-          <h2>Your final score was {score}</h2>
-          <button className="endGameButton" onClick={newQuestion}>
+          <h2>Your final score was</h2>
+          <h3>{score}</h3>
+          <button className="endGameButton" onClick={newGame}>
             Play Again
           </button>
         </div>

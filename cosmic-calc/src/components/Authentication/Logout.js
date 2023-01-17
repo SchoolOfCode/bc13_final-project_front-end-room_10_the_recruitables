@@ -9,7 +9,6 @@ import "./Logout.css";
 import ScoreProvider from "../score/ScoreContext";
 import { useContext } from "react";
 
-
 function Logout() {
   let navigate = useNavigate();
   const handleLogout = async () => {
@@ -22,11 +21,7 @@ function Logout() {
   };
   useContext(ScoreProvider);
 
-  return (
-    <div>
-      <button className="navButtonLogout" onClick={handleLogout}></button>
-    </div>
-  );
+  return <button className="navButtonLogout" onClick={handleLogout}></button>;
 }
 
 export default Logout;

@@ -6,8 +6,6 @@ import {
 } from "firebase/auth";
 import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-
-// import NavBarLogin from "../components/navBar/NavBarLogin";
 import "./registerPage.css";
 import logo from "../images/Logo.png";
 import { ScoreContext } from "../components/score/ScoreContext";

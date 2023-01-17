@@ -27,6 +27,25 @@
   z-index: 2;
 }
 
+.progress-score {
+  margin-right: 70%;
+  margin-left: 3%;
+  margin-top: 5%;
+  width: 10cm;
+  height: 2cm;
+  display: block;
+  outline: #fff 10px double;
+  object-fit: scale-down;
+  background-color: white;
+  /* justify-content: right;
+  align-items: right; */
+  font-size: 70px;
+  color: black;
+  border-radius: 50%;
+  text-shadow: #fff 1px 1px;
+  z-index: 10;
+}
+
 #levelButton-1-lock {
   background-image: url(../images/planet-1.png);
   top: 20vh;

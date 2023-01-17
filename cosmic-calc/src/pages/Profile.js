@@ -30,7 +30,7 @@ function Profile() {
   };
   const navigate = useNavigate();
   const handleGame = () => {
-    navigate("/game");
+    navigate("/progress");
   };
 
   console.log(useContext(ScoreContext));
@@ -42,7 +42,6 @@ function Profile() {
         <div className="profileDiv">
           <h3 className="welcome">Welcome</h3>
           <h4 className="name">{userData.name}</h4>
-          <h4 className="username">{userData.email}</h4>
           <h4 className="score">Total score: {context.score} </h4>
 
           <button className="gameButton" onClick={handleGame}>
