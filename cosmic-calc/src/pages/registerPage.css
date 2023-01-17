@@ -1,3 +1,5 @@
+
+
 .register {
     display: flex;
     justify-content: center;
@@ -7,7 +9,10 @@
     flex-direction: row;
 }
 
+
+
 .registerLogoDiv{
+margin-top:5vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -16,7 +21,7 @@
 
 .registerLogo {
     width: 30vw;
-    height: 30vh;
+    height: 30vw;
     display: flex;
     justify-content: center;
     align-items: center;

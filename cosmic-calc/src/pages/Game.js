@@ -1,45 +1,135 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useNavigate } from "react";
+
 import "./game.css";
 import astronaut from "../images/Background_Buttons/Astronaut.png";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "./firebaseConfig";
+
+import AnswerCard from "../components/answercard/AnswerCard";
+import QuestionCard from "../components/questioncard/QuestionCard";
+import Score from "../components/score/Score";
+
+import {
+  yearOnePlanetFiveQuestion,
+  yearOnePlanetFiveAnswer,
+  yearOnePlanetSixQuestion,
+  yearOnePlanetSixAnswer,
+} from "../components/functions/yearOneFunctions";
 
 export default function Game() {
-  let id = 6;
-  const [num1, setNum1] = useState(Math.floor(Math.random() * 12) + 1);
-  const [num2, setNum2] = useState(Math.floor(Math.random() * 12) + 1);
-  const [answer, setAnswer] = useState("");
-  const [result, setResult] = useState("");
+  let points = 65;
   const [score, setScore] = useState(0);
+
+  const [answerInput, setAnswerInput] = useState("");
   const [answerVisible, setAnswerVisible] = useState(false);
   const [noOfQuestions, setNoOfQuestions] = useState(1);
+  const [result, setResult] = useState("");
 
   useEffect(() => {
     if (noOfQuestions === 4) {
-      updateScore(score, id);
+      onAuthStateChanged(auth, (user) => {
+        updateScore(score, user);
+      });
     }
-  }, [noOfQuestions, score, id]);
+  }, [noOfQuestions, score]);
 
-  const checkAnswer = () => {
+  //yearOnePlanetFive
+  const [value1, setValue1] = useState(0);
+  const [value2, setValue2] = useState(0);
+  const [operation, setOperation] = useState("");
+
+  useEffect(() => {
+    let [value1, operation, value2] = yearOnePlanetFiveQuestion();
+    console.log(value1, operation, value2);
+    setValue1(value1);
+    setOperation(operation);
+    setValue2(value2);
+  }, []);
+
+  const checkAnswer5 = () => {
+    console.log("Check answer called");
     setNoOfQuestions(noOfQuestions + 1);
-    if (parseInt(answer) === num1 * num2) {
+    let [questionResult, correctAnswer] = yearOnePlanetFiveAnswer(
+      [value1, operation, value2],
+      answerInput
+    );
+    console.log(questionResult, correctAnswer);
+
+    if (questionResult === true) {
       setResult("Correct!");
       setScore(Number(score) + 1);
-      newQuestion();
+      newQuestion5();
     } else {
-      setResult(num1 * num2);
+      setResult(correctAnswer);
       setAnswerVisible(true);
     }
   };
-  const newQuestion = () => {
-    setNum1(Math.floor(Math.random() * 12) + 1);
-    setNum2(Math.floor(Math.random() * 12) + 1);
-    setAnswer("");
+
+  const newQuestion5 = () => {
+    let [value1, operation, value2] = yearOnePlanetFiveQuestion();
+    setValue1(value1);
+    setValue2(value2);
+    setOperation(operation);
+    let [questionResult, correctAnswer] = yearOnePlanetFiveAnswer(
+      [value1, operation, value2],
+      answerInput
+    );
+    setAnswerInput("");
     setResult("");
     setAnswerVisible(false);
+    return [questionResult, correctAnswer];
   };
 
-  const updateScore = async (score, id) => {
+  //yearOnePlanetSix
+
+  const [number, setNumber] = useState(0);
+  const [word, setWord] = useState("");
+
+  useEffect(() => {
+    let [number, word] = yearOnePlanetSixQuestion();
+    setNumber(number);
+    setWord(word);
+  }, []);
+
+  const checkAnswer6 = () => {
+    console.log("Check answer called");
+    setNoOfQuestions(noOfQuestions + 1);
+    let [questionResult, correctAnswer] = yearOnePlanetSixAnswer(
+      [number, word],
+      answerInput
+    );
+
+    if (questionResult === true) {
+      setResult("Correct!");
+      setScore(Number(score) + 1);
+      newQuestion6();
+    } else {
+      setResult(correctAnswer);
+      setAnswerVisible(true);
+    }
+  };
+
+  const newQuestion6 = () => {
+    let [number, word] = yearOnePlanetSixQuestion();
+    setNumber(number);
+    setWord(word);
+    let [questionResult, correctAnswer] = yearOnePlanetSixAnswer(
+      [number, word],
+      answerInput
+    );
+    setAnswerInput("");
+    setResult("");
+    setAnswerVisible(false);
+    return [questionResult, correctAnswer];
+  };
+
+  //Do not change below here
+
+  const updateScore = async (score, user) => {
+    let email = await user.email;
+
     const response = await fetch(
-      `http://localhost:3001/api/users/${id}`,
+      `http://localhost:3001/api/users/email/${email}`,
       {
         method: "POST",
         headers: {
@@ -51,66 +141,89 @@ export default function Game() {
     const data = await response.json();
     console.log(data);
   };
-  if (noOfQuestions < 4) {
-    return (
-      <div className="gameDiv">
-        <div
-          className="answerDiv"
-          style={{ visibility: answerVisible ? "visible" : "hidden" }}
-        >
-          <div
-            className="statementDiv"
-            style={{ visibility: answerVisible ? "visible" : "hidden" }}
-          >
-            <h3 className="h3ResultGame">The correct answer is: </h3>
-            <h3 className="h3ResultAnswerGame">{result}</h3>
-          </div>
-          <button
-            className="newQuestionGameButton"
-            onClick={newQuestion}
-            style={{ visibility: answerVisible ? "visible" : "hidden" }}
-          >
-            Next Question
-          </button>
-        </div>
-        <div className="questionDiv">
-          <h2 className="h2QuestionGame">{noOfQuestions + ")  "}</h2>
-          <h2 className="h2QuestionGame">
-            {num1} x {num2} =
-          </h2>
-          <input
-            className="inputGame"
-            type="number"
-            value={answer}
-            onChange={(e) => setAnswer(e.target.value)}
-            onKeyDown={(e) => {
-              console.log(e);
-              if (e.key === "Enter") {
-                checkAnswer();
-              }
-            }}
+
+  if (points < 50) {
+    if (noOfQuestions < 4) {
+      return (
+        <div className="gameDiv">
+          <AnswerCard
+            answerVisible={answerVisible}
+            result={result}
+            newQuestion={newQuestion5}
           />
-          <button className="buttonGame" onClick={checkAnswer}>
-            Check Answer
-          </button>
+          <QuestionCard
+            noOfQuestions={noOfQuestions}
+            value1={value1}
+            operation={operation}
+            value2={value2}
+            equals={"="}
+            setAnswerInput={setAnswerInput}
+            checkAnswer={checkAnswer5}
+          />
+          <Score score={score} />
         </div>
-        <div className="scoreDiv">
-          <h2 className="h2ScoreGame">Score: {score}</h2>
+      );
+    } else {
+      return (
+        <div className="endDiv">
+          <img className="astronaut" src={astronaut} alt="astronaut" />
+          <div className="endGameDiv">
+            <h1>Game Over!</h1>
+            <h2>Your final score was {score}</h2>
+            <button
+              className="endGameButton"
+              onClick={() => {
+                setNoOfQuestions(1);
+                setAnswerVisible(false);
+                setScore(0);
+              }}
+            >
+              Play Again
+            </button>
+          </div>
         </div>
-      </div>
-    );
-  } else {
-    return (
-      <div className="endDiv">
-        <img className="astronaut" src={astronaut} alt="astronaut" />
-        <div className="endGameDiv">
-          <h1>Game Over!</h1>
-          <h2>Your final score was {score}</h2>
-          <button className="endGameButton" onClick={newQuestion}>
-            Play Again
-          </button>
+      );
+    }
+  } else if (50 <= points < 100) {
+    if (noOfQuestions < 4) {
+      return (
+        <div className="gameDiv">
+          <AnswerCard
+            answerVisible={answerVisible}
+            result={result}
+            newQuestion={newQuestion6}
+          />
+          <QuestionCard
+            noOfQuestions={noOfQuestions}
+            value1={"What is"}
+            operation={word}
+            value2={"in numbers?"}
+            setAnswerInput={setAnswerInput}
+            checkAnswer={checkAnswer6}
+          />
+          <Score score={score} />
         </div>
-      </div>
-    );
+      );
+    } else {
+      return (
+        <div className="endDiv">
+          <img className="astronaut" src={astronaut} alt="astronaut" />
+          <div className="endGameDiv">
+            <h1>Game Over!</h1>
+            <h2>Your final score was {score}</h2>
+            <button
+              className="endGameButton"
+              onClick={() => {
+                setNoOfQuestions(1);
+                setAnswerVisible(false);
+                setScore(0);
+              }}
+            >
+              Play Again
+            </button>
+          </div>
+        </div>
+      );
+    }
   }
 }

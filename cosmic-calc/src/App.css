@@ -30,7 +30,7 @@
 }
 
 .navButtonProfile{
-  background-image: url(./images/Background_Buttons/ProfileButtonText.png);
+  background-image: url(./images/Background_Buttons/ProfileButtonE.png);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -43,7 +43,7 @@
 }
 
 .navButtonGame{
-  background-image: url(./images/Background_Buttons/GameButtonText.png);
+  background-image: url(./images/Background_Buttons/GameButtonE.png);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -56,7 +56,7 @@
 }
 
 .navButtonProgress{
-  background-image: url(./images/Background_Buttons/ProgressButtonText.png);
+  background-image: url(./images/Background_Buttons/ProgressButtonE.png);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -69,7 +69,9 @@
 }
 
 .navButtonProfileHighlighted {
-  background-image: url(./images/Background_Buttons/ProfileButtonTextBlue.png);
+
+  background-image: url(./images/Background_Buttons/profile_button_glow.png);
+
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -82,7 +84,9 @@
 }
 
 .navButtonGameHighlighted {
-  background-image: url(./images/Background_Buttons/GameButtonBlue.png);
+
+  background-image: url(./images/Background_Buttons/game_button_glow.png);
+
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -95,7 +99,9 @@
 }
 
 .navButtonProgressHighlighted {
-  background-image: url(./images/Background_Buttons/ProgressButtonTextBlue.png);
+
+  background-image: url(./images/Background_Buttons/progress_button_glow.png);
+
   background-size: cover; 
   background-repeat: no-repeat;
   background-position: center;
@@ -105,4 +111,35 @@
   min-width: 100px;
   min-height: 70px;
   text-align: center;
+}
+
+.navButtonLogin {
+  background-image: url(./images/Background_Buttons/loginButton.png);
+  background-size: cover; 
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: rgba(0, 0, 255, 0);
+  width: 7w;
+  height: 7vh;
+  text-align: center;
+  color:rgba(0, 0, 255, 0);
+}
+
+.navButtonRegister{
+  background-image: url(./images/Background_Buttons/registerButton.png);
+  background-size: cover; 
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: rgba(34, 34, 170, 0);
+  width: 7w;
+  height: 7vh;
+  text-align: center;
+  color: #ffffff00;
+}
+
+.navBarLoginDiv{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 30vw;
 }
