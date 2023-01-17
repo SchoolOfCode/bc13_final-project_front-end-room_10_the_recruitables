@@ -4,7 +4,7 @@ export function randomNumberGenerator(num) {
 }
 
 // Year 1 Planet 5 - "Adding and subtracting numbers"
-export function yearOnePlanetFive() {
+export function yearOnePlanetFiveQuestion() {
   // Randomly choose if adding or subtracting
   let operation;
   if (Math.random() < 0.5) {
@@ -36,5 +36,37 @@ export function yearOnePlanetFiveAnswer(values, playerAnswer) {
   } else {
     correctAnswer = values[0] - values[2];
   }
-  return [correctAnswer === playerAnswer, correctAnswer];
+  return parseInt(playerAnswer) === correctAnswer, correctAnswer;
+}
+
+export function yearOnePlanetSixQuestion() {
+  const data = [
+    "zero",
+    "one",
+    "two",
+    "three",
+    "four",
+    "five",
+    "six",
+    "seven",
+    "eight",
+    "nine",
+    "ten",
+    "eleven",
+    "twelve",
+    "thirteen",
+    "fourteen",
+    "fifteen",
+    "sixteen",
+    "seventeen",
+    "eighteen",
+    "nineteen",
+    "twenty",
+  ];
+  let index = randomNumberGenerator(21);
+  return [index, data[index]]; // Returns the number in both numerical and word form
+}
+
+export function yearOnePlanetSixAnswer(values, playerAnswer) {
+  return [parseInt(playerAnswer) === values[0], values[0]];
 }
