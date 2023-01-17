@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
-
 import "./game.css";
 import astronaut from "../images/Background_Buttons/Astronaut.png";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./firebaseConfig";
+import useSound from "use-sound";
+import correct from ".././components/sound/FX/correct.mp3";
+import wrong from ".././components/sound/FX/wrong.mp3";
+import win from ".././components/sound/FX/win.mp3";
 
 export default function Game() {
   const [num1, setNum1] = useState(Math.floor(Math.random() * 12) + 1);
@@ -13,6 +16,13 @@ export default function Game() {
   const [score, setScore] = useState(0);
   const [answerVisible, setAnswerVisible] = useState(false);
   const [noOfQuestions, setNoOfQuestions] = useState(1);
+  const [playCorrect] = useSound(correct, { interrupt: true, volume: 0.3 });
+  const [playWrong] = useSound(wrong, { interrupt: true, volume: 0.3 });
+  const [playWin] = useSound(win, {
+    playbackRate: +1.1,
+    interrupt: true,
+    volume: 0.5,
+  });
 
   useEffect(() => {
     if (noOfQuestions === 4) {
@@ -22,13 +32,19 @@ export default function Game() {
     }
   }, [noOfQuestions, score]);
 
+  if (noOfQuestions === 4) {
+    playWin();
+  }
+
   const checkAnswer = () => {
     setNoOfQuestions(noOfQuestions + 1);
     if (parseInt(answer) === num1 * num2) {
+      playCorrect();
       setResult("Correct!");
       setScore(Number(score) + 1);
       newQuestion();
     } else {
+      playWrong();
       setResult(num1 * num2);
       setAnswerVisible(true);
     }
