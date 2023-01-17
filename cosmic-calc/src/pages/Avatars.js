@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import "./Avatars.css";
 import { ScoreContext } from "../components/score/ScoreContext";
 
@@ -85,23 +85,45 @@ const AvatarBuilder = () => {
   //   // setAvatarColor(e.target.value);
   // };
 
-  async function getAvatars(email) {
-    const response = await fetch(
-      `http://localhost:3001/api/users/avatars/${email}`,
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
-    const data = await response.json();
-    console.log("data", data);
-    setSelectedAnt(data.payload.antid);
-    setSelectedBody(data.payload.bodyid);
-    setSelectedHead(data.payload.headid);
-    setAvatarColor(data.payload.avcolour);
-  }
+  useEffect(() => {
+    async function getAvatars(email) {
+      const response = await fetch(
+        `http://localhost:3001/api/users/avatars/${email}`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      const data = await response.json();
+      console.log("data", data);
+      setSelectedAnt(data.payload.antid);
+      setSelectedBody(data.payload.bodyid);
+      setSelectedHead(data.payload.headid);
+      setAvatarColor(data.payload.avcolour);
+    }
+    getAvatars(context.user.email)
+  }, [])
+
+
+  // async function getAvatars(email) {
+  //   const response = await fetch(
+  //     `http://localhost:3001/api/users/avatars/${email}`,
+  //     {
+  //       method: "GET",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //     }
+  //   );
+  //   const data = await response.json();
+  //   console.log("data", data);
+  //   setSelectedAnt(data.payload.antid);
+  //   setSelectedBody(data.payload.bodyid);
+  //   setSelectedHead(data.payload.headid);
+  //   setAvatarColor(data.payload.avcolour);
+  // }
 
   async function patchAvatars(email, bodyNum, antNum, headNum, avatarColor) {
     console.log("hello");
@@ -161,7 +183,7 @@ const AvatarBuilder = () => {
         <button onClick={() => handleHeadClick("ant", "left")}>⬅</button>
         Antenna
         <button onClick={() => handleHeadClick("ant", "right")}>➡</button>
-        <button onClick={() => getAvatars(context.user.email)}>TEST</button>
+        {/* <button onClick={() => getAvatars(context.user.email)}>TEST</button> */}
       </div>
       <div className="avatar-color-selector">
 
