@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useNavigate } from "react";
+import React, { useState, useEffect } from "react";
 
 import "./game.css";
 import astronaut from "../images/Background_Buttons/Astronaut.png";
@@ -208,6 +208,11 @@ export default function Game() {
   };
 
   //Do not change below here
+  const newGame = () => {
+    setNoOfQuestions(1);
+    setScore(0);
+    newQuestion();
+  };
 
   const updateScore = async (score, user) => {
     let email = await user.email;
@@ -225,6 +230,7 @@ export default function Game() {
     const data = await response.json();
     console.log(data);
   };
+
   if (points < 20) {
     console.log("Inside points < 20 if statement");
     console.log("points = ", points);

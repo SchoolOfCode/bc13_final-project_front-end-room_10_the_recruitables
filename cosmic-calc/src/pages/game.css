@@ -1,163 +1,185 @@
 .gameDiv {
-    margin-top: 20vw;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    /* justify-content: space-evenly; */
-    height: 70vh;
-    width: 100vw;
-    /* background-color: rgb(4, 39, 114); */
-    color: #fff;
+  margin-top: 0vw;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  /* justify-content: space-evenly; */
+  height: 14cm;
+  width: 100vw;
+  /* background-color: rgb(4, 39, 114); */
+  color: #fff;
 }
 
-/* .answerDiv {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    height: auto;
-    width: 70vw;
-    margin-top: 20vh;
-    padding: 1vh;
-    color: #fff;
-} */
-
-/* .questionDiv {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-evenly;
-    height: auto;
-    width: 70vw;
-    background-color: var(--colour-purple-transparent);
-    border-radius: 10px;
-    padding: 4vh;
-    border-color: var(--colour-purple);
-    border-style: solid;
-    border-width: 10px;
-    color: #fff;
-    margin: 5vh;
-} */
-
-/* .scoreDiv {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    height: auto;
-    width: 30vw;
-    background-color: var(--colour-blue-transparent);
-    padding: 0.5vh;
-    border-radius: 10px;
-    border-color: var(--colour-blue);
-    border-style: solid;
-    border-width: 10px;
-    color: #fff;
-} */
-
-/* .statementDiv{
-    display: flex;
-    flex-direction: row;
-    padding: 2vh;
-    border-radius: 10px;
-    background: var(--colour-green-transparent);
-    border-color: var(--colour-green);
-    border-style: solid;
-    border-width: 10px;
-    color: #fff;
-    margin: 2vw;
-} */
-/* 
-.inputGame{
-    border-radius: 10px;
-    background: white;
-    border-color: white;
-    border-style: solid;
-    border-width: 3px;
-    color: black;
-    width: 10vw;
-    height: 10vh;
-    text-align: center;
-    font-size: 2vw;
-} */
-
-/* .newQuestionGameButton{
-    padding: 2vw;
-    border-radius: 10px;
-    background: var(--colour-red-transparent);
-    border-color:   var(--colour-red);
-    border-style: solid;
-    border-width: 10px;
-    color: #fff;
-    margin: 2vw;
-    font-size: 2vw;
-} */
-
-.buttonGame{
-    padding: 2vw;
-    border-radius: 10px;
-    background: var(--colour-orange-transparent);
-    border-color: var(--colour-orange);
-    border-style: solid;
-    border-width: 10px;
-    color: #fff;
-    margin: 2vw;
-    font-size: 2vw;
-}
-/* 
-.h2QuestionGame{
-    font-size: 5vw;
-} */
-
-/* .h3ResultAnswerGame{
-    font-size: 4vw;
-    margin-left: 2vw;
-    text-decoration: underline;
-} */
-
-.endGameDiv{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: auto;
-    width: 70vw;
-    color: #fff;
-    background-color: var(--colour-purple-transparent);
-    border-radius: 10px;
-    padding: 4vh;
-    border-color: var(--colour-purple);
-    border-style: solid;
-    border-width: 10px;
+.answerDiv {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  height: 4cm;
+  width: 70vw;
+  margin-top: 20vh;
+  padding: 1vh;
+  color: #fff;
 }
 
-.endDiv{
-    margin-top: 20vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 70vh;
-
+.questionDiv {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 4cm;
+  width: 60vw;
+  background-color: var(--colour-purple-transparent);
+  border-radius: 10px;
+  padding: 3vh;
+  border-color: var(--colour-purple);
+  border-style: solid;
+  border-width: 10px;
+  color: #fff;
+  margin: 5vh;
 }
 
-.endGameButton{
-    padding: 2vw;
-    border-radius: 10px;
-    background: var(--colour-red-transparent);
-    border-color: var(--colour-red);
-    border-style: solid;
-    border-width: 10px;
-    color: #fff;
-    margin: 2vw;
-    font-size: 2vw;
+.scoreDiv {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  height: 3cm;
+  width: 30vw;
+  background-color: var(--colour-blue-transparent);
+  padding: 0.5vh;
+  border-radius: 10px;
+  border-color: var(--colour-blue);
+  border-style: solid;
+  border-width: 10px;
+  color: #fff;
+}
+
+.statementDiv {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 2vh;
+  border-radius: 10px;
+  background: var(--colour-green-transparent);
+  border-color: var(--colour-green);
+  border-style: solid;
+  border-width: 10px;
+  color: #fff;
+  /* margin: 2vw; */
+  height: 4cm;
+}
+
+.inputGame {
+  border-radius: 10px;
+  background: white;
+  border-color: white;
+  border-style: solid;
+  border-width: 3px;
+  color: black;
+  width: 10vw;
+  height: 10vh;
+  text-align: center;
+  font-size: 2vw;
+}
+
+.newQuestionGameButton {
+  padding: 2vw;
+  border-radius: 10px;
+  background: var(--colour-red-transparent);
+  border-color: var(--colour-red);
+  border-style: solid;
+  border-width: 10px;
+  color: #fff;
+  margin: 2vw;
+  font-size: 2vw;
+}
+
+
+.buttonGame {
+  padding: 2vw;
+  border-radius: 10px;
+  background: var(--colour-orange-transparent);
+  border-color: var(--colour-orange);
+  border-style: solid;
+  border-width: 10px;
+  color: #fff;
+  margin: 2vw;
+  font-size: 2vw;
+}
+
+.h2QuestionGame {
+  font-size: 5vw;
+}
+
+.h3ResultAnswerGame {
+  font-size: 4vw;
+  padding: 2vw;
+  text-decoration: underline;
+}
+
+
+.endGameDiv {
+  display: flex;
+  /* block-size: auto; */
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 15cm;
+  width: 50vw;
+  max-width: 70vw;
+  min-width: 30vw;
+  max-height: 100vw;
+  margin-right: 5%;
+  color: #fff;
+  background-color: var(--colour-purple-transparent);
+  border-radius: 10px;
+  padding: 5%;
+  border-color: var(--colour-purple);
+  border-style: solid;
+  border-width: 10px;
+}
+
+.endDiv {
+  padding: 5%;
+  margin: 1cm;
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+h1,
+h2,
+h3 {
+  display: inside;
+  font-size: 1em;
+  text-align: center;
+  margin-block-start: 0.67em;
+  margin-block-end: 0.67em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  font-weight: bold;
+}
+
+.endGameButton {
+  padding: 2vw;
+  border-radius: 10px;
+  background: var(--colour-red-transparent);
+  border-color: var(--colour-red);
+  border-style: solid;
+  border-width: 10px;
+  color: #fff;
+  /* margin: 2vw; */
+  font-size: 2vw;
 }
 
 .astronaut {
-    width: 25vw;
-    height: 20vw;
-    align-self: flex-end;
+  align-self: flex-end;
 }
-
-

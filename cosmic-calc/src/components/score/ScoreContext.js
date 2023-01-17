@@ -1,4 +1,4 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../../pages/firebaseConfig";
 
@@ -25,7 +25,9 @@ function ScoreProvider({ children }) {
   };
 
   return (
-    <ScoreContext.Provider value={{ score: score, update: retrieveUserData }}>
+    <ScoreContext.Provider
+      value={{ score: score, update: retrieveUserData, user: user }}
+    >
       {children}
     </ScoreContext.Provider>
   );

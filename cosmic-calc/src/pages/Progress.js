@@ -4,6 +4,8 @@ import LevelButtons from "../components/buttons/LevelButtons";
 import "./progress.css";
 import { useNavigate } from "react-router-dom";
 import { ScoreContext } from "../../src/components/score/ScoreContext";
+import useSound from "use-sound";
+import progressFX from ".././components/sound/FX/progressFX.mp3";
 
 // icon/image array to be used instead/aswell as buttons. Passed as a prop to levelButtons.
 // const icons = ["😀", "😁", "😂", "🤣", "😃", "😆", "😎", "👽", "👾", "🤖"];
@@ -17,6 +19,12 @@ export const Progress = () => {
   const [lockLevels, setLockLevels] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
   const [payload, setPayload] = useState([]);
   const [totalScore, setTotalScore] = useState();
+
+  const [playProgress] = useSound(progressFX, {
+    volume: 0.1,
+  });
+
+  playProgress();
 
   // handles bringing in new buttons when the score increases. Set to new button every 5 points. Added button to manually increase score in the mean time - will remove later.
 
@@ -69,7 +77,7 @@ export const Progress = () => {
           <LevelButtons key={levels.level} ButtonNumber={index + 1 + "-lock"} />
         ))}
       </div>
-      <div className="score">
+      <div className="progress-score">
         <h1>Score: {context.score}</h1>
       </div>
     </div>

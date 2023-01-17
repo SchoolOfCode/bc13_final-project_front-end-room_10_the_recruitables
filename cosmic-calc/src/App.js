@@ -10,6 +10,12 @@ import Logout from "./components/Authentication/Logout";
 import "./App.css";
 import { auth } from "./pages/firebaseConfig";
 import { ScoreContext } from "./components/score/ScoreContext";
+import TimedGame from "./pages/TimedGame";
+import Avatars from "./pages/Avatars";
+import Level1 from "./pages/Level1";
+import Level5 from "./pages/Level5";
+import useSound from "use-sound";
+import buttonFX from "./components/sound/FX/buttonFX.mp3";
 
 export default function App() {
   const authed = auth;
@@ -18,6 +24,14 @@ export default function App() {
   const [profileHighlighted, setProfileHighlighted] = useState(false);
   const [progressHighlighted, setProgressHighlighted] = useState(false);
   const [gameHighlighted, setGameHighlighted] = useState(false);
+  const [playHover] = useSound(buttonFX, {
+    volume: 0.3,
+    playbackRate: Math.floor(Math.random() * (2 - 0.8) + 0.8),
+  });
+
+  const navigateToLogin = () => {
+    navigate("/");
+  };
 
   const navigateToProfile = () => {
     navigate("/profile");
@@ -45,8 +59,20 @@ export default function App() {
     console.log(navigate);
   };
 
-  const navigateToLogin = () => {
-    navigate("/");
+  const navigateToTimedGame = () => {
+    navigate("/timedGame");
+  };
+
+  const navigateToAvatars = () => {
+    navigate("/avatars");
+  };
+
+  const navigateToLevel1 = () => {
+    navigate("/level1");
+  };
+
+  const navigateToLevel5 = () => {
+    navigate("/level5");
   };
 
   const navigateToRegister = () => {
@@ -55,12 +81,14 @@ export default function App() {
   console.log(authed.currentUser);
 
   return (
-    <div className="App">
+    <div>
+      {/* <Sound /> */}
       {authed.currentUser ? (
         <div className="navBarPageDiv">
           <Logout />
           <button
             onClick={navigateToProfile}
+            onMouseOver={playHover}
             className={
               profileHighlighted
                 ? "navButtonProfileHighlighted"
@@ -69,6 +97,7 @@ export default function App() {
           ></button>
           <button
             onClick={navigateToProgress}
+            onMouseOver={playHover}
             className={
               progressHighlighted
                 ? "navButtonProgressHighlighted"
@@ -77,17 +106,38 @@ export default function App() {
           ></button>
           <button
             onClick={navigateToGame}
+            onMouseOver={playHover}
             className={
               gameHighlighted ? "navButtonGameHighlighted" : "navButtonGame"
             }
           ></button>
+          <button onClick={navigateToTimedGame} className="navButtonTimedGame">
+            TimedGame
+          </button>
+          <button onClick={navigateToAvatars} className="navButtonAvatars">
+            Avatars
+          </button>
+          <button onClick={navigateToLevel1} className="navButtonLevel1">
+            Level1
+          </button>
+          <button onClick={navigateToLevel5} className="navButtonLevel5">
+            Level5
+          </button>
         </div>
       ) : (
         <div className="navBarLoginDiv">
-          <button className="navButtonLogin" onClick={navigateToLogin}>
+          <button
+            className="navButtonLogin"
+            onMouseOver={playHover}
+            onClick={navigateToLogin}
+          >
             Login
           </button>
-          <button className="navButtonRegister" onClick={navigateToRegister}>
+          <button
+            className="navButtonRegister"
+            onMouseOver={playHover}
+            onClick={navigateToRegister}
+          >
             Register
           </button>
         </div>
@@ -117,6 +167,38 @@ export default function App() {
           element={
             <ProtectedRoute>
               <Game />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/timedGame"
+          element={
+            <ProtectedRoute>
+              <TimedGame />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/avatars"
+          element={
+            <ProtectedRoute>
+              <Avatars />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/level1"
+          element={
+            <ProtectedRoute>
+              <Level1 />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/level5"
+          element={
+            <ProtectedRoute>
+              <Level5 />
             </ProtectedRoute>
           }
         />

@@ -1,0 +1,643 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+  
+  .avatarWrap {
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 250px;
+    height: 356px;
+    /*   background-color: #fdf4e3; */
+  }
+  
+  .headWrap {
+    position: relative;
+    width: 100%;
+    height: 249px;
+  }
+  
+  .antenna{
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 10px;
+      height: 60px;
+      border-radius: 0px 0px 50px 50px;
+      background-color: var(--avatar-body-color);
+  }
+  
+  .antenna_circle_1{
+      position: absolute;
+      top: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background-color: var(--avatar-body-color);
+  }
+  
+  .antenna_circle_2{
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: rgb(0, 8, 100);
+  }
+  
+  .antenna_circle_3{
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+      height: 0;
+      border-left: 25px solid transparent;
+      border-right: 25px solid transparent;
+      border-bottom: 50px solid rgb(158, 27, 27);
+  }
+  
+  .antenna_circle_4{
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgb(0, 8, 100);
+    border: 20px;
+    border-color: aqua;
+    border-style: groove;
+  }
+  
+  .ears {
+    position: absolute;
+    top: 115px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 186px;
+    height: 40px;
+  }
+  .ear {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--avatar-body-color);
+  }
+  .ear:nth-child(2) {
+    right: 0;
+  }
+  .ear:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: #180812;
+  }
+  
+  .face_1 {
+    position: absolute;
+    top: 44px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 140px;
+    height: 181px;
+    border-radius: 60px 60px 100px 100px;
+    background-color: var(--avatar-body-color);
+  }
+  
+  .face_2 {
+    position: absolute;
+    top: 44px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 140px;
+    height: 181px;
+    border-radius: 25%;
+    background-color: var(--avatar-body-color);
+  }
+  
+  .face_3 {
+    position: absolute;
+    top: 44px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 140px;
+    height: 181px;
+    border-radius: 80px 80px 100px 100px;
+    background-color: var(--avatar-body-color);
+  }
+  
+  .eyebrows {
+    position: absolute;
+    top: 29px;
+    left: 50%;
+    transform: translate(-50%);
+    width: 90px;
+    height: 10px;
+  }
+  .eyebrows_brow1 {
+    position: absolute;
+    width: 30px;
+    height: 10px;
+    border-radius: 10px;
+    background-color: #000;
+    left: 0;
+  }
+  
+  .eyebrows_brow2 {
+    position: absolute;
+    width: 30px;
+    height: 10px;
+    border-radius: 10px;
+    background-color: #000;
+    right: 0;
+  }
+  
+  .eyes {
+    position: absolute;
+    bottom: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 70px;
+    height: 22px;
+  }
+  .eyes:before,
+  .eyes:after {
+    content: "";
+    position: absolute;
+    width: 12px;
+    height: 22px;
+    border-radius: 6px;
+    background-color: rgb(8, 8, 8);
+    animation: blink 3s ease-in-out infinite;
+  }
+  .eyes:after {
+    right: 0;
+  }
+  
+  .nose {
+    position: absolute;
+    bottom: 92px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30px;
+    height: 8px;
+    border-radius: 0 0 10px 10px;
+    background-color: #000;
+  }
+  
+  .mouth {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 20px;
+    border-radius: 0 0 10px 10px;
+    background-color: rgb(182, 33, 33);
+  }
+  
+  .mouthShape {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 20px;
+    border-radius: 0 0 10px 10px;
+    background-color: #000;
+  }
+  
+  .tooth_1{
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0px;
+      height: 0px;
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-top: 10px solid white;
+  }
+  
+  .tooth_2{
+    position: absolute;
+    top: 0;
+    left: 30%;
+    transform: translateX(-50%);
+    width: 0px;
+    height: 0px;
+    border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+    border-top: 10px solid white;
+  }
+  
+  .tooth_3{
+    position: absolute;
+    top: 0;
+    left: 70%;
+    transform: translateX(-50%);
+    width: 0px;
+    height: 0px;
+    border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+    border-top: 10px solid white;
+  }
+  
+  .tooth_4{
+    position: absolute;
+    top: 52%;
+    left: 70%;
+    transform: translateX(-50%);
+    width: 0px;
+    height: 0px;
+    border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-bottom: 10px solid white;
+  }
+  
+  .tooth_5 {
+    position: absolute;
+    top: 52%;
+    left: 30%;
+    transform: translateX(-50%);
+    width: 0px;
+    height: 0px;
+    border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-bottom: 10px solid white;
+  }
+  
+  .neck {
+    overflow: hidden;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 38px;
+    height: 28px;
+    background-color: var(--avatar-body-color);
+  }
+  
+  .bodyWrap {
+    position: relative;
+    width: 100%;
+    height: 107px;
+  }
+  
+  .bodyWrap_body_1 {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 150px;
+    border-radius: 0px 0px 50px 50px;
+    background-color: rgb(25, 0, 255);
+  }
+
+  .arms_leftSleeve_1{
+    position: absolute;
+    bottom: 0px;
+    left: 28%;
+    transform: translateX(-50%);
+    width: 10px;
+    height: 20px;
+    border-radius: 50px 0px 0px 50px;
+    background-color: rgb(25, 0, 255);
+}
+
+.arms_rightSleeve_1{
+    position: absolute;
+    bottom: 0px;
+    right: 24%;
+    transform: translateX(-50%);
+    width: 10px;
+    height: 20px;
+    border-radius: 0px 50px 50px 0px;
+    background-color: rgb(25, 0, 255);
+}
+  
+  
+  .bodyWrap_body_2 {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 150px;
+    border-radius: 0px 0px 50px 50px;
+    background-color: rgb(255, 0, 242);
+  }
+  
+
+  .arms_leftSleeve_2{
+    position: absolute;
+    bottom: 0px;
+    left: 28%;
+    transform: translateX(-50%);
+    width: 10px;
+    height: 20px;
+    border-radius: 50px 0px 0px 50px;
+    background-color: rgb(255, 0, 242);
+}
+
+.arms_rightSleeve_2{
+    position: absolute;
+    bottom: 0px;
+    right: 24%;
+    transform: translateX(-50%);
+    width: 10px;
+    height: 20px;
+    border-radius: 0px 50px 50px 0px;
+    background-color: rgb(255, 0, 242);
+}
+
+  .bodyWrap_body_3 {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 150px;
+    border-radius: 0px 0px 50px 50px;
+    background-color: rgb(255, 251, 0);
+  }
+
+  .arms_leftSleeve_3{
+    position: absolute;
+    bottom: 0px;
+    left: 28%;
+    transform: translateX(-50%);
+    width: 10px;
+    height: 20px;
+    border-radius: 50px 0px 0px 50px;
+    background-color: rgb(255, 251, 0);
+}
+
+.arms_rightSleeve_3{
+    position: absolute;
+    bottom: 0px;
+    right: 24%;
+    transform: translateX(-50%);
+    width: 10px;
+    height: 20px;
+    border-radius: 0px 50px 50px 0px;
+    background-color: rgb(255, 251, 0);
+}
+  
+  .bodyWrap_body_4 {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 150px;
+    border-radius: 0px 0px 50px 50px;
+    background-image: url("../images/Logo.png");
+    background-size: contain;
+    background-color: blue;
+  }
+
+  .arms_leftSleeve_4{
+    position: absolute;
+    bottom: 0px;
+    left: 28%;
+    transform: translateX(-50%);
+    width: 10px;
+    height: 20px;
+    border-radius: 50px 0px 0px 50px;
+    background-color: blue;
+}
+
+.arms_rightSleeve_4{
+    position: absolute;
+    bottom: 0px;
+    right: 24%;
+    transform: translateX(-50%);
+    width: 10px;
+    height: 20px;
+    border-radius: 0px 50px 50px 0px;
+    background-color: blue;
+}
+  
+  .bodyWrap_bottom {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 50px;
+    border-radius: 0px 0px 50px 50px;
+    background-color: black;
+  }
+  
+  .legs {
+    position: relative;
+    width: 100%;
+    height: 107px;
+    bottom: -50px;
+  }
+  
+  .legs_leftLeg {
+    position: absolute;
+    bottom: -30px;
+    left: 35px;
+    transform: translateX(-50%);
+    width: 30px;
+    height: 50px;
+    border-radius: 0px 0px 50px 50px;
+    background-color: black;
+  }
+  
+  .legs_rightLeg {
+    position: absolute;
+    bottom: -30px;
+    right: 2px;
+    transform: translateX(-50%);
+    width: 30px;
+    height: 50px;
+    border-radius: 0px 0px 50px 50px;
+    background-color: black;
+  }
+  
+  @keyframes blink {
+    0% {
+      transform: scaleY(1);
+    }
+    18% {
+      transform: scaleY(1);
+    }
+    20% {
+      transform: scaleY(0);
+    }
+    25% {
+      transform: scaleY(1);
+    }
+    38% {
+      transform: scaleY(1);
+    }
+    40% {
+      transform: scaleY(0);
+    }
+    45% {
+      transform: scaleY(1);
+    }
+    80% {
+      transform: scaleY(1);
+    }
+  }
+  
+  .arms {
+    position: relative;
+    width: 100%;
+    height: 20px;
+    bottom: 0px;
+  }
+  
+  .arms_leftArm {
+    position: absolute;
+    bottom: -44px;
+    left: 28%;
+    transform: translateX(-50%);
+    width: 10px;
+    height: 60px;
+    border-radius: 50px 0px 0px 50px;
+    background-color: var(--avatar-body-color);
+  }
+  
+  .arms_rightArm {
+    position: absolute;
+    bottom: -44px;
+    right: 24%;
+    transform: translateX(-50%);
+    width: 10px;
+    height: 60px;
+    border-radius: 0px 50px 50px 0px;
+    background-color: var(--avatar-body-color);
+  }
+  
+  .legs_leftShoe {
+    position: absolute;
+    bottom: -30px;
+    left: 30px;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 15px;
+    border-radius: 50px 0px 50px 50px;
+    background-color: var(--avatar-body-color);
+  }
+  
+  .legs_rightShoe {
+    position: absolute;
+    bottom: -30px;
+    right: -12px;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 15px;
+    border-radius: 0px 50px 50px 50px;
+    background-color: var(--avatar-body-color);
+  }
+
+  /* selectors for buttons */
+  .ants-selector{
+    display: flex;
+    position: relative;
+    justify-content: center;
+  }
+  
+  .head-selector{
+    display: flex;
+    position: relative;
+    justify-content: center;
+  }
+
+
+  .body-selector{
+    display: flex;
+    position: relative;
+    justify-content: center;
+  }
+
+
+  .legs-selector{
+    z-index: 2;
+    position: relative;
+    justify-content: center;
+  }
+
+  /* Actual buttons for body parts */
+  .head-button-left{
+    display: flex;
+    position: absolute;
+    top: 70%;
+    left: 30%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+  }
+
+  .head-button-right {
+    display: flex;
+    position: absolute;
+    top: 70%;
+    left: 70%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+  }
+
+  .body-button-left{
+    display: flex;
+  }
+
+  .body-button-right{
+    display: flex;
+  }
+
+
+  .legs-button-left{
+    display: flex;
+  }
+
+  .legs-button-right{
+    display: flex;
+  }
+
+  .avatar-wardrobe-div{
+    /* display: flex; */
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 250px;
+    height: 356px;
+    z-index: -1;
+  }
+
+  .avatar-wardrobe{
+    /* display: flex; */
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+  }
+
+  
+  /* hairstyles */
+  
+  
