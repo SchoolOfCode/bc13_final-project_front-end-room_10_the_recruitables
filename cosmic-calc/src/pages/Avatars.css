@@ -92,7 +92,7 @@
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background-color: rgb(135, 210, 21);
+    background-color: var(--avatar-body-color);
   }
   .ear:nth-child(2) {
     right: 0;
@@ -128,7 +128,7 @@
     width: 140px;
     height: 181px;
     border-radius: 25%;
-    background-color: green;
+    background-color: var(--avatar-body-color);
   }
   
   .face_3 {
@@ -139,7 +139,7 @@
     width: 140px;
     height: 181px;
     border-radius: 80px 80px 100px 100px;
-    background-color: green;
+    background-color: var(--avatar-body-color);
   }
   
   .eyebrows {
@@ -291,7 +291,7 @@
     transform: translateX(-50%);
     width: 38px;
     height: 28px;
-    background-color: darkgreen;
+    background-color: var(--avatar-body-color);
   }
   
   .bodyWrap {
@@ -310,6 +310,28 @@
     border-radius: 0px 0px 50px 50px;
     background-color: rgb(25, 0, 255);
   }
+
+  .arms_leftSleeve_1{
+    position: absolute;
+    bottom: 0px;
+    left: 28%;
+    transform: translateX(-50%);
+    width: 10px;
+    height: 20px;
+    border-radius: 50px 0px 0px 50px;
+    background-color: rgb(25, 0, 255);
+}
+
+.arms_rightSleeve_1{
+    position: absolute;
+    bottom: 0px;
+    right: 24%;
+    transform: translateX(-50%);
+    width: 10px;
+    height: 20px;
+    border-radius: 0px 50px 50px 0px;
+    background-color: rgb(25, 0, 255);
+}
   
   
   .bodyWrap_body_2 {
@@ -323,6 +345,29 @@
     background-color: rgb(255, 0, 242);
   }
   
+
+  .arms_leftSleeve_2{
+    position: absolute;
+    bottom: 0px;
+    left: 28%;
+    transform: translateX(-50%);
+    width: 10px;
+    height: 20px;
+    border-radius: 50px 0px 0px 50px;
+    background-color: rgb(255, 0, 242);
+}
+
+.arms_rightSleeve_2{
+    position: absolute;
+    bottom: 0px;
+    right: 24%;
+    transform: translateX(-50%);
+    width: 10px;
+    height: 20px;
+    border-radius: 0px 50px 50px 0px;
+    background-color: rgb(255, 0, 242);
+}
+
   .bodyWrap_body_3 {
     position: absolute;
     top: 0;
@@ -333,6 +378,28 @@
     border-radius: 0px 0px 50px 50px;
     background-color: rgb(255, 251, 0);
   }
+
+  .arms_leftSleeve_3{
+    position: absolute;
+    bottom: 0px;
+    left: 28%;
+    transform: translateX(-50%);
+    width: 10px;
+    height: 20px;
+    border-radius: 50px 0px 0px 50px;
+    background-color: rgb(255, 251, 0);
+}
+
+.arms_rightSleeve_3{
+    position: absolute;
+    bottom: 0px;
+    right: 24%;
+    transform: translateX(-50%);
+    width: 10px;
+    height: 20px;
+    border-radius: 0px 50px 50px 0px;
+    background-color: rgb(255, 251, 0);
+}
   
   .bodyWrap_body_4 {
     position: absolute;
@@ -346,6 +413,28 @@
     background-size: contain;
     background-color: blue;
   }
+
+  .arms_leftSleeve_3{
+    position: absolute;
+    bottom: 0px;
+    left: 28%;
+    transform: translateX(-50%);
+    width: 10px;
+    height: 20px;
+    border-radius: 50px 0px 0px 50px;
+    background-color: blue;
+}
+
+.arms_rightSleeve_3{
+    position: absolute;
+    bottom: 0px;
+    right: 24%;
+    transform: translateX(-50%);
+    width: 10px;
+    height: 20px;
+    border-radius: 0px 50px 50px 0px;
+    background-color: blue;
+}
   
   .bodyWrap_bottom {
     position: absolute;
@@ -429,7 +518,7 @@
     width: 10px;
     height: 60px;
     border-radius: 50px 0px 0px 50px;
-    background-color: green;
+    background-color: var(--avatar-body-color);
   }
   
   .arms_rightArm {
@@ -440,7 +529,7 @@
     width: 10px;
     height: 60px;
     border-radius: 0px 50px 50px 0px;
-    background-color: green;
+    background-color: var(--avatar-body-color);
   }
   
   .legs_leftShoe {
@@ -451,7 +540,7 @@
     width: 40px;
     height: 15px;
     border-radius: 50px 0px 50px 50px;
-    background-color: darkgreen;
+    background-color: var(--avatar-body-color);
   }
   
   .legs_rightShoe {
@@ -462,30 +551,10 @@
     width: 40px;
     height: 15px;
     border-radius: 0px 50px 50px 50px;
-    background-color: darkgreen;
+    background-color: var(--avatar-body-color);
   }
   
-  .arms_leftSleeve{
-      position: absolute;
-      bottom: 0px;
-      left: 28%;
-      transform: translateX(-50%);
-      width: 10px;
-      height: 20px;
-      border-radius: 50px 0px 0px 50px;
-      background-color: rgb(214, 19, 19);
-  }
-  
-  .arms_rightSleeve{
-      position: absolute;
-      bottom: 0px;
-      right: 24%;
-      transform: translateX(-50%);
-      width: 10px;
-      height: 20px;
-      border-radius: 0px 50px 50px 0px;
-      background-color: rgb(214, 19, 19);
-  }
+
   
   /* hairstyles */
   
