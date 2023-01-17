@@ -8,12 +8,23 @@ import correct from ".././components/sound/FX/correct.mp3";
 import wrong from ".././components/sound/FX/wrong.mp3";
 import win from ".././components/sound/FX/win.mp3";
 
+import AnswerCard from "../components/answercard/AnswerCard";
+import QuestionCard from "../components/questioncard/QuestionCard";
+import Score from "../components/score/Score";
+
+import {
+  yearOnePlanetFourQuestion,
+  yearOnePlanetFourAnswer,
+  yearOnePlanetFiveQuestion,
+  yearOnePlanetFiveAnswer,
+  yearOnePlanetSixQuestion,
+  yearOnePlanetSixAnswer,
+} from "../components/functions/yearOneFunctions";
+
 export default function Game() {
-  const [num1, setNum1] = useState(Math.floor(Math.random() * 12) + 1);
-  const [num2, setNum2] = useState(Math.floor(Math.random() * 12) + 1);
-  const [answer, setAnswer] = useState("");
-  const [result, setResult] = useState("");
+  let points = 120;
   const [score, setScore] = useState(0);
+  const [answerInput, setAnswerInput] = useState("");
   const [answerVisible, setAnswerVisible] = useState(false);
   const [noOfQuestions, setNoOfQuestions] = useState(1);
   const [playCorrect] = useSound(correct, { interrupt: true, volume: 0.3 });
@@ -23,6 +34,8 @@ export default function Game() {
     interrupt: true,
     volume: 0.5,
   });
+  const [result, setResult] = useState("");
+  console.log("Points = ", points);
 
   useEffect(() => {
     if (noOfQuestions === 4) {
@@ -36,27 +49,187 @@ export default function Game() {
     playWin();
   }
 
-  const checkAnswer = () => {
+  // yearOnePlanetFour 
+  const [Y1P4knownValue, setY1P4knownValue] = useState(0);
+  const [Y1P4totalValue, setY1P4totalValue] = useState(0);
+
+  useEffect(() => {
+    let [Y1P4knownValue, Y1P4totalValue] = yearOnePlanetFourQuestion();
+    setY1P4knownValue(Y1P4knownValue);
+    setY1P4totalValue(Y1P4totalValue);
+  }, []);
+
+  const checkAnswer4 = () => {
     setNoOfQuestions(noOfQuestions + 1);
-    if (parseInt(answer) === num1 * num2) {
-      playCorrect();
+    let [questionResult, correctAnswer] = yearOnePlanetFourAnswer(
+      [Y1P4knownValue, Y1P4totalValue],
+      answerInput
+    );
+
+    if (questionResult === true) {
+    playCorrect();
       setResult("Correct!");
       setScore(Number(score) + 1);
-      newQuestion();
+      newQuestion4();
     } else {
-      playWrong();
-      setResult(num1 * num2);
+    playWrong();
+      setResult(correctAnswer);
       setAnswerVisible(true);
     }
   };
-  const newQuestion = () => {
-    setNum1(Math.floor(Math.random() * 12) + 1);
-    setNum2(Math.floor(Math.random() * 12) + 1);
-    setAnswer("");
+
+  const newQuestion4 = () => {
+    let [Y1P4knownValue, Y1P4totalValue] = yearOnePlanetFourQuestion();
+    setY1P4knownValue(Y1P4knownValue);
+    setY1P4totalValue(Y1P4totalValue);
+    let [questionResult, correctAnswer] = yearOnePlanetFourAnswer(
+      [Y1P4knownValue, Y1P4totalValue],
+      answerInput
+    );
+    setAnswerInput("");
     setResult("");
     setAnswerVisible(false);
+    return [questionResult, correctAnswer];
   };
 
+  //yearOnePlanetFive
+  const [value1, setValue1] = useState(0);
+  const [value2, setValue2] = useState(0);
+  const [operation, setOperation] = useState("");
+
+  useEffect(() => {
+    let [value1, operation, value2] = yearOnePlanetFiveQuestion();
+    console.log(value1, operation, value2);
+    setValue1(value1);
+    setOperation(operation);
+    setValue2(value2);
+  }, []);
+
+  const checkAnswer5 = () => {
+    console.log("Check answer called");
+    setNoOfQuestions(noOfQuestions + 1);
+    let [questionResult, correctAnswer] = yearOnePlanetFiveAnswer(
+      [value1, operation, value2],
+      answerInput
+    );
+    console.log(questionResult, correctAnswer);
+
+    if (questionResult === true) {
+    playCorrect();
+      setResult("Correct!");
+      setScore(Number(score) + 1);
+      newQuestion5();
+    } else {
+    playWrong();
+      setResult(correctAnswer);
+      setAnswerVisible(true);
+    }
+  };
+
+  const newQuestion5 = () => {
+    let [value1, operation, value2] = yearOnePlanetFiveQuestion();
+    setValue1(value1);
+    setValue2(value2);
+    setOperation(operation);
+    let [questionResult, correctAnswer] = yearOnePlanetFiveAnswer(
+      [value1, operation, value2],
+      answerInput
+    );
+    setAnswerInput("");
+    setResult("");
+    setAnswerVisible(false);
+    return [questionResult, correctAnswer];
+  };
+
+  //yearOnePlanetSix
+
+  const [number, setNumber] = useState(0);
+  const [word, setWord] = useState("");
+
+  useEffect(() => {
+    let [number, word] = yearOnePlanetSixQuestion();
+    setNumber(number);
+    setWord(word);
+  }, []);
+
+  const checkAnswer6 = () => {
+    console.log("Check answer called");
+    setNoOfQuestions(noOfQuestions + 1);
+    let [questionResult, correctAnswer] = yearOnePlanetSixAnswer(
+      [number, word],
+      answerInput
+    );
+
+    if (questionResult === true) {
+      playCorrect();
+      setResult("Correct!");
+      setScore(Number(score) + 1);
+      newQuestion6();
+    } else {
+      playWrong();
+      setResult(correctAnswer);
+      setAnswerVisible(true);
+    }
+  };
+
+  const newQuestion6 = () => {
+    let [number, word] = yearOnePlanetSixQuestion();
+    setNumber(number);
+    setWord(word);
+    let [questionResult, correctAnswer] = yearOnePlanetSixAnswer(
+      [number, word],
+      answerInput
+    );
+    setAnswerInput("");
+    setResult("");
+    setAnswerVisible(false);
+    return [questionResult, correctAnswer];
+  };
+
+  // yearOnePlanetEight
+  const [Y1P8knownValue, setY1P8knownValue] = useState(0);
+  const [Y1P8totalValue, setY1P8totalValue] = useState(0);
+
+  useEffect(() => {
+    let [Y1P8knownValue, Y1P8totalValue] = yearOnePlanetFourQuestion(8);
+    setY1P8knownValue(Y1P8knownValue);
+    setY1P8totalValue(Y1P8totalValue);
+  }, []);
+
+  const checkAnswer8 = () => {
+    setNoOfQuestions(noOfQuestions + 1);
+    let [questionResult, correctAnswer] = yearOnePlanetFourAnswer(
+      [Y1P8knownValue, Y1P8totalValue],
+      answerInput
+    );
+
+    if (questionResult === true) {
+    playCorrect();
+      setResult("Correct!");
+      setScore(Number(score) + 1);
+      newQuestion8();
+    } else {
+    playWrong;
+      setResult(correctAnswer);
+      setAnswerVisible(true);
+    }
+  };
+
+  const newQuestion8 = () => {
+    let [Y1P8knownValue, Y1P8totalValue] = yearOnePlanetFourQuestion(8);
+    setY1P4knownValue(Y1P8knownValue);
+    setY1P4totalValue(Y1P8totalValue);
+    let [questionResult, correctAnswer] = yearOnePlanetFourAnswer(
+      [Y1P8knownValue, Y1P8totalValue],
+      answerInput
+    );
+    setAnswerInput("");
+    setResult("");
+    setAnswerVisible(false);
+    return [questionResult, correctAnswer];
+  };
+
+  //Do not change below here
   const newGame = () => {
     setNoOfQuestions(1);
     setScore(0);
@@ -80,68 +253,174 @@ export default function Game() {
     console.log(data);
   };
 
-  if (noOfQuestions < 4) {
-    return (
-      <div className="gameDiv">
-        <div
-          className="answerDiv"
-          style={{ visibility: answerVisible ? "visible" : "hidden" }}
-        >
-          <div
-            className="statementDiv"
-            style={{ visibility: answerVisible ? "visible" : "hidden" }}
-          >
-            <h3 className="h3ResultGame">The correct answer is: </h3>
-            <h3 className="h3ResultAnswerGame"> {result}</h3>
-          </div>
-          <button
-            className="newQuestionGameButton"
-            onClick={newQuestion}
-            style={{ visibility: answerVisible ? "visible" : "hidden" }}
-          >
-            Next Question
-          </button>
-        </div>
-        <div className="questionDiv">
-          <h2 className="h2QuestionGame">{noOfQuestions + ")  "}</h2>
-          <h2 className="h2QuestionGame">
-            {num1} x {num2} =
-          </h2>
-          <input
-            className="inputGame"
-            type="number"
-            value={answer}
-            onChange={(e) => setAnswer(e.target.value)}
-            onKeyDown={(e) => {
-              // console.log(e);
-              if (e.key === "Enter") {
-                checkAnswer();
-                setAnswer("");
-              }
-            }}
+  if (points < 20) {
+    console.log("Inside points < 20 if statement");
+    console.log("points = ", points);
+    if (noOfQuestions < 4) {
+      return(
+        <div className="gameDiv">
+          <AnswerCard
+            answerVisible={answerVisible}
+            result={result}
+            newQuestion={newQuestion4}
           />
-          {/* <button className="buttonGame" onClick={navigateToPage}> */}
-          {/* Check Answer
-          </button> */}
+          <QuestionCard
+            noOfQuestions={noOfQuestions}
+            value1={`What do I need to add to ${Y1P4knownValue} to make 10?`}
+            setAnswerInput={setAnswerInput}
+            checkAnswer={checkAnswer4}
+          />
+          <Score score={score} />
         </div>
-        <div className="scoreDiv">
-          <h2 className="h2ScoreGame">Score: {score}</h2>
+      );
+    } else {
+      return (
+        <div className="endDiv">
+          <img className="astronaut" src={astronaut} alt="astronaut" />
+          <div className="endGameDiv">
+            <h1>Game Over!</h1>
+            <h2>Your final score was {score}</h2>
+            <button
+              className="endGameButton"
+              onClick={() => {
+                setNoOfQuestions(1);
+                setAnswerVisible(false);
+                setScore(0);
+              }}
+            >
+              Play Again
+            </button>
+          </div>
         </div>
-      </div>
-    );
-  } else {
-    return (
-      <div className="endDiv">
-        <img className="astronaut" src={astronaut} alt="astronaut" />
-        <div className="endGameDiv">
-          <h1>Game Over!</h1>
-          <h2>Your final score was</h2>
-          <h3>{score}</h3>
-          <button className="endGameButton" onClick={newGame}>
-            Play Again
-          </button>
+      )
+    }
+  } else if (points < 50) {
+    console.log("Inside 20 <= points < 50 if statement");
+    console.log("points = ", points);
+    if (noOfQuestions < 4) {
+      return (
+        <div className="gameDiv">
+          <AnswerCard
+            answerVisible={answerVisible}
+            result={result}
+            newQuestion={newQuestion5}
+          />
+          <QuestionCard
+            noOfQuestions={noOfQuestions}
+            value1={value1}
+            operation={operation}
+            value2={value2}
+            equals={"="}
+            setAnswerInput={setAnswerInput}
+            checkAnswer={checkAnswer5}
+          />
+          <Score score={score} />
         </div>
-      </div>
-    );
+      );
+    } else {
+      return (
+        <div className="endDiv">
+          <img className="astronaut" src={astronaut} alt="astronaut" />
+          <div className="endGameDiv">
+            <h1>Game Over!</h1>
+            <h2>Your final score was {score}</h2>
+            <button
+              className="endGameButton"
+              onClick={() => {
+                setNoOfQuestions(1);
+                setAnswerVisible(false);
+                setScore(0);
+              }}
+            >
+              Play Again
+            </button>
+          </div>
+        </div>
+      );
+    }
+  } else if (points < 100) {
+    console.log("Inside 50 <= points < 100 if statement");
+    console.log("points = ", points);
+    if (noOfQuestions < 4) {
+      return (
+        <div className="gameDiv">
+          <AnswerCard
+            answerVisible={answerVisible}
+            result={result}
+            newQuestion={newQuestion6}
+          />
+          <QuestionCard
+            noOfQuestions={noOfQuestions}
+            value1={"What is"}
+            operation={word}
+            value2={"in numbers?"}
+            setAnswerInput={setAnswerInput}
+            checkAnswer={checkAnswer6}
+          />
+          <Score score={score} />
+        </div>
+      );
+    } else {
+      return (
+        <div className="endDiv">
+          <img className="astronaut" src={astronaut} alt="astronaut" />
+          <div className="endGameDiv">
+            <h1>Game Over!</h1>
+            <h2>Your final score was {score}</h2>
+            <button
+              className="endGameButton"
+              onClick={() => {
+                setNoOfQuestions(1);
+                setAnswerVisible(false);
+                setScore(0);
+              }}
+            >
+              Play Again
+            </button>
+          </div>
+        </div>
+      );
+    }
+  } else if (points >= 100) {
+    console.log("Inside points >= 100 if statement");
+    console.log("points = ", points);
+    if (noOfQuestions < 4) {
+      return(
+        <div className="gameDiv">
+          <AnswerCard
+            answerVisible={answerVisible}
+            result={result}
+            newQuestion={newQuestion8}
+          />
+          <QuestionCard
+            noOfQuestions={noOfQuestions}
+            value1={`What do I need to add to ${Y1P4knownValue} to make 20?`}
+            setAnswerInput={setAnswerInput}
+            checkAnswer={checkAnswer8}
+          />
+          <Score score={score} />
+        </div>
+      );
+    } else {
+      return (
+        <div className="endDiv">
+          <img className="astronaut" src={astronaut} alt="astronaut" />
+          <div className="endGameDiv">
+            <h1>Game Over!</h1>
+            <h2>Your final score was {score}</h2>
+            <button
+              className="endGameButton"
+              onClick={() => {
+                setNoOfQuestions(1);
+                setAnswerVisible(false);
+                setScore(0);
+              }}
+            >
+              Play Again
+            </button>
+          </div>
+        </div>
+      )
+    }
   }
 }
