@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "./game.css";
 import astronaut from "../images/Background_Buttons/Astronaut.png";
 import { onAuthStateChanged } from "firebase/auth";
@@ -7,7 +7,7 @@ import useSound from "use-sound";
 import correct from ".././components/sound/FX/correct.mp3";
 import wrong from ".././components/sound/FX/wrong.mp3";
 import win from ".././components/sound/FX/win.mp3";
-
+import { ScoreContext } from "../components/score/ScoreContext";
 import AnswerCard from "../components/answercard/AnswerCard";
 import QuestionCard from "../components/questioncard/QuestionCard";
 import Score from "../components/score/Score";
@@ -22,7 +22,6 @@ import {
 } from "../components/functions/yearOneFunctions";
 
 export default function Game() {
-  let points = 120;
   const [score, setScore] = useState(0);
   const [answerInput, setAnswerInput] = useState("");
   const [answerVisible, setAnswerVisible] = useState(false);
@@ -35,21 +34,25 @@ export default function Game() {
     volume: 0.5,
   });
   const [result, setResult] = useState("");
+  const context = useContext(ScoreContext);
+  let points = context.score;
+  console.log(context);
+
   console.log("Points = ", points);
 
   useEffect(() => {
-    if (noOfQuestions === 4) {
+    if (noOfQuestions === 6) {
       onAuthStateChanged(auth, (user) => {
         updateScore(score, user);
       });
     }
   }, [noOfQuestions, score]);
 
-  if (noOfQuestions === 4) {
+  if (noOfQuestions === 6) {
     playWin();
   }
 
-  // yearOnePlanetFour 
+  // yearOnePlanetFour
   const [Y1P4knownValue, setY1P4knownValue] = useState(0);
   const [Y1P4totalValue, setY1P4totalValue] = useState(0);
 
@@ -65,14 +68,14 @@ export default function Game() {
       [Y1P4knownValue, Y1P4totalValue],
       answerInput
     );
-
+    setAnswerInput("");
     if (questionResult === true) {
-    playCorrect();
+      playCorrect();
       setResult("Correct!");
       setScore(Number(score) + 1);
       newQuestion4();
     } else {
-    playWrong();
+      playWrong();
       setResult(correctAnswer);
       setAnswerVisible(true);
     }
@@ -113,14 +116,14 @@ export default function Game() {
       answerInput
     );
     console.log(questionResult, correctAnswer);
-
+    setAnswerInput("");
     if (questionResult === true) {
-    playCorrect();
+      playCorrect();
       setResult("Correct!");
       setScore(Number(score) + 1);
       newQuestion5();
     } else {
-    playWrong();
+      playWrong();
       setResult(correctAnswer);
       setAnswerVisible(true);
     }
@@ -159,7 +162,7 @@ export default function Game() {
       [number, word],
       answerInput
     );
-
+    setAnswerInput("");
     if (questionResult === true) {
       playCorrect();
       setResult("Correct!");
@@ -202,14 +205,16 @@ export default function Game() {
       [Y1P8knownValue, Y1P8totalValue],
       answerInput
     );
+    console.log(questionResult, correctAnswer);
+    setAnswerInput("");
 
     if (questionResult === true) {
-    playCorrect();
+      playCorrect();
       setResult("Correct!");
       setScore(Number(score) + 1);
       newQuestion8();
     } else {
-    playWrong;
+      playWrong();
       setResult(correctAnswer);
       setAnswerVisible(true);
     }
@@ -217,8 +222,8 @@ export default function Game() {
 
   const newQuestion8 = () => {
     let [Y1P8knownValue, Y1P8totalValue] = yearOnePlanetFourQuestion(8);
-    setY1P4knownValue(Y1P8knownValue);
-    setY1P4totalValue(Y1P8totalValue);
+    setY1P8knownValue(Y1P8knownValue);
+    setY1P8totalValue(Y1P8totalValue);
     let [questionResult, correctAnswer] = yearOnePlanetFourAnswer(
       [Y1P8knownValue, Y1P8totalValue],
       answerInput
@@ -227,13 +232,6 @@ export default function Game() {
     setResult("");
     setAnswerVisible(false);
     return [questionResult, correctAnswer];
-  };
-
-  //Do not change below here
-  const newGame = () => {
-    setNoOfQuestions(1);
-    setScore(0);
-    newQuestion();
   };
 
   const updateScore = async (score, user) => {
@@ -253,174 +251,108 @@ export default function Game() {
     console.log(data);
   };
 
-  if (points < 20) {
+  if (noOfQuestions === 6) {
+    return (
+      <div className="endDiv">
+        <img className="astronaut" src={astronaut} alt="astronaut" />
+        <div className="endGameDiv">
+          <h1>Game Over!</h1>
+          <h2>Your final score was {score}</h2>
+          <button
+            className="endGameButton"
+            onClick={() => {
+              setNoOfQuestions(1);
+              setAnswerVisible(false);
+              setScore(0);
+            }}
+          >
+            Play Again
+          </button>
+        </div>
+      </div>
+    );
+  } else if (points < 20) {
     console.log("Inside points < 20 if statement");
     console.log("points = ", points);
-    if (noOfQuestions < 4) {
-      return(
-        <div className="gameDiv">
-          <AnswerCard
-            answerVisible={answerVisible}
-            result={result}
-            newQuestion={newQuestion4}
-          />
-          <QuestionCard
-            noOfQuestions={noOfQuestions}
-            value1={`What do I need to add to ${Y1P4knownValue} to make 10?`}
-            setAnswerInput={setAnswerInput}
-            checkAnswer={checkAnswer4}
-          />
-          <Score score={score} />
-        </div>
-      );
-    } else {
-      return (
-        <div className="endDiv">
-          <img className="astronaut" src={astronaut} alt="astronaut" />
-          <div className="endGameDiv">
-            <h1>Game Over!</h1>
-            <h2>Your final score was {score}</h2>
-            <button
-              className="endGameButton"
-              onClick={() => {
-                setNoOfQuestions(1);
-                setAnswerVisible(false);
-                setScore(0);
-              }}
-            >
-              Play Again
-            </button>
-          </div>
-        </div>
-      )
-    }
+    return (
+      <div className="gameDiv">
+        <AnswerCard
+          answerVisible={answerVisible}
+          result={result}
+          newQuestion={newQuestion4}
+        />
+        <QuestionCard
+          answerInput={answerInput}
+          noOfQuestions={noOfQuestions}
+          value1={`What do I need to add to ${Y1P4knownValue} to make 10?`}
+          setAnswerInput={setAnswerInput}
+          checkAnswer={checkAnswer4}
+        />
+        <Score score={score} />
+      </div>
+    );
   } else if (points < 50) {
     console.log("Inside 20 <= points < 50 if statement");
     console.log("points = ", points);
-    if (noOfQuestions < 4) {
-      return (
-        <div className="gameDiv">
-          <AnswerCard
-            answerVisible={answerVisible}
-            result={result}
-            newQuestion={newQuestion5}
-          />
-          <QuestionCard
-            noOfQuestions={noOfQuestions}
-            value1={value1}
-            operation={operation}
-            value2={value2}
-            equals={"="}
-            setAnswerInput={setAnswerInput}
-            checkAnswer={checkAnswer5}
-          />
-          <Score score={score} />
-        </div>
-      );
-    } else {
-      return (
-        <div className="endDiv">
-          <img className="astronaut" src={astronaut} alt="astronaut" />
-          <div className="endGameDiv">
-            <h1>Game Over!</h1>
-            <h2>Your final score was {score}</h2>
-            <button
-              className="endGameButton"
-              onClick={() => {
-                setNoOfQuestions(1);
-                setAnswerVisible(false);
-                setScore(0);
-              }}
-            >
-              Play Again
-            </button>
-          </div>
-        </div>
-      );
-    }
+    return (
+      <div className="gameDiv">
+        <AnswerCard
+          answerVisible={answerVisible}
+          result={result}
+          newQuestion={newQuestion5}
+        />
+        <QuestionCard
+          answerInput={answerInput}
+          noOfQuestions={noOfQuestions}
+          value1={value1}
+          operation={operation}
+          value2={value2}
+          equals={"="}
+          setAnswerInput={setAnswerInput}
+          checkAnswer={checkAnswer5}
+        />
+        <Score score={score} />
+      </div>
+    );
   } else if (points < 100) {
-    console.log("Inside 50 <= points < 100 if statement");
-    console.log("points = ", points);
-    if (noOfQuestions < 4) {
-      return (
-        <div className="gameDiv">
-          <AnswerCard
-            answerVisible={answerVisible}
-            result={result}
-            newQuestion={newQuestion6}
-          />
-          <QuestionCard
-            noOfQuestions={noOfQuestions}
-            value1={"What is"}
-            operation={word}
-            value2={"in numbers?"}
-            setAnswerInput={setAnswerInput}
-            checkAnswer={checkAnswer6}
-          />
-          <Score score={score} />
-        </div>
-      );
-    } else {
-      return (
-        <div className="endDiv">
-          <img className="astronaut" src={astronaut} alt="astronaut" />
-          <div className="endGameDiv">
-            <h1>Game Over!</h1>
-            <h2>Your final score was {score}</h2>
-            <button
-              className="endGameButton"
-              onClick={() => {
-                setNoOfQuestions(1);
-                setAnswerVisible(false);
-                setScore(0);
-              }}
-            >
-              Play Again
-            </button>
-          </div>
-        </div>
-      );
-    }
+    return (
+      <div className="gameDiv">
+        <AnswerCard
+          answerVisible={answerVisible}
+          result={result}
+          newQuestion={newQuestion6}
+        />
+        <QuestionCard
+          answerInput={answerInput}
+          noOfQuestions={noOfQuestions}
+          value1={"What is"}
+          operation={word}
+          value2={"in numbers?"}
+          setAnswerInput={setAnswerInput}
+          checkAnswer={checkAnswer6}
+        />
+        <Score score={score} />
+      </div>
+    );
   } else if (points >= 100) {
     console.log("Inside points >= 100 if statement");
     console.log("points = ", points);
-    if (noOfQuestions < 4) {
-      return(
-        <div className="gameDiv">
-          <AnswerCard
-            answerVisible={answerVisible}
-            result={result}
-            newQuestion={newQuestion8}
-          />
-          <QuestionCard
-            noOfQuestions={noOfQuestions}
-            value1={`What do I need to add to ${Y1P4knownValue} to make 20?`}
-            setAnswerInput={setAnswerInput}
-            checkAnswer={checkAnswer8}
-          />
-          <Score score={score} />
-        </div>
-      );
-    } else {
-      return (
-        <div className="endDiv">
-          <img className="astronaut" src={astronaut} alt="astronaut" />
-          <div className="endGameDiv">
-            <h1>Game Over!</h1>
-            <h2>Your final score was {score}</h2>
-            <button
-              className="endGameButton"
-              onClick={() => {
-                setNoOfQuestions(1);
-                setAnswerVisible(false);
-                setScore(0);
-              }}
-            >
-              Play Again
-            </button>
-          </div>
-        </div>
-      )
-    }
+    return (
+      <div className="gameDiv">
+        <AnswerCard
+          answerVisible={answerVisible}
+          result={result}
+          newQuestion={newQuestion8}
+        />
+        <QuestionCard
+          answerInput={answerInput}
+          noOfQuestions={noOfQuestions}
+          value1={`What do I need to add to ${Y1P8knownValue} to make 20?`}
+          setAnswerInput={setAnswerInput}
+          checkAnswer={checkAnswer8}
+        />
+        <Score score={score} />
+      </div>
+    );
   }
 }

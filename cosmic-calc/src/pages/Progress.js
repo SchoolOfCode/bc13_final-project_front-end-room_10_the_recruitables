@@ -33,12 +33,14 @@ export const Progress = () => {
   // function handleScoreIncrease() {
   // get request to get total_score
   useEffect(() => {
-    const getScore = async (id) => {
-      const response = await fetch(`http://localhost:3001/api/users/${id}`);
+    const getScore = async () => {
+      const response = await fetch(
+        `http://localhost:3001/api/users/email/${context.user.email}`
+      );
       const data = await response.json();
       setPayload(data.payload);
       setTotalScore(data.payload.total_score);
-      console.log("data", data.payload.total_score);
+      console.log(data.payload);
       return data.payload.total_score;
     };
     getScore(1);
@@ -68,7 +70,6 @@ export const Progress = () => {
   // then maps over the levels array which returns a button for each new item in the array. Array increases depending on score. New item every 5 points = new button returned.
   return (
     <div className="progress-page">
-      {/* <button onClick={handleScoreIncrease}>MANUAL SCORE INCREASE</button> */}
       <div className="grid-container">
         {levels.map((levels, index) => (
           <LevelButtons
