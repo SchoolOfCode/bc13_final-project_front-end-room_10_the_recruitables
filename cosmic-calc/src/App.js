@@ -16,6 +16,7 @@ import Level1 from "./pages/Level1";
 import Level5 from "./pages/Level5";
 import useSound from "use-sound";
 import buttonFX from "./components/sound/FX/buttonFX.mp3";
+import YearTwo from "./pages/YearTwoGames";
 
 export default function App() {
   const authed = auth;
@@ -78,6 +79,10 @@ export default function App() {
   const navigateToRegister = () => {
     navigate("/register");
   };
+
+  const navigateToYearTwo = () => {
+    navigate("/year-two-games");
+  };
   console.log(authed.currentUser);
 
   return (
@@ -123,6 +128,9 @@ export default function App() {
           <button onClick={navigateToLevel5} className="navButtonLevel5">
             Level5
           </button>
+          <button onClick={navigateToYearTwo} className="navButtonLevel6">
+            year-Two
+          </button>
         </div>
       ) : (
         <div className="navBarLoginDiv">
@@ -159,6 +167,14 @@ export default function App() {
           element={
             <ProtectedRoute>
               <Progress />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/year-two-games"
+          element={
+            <ProtectedRoute>
+              <YearTwo />
             </ProtectedRoute>
           }
         />

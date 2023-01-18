@@ -1,0 +1,31 @@
+.bigdaddy {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    align-items: center;
+    top: 50vh;
+}
+
+.images-div{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.ten-pence-pic{
+    width: 150px;
+    height: 150px;
+    margin: 10px;
+}
+
+.one-pence-pic{
+    width: 90px;
+    height: 90px;
+    margin: 10px;
+}
+
+.input{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+}
