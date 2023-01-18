@@ -40,6 +40,27 @@ export function yearTwoPlanetTwoAnswer(values, playerAnswer) {
 }
 
 
+// Year 2 Planet 3 - "See a number as a word, and answer with the number as a number"
+export function yearTwoPlanetThreeQuestion() {
+    let data = [
+      "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine",
+      "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"
+    ];
+    const prefixes = ["twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"];
+    const suffixes = ["", "-one", "-two", "-three", "-four", "-five", "-six", "-seven", "-eight", "-nine"];
+    for (let i = 0; i < 8; i++) {
+        for (let j = 0; j < 10; j++) {
+            data.push(prefixes[i] + suffixes[j]);
+        }
+    }
+    data.push("one hundred");
+    let index = randomNumberGenerator(101);
+    return [index, data[index]]; // Returns the number in both numerical and word form
+}
+export function yearTwoPlanetThreeAnswer(values, playerAnswer) {
+    return [parseInt(playerAnswer) === values[0], values[0]];
+}
+
 // Year 2 Planet 5 - "Add together three single-digit numbers"
 export function yearTwoPlanetFiveQuestion() {
     let values = [];
