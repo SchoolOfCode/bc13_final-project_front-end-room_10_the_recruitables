@@ -55,26 +55,8 @@ export function yearOnePlanetFiveAnswer(values, playerAnswer) {
 export function yearOnePlanetSixQuestion() {
   const data = [
     "zero",
-    "one",
-    "two",
-    "three",
-    "four",
-    "five",
-    "six",
-    "seven",
-    "eight",
-    "nine",
-    "ten",
-    "eleven",
-    "twelve",
-    "thirteen",
-    "fourteen",
-    "fifteen",
-    "sixteen",
-    "seventeen",
-    "eighteen",
-    "nineteen",
-    "twenty"
+    "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten",
+    "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen", "twenty"
   ];
   let index = randomNumberGenerator(21);
   return [index, data[index]]; // Returns the number in both numerical and word form
