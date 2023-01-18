@@ -16,16 +16,21 @@ const AvatarBuilder = () => {
   const [selectedTeeth, setSelectedTeeth] = useState(1);
   const [avatarColor, setAvatarColor] = useState("#000000");
 
-  // body part amounts
-  let bodyPartAmounts = {
-    Heads: 3,
-    Bodies: 4,
-    Ants: 4,
-    Teeth: 1,
-  };
-
   // import the context
   let context = useContext(ScoreContext);
+
+  // body part amounts
+  let bodyPartAmounts = {
+    Heads: 1,
+    Bodies: 1,
+    Ants: 1,
+  };
+  if (context.score >= 50) {
+    let increment = Math.floor(context.score / 50);
+    bodyPartAmounts.Heads += increment;
+    bodyPartAmounts.Bodies += increment;
+    bodyPartAmounts.Ants += increment;
+  }
 
   function handleHeadClick(bodypart, direction) {
     if (bodypart === "head" && direction === "left" && selectedHead !== 1) {
@@ -147,8 +152,7 @@ const AvatarBuilder = () => {
 
   return (
     <div className="avatarPageDiv">
-     
-      <br /> 
+      <br />
       <button
         onClick={() =>
           patchAvatars(
@@ -163,54 +167,65 @@ const AvatarBuilder = () => {
         Submit
       </button>
       <div className="avatarButtonDiv">
-      <input type="color" onChange={changeBodyColor} />
-      <div className="ants-selector">
-        <button
-          className="ants-button-left"
-          onClick={() => handleHeadClick("ant", "left")}
-        >
-          ⬅
-        </button>
-        
-        <button
-          className="ants-button-right"
-          onClick={() => handleHeadClick("ant", "right")}
-        >
-          ➡
-        </button>
-        {/* <button onClick={() => getAvatars(context.user.email)}>TEST</button> */}
+        <div id="swatch">
+          <input
+            type="color"
+            id="color"
+            name="color"
+            value="#FF0000"
+            onChange={changeBodyColor}
+          />
+          <div class="info">
+            <h1>change colour</h1>
+          </div>
+        </div>
+        <div className="ants-selector">
+          <button
+            className="ants-button-left"
+            onClick={() => handleHeadClick("ant", "left")}
+          >
+            ⬅
+          </button>
+
+          <button
+            className="ants-button-right"
+            onClick={() => handleHeadClick("ant", "right")}
+          >
+            ➡
+          </button>
+          {/* <button onClick={() => getAvatars(context.user.email)}>TEST</button> */}
+        </div>
+        <div className="head-selector">
+          <button
+            className="head-button-left"
+            onClick={() => handleHeadClick("head", "left")}
+          >
+            ⬅
+          </button>
+
+          <button
+            className="head-button-right"
+            onClick={() => handleHeadClick("head", "right")}
+          >
+            ➡
+          </button>
+        </div>
+        <div className="body-selector">
+          <button
+            className="body-button-left"
+            onClick={() => handleHeadClick("body", "left")}
+          >
+            ⬅
+          </button>
+
+          <button
+            className="body-button-right"
+            onClick={() => handleHeadClick("body", "right")}
+          >
+            ➡
+          </button>
+        </div>
       </div>
-      <div className="head-selector">
-        <button
-          className="head-button-left"
-          onClick={() => handleHeadClick("head", "left")}
-        >
-          ⬅
-        </button>
-        
-        <button
-          className="head-button-right"
-          onClick={() => handleHeadClick("head", "right")}
-        >
-          ➡
-        </button>
-      </div>
-      <div className="body-selector">
-        <button
-          className="body-button-left"
-          onClick={() => handleHeadClick("body", "left")}
-        >
-          ⬅
-        </button>
-        
-        <button
-          className="body-button-right"
-          onClick={() => handleHeadClick("body", "right")}
-        >
-          ➡
-        </button>
-      </div>
-</div>
       <div className="avatar-color-selector"></div>
       <div class="avatar-wardrobe-div">
         <img src={wardrobe} alt="wardrobe" className="avatar-wardrobe"></img>
