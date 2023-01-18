@@ -80,9 +80,11 @@ export default function Game() {
         console.log(numberLineArray);
         let randomID = randomNumberGenerator(10);
         console.log(randomID);
-        console.log(numberLineArray[2].img_url);
+        // console.log(numberLineArray[3].img_url);
+        // console.log(data.payload[randomID].img_url)
         setNumberLineID(randomID);
-        console.log(numberLineID[numberLineID]);
+        console.log(numberLineArray[numberLineID]);
+        // setNumberLineImg(numberLineArray[numberLineID].img_url);
         setNumberLineImg(numberLineArray[numberLineID].img_url);
         console.log(numberLineImg);
       }
@@ -352,6 +354,7 @@ export default function Game() {
           checkAnswer={checkAnswer1}
         />
         <Score score={score} />
+       
       </div>
     );
   } else if (points < 20) {
