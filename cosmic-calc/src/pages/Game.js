@@ -85,7 +85,8 @@ export default function Game() {
         setNumberLineID(randomID);
         console.log(numberLineArray[numberLineID]);
         // setNumberLineImg(numberLineArray[numberLineID].img_url);
-        setNumberLineImg(numberLineArray[numberLineID].img_url);
+        // setNumberLineImg(numberLineArray[numberLineID].img_url);
+        setNumberLineImg('')
         console.log(numberLineImg);
       }
     }
