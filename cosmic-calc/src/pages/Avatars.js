@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import "./Avatars.css";
 import { ScoreContext } from "../components/score/ScoreContext";
-import wardrobe from "../images/Background_Buttons/Avatars/wardrobeSpeech1.png";
+import wardrobe from "../images/Background_Buttons/Avatars/wardrobeAst.png";
 
 // let headParts = [1, 2, 3];
 // let bodyParts = [1, 2, 3, 4];
@@ -153,9 +153,9 @@ const AvatarBuilder = () => {
   return (
     <div className="avatarPageDiv">
       <br />
-      {/* <h2 className="avatar-h1">customise
-      your alien and unlock more items with more points </h2> */}
+      {/* <h2>Customise your alien! Unlock more items with your points</h2> */}
       <button
+        className="submit-button"
         onClick={() =>
           patchAvatars(
             context.user.email,
@@ -165,9 +165,7 @@ const AvatarBuilder = () => {
             avatarColor
           )
         }
-      >
-        Submit
-      </button>
+      ></button>
       <div className="avatarButtonDiv">
         <div id="swatch">
           <input

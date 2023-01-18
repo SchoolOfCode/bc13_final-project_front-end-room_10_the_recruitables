@@ -801,3 +801,19 @@ input[type="color"] {
 .avatar-h1-color{
     font-size: 500%;
 }
+
+.submit-button{
+  background-image: url(../images/Background_Buttons/Avatars/SubmitButton.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: rgba(0, 0, 255, 0);
+  display: flex;
+  position: absolute;
+  width: 10vw;
+  height: 10vh;
+  min-width: 230px;
+  min-height: 130px;
+  text-align: center;
+  top: 6vh;
+}
