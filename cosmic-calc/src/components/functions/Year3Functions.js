@@ -1,0 +1,1 @@
+import randomNumberGenerator from "./rngFunction";

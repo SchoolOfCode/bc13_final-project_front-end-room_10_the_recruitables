@@ -33,7 +33,6 @@ console.log(userData);
 //check firebase email against GET request email and display data from score parameter, if not post new user information to backgroundBlendMode:
 
 // eslint-disable-next-line react-hooks/exhaustive-deps
-=======
 function randomIndexGenerator(array) {
   return Math.floor(Math.random() * array.length);
 }
