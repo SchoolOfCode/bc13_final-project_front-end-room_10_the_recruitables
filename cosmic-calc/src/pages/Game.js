@@ -10,6 +10,7 @@ import win from ".././components/sound/FX/win.mp3";
 import { ScoreContext } from "../components/score/ScoreContext";
 import AnswerCard from "../components/answercard/AnswerCard";
 import QuestionCard from "../components/questioncard/QuestionCard";
+import ShapesQuestionCard from "../components/shapesQuestionCard/ShapesQuestionCard";
 import Score from "../components/score/Score";
 import PicQuestionCard from "../components/picQuestionCard/picQuestionCard";
 
@@ -21,6 +22,8 @@ import {
   yearOnePlanetSixQuestion,
   yearOnePlanetSixAnswer,
   randomNumberGenerator,
+  giveRandomShape,
+  checkShapeAnswer,
 } from "../components/functions/yearOneFunctions";
 
 export default function Game() {
@@ -57,9 +60,10 @@ export default function Game() {
 
   // yearOnePlanetOne
 
-  const [numberLineID, setNumberLineID] = useState(0);
+  //const [numberLineID, setNumberLineID] = useState(0);
   const [numberLineImg, setNumberLineImg] = useState("");
-  const [numberLineArray, setNumberLineArray] = useState([{}]);
+  const [correctAnswer1, setCorrectAnswer1] = useState(0);
+  const [numberLineArray, setNumberLineArray] = useState([]);
 
   useEffect(() => {
     async function getNumberLine() {
@@ -74,20 +78,12 @@ export default function Game() {
       );
       const data = await response.json();
       if (data.payload) {
-        console.log(data.payload);
+        let newNumberLineArray = data.payload;
         setNumberLineArray(data.payload);
-        console.log(numberLineArray);
-        console.log(numberLineArray);
         let randomID = randomNumberGenerator(10);
-        console.log(randomID);
-        // console.log(numberLineArray[3].img_url);
-        // console.log(data.payload[randomID].img_url)
-        setNumberLineID(randomID);
-        console.log(numberLineArray[numberLineID]);
-        // setNumberLineImg(numberLineArray[numberLineID].img_url);
-        // setNumberLineImg(numberLineArray[numberLineID].img_url);
-        setNumberLineImg('')
-        console.log(numberLineImg);
+        //setNumberLineID(randomID);
+        setNumberLineImg(newNumberLineArray[randomID].img_url);
+        setCorrectAnswer1(newNumberLineArray[randomID].answer);
       }
     }
     getNumberLine();
@@ -95,8 +91,12 @@ export default function Game() {
 
   const checkAnswer1 = () => {
     setNoOfQuestions(noOfQuestions + 1);
-    let correctAnswer = numberLineArray[numberLineID].answer;
-    let questionResult = (correctAnswer = answerInput);
+    let questionResult = "";
+    if (correctAnswer1 == answerInput) {
+      questionResult = true;
+    } else {
+      questionResult = false;
+    }
     setAnswerInput("");
     if (questionResult === true) {
       playCorrect();
@@ -105,18 +105,53 @@ export default function Game() {
       newQuestion1();
     } else {
       playWrong();
-      setResult(correctAnswer);
+      setResult(correctAnswer1);
       setAnswerVisible(true);
     }
   };
 
   const newQuestion1 = () => {
     let randomID = randomNumberGenerator(10);
-    setNumberLineID(randomID);
-    setNumberLineImg(numberLineArray[numberLineID].img_url);
-    setAnswerInput("");
+    setNumberLineImg(numberLineArray[randomID].img_url);
+    setCorrectAnswer1(numberLineArray[randomID].answer);
     setResult("");
     setAnswerVisible(false);
+  };
+
+  //yearOnePlanetTwo
+
+  const [shape, setShape] = useState("square");
+
+  useEffect(() => {
+    let newShape = giveRandomShape();
+    setShape(newShape);
+  }, []);
+
+  function checkAnswer2(playerInput) {
+    setNoOfQuestions(noOfQuestions + 1);
+    let [questionResult, correctAnswer] = checkShapeAnswer(playerInput, shape);
+    if (questionResult === true) {
+      playCorrect();
+      setResult("Correct!");
+      setScore(Number(score) + 1);
+      newQuestion2();
+    } else {
+      playWrong();
+      setResult(correctAnswer);
+      setAnswerVisible(true);
+    }
+  }
+
+  const newQuestion2 = (playerInput) => {
+    let newShape = giveRandomShape();
+    setShape(newShape);
+    let [questionResult, correctAnswer] = checkShapeAnswer(
+      playerInput,
+      newShape
+    );
+    setResult("");
+    setAnswerVisible(false);
+    return [questionResult, correctAnswer];
   };
 
   // yearOnePlanetFour
@@ -350,12 +385,31 @@ export default function Game() {
           src={numberLineImg}
           answerInput={answerInput}
           noOfQuestions={noOfQuestions}
-          value1={""}
+          value1={"Which number is missing?"}
           setAnswerInput={setAnswerInput}
           checkAnswer={checkAnswer1}
         />
         <Score score={score} />
-       
+      </div>
+    );
+  } else if (points === 7) {
+    console.log("In shapes game");
+
+    return (
+      <div className="gameDiv">
+        <AnswerCard
+          answerVisible={answerVisible}
+          result={result}
+          newQuestion={newQuestion2}
+        />
+        <ShapesQuestionCard
+          answerInput={answerInput}
+          noOfQuestions={noOfQuestions}
+          shape={shape}
+          // setAnswerInput={setAnswerInput}
+          checkAnswer={checkAnswer2}
+        />
+        <Score score={score} />
       </div>
     );
   } else if (points < 20) {
