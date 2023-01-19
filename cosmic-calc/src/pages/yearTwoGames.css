@@ -6,7 +6,7 @@
     top: 50vh;
 } */
 
-.images-div{
+/* .images-div{
     display: flex;
     flex-wrap: wrap;
 }
@@ -31,7 +31,7 @@
 }
 
 /* shape images for the buttons */
-.shapes-div {
+/* .shapes-div {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
@@ -47,10 +47,10 @@
     height: 100px;
     margin: 10px;
     border: white solid 1px;
-}
+} */
 
 
-.square-shape{
+/* .square-shape{
    background-image: url(../images/shapes/square.png);
    background-color: transparent;
     background-size: contain;
@@ -124,8 +124,8 @@
     background-size: contain;
     background-repeat: no-repeat;
     width: 10vw;
-    height: 10vh;
-}
+    height: 10vh; */
+
 /* .heptagon-shape {
     border: white solid 1px;
         background-image: url(../images/shapes/heptagon.png);

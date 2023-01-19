@@ -5,6 +5,29 @@ export function randomNumberGenerator(num) {
 
 //Year 1 Planet 2
 
+// const [shape, setShape] = useState("square");
+
+const shapes = [
+  "square",
+  "rectangle",
+  "circle",
+  "triangle",
+  "pentagon",
+  "hexagon",
+  "heptagon",
+  "octagon",
+];
+
+export function giveRandomShape() {
+  let newShape = shapes[Math.floor(Math.random() * shapes.length)];
+  return newShape;
+}
+
+export function checkShapeAnswer(playerInput, newShape) {
+  let correctAnswer = newShape;
+  return [playerInput === correctAnswer, correctAnswer];
+}
+
 // Year 1 Planet 4 / Planet 8 - "Number bonds to 10" / "Number bonds to 20"
 export function yearOnePlanetFourQuestion(planet) {
   // Randomly choose if doing number bonds to 10 or 20

@@ -10,6 +10,7 @@ import win from ".././components/sound/FX/win.mp3";
 import { ScoreContext } from "../components/score/ScoreContext";
 import AnswerCard from "../components/answercard/AnswerCard";
 import QuestionCard from "../components/questioncard/QuestionCard";
+import ShapesQuestionCard from "../components/shapesQuestionCard/ShapesQuestionCard";
 import Score from "../components/score/Score";
 import PicQuestionCard from "../components/picQuestionCard/picQuestionCard";
 
@@ -21,6 +22,8 @@ import {
   yearOnePlanetSixQuestion,
   yearOnePlanetSixAnswer,
   randomNumberGenerator,
+  giveRandomShape,
+  checkShapeAnswer,
 } from "../components/functions/yearOneFunctions";
 
 export default function Game() {
@@ -113,6 +116,42 @@ export default function Game() {
     setCorrectAnswer1(numberLineArray[randomID].answer);
     setResult("");
     setAnswerVisible(false);
+  };
+
+  //yearOnePlanetTwo
+
+  const [shape, setShape] = useState("square");
+
+  useEffect(() => {
+    let newShape = giveRandomShape();
+    setShape(newShape);
+  }, []);
+
+  function checkAnswer2(playerInput) {
+    setNoOfQuestions(noOfQuestions + 1);
+    let [questionResult, correctAnswer] = checkShapeAnswer(playerInput, shape);
+    if (questionResult === true) {
+      playCorrect();
+      setResult("Correct!");
+      setScore(Number(score) + 1);
+      newQuestion2();
+    } else {
+      playWrong();
+      setResult(correctAnswer);
+      setAnswerVisible(true);
+    }
+  }
+
+  const newQuestion2 = (playerInput) => {
+    let newShape = giveRandomShape();
+    setShape(newShape);
+    let [questionResult, correctAnswer] = checkShapeAnswer(
+      playerInput,
+      newShape
+    );
+    setResult("");
+    setAnswerVisible(false);
+    return [questionResult, correctAnswer];
   };
 
   // yearOnePlanetFour
@@ -349,6 +388,26 @@ export default function Game() {
           value1={"Which number is missing?"}
           setAnswerInput={setAnswerInput}
           checkAnswer={checkAnswer1}
+        />
+        <Score score={score} />
+      </div>
+    );
+  } else if (points === 7) {
+    console.log("In shapes game");
+
+    return (
+      <div className="gameDiv">
+        <AnswerCard
+          answerVisible={answerVisible}
+          result={result}
+          newQuestion={newQuestion2}
+        />
+        <ShapesQuestionCard
+          answerInput={answerInput}
+          noOfQuestions={noOfQuestions}
+          shape={shape}
+          // setAnswerInput={setAnswerInput}
+          checkAnswer={checkAnswer2}
         />
         <Score score={score} />
       </div>
