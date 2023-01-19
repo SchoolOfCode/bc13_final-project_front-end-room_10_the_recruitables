@@ -3,20 +3,22 @@ export function randomNumberGenerator(num) {
   return Math.floor(Math.random() * num);
 }
 
+//Year 1 Planet 2
+
 // Year 1 Planet 4 / Planet 8 - "Number bonds to 10" / "Number bonds to 20"
 export function yearOnePlanetFourQuestion(planet) {
-    // Randomly choose if doing number bonds to 10 or 20
-    let total = 10;
-    if (planet === 8) {
-        total = 20;
-    }
-    // Randomly select a number which the user must find the pair of
-    let knownValue = randomNumberGenerator(total + 1);
-    return [knownValue, total];
+  // Randomly choose if doing number bonds to 10 or 20
+  let total = 10;
+  if (planet === 8) {
+    total = 20;
+  }
+  // Randomly select a number which the user must find the pair of
+  let knownValue = randomNumberGenerator(total + 1);
+  return [knownValue, total];
 }
 export function yearOnePlanetFourAnswer(values, playerAnswer) {
-    let correctAnswer = values[1] - values[0];
-    return [parseInt(playerAnswer) === correctAnswer, correctAnswer];
+  let correctAnswer = values[1] - values[0];
+  return [parseInt(playerAnswer) === correctAnswer, correctAnswer];
 }
 
 // Year 1 Planet 5 - "Adding and subtracting numbers"

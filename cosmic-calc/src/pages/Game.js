@@ -11,6 +11,7 @@ import { ScoreContext } from "../components/score/ScoreContext";
 import AnswerCard from "../components/answercard/AnswerCard";
 import QuestionCard from "../components/questioncard/QuestionCard";
 import Score from "../components/score/Score";
+import PicQuestionCard from "../components/picQuestionCard/picQuestionCard";
 
 import {
   yearOnePlanetFourQuestion,
@@ -19,6 +20,7 @@ import {
   yearOnePlanetFiveAnswer,
   yearOnePlanetSixQuestion,
   yearOnePlanetSixAnswer,
+  randomNumberGenerator,
 } from "../components/functions/yearOneFunctions";
 
 export default function Game() {
@@ -35,7 +37,8 @@ export default function Game() {
   });
   const [result, setResult] = useState("");
   const context = useContext(ScoreContext);
-  let points = context.score;
+  let points = 5;
+  //let points = context.score;
   console.log(context);
 
   console.log("Points = ", points);
@@ -51,6 +54,66 @@ export default function Game() {
   if (noOfQuestions === 6) {
     playWin();
   }
+
+  // yearOnePlanetOne
+
+  //const [numberLineID, setNumberLineID] = useState(0);
+  const [numberLineImg, setNumberLineImg] = useState("");
+  const [correctAnswer1, setCorrectAnswer1] = useState(0);
+  const [numberLineArray, setNumberLineArray] = useState([]);
+
+  useEffect(() => {
+    async function getNumberLine() {
+      const response = await fetch(
+        `http://localhost:3001/api/mathsQuestions/numberLines`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      const data = await response.json();
+      if (data.payload) {
+        let newNumberLineArray = data.payload;
+        setNumberLineArray(data.payload);
+        let randomID = randomNumberGenerator(10);
+        //setNumberLineID(randomID);
+        setNumberLineImg(newNumberLineArray[randomID].img_url);
+        setCorrectAnswer1(newNumberLineArray[randomID].answer);
+      }
+    }
+    getNumberLine();
+  }, []);
+
+  const checkAnswer1 = () => {
+    setNoOfQuestions(noOfQuestions + 1);
+    let questionResult = "";
+    if (correctAnswer1 == answerInput) {
+      questionResult = true;
+    } else {
+      questionResult = false;
+    }
+    setAnswerInput("");
+    if (questionResult === true) {
+      playCorrect();
+      setResult("Correct!");
+      setScore(Number(score) + 1);
+      newQuestion1();
+    } else {
+      playWrong();
+      setResult(correctAnswer1);
+      setAnswerVisible(true);
+    }
+  };
+
+  const newQuestion1 = () => {
+    let randomID = randomNumberGenerator(10);
+    setNumberLineImg(numberLineArray[randomID].img_url);
+    setCorrectAnswer1(numberLineArray[randomID].answer);
+    setResult("");
+    setAnswerVisible(false);
+  };
 
   // yearOnePlanetFour
   const [Y1P4knownValue, setY1P4knownValue] = useState(0);
@@ -269,6 +332,25 @@ export default function Game() {
             Play Again
           </button>
         </div>
+      </div>
+    );
+  } else if (points === 5) {
+    return (
+      <div className="gameDiv">
+        <AnswerCard
+          answerVisible={answerVisible}
+          result={result}
+          newQuestion={newQuestion1}
+        />
+        <PicQuestionCard
+          src={numberLineImg}
+          answerInput={answerInput}
+          noOfQuestions={noOfQuestions}
+          value1={"Which number is missing?"}
+          setAnswerInput={setAnswerInput}
+          checkAnswer={checkAnswer1}
+        />
+        <Score score={score} />
       </div>
     );
   } else if (points < 20) {

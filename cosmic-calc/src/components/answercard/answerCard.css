@@ -5,7 +5,7 @@
   justify-content: center;
   height: 4cm;
   width: 70vw;
-  margin-top: 20vh;
+  margin-top: 2cm;
   padding: 1vh;
   color: #fff;
 }
@@ -16,7 +16,6 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  padding: 2vh;
   border-radius: 10px;
   background: var(--colour-green-transparent);
   border-color: var(--colour-green);

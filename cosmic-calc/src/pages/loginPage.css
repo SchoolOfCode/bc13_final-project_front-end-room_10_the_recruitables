@@ -23,7 +23,7 @@
 
 .loginLogo {
   animation: rotation 2s infinite linear;
-  width: 100%;
+  width: 60%;
   object-fit: scale-down;
   height: 40vh;
   display: flex;

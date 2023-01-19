@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { Routes, Route, useNavigate } from "react-router-dom";
+import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
 import Profile from "./pages/Profile";
 import Game from "./pages/Game";
 import Progress from "./pages/Progress";
@@ -17,10 +17,13 @@ import Level5 from "./pages/Level5";
 import useSound from "use-sound";
 import buttonFX from "./components/sound/FX/buttonFX.mp3";
 import YearTwo from "./pages/YearTwoGames";
+import logo from "../src/images/Logo.png";
+
 
 export default function App() {
   const authed = auth;
   let context = useContext(ScoreContext);
+  const location = useLocation();
   const navigate = useNavigate();
   const [profileHighlighted, setProfileHighlighted] = useState(false);
   const [progressHighlighted, setProgressHighlighted] = useState(false);
@@ -87,36 +90,47 @@ export default function App() {
 
   return (
     <div>
-      {/* <Sound /> */}
       {authed.currentUser ? (
         <div className="navBarPageDiv">
+          <img src={logo} alt="logo" className="logo" />
+          {location.pathname !== "/profile" && (
+            <button
+              onClick={navigateToProfile}
+              onMouseOver={playHover}
+              className={
+                profileHighlighted
+                  ? "navButtonProfileHighlighted"
+                  : "navButtonProfile"
+              }
+            ></button>
+          )}
+          {location.pathname !== "/progress" && (
+            <button
+              onClick={navigateToProgress}
+              onMouseOver={playHover}
+              className={
+                progressHighlighted
+                  ? "navButtonProgressHighlighted"
+                  : "navButtonProgress"
+              }
+            ></button>
+          )}
+          {location.pathname !== "/game" && (
+            <button
+              onClick={navigateToGame}
+              onMouseOver={playHover}
+              className={
+                gameHighlighted ? "navButtonGameHighlighted" : "navButtonGame"
+              }
+            ></button>
+          )}
+          {location.pathname !== "/game" && (
+            <div className="progress-score">
+              <h1>Score: {context.score}</h1>
+            </div>
+          )}
           <Logout />
-          <button
-            onClick={navigateToProfile}
-            onMouseOver={playHover}
-            className={
-              profileHighlighted
-                ? "navButtonProfileHighlighted"
-                : "navButtonProfile"
-            }
-          ></button>
-          <button
-            onClick={navigateToProgress}
-            onMouseOver={playHover}
-            className={
-              progressHighlighted
-                ? "navButtonProgressHighlighted"
-                : "navButtonProgress"
-            }
-          ></button>
-          <button
-            onClick={navigateToGame}
-            onMouseOver={playHover}
-            className={
-              gameHighlighted ? "navButtonGameHighlighted" : "navButtonGame"
-            }
-          ></button>
-          <button onClick={navigateToTimedGame} className="navButtonTimedGame">
+          {/* <button onClick={navigateToTimedGame} className="navButtonTimedGame">
             TimedGame
           </button>
           <button onClick={navigateToAvatars} className="navButtonAvatars">
@@ -127,27 +141,33 @@ export default function App() {
           </button>
           <button onClick={navigateToLevel5} className="navButtonLevel5">
             Level5
+
           </button>
           <button onClick={navigateToYearTwo} className="navButtonLevel6">
             year-Two
           </button>
+          </button> */}
         </div>
       ) : (
         <div className="navBarLoginDiv">
-          <button
-            className="navButtonLogin"
-            onMouseOver={playHover}
-            onClick={navigateToLogin}
-          >
-            Login
-          </button>
-          <button
-            className="navButtonRegister"
-            onMouseOver={playHover}
-            onClick={navigateToRegister}
-          >
-            Register
-          </button>
+          {location.pathname !== "/" && (
+            <button
+              className="navButtonLogin"
+              onMouseOver={playHover}
+              onClick={navigateToLogin}
+            >
+              Login
+            </button>
+          )}
+          {location.pathname !== "/register" && (
+            <button
+              className="navButtonRegister"
+              onMouseOver={playHover}
+              onClick={navigateToRegister}
+            >
+              Register
+            </button>
+          )}
         </div>
       )}
 

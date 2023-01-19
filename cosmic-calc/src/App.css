@@ -1,32 +1,9 @@
-.navBar {
-  color: #ffffff;
-  /* background: url(./images/wave2.svg); */
-  /* background-size: cover; */
-  /* background-size: 100vw 100vw;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-color: #f8cf39f8; */
-  padding: 10px;
-  display: flex;
-  flex: 1;
-  justify-content: space-between;
-  align-items: overflow-center;
-  font-size: 20px;
-  font-weight: 500;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  position: fixed;
-  top: 0;
-  width: 100vw;
-  height: 20vh;
-  z-index: 1;
-}
-
 .navBarPageDiv {
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 15vh;
+  margin: 1cm;
 }
 
 .navButtonProfile {
@@ -37,9 +14,10 @@
   background-color: rgba(0, 0, 255, 0);
   width: 10vw;
   height: 10vh;
-  min-width: 140px;
+  min-width: 170px;
   min-height: 100px;
   text-align: center;
+  object-fit: fill;
 }
 
 .navButtonGame {
@@ -50,8 +28,9 @@
   background-color: rgba(0, 0, 255, 0);
   width: 10vw;
   height: 10vh;
-  min-width: 140px;
+  min-width: 170px;
   min-height: 100px;
+  object-fit: fill;
   text-align: center;
 }
 
@@ -62,10 +41,11 @@
   background-position: center;
   background-color: rgba(0, 0, 255, 0);
   width: 10vw;
-  height: 10vh;
-  min-width: 150px;
-  min-height: 100px;
+  height: 12.5vh;
+  min-width: 180px;
+  min-height: 125px;
   text-align: center;
+  object-fit: fill;
 }
 
 .navButtonProfileHighlighted {
@@ -138,6 +118,9 @@
   color: #ffffff00;
 }
 
+.navButtonProfile:hover,
+.navButtonGame:hover,
+.navButtonProgress:hover,
 .navButtonRegister:hover,
 .navButtonLogin:hover {
   transition: transform 0.3s ease-in-out 0s;
@@ -146,9 +129,48 @@
 
 .navBarLoginDiv {
   display: flex;
-  padding: 1cm 3cm 1cm 3cm;
   justify-content: space-between;
   align-items: center;
   /* width: 30vw; */
+  height: 2cm;
+  margin: 1cm 1cm;
+}
+
+.progress-score {
+  width: 15vw;
+  height: 10vh;
+  display: flex;
+  object-fit: scale-down;
+  outline: #f70d11 5px groove;
+  background-color: gold;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 0.9em;
+  color: black;
+  border-radius: 50%;
+  /* text-shadow: #fff 1px 1px; */
+  z-index: 10;
+  padding: 0.5cm;
+  animation: rotation 2s infinite linear;
+  transition: transform 1s ease-in-out;
+}
+
+.logo {
+  object-fit: scale-down;
+  /* width: 25vw; */
+  height: 25vh;
+  animation: rotation 2s infinite linear;
+  transition: transform 1s ease-in-out;
+}
+
+.progress-score:hover {
+  transition: 2s;
+  transform: scale(1, 0.5);
+}
+
+.logo:hover {
+  transition: 2s;
+  transform: rotate(360deg);
 }
 
