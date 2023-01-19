@@ -69,14 +69,20 @@ export default function YearTwoGames() {
   function checkAnswer() {
     if (num1 > num2 ) {
       setOperation("-");
-      setTotal(num1 + num2);
+      setTotal(num1 - num2);
     } else {
       setOperation("+");
-      setTotal(num1 - num2);
+      setTotal(num1 + num2);
+    }
+    if (String(answer) === String(total)) {
+      console.log("correct");
+    }
+    else {
+      console.log("wrong");
     }
   }
 
-  
+
 
 
 
