@@ -57,7 +57,7 @@ export default function Game() {
 
   // yearOnePlanetOne
 
-  const [numberLineID, setNumberLineID] = useState(0);
+  //const [numberLineID, setNumberLineID] = useState(0);
   const [numberLineImg, setNumberLineImg] = useState("");
   const [correctAnswer1, setCorrectAnswer1] = useState(0);
   const [numberLineArray, setNumberLineArray] = useState([]);
@@ -75,24 +75,12 @@ export default function Game() {
       );
       const data = await response.json();
       if (data.payload) {
-        console.log(`data.payload: ${data.payload}`);
-        console.log(data.payload);
         let newNumberLineArray = data.payload;
         setNumberLineArray(data.payload);
-        console.log(numberLineArray);
-        console.log(numberLineArray);
         let randomID = randomNumberGenerator(10);
-        console.log(randomID);
-        // console.log(numberLineArray[3].img_url);
-        // console.log(data.payload[randomID].img_url)
-        setNumberLineID(randomID);
-        console.log(numberLineArray[numberLineID]);
-        // setNumberLineImg(numberLineArray[numberLineID].img_url);
-        //setNumberLineImg(numberLineArray[numberLineID].img_url);
-        console.log("This is an image", newNumberLineArray[randomID].img_url);
+        //setNumberLineID(randomID);
         setNumberLineImg(newNumberLineArray[randomID].img_url);
         setCorrectAnswer1(newNumberLineArray[randomID].answer);
-        //setNumberLineImg("");
       }
     }
     getNumberLine();
@@ -101,14 +89,11 @@ export default function Game() {
   const checkAnswer1 = () => {
     setNoOfQuestions(noOfQuestions + 1);
     let questionResult = "";
-    //let correctAnswer = numberLineArray[numberLineID].answer;
     if (correctAnswer1 == answerInput) {
       questionResult = true;
     } else {
       questionResult = false;
     }
-    console.log("Answer checked");
-    console.log(correctAnswer1, answerInput, questionResult);
     setAnswerInput("");
     if (questionResult === true) {
       playCorrect();
@@ -126,7 +111,6 @@ export default function Game() {
     let randomID = randomNumberGenerator(10);
     setNumberLineImg(numberLineArray[randomID].img_url);
     setCorrectAnswer1(numberLineArray[randomID].answer);
-    //setAnswerInput("");
     setResult("");
     setAnswerVisible(false);
   };
