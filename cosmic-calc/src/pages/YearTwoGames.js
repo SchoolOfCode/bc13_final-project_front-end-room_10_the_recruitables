@@ -28,54 +28,37 @@ export default function YearTwoGames() {
   // }
 
   // 2. SHAPE GAME - planet
-  // const [shape, setShape] = useState("square")
+  const [shape, setShape] = useState("square");
 
-  // const shapes = ["square", "rectangle", "circle", "triangle", "pentagon", "hexagon", "heptagon", "octagon"]
+  const shapes = [
+    "square",
+    "rectangle",
+    "circle",
+    "triangle",
+    "pentagon",
+    "hexagon",
+    "heptagon",
+    "octagon",
+  ];
 
-  // function giveRandomShape() {
-  //   setShape(shapes[Math.floor(Math.random() * shapes.length)])
-  // }
-
-  // function checkAnswer(answer) {
-  //   if (answer === shape) {
-  //     console.log("correct")
-  //   } else {
-  //     console.log("wrong")
-  //   }
-  // }
-
-  // 3. ADDING AND SUBTRACTING 1 COINS
-  const [num1, setNum1] = useState(Math.floor(Math.random() * 10) + 1);
-  const [num2, setNum2] = useState(Math.floor(Math.random() * 10) + 1);
-  const [operation, setOperation] = useState("+");
-  const [answer, setAnswer] = useState(0);
-  const [total, setTotal] = useState(0);
-
-  function giveQuestion() {
-    setNum1(Math.floor(Math.random() * 10) + 1);
-    setNum2(Math.floor(Math.random() * 10) + 1);
-    if (num1 > num2) {
-      setOperation("-");
-      setTotal(num1 - num2);
-    } else {
-      setOperation("+");
-      setTotal(num1 + num2);
-    }
+  function giveRandomShape() {
+    setShape(shapes[Math.floor(Math.random() * shapes.length)]);
   }
 
-  console.log("total", total);
-  console.log("answer", answer);
-  console.log("num1", num1);
-  console.log("num2", num2);
-
-  function checkAnswer() {
-    console.log("answer", answer);
-    if (String(answer) === String(total)) {
+  function checkAnswer(answer) {
+    if (answer === shape) {
       console.log("correct");
     } else {
       console.log("wrong");
     }
   }
+
+  // 3. ADDING AND SUBTRACTING 1 COINS
+  // const [num1, setNum1] = useState(Math.floor(Math.random() * 10) + 1);
+  // const [num2, setNum2] = useState(Math.floor(Math.random() * 10) + 1);
+  // const [operation, setOperation] = useState();
+  // const [answer, setAnswer] = useState(0);
+  // const [total, setTotal] = useState(0);
 
   return (
     <div className="bigdaddy">
@@ -99,23 +82,53 @@ export default function YearTwoGames() {
           }
         }}
         {/* 2. THESE ARE THE BUTTONS FOR THE SHAPES GAME - NEED TO ADD SHAPES IMAGE */}
-      {/* <h1>Click on the {shape}?</h1> 
-      <button onClick={giveRandomShape}>Give me a shape</button>
-      <button onClick={() => checkAnswer("square")}>square</button>
-      <button onClick={() => checkAnswer("rectangle")}>rectangle</button>
-      <button onClick={() => checkAnswer("circle")}>circle</button>
-      <button onClick={() => checkAnswer("triangle")}>triangle</button>
-      <button onClick={() => checkAnswer("pentagon")}>pentagon</button>
-      <button onClick={() => checkAnswer("hexagon")}>hexagon</button>
-      <button onClick={() => checkAnswer("heptagon")}>heptagon</button>
-      <button onClick={() => checkAnswer("octagon")}>octagon</button> */}
+
+      <h1>Click on the {shape}?</h1>
+      <div className="shapes-div">
+        <button onClick={giveRandomShape} className="new-shape-button">
+          Give me a shape
+        </button>
+        <button
+          className="square-shape"
+          onClick={() => checkAnswer("square")}
+        ></button>
+        <button
+          className="rectangle-shape"
+          onClick={() => checkAnswer("rectangle")}
+        ></button>
+        <button
+          className="circle-shape"
+          onClick={() => checkAnswer("circle")}
+        ></button>
+        <button
+          className="triangle-shape"
+          onClick={() => checkAnswer("triangle")}
+        ></button>
+        <button
+          className="pentagon-shape"
+          onClick={() => checkAnswer("pentagon")}
+        ></button>
+        <button
+          className="hexagon-shape"
+          onClick={() => checkAnswer("hexagon")}
+        ></button>
+        {/* <button
+          className="heptagon-shape"
+          onClick={() => checkAnswer("heptagon")}
+        >
+          heptagon
+        </button> */}
+        <button
+          className="octagon-shape"
+          onClick={() => checkAnswer("octagon")}
+        ></button>
+      </div>
 
       {/* 3. Adding and Subtracting 1 coins */}
-
-      <button onClick={giveQuestion}>BUTTTTON</button>
+      {/* <button onClick={giveQuestion}>BUTTTTON</button>
       <h1>
         {num1} {operation} {num2}
-      </h1>
+      </h1> */}
       {/* <div className="images-div">
         {Array.from({ length: num1 }, (_, i) => (
           <img key={i} src={onePenny} alt="random" className="one-pence-pic" />
@@ -126,16 +139,17 @@ export default function YearTwoGames() {
         ))}
         {"="}
       </div> */}
-      <input
+      {/* <input
         className="input"
         onChange={(e) => setAnswer(e.target.value)}
         onKeyDown={(e) => {
           if (e.key === "Enter") {
             checkAnswer();
+            giveQuestion();
             setAnswer("");
           }
         }}
-      />
+      /> */}
     </div>
   );
 }
