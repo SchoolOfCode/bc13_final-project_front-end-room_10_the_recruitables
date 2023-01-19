@@ -17,6 +17,7 @@ import Level5 from "./pages/Level5";
 import useSound from "use-sound";
 import buttonFX from "./components/sound/FX/buttonFX.mp3";
 import logo from "../src/images/Logo.png";
+import Leaderboard from "./pages/Leaderboard";
 
 export default function App() {
   const authed = auth;
@@ -80,6 +81,9 @@ export default function App() {
   const navigateToRegister = () => {
     navigate("/register");
   };
+  const navigateToLeaderboard = () => {
+    navigate("/leaderboard");
+  };
   console.log(authed.currentUser);
 
   return (
@@ -124,11 +128,14 @@ export default function App() {
             </div>
           )}
           <Logout />
-          {/* <button onClick={navigateToTimedGame} className="navButtonTimedGame">
-            TimedGame
-          </button>
           <button onClick={navigateToAvatars} className="navButtonAvatars">
             Avatars
+          </button>
+          {authed.currentUser.email === "teacher@teacher.com" && (
+            <button onClick={navigateToLeaderboard}>Leaderboard</button>
+          )}
+          {/* <button onClick={navigateToTimedGame} className="navButtonTimedGame">
+            TimedGame
           </button>
           <button onClick={navigateToLevel1} className="navButtonLevel1">
             Level1
@@ -216,6 +223,14 @@ export default function App() {
           element={
             <ProtectedRoute>
               <Level5 />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/leaderboard"
+          element={
+            <ProtectedRoute>
+              <Leaderboard />
             </ProtectedRoute>
           }
         />

@@ -154,18 +154,6 @@ const AvatarBuilder = () => {
     <div className="avatarPageDiv">
       <br />
       {/* <h2>Customise your alien! Unlock more items with your points</h2> */}
-      <button
-        className="submit-button"
-        onClick={() =>
-          patchAvatars(
-            context.user.email,
-            selectedBody,
-            selectedAnt,
-            selectedHead,
-            avatarColor
-          )
-        }
-      ></button>
       <div className="avatarButtonDiv">
         <div id="swatch">
           <input
@@ -283,6 +271,18 @@ const AvatarBuilder = () => {
           </div>
         </div>
       </div>
+      <button
+        className="submit-button"
+        onClick={() =>
+          patchAvatars(
+            context.user.email,
+            selectedBody,
+            selectedAnt,
+            selectedHead,
+            avatarColor
+          )
+        }
+      ></button>
     </div>
   );
 };

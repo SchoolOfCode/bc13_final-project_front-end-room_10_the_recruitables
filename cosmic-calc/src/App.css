@@ -1,9 +1,11 @@
 .navBarPageDiv {
+  /* background-image: url(./images/nav-bar2.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center; */
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 15vh;
-  margin: 1cm;
 }
 
 .navButtonProfile {

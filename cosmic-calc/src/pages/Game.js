@@ -28,6 +28,9 @@ export default function Game() {
   const [answerInput, setAnswerInput] = useState("");
   const [answerVisible, setAnswerVisible] = useState(false);
   const [noOfQuestions, setNoOfQuestions] = useState(1);
+  const [inputType, setInputType] = useState("");
+  console.log(inputType);
+
   const [playCorrect] = useSound(correct, { interrupt: true, volume: 0.3 });
   const [playWrong] = useSound(wrong, { interrupt: true, volume: 0.3 });
   const [playWin] = useSound(win, {
@@ -37,11 +40,8 @@ export default function Game() {
   });
   const [result, setResult] = useState("");
   const context = useContext(ScoreContext);
-  let points = 5;
-  //let points = context.score;
-  console.log(context);
-
-  console.log("Points = ", points);
+  let points = 15;
+  // let points = context.score;
 
   useEffect(() => {
     if (noOfQuestions === 6) {
@@ -74,20 +74,10 @@ export default function Game() {
       );
       const data = await response.json();
       if (data.payload) {
-        console.log(data.payload);
         setNumberLineArray(data.payload);
-        console.log(numberLineArray);
-        console.log(numberLineArray);
         let randomID = randomNumberGenerator(10);
-        console.log(randomID);
-        // console.log(numberLineArray[3].img_url);
-        // console.log(data.payload[randomID].img_url)
         setNumberLineID(randomID);
-        console.log(numberLineArray[numberLineID]);
-        // setNumberLineImg(numberLineArray[numberLineID].img_url);
-        // setNumberLineImg(numberLineArray[numberLineID].img_url);
-        setNumberLineImg('')
-        console.log(numberLineImg);
+        setNumberLineImg("");
       }
     }
     getNumberLine();
@@ -130,6 +120,7 @@ export default function Game() {
   }, []);
 
   const checkAnswer4 = () => {
+    console.log("check answer 4");
     setNoOfQuestions(noOfQuestions + 1);
     let [questionResult, correctAnswer] = yearOnePlanetFourAnswer(
       [Y1P4knownValue, Y1P4totalValue],
@@ -141,14 +132,19 @@ export default function Game() {
       setResult("Correct!");
       setScore(Number(score) + 1);
       newQuestion4();
+      setInputType("number");
     } else {
+      console.log("wrong");
       playWrong();
+      setInputType("hidden");
       setResult(correctAnswer);
       setAnswerVisible(true);
+      // newQuestion4();
     }
   };
 
   const newQuestion4 = () => {
+    console.log("new question 4");
     let [Y1P4knownValue, Y1P4totalValue] = yearOnePlanetFourQuestion();
     setY1P4knownValue(Y1P4knownValue);
     setY1P4totalValue(Y1P4totalValue);
@@ -169,20 +165,17 @@ export default function Game() {
 
   useEffect(() => {
     let [value1, operation, value2] = yearOnePlanetFiveQuestion();
-    console.log(value1, operation, value2);
     setValue1(value1);
     setOperation(operation);
     setValue2(value2);
   }, []);
 
   const checkAnswer5 = () => {
-    console.log("Check answer called");
     setNoOfQuestions(noOfQuestions + 1);
     let [questionResult, correctAnswer] = yearOnePlanetFiveAnswer(
       [value1, operation, value2],
       answerInput
     );
-    console.log(questionResult, correctAnswer);
     setAnswerInput("");
     if (questionResult === true) {
       playCorrect();
@@ -223,7 +216,6 @@ export default function Game() {
   }, []);
 
   const checkAnswer6 = () => {
-    console.log("Check answer called");
     setNoOfQuestions(noOfQuestions + 1);
     let [questionResult, correctAnswer] = yearOnePlanetSixAnswer(
       [number, word],
@@ -272,7 +264,6 @@ export default function Game() {
       [Y1P8knownValue, Y1P8totalValue],
       answerInput
     );
-    console.log(questionResult, correctAnswer);
     setAnswerInput("");
 
     if (questionResult === true) {
@@ -302,8 +293,7 @@ export default function Game() {
   };
 
   const updateScore = async (score, user) => {
-    let email = await user.email;
-
+    let email = await context.user.email;
     const response = await fetch(
       `http://localhost:3001/api/users/email/${email}`,
       {
@@ -347,6 +337,7 @@ export default function Game() {
           newQuestion={newQuestion1}
         />
         <PicQuestionCard
+          inputType={inputType}
           src={numberLineImg}
           answerInput={answerInput}
           noOfQuestions={noOfQuestions}
@@ -355,7 +346,6 @@ export default function Game() {
           checkAnswer={checkAnswer1}
         />
         <Score score={score} />
-       
       </div>
     );
   } else if (points < 20) {
@@ -369,6 +359,7 @@ export default function Game() {
           newQuestion={newQuestion4}
         />
         <QuestionCard
+          inputType="hidden"
           answerInput={answerInput}
           noOfQuestions={noOfQuestions}
           value1={`What do I need to add to ${Y1P4knownValue} to make 10?`}
@@ -389,6 +380,7 @@ export default function Game() {
           newQuestion={newQuestion5}
         />
         <QuestionCard
+          inputType={inputType}
           answerInput={answerInput}
           noOfQuestions={noOfQuestions}
           value1={value1}
@@ -410,6 +402,7 @@ export default function Game() {
           newQuestion={newQuestion6}
         />
         <QuestionCard
+          inputType={inputType}
           answerInput={answerInput}
           noOfQuestions={noOfQuestions}
           value1={"What is"}
@@ -432,6 +425,7 @@ export default function Game() {
           newQuestion={newQuestion8}
         />
         <QuestionCard
+          inputType={inputType}
           answerInput={answerInput}
           noOfQuestions={noOfQuestions}
           value1={`What do I need to add to ${Y1P8knownValue} to make 20?`}
