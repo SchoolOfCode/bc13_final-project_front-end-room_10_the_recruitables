@@ -28,37 +28,57 @@ export default function YearTwoGames() {
   // }
 
   // 2. SHAPE GAME - planet
-  const [shape, setShape] = useState("square");
+  // const [shape, setShape] = useState("square");
 
-  const shapes = [
-    "square",
-    "rectangle",
-    "circle",
-    "triangle",
-    "pentagon",
-    "hexagon",
-    "heptagon",
-    "octagon",
-  ];
+  // const shapes = [
+  //   "square",
+  //   "rectangle",
+  //   "circle",
+  //   "triangle",
+  //   "pentagon",
+  //   "hexagon",
+  //   "heptagon",
+  //   "octagon",
+  // ];
 
-  function giveRandomShape() {
-    setShape(shapes[Math.floor(Math.random() * shapes.length)]);
+  // function giveRandomShape() {
+  //   setShape(shapes[Math.floor(Math.random() * shapes.length)]);
+  // }
+
+  // function checkAnswer(answer) {
+  //   if (answer === shape) {
+  //     console.log("correct");
+  //   } else {
+  //     console.log("wrong");
+  //   }
+  // }
+
+  // 3. ADDING AND SUBTRACTING 1 COINS
+  const [num1, setNum1] = useState(Math.floor(Math.random() * 10) + 1);
+  const [num2, setNum2] = useState(Math.floor(Math.random() * 10) + 1);
+  const [operation, setOperation] = useState();
+  const [answer, setAnswer] = useState(0);
+  const [total, setTotal] = useState(0);
+
+  function giveQuestion() {
+    setNum1(Math.floor(Math.random() * 10) + 1);
+    setNum2(Math.floor(Math.random() * 10) + 1);
+    setOperation(Math.random() < 0.5 ? "+" : "-");
   }
 
-  function checkAnswer(answer) {
-    if (answer === shape) {
-      console.log("correct");
+  function checkAnswer() {
+    if (num1 > num2 ) {
+      setOperation("-");
+      setTotal(num1 + num2);
     } else {
-      console.log("wrong");
+      setOperation("+");
+      setTotal(num1 - num2);
     }
   }
 
-  // 3. ADDING AND SUBTRACTING 1 COINS
-  // const [num1, setNum1] = useState(Math.floor(Math.random() * 10) + 1);
-  // const [num2, setNum2] = useState(Math.floor(Math.random() * 10) + 1);
-  // const [operation, setOperation] = useState();
-  // const [answer, setAnswer] = useState(0);
-  // const [total, setTotal] = useState(0);
+  
+
+
 
   return (
     <div className="bigdaddy">
@@ -83,7 +103,7 @@ export default function YearTwoGames() {
         }}
         {/* 2. THESE ARE THE BUTTONS FOR THE SHAPES GAME - NEED TO ADD SHAPES IMAGE */}
 
-      <h1>Click on the {shape}?</h1>
+      {/* <h1>Click on the {shape}?</h1>
       <div className="shapes-div">
         <button onClick={giveRandomShape} className="new-shape-button">
           Give me a shape
@@ -118,11 +138,11 @@ export default function YearTwoGames() {
         >
           heptagon
         </button> */}
-        <button
+        {/* <button
           className="octagon-shape"
           onClick={() => checkAnswer("octagon")}
         ></button>
-      </div>
+      </div> */} 
 
       {/* 3. Adding and Subtracting 1 coins */}
       {/* <button onClick={giveQuestion}>BUTTTTON</button>
@@ -150,6 +170,22 @@ export default function YearTwoGames() {
           }
         }}
       /> */}
+      <button onClick={checkAnswer}>BUTTTTON</button>
+      <h1>
+        {num1} {operation} {num2}
+      </h1>
+      <input
+        className="input"
+        onChange={(e) => setAnswer(e.target.value)}
+        onKeyDown={(e) => {
+          if (e.key === "Enter") {
+            checkAnswer();
+            giveQuestion();
+            setAnswer("");
+          }
+        }}
+      /> 
+
     </div>
   );
 }
