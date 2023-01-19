@@ -2,20 +2,12 @@ import randomNumberGenerator from "./rngFunction";
 
 
 // Year 1 Planet 4 - "Number bonds to 10"
-// Year 1 Planet 8 - "Number bonds to 20" (Use planet = 8 as an argument)
-export function yearOnePlanetFourQuestion(planet) {
-    // Randomly choose if doing number bonds to 10 or 20
-    let total = 10;
-    if (planet === 8) {
-        total = 20;
-    }
-    // Randomly select a number which the user must find the pair of
-    let knownValue = randomNumberGenerator(total + 1);
-    return [knownValue, total];
+export function yearOnePlanetFourQuestion() {
+  return randomNumberGenerator(11);
 }
-export function yearOnePlanetFourAnswer(values, playerAnswer) {
-    let correctAnswer = values[1] - values[0];
-    return [parseInt(playerAnswer) === correctAnswer, correctAnswer];
+export function yearOnePlanetFourAnswer(knownValue, playerAnswer) {
+  let correctAnswer = 10 - knownValue;
+  return [parseInt(playerAnswer) === correctAnswer, correctAnswer];
 }
 
 
@@ -63,4 +55,13 @@ export function yearOnePlanetSixQuestion() {
 }
 export function yearOnePlanetSixAnswer(values, playerAnswer) {
   return [parseInt(playerAnswer) === values[0], values[0]];
+}
+
+// Year 1 Planet 8 - "Number bonds to 20"
+export function yearOnePlanetEightQuestion() {
+  return randomNumberGenerator(21);
+}
+export function yearOnePlanetEightAnswer(knownValue, playerAnswer) {
+  let correctAnswer = 20 - knownValue;
+  return [parseInt(playerAnswer) === correctAnswer, correctAnswer];
 }

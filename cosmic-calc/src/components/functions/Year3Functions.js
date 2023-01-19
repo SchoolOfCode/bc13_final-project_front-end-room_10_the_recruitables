@@ -77,7 +77,7 @@ export function yearThreePlanetFiveQuestion() {
     let values = [];
     values.push(randomNumberGenerator(12) + 1);
     const numArr = [2, 3, 4, 5, 8, 10];
-    values.push(numArr[randomNumberGenerator(6)]);
+    values.push(numArr[randomNumberGenerator(numArr.length)]);
     if (Math.random() < 0.5) {
         return values;
     } else {

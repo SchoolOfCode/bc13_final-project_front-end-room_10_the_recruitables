@@ -6,7 +6,7 @@ export function yearFourPlanetOneQuestion() {
     let values = [];
     values.push(randomNumberGenerator(12) + 1);
     const numArr = [6, 7, 9];
-    values.push(numArr[randomNumberGenerator(3)]);
+    values.push(numArr[randomNumberGenerator(numArr.length)]);
     if (Math.random() < 0.5) {
         return values;
     } else {
@@ -18,10 +18,10 @@ export function yearFourPlanetOneAnswer(values, playerAnswer) {
     return [parseInt(playerAnswer) === correctAnswer, correctAnswer];
 }
 
-// Year 4 Planet 2 - "Adding and subtracting 1000 from a number.""
 
+// Year 4 Planet 2 - "Adding and subtracting 1000 from a number.""
 export function yearFourPlanetTwoQuestion() {
-    let initialValue = randomNumberGenerator(8001) + 1000; //Generates a number from 1000 to 9000
+    let initialValue = randomNumberGenerator(8001) + 1000; // Generates a number from 1000 to 9000
     let placeValueDecider = randomNumberGenerator(4);
     let change = 10 ** placeValueDecider;
     if (Math.random() < 0.5) {
@@ -29,9 +29,7 @@ export function yearFourPlanetTwoQuestion() {
     } else {
         return [initialValue, "+", change];
     }
-
 }
-
 export function yearFourPlanetTwoAnswer(values, playerAnswer) {
     let correctAnswer;
     if (values[1] === "-") {
@@ -46,17 +44,52 @@ export function yearFourPlanetTwoAnswer(values, playerAnswer) {
 //Year 4 Planet 3 - "Basic subtraction into the negative numbers."
 export function yearFourPlanetThreeQuestion() {
     let value1 = randomNumberGenerator(11);
-    let value2 = randomNumberGenerator(11) + value;
-     return [value1, value2]
-
-
+    let value2 = randomNumberGenerator(10) + value1 + 1;
+    return [value1, value2];
 }
 
 export function yearFourPlanetThreeAnswer(values, playerAnswer) {
-    let correctAnswer = values[0] -values[1]
+    let correctAnswer = values[0] - values[1];
     return [parseInt(playerAnswer) === correctAnswer, correctAnswer];
 }
 
+
+// Year 4 Planet 4 - "Sort numbers up to 10,000"
+export function yearFourPlanetFourQuestion() {
+    let values = [];
+    for (let i = 0; i < 5; i++) {
+        let randomNumber = randomNumberGenerator(10001);
+        while (values.includes(randomNumber)) {
+            randomNumber = randomNumberGenerator(10001);
+        }
+        values.push(randomNumber);
+    }
+    return values;
+}
+export function yearFourPlanetFourAnswer(values, playerAnswer) {
+    let sortedValues = values.sort((a, b) => {return a - b});
+    for (let i = 0; i < values.length; i++) {
+        if (sortedValues[i] !== playerAnswer[i]) {
+            return [false, sortedValues];
+        }
+    }
+    return [true, sortedValues];
+}
+
+
+// Year 4 Planet 5 - "Round to the nearest 10, 100, or 1000"
+export function yearFourPlanetFiveQuestion() {
+    let initialValue = randomNumberGenerator(1000) * 10 + randomNumberGenerator(9) + 1; // Generates a random number from 1 to 9999 which does not end in a zero
+    let roundPower = randomNumberGenerator(3) + 1;
+    let roundToNearest = 10 ** roundPower;
+    return [initialValue, roundToNearest];
+}
+export function yearFourPlanetFiveAnswer(values, playerAnswer) {
+    let decimalToRound = values[0] / values[1];
+    let nearestInteger = Math.round(decimalToRound);
+    let correctAnswer = nearestInteger * values[1];
+    return [parseInt(playerAnswer) === correctAnswer, correctAnswer];
+}
 
 
 // Year 4 Planet 6 - "Adding and subtracting measurements and then potentially covert them"
@@ -93,3 +126,28 @@ export function yearFourPlanetSixAnswer(values, playerAnswer) {
     return [Number(playerAnswer) === correctAnswer, correctAnswer];
 }
 
+// Year 4 Planet 7 - "Multiples of numbers from 0 to 12"
+// Year 4 Planet 9 - "Multiples of numbers from 0 to 12 with a time limit"
+export function yearFourPlanetSevenQuestion() {
+    let value1 = randomNumberGenerator(13);
+    let value2 = randomNumberGenerator(13);
+    return [value1, value2];
+}
+export function yearFourPlanetSevenAnswer(values, playerAnswer) {
+    let correctAnswer = values[0] * values[1];
+    return [parseInt(playerAnswer) === correctAnswer, correctAnswer];
+}
+
+
+// Year 4 Planet 8 - "Multiplying three numbers together"
+export function yearFourPlanetEightQuestion() {
+    let values = [];
+    for (let i = 0; i < 2; i++) {
+        values.push(randomNumberGenerator(11))
+    }
+    return values;
+}
+export function yearFourPlanetEightAnswer(values, playerAnswer) {
+    let correctAnswer = values.reduce((a, b) => a * b );
+    return [parseInt(playerAnswer) === correctAnswer, correctAnswer];
+}
