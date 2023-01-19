@@ -1,19 +1,19 @@
 .gameDiv {
-  margin-top: 3cm;
+  margin-top: 2cm;
   display: flex;
   flex-direction: column;
   flex: 1;
   align-items: center;
   justify-content: center;
   /* justify-content: space-evenly; */
-  height: 14cm;
+  height: 50vh;
   width: 100vw;
   /* background-color: rgb(4, 39, 114); */
   color: #fff;
 }
 
 .buttonGame {
-  padding: 2vw;
+  padding: 1vw;
   border-radius: 10px;
   background: var(--colour-orange-transparent);
   border-color: var(--colour-orange);
@@ -31,7 +31,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 15cm;
+  height: 60vh;
   width: 50vw;
   max-width: 70vw;
   min-width: 30vw;

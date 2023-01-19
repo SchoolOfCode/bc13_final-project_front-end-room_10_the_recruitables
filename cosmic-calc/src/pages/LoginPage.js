@@ -29,8 +29,8 @@ function Login() {
     onAuthStateChanged(auth, (user) => {
       if (user) {
         setUser(user);
+        navigate("/profile");
       } else {
-        // play();
         setUser(null);
       }
     });
