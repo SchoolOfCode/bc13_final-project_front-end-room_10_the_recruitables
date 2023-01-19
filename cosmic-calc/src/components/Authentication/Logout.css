@@ -6,8 +6,13 @@
   background-color: rgba(0, 0, 255, 0);
   width: 10vw;
   height: 10vh;
-  min-width: 140px;
+  min-width: 170px;
   min-height: 100px;
   text-align: center;
-  margin-top: 0.3%;
+  margin-top: 0.25cm;
+}
+
+.navButtonLogout:hover {
+  transition: transform 0.3s ease-in-out 0s;
+  transform: rotate(360deg);
 }

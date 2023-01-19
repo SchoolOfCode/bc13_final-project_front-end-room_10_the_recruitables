@@ -70,21 +70,16 @@ export const Progress = () => {
   // then maps over the levels array which returns a button for each new item in the array. Array increases depending on score. New item every 5 points = new button returned.
   return (
     <div className="progress-page">
-      <div className="grid-container">
-        {levels.map((levels, index) => (
-          <LevelButtons
-            clickToGame={handleGotoLevel}
-            key={levels.level}
-            ButtonNumber={index + 1 + "-unlock"}
-          />
-        ))}
-        {lockLevels.map((level, index) => (
-          <LevelButtons key={levels.level} ButtonNumber={index + 1 + "-lock"} />
-        ))}
-      </div>
-      <div className="progress-score">
-        <h1>Score: {context.score}</h1>
-      </div>
+      {levels.map((levels, index) => (
+        <LevelButtons
+          clickToGame={handleGotoLevel}
+          key={levels.level}
+          ButtonNumber={index + 1 + "-unlock"}
+        />
+      ))}
+      {lockLevels.map((level, index) => (
+        <LevelButtons key={levels.level} ButtonNumber={index + 1 + "-lock"} />
+      ))}
     </div>
   );
 };
