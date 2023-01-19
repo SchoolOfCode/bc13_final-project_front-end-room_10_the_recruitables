@@ -91,7 +91,7 @@ export default function Game() {
         //setNumberLineImg(numberLineArray[numberLineID].img_url);
         console.log("This is an image", newNumberLineArray[randomID].img_url);
         setNumberLineImg(newNumberLineArray[randomID].img_url);
-        setCorrectAnswer1(numberLineArray[randomID].answer);
+        setCorrectAnswer1(newNumberLineArray[randomID].answer);
         //setNumberLineImg("");
       }
     }
@@ -100,8 +100,15 @@ export default function Game() {
 
   const checkAnswer1 = () => {
     setNoOfQuestions(noOfQuestions + 1);
+    let questionResult = "";
     //let correctAnswer = numberLineArray[numberLineID].answer;
-    let questionResult = correctAnswer1 === answerInput;
+    if (correctAnswer1 == answerInput) {
+      questionResult = true;
+    } else {
+      questionResult = false;
+    }
+    console.log("Answer checked");
+    console.log(correctAnswer1, answerInput, questionResult);
     setAnswerInput("");
     if (questionResult === true) {
       playCorrect();
@@ -119,7 +126,7 @@ export default function Game() {
     let randomID = randomNumberGenerator(10);
     setNumberLineImg(numberLineArray[randomID].img_url);
     setCorrectAnswer1(numberLineArray[randomID].answer);
-    setAnswerInput("");
+    //setAnswerInput("");
     setResult("");
     setAnswerVisible(false);
   };
