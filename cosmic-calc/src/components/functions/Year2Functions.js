@@ -1,5 +1,6 @@
 import randomNumberGenerator from "./rngFunction";
 
+
 // Year 2 Planet 2 - "Add or subtract in steps of 10 from any number"
 // REWORK SO THAT EDGE CASES (i.e.: 85) DO NOT HAVE A VERY HIGH CHANCE (50%) OF GIVING THE SAME QUESTION (Add 10 to 85 one time)
 export function yearTwoPlanetTwoQuestion() {

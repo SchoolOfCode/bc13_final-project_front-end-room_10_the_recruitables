@@ -1,5 +1,6 @@
 import randomNumberGenerator from "./rngFunction";
 
+
 // Year 3 Planet 1 - "Given a number, add or subtract 1, 10, or 100."
 export function yearThreePlanetOneQuestion() {
     let initialValue = randomNumberGenerator(801) + 100; // Generates a number from 100 to 900
@@ -72,36 +73,43 @@ export function yearThreePlanetFourAnswer(values, playerAnswer) {
 
 
 // Year 3 Planet 5 - "Multiples of 2, 3, 4, 5, 8, 10."
-
 export function yearThreePlanetFiveQuestion() {
-    let value1 = randomNumberGenerator(12) + 1;
-    const numArr = [2, 3, 4, 5, 8, 10]
-    let value2 = numArr[Math.floor(Math.random() * numArr.length)]
-    return [value1, value2];
+    let values = [];
+    values.push(randomNumberGenerator(12) + 1);
+    const numArr = [2, 3, 4, 5, 8, 10];
+    values.push(numArr[randomNumberGenerator(6)]);
+    if (Math.random() < 0.5) {
+        return values;
+    } else {
+        return values.reverse();
+    }
 }
 export function yearThreePlanetFiveAnswer(values, playerAnswer) {
     let correctAnswer = values[0] * values[1];
     return [parseInt(playerAnswer) === correctAnswer, correctAnswer];
 }
 
-// Year 3 Planet 6 - "Adding and subtracting measurements" 
 
+// Year 3 Planet 8 - "Adding and subtracting measurements"
 export function yearThreePlanetEightQuestion() {
-    let initialValue = randomNumberGenerator(801) + 100; 
-    let placeValueDecider = randomNumberGenerator(3);
-    let change = 10 ** placeValueDecider;
-    if (Math.random() < 0.5) {
-        return [initialValue, "-", change];
+    let unitsPossible = ["m", "cm", "mm", "l", "ml", "kg", "g"];
+    let unitsQuestion = unitsPossible[randomNumberGenerator(7)];
+    let operation = ["+", "-"][randomNumberGenerator(2)];
+    let values = [randomNumberGenerator(1000) + 1];
+    if (operation === "+") {
+        let maxValue2 = 1000 - values[0];
+        values.push(randomNumberGenerator(maxValue2) + 1);
     } else {
-        return [initialValue, "+", change];
+        values.push(randomNumberGenerator(values[0]) + 1);
     }
+    return [values[0], operation, values[1], unitsQuestion];
 }
 export function yearThreePlanetEightAnswer(values, playerAnswer) {
     let correctAnswer;
-    if (values[1] === "-") {
-        correctAnswer = values[0] - values[2];
-    } else {
+    if (values[1] === "+") {
         correctAnswer = values[0] + values[2];
+    } else {
+        correctAnswer = values[0] - values[2];
     }
-    return [parseInt(playerAnswer) === correctAnswer, correctAnswer];
+    return [Number(playerAnswer) === correctAnswer, correctAnswer];
 }
