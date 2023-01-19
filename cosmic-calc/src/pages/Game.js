@@ -59,7 +59,8 @@ export default function Game() {
 
   const [numberLineID, setNumberLineID] = useState(0);
   const [numberLineImg, setNumberLineImg] = useState("");
-  const [numberLineArray, setNumberLineArray] = useState([{}]);
+  const [correctAnswer1, setCorrectAnswer1] = useState(0);
+  const [numberLineArray, setNumberLineArray] = useState([]);
 
   useEffect(() => {
     async function getNumberLine() {
@@ -74,7 +75,9 @@ export default function Game() {
       );
       const data = await response.json();
       if (data.payload) {
+        console.log(`data.payload: ${data.payload}`);
         console.log(data.payload);
+        let newNumberLineArray = data.payload;
         setNumberLineArray(data.payload);
         console.log(numberLineArray);
         console.log(numberLineArray);
@@ -85,9 +88,11 @@ export default function Game() {
         setNumberLineID(randomID);
         console.log(numberLineArray[numberLineID]);
         // setNumberLineImg(numberLineArray[numberLineID].img_url);
-        // setNumberLineImg(numberLineArray[numberLineID].img_url);
-        setNumberLineImg('')
-        console.log(numberLineImg);
+        //setNumberLineImg(numberLineArray[numberLineID].img_url);
+        console.log("This is an image", newNumberLineArray[randomID].img_url);
+        setNumberLineImg(newNumberLineArray[randomID].img_url);
+        setCorrectAnswer1(numberLineArray[randomID].answer);
+        //setNumberLineImg("");
       }
     }
     getNumberLine();
@@ -95,8 +100,8 @@ export default function Game() {
 
   const checkAnswer1 = () => {
     setNoOfQuestions(noOfQuestions + 1);
-    let correctAnswer = numberLineArray[numberLineID].answer;
-    let questionResult = (correctAnswer = answerInput);
+    //let correctAnswer = numberLineArray[numberLineID].answer;
+    let questionResult = correctAnswer1 === answerInput;
     setAnswerInput("");
     if (questionResult === true) {
       playCorrect();
@@ -105,15 +110,15 @@ export default function Game() {
       newQuestion1();
     } else {
       playWrong();
-      setResult(correctAnswer);
+      setResult(correctAnswer1);
       setAnswerVisible(true);
     }
   };
 
   const newQuestion1 = () => {
     let randomID = randomNumberGenerator(10);
-    setNumberLineID(randomID);
-    setNumberLineImg(numberLineArray[numberLineID].img_url);
+    setNumberLineImg(numberLineArray[randomID].img_url);
+    setCorrectAnswer1(numberLineArray[randomID].answer);
     setAnswerInput("");
     setResult("");
     setAnswerVisible(false);
@@ -350,12 +355,11 @@ export default function Game() {
           src={numberLineImg}
           answerInput={answerInput}
           noOfQuestions={noOfQuestions}
-          value1={""}
+          value1={"Which number is missing?"}
           setAnswerInput={setAnswerInput}
           checkAnswer={checkAnswer1}
         />
         <Score score={score} />
-       
       </div>
     );
   } else if (points < 20) {
