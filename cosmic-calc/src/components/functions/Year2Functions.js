@@ -2,40 +2,33 @@ import randomNumberGenerator from "./rngFunction";
 
 
 // Year 2 Planet 2 - "Add or subtract in steps of 10 from any number"
-// REWORK SO THAT EDGE CASES (i.e.: 85) DO NOT HAVE A VERY HIGH CHANCE (50%) OF GIVING THE SAME QUESTION (Add 10 to 85 one time)
 export function yearTwoPlanetTwoQuestion() {
     let initialValue = randomNumberGenerator(101);
-    if (initialValue > 90) {
-        // If the initial value is too large to increase, as it will go over 100
-        let steps = randomNumberGenerator(9) + 1;
-        return [initialValue, "-", steps];
-
-    } else if (initialValue < 10) {
-        // If the initial value is too small to decrease, as it will become negative
-        let steps = randomNumberGenerator(9) + 1;
-        return [initialValue, "+", steps];
-
-    } else {
-        // Choose if it will increase or decrease
-        let operation;
-        let maxSteps;
-        if (Math.random() < 0.5) {
-            operation = "+";
-            maxSteps = 9 - (initialValue - initialValue % 10) / 10;
-        } else {
-            operation = "-";
-            maxSteps = (initialValue - initialValue % 10) / 10;
+    let potentialOutcome = initialValue % 10;
+    let potentialOutcomeArray = [];
+    while (potentialOutcome <= 100) {
+        if (potentialOutcome !== initialValue) {
+            potentialOutcomeArray.push(potentialOutcome - initialValue);
         }
-        let steps = randomNumberGenerator(maxSteps) + 1;
-        return [initialValue, operation, steps];
+        potentialOutcome += 10;
     }
+    let randomIndex = randomNumberGenerator(potentialOutcomeArray.length);
+    let change = potentialOutcomeArray[randomIndex];
+    let operation;
+    if (change > 0) {
+        operation = "+";
+    } else {
+        operation = "-";
+        change = Math.abs(change);
+    }
+    return [initialValue, operation, change];
 }
 export function yearTwoPlanetTwoAnswer(values, playerAnswer) {
     if (values[1] === "+") {
-        let correctAnswer = values[0] + 10 * values[2];
+        let correctAnswer = values[0] + values[2];
         return [parseInt(playerAnswer) === correctAnswer, correctAnswer];
     } else {
-        let correctAnswer = values[0] - 10 * values[0];
+        let correctAnswer = values[0] - values[2];
         return [parseInt(playerAnswer) === correctAnswer, correctAnswer];
     }
 }
@@ -61,6 +54,7 @@ export function yearTwoPlanetThreeQuestion() {
 export function yearTwoPlanetThreeAnswer(values, playerAnswer) {
     return [parseInt(playerAnswer) === values[0], values[0]];
 }
+
 
 // Year 2 Planet 5 - "Add together three single-digit numbers"
 export function yearTwoPlanetFiveQuestion() {
@@ -112,8 +106,18 @@ export function yearTwoPlanetSevenQuestion() {
 }
 export function yearTwoPlanetSevenAnswer(values, playerAnswer) {
     let sortedValues = values.sort((a, b) => {return a - b});
+    let playerArray;
+    if (playerAnswer.includes(", ")) {
+        playerArray = playerAnswer.split(", ").map((x) => {return Number(x)});
+    } else if (playerAnswer.includes(",")) {
+        playerArray = playerAnswer.split(",").map((x) => {return Number(x)});
+    } else if (playerAnswer.includes(" ")) {
+        playerArray = playerAnswer.split(" ").map((x) => {return Number(x)});
+    } else {
+        return [false, sortedValues]; // If the user does not consistently split their values
+    }
     for (let i = 0; i < values.length; i++) {
-        if (sortedValues[i] !== playerAnswer[i]) {
+        if (sortedValues[i] !== playerArray[i]) {
             return [false, sortedValues];
         }
     }
@@ -124,20 +128,17 @@ export function yearTwoPlanetSevenAnswer(values, playerAnswer) {
 // Year 2 Planet 8 - "Compare numbers (<, =, >)"
 export function yearTwoPlanetEightQuestion() {
     let value1 = randomNumberGenerator(21);
-    if (Math.random() < (1 / 3)) {
-        return [value1, "=", value1];
-    } else {
-        let value2 = randomNumberGenerator(21);
-        while (value1 === value2) {
-            value2 = randomNumberGenerator(21);
-        }
-        if (value1 > value2) {
-            return [value1, ">", value2];
-        } else {
-            return [value1, "<", value2];
-        }
-    }
+    let value2 = randomNumberGenerator(21);
+    return [value1, value2];
 }
 export function yearTwoPlanetEightAnswer(values, playerAnswer) {
-    return [playerAnswer === values[1], values[1]];
+    let correctAnswer;
+    if (values[0] < values[1]) {
+        correctAnswer = "<";
+    } else if (values[0] > values[1]) {
+        correctAnswer = ">";
+    } else {
+        correctAnswer = "=";
+    }
+    return [playerAnswer === correctAnswer, correctAnswer];
 }

@@ -1,197 +1,529 @@
-import React, { useState } from "react";
-import tenPenny from "../images/coins/10p.webp";
-import onePenny from "../images/coins/1p.png";
-import "./yearTwoGames.css";
+import React, { useState, useEffect, useContext } from "react";
+import "./game.css";
+import astronaut from "../images/Background_Buttons/Astronaut.png";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "./firebaseConfig";
+import useSound from "use-sound";
+import correct from ".././components/sound/FX/correct.mp3";
+import wrong from ".././components/sound/FX/wrong.mp3";
+import win from ".././components/sound/FX/win.mp3";
+import { ScoreContext } from "../components/score/ScoreContext";
+import AnswerCard from "../components/answercard/AnswerCard";
+import QuestionCard from "../components/questioncard/QuestionCard";
+import ShapesQuestionCard from "../components/shapesQuestionCard/ShapesQuestionCard";
+import Score from "../components/score/Score";
+import PicQuestionCard from "../components/picQuestionCard/picQuestionCard";
+import QuestionCardThreeDig from "../components/questioncard/QuestionCardColumn";
+import QuestionCardFraction from "../components/questioncard/QuestionCardFraction";
+import QuestionCardOrder from "../components/questioncard/QuestionCardOrder";
+import QuestionCardCompare from "../components/questioncard/QuestionCardCompare";
+
+
+import {
+  yearTwoPlanetTwoQuestion,
+  yearTwoPlanetTwoAnswer,
+  yearTwoPlanetThreeQuestion,
+  yearTwoPlanetThreeAnswer,
+  yearTwoPlanetFiveQuestion,
+  yearTwoPlanetFiveAnswer,
+  yearTwoPlanetSixQuestion,
+  yearTwoPlanetSixAnswer,
+  yearTwoPlanetSevenQuestion,
+  yearTwoPlanetSevenAnswer,
+  yearTwoPlanetEightQuestion,
+  yearTwoPlanetEightAnswer
+} from "../components/functions/Year2Functions";
+  
 
 export default function YearTwoGames() {
-  // 1. COINS GAME - year two, planet 4
-  // const [tenPence, setTenPence] = useState(Math.floor(Math.random() * 10) + 1);
-  // const [onePence, setOnePence] = useState(Math.floor(Math.random() * 10) + 1);
-  //const [answer, setAnswer] = useState(0);
+  const [score, setScore] = useState(0);
+  const [answerInput, setAnswerInput] = useState("");
+  const [answerVisible, setAnswerVisible] = useState(false);
+  const [noOfQuestions, setNoOfQuestions] = useState(1);
+  const [playCorrect] = useSound(correct, { interrupt: true, volume: 0.3 });
+  const [playWrong] = useSound(wrong, { interrupt: true, volume: 0.3 });
+  const [playWin] = useSound(win, {
+    playbackRate: +1.1,
+    interrupt: true,
+    volume: 0.5,
+  });
+  const [result, setResult] = useState("");
+  const context = useContext(ScoreContext);
+  let points = 30;
+  //let points = context.score;
+  console.log(context);
 
-  // function giveRandomCoin() {
-  //   setTenPence(Math.floor(Math.random() * 10) + 1);
-  //   setOnePence(Math.floor(Math.random() * 10) + 1);
-  // }
+  console.log("Points = ", points);
 
-  // let tenPenceTotal = tenPence * 10;
-  // let onePenceTotal = onePence * 1;
-  // let total = tenPenceTotal + onePenceTotal;
+  useEffect(() => {
+    if (noOfQuestions === 6) {
+      onAuthStateChanged(auth, (user) => {
+        updateScore(score, user);
+      });
+    }
+  }, [noOfQuestions, score]);
 
-  // function checkAnswer() {
-  //   console.log("answer", answer);
-  //   if (String(answer) === String(total)) {
-  //     console.log("correct");
-  //   } else {
-  //     console.log("wrong");
-  //   }
-  // }
-
-  // 2. SHAPE GAME - planet
-  // const [shape, setShape] = useState("square");
-
-  // const shapes = [
-  //   "square",
-  //   "rectangle",
-  //   "circle",
-  //   "triangle",
-  //   "pentagon",
-  //   "hexagon",
-  //   "heptagon",
-  //   "octagon",
-  // ];
-
-  // function giveRandomShape() {
-  //   setShape(shapes[Math.floor(Math.random() * shapes.length)]);
-  // }
-
-  // function checkAnswer(answer) {
-  //   if (answer === shape) {
-  //     console.log("correct");
-  //   } else {
-  //     console.log("wrong");
-  //   }
-  // }
-
-  // 3. ADDING AND SUBTRACTING 1 COINS
-  const [num1, setNum1] = useState(Math.floor(Math.random() * 10) + 1);
-  const [num2, setNum2] = useState(Math.floor(Math.random() * 10) + 1);
-  const [operation, setOperation] = useState();
-  const [answer, setAnswer] = useState(0);
-  const [total, setTotal] = useState(0);
-
-  function giveQuestion() {
-    setNum1(Math.floor(Math.random() * 10) + 1);
-    setNum2(Math.floor(Math.random() * 10) + 1);
-    setOperation(Math.random() < 0.5 ? "+" : "-");
+  if (noOfQuestions === 6) {
+    playWin();
   }
 
-  function checkAnswer() {
-    if (num1 > num2 ) {
-      setOperation("-");
-      setTotal(num1 - num2);
-    } else {
-      setOperation("+");
-      setTotal(num1 + num2);
-    }
-    if (String(answer) === String(total)) {
-      console.log("correct");
-    }
-    else {
-      console.log("wrong");
-    }
+  // Year 2 Planet 2 - "Addition"
+  const [initialValue, setInitialValue] = useState(0);
+  const [operation,  setOperation] = useState("+");
+  const [steps, setSteps] = useState(0);
+
+  useEffect(() => {
+    let [initialValue, operation, steps] = yearTwoPlanetTwoQuestion();
+    console.log("initialValue = ", initialValue);
+    console.log("operation = ", operation);
+    console.log("steps = ", steps);
+    setInitialValue(initialValue);
+    setOperation(operation);
+    setSteps(steps);
+  }, []);
+
+const checkAnswer2 = () => {
+  setNoOfQuestions(noOfQuestions + 1);
+  let [questionResult, correctAnswer] = yearTwoPlanetTwoAnswer(
+    [initialValue, operation, steps], answerInput
+  );
+console.log(questionResult, correctAnswer);
+setAnswerInput("");
+if (questionResult === true) {
+  playCorrect();
+  setResult("Correct!");
+  setScore(Number(score) + 1);
+  newQuestion2();
+} else {
+  playWrong();
+  setResult(correctAnswer);
+  setAnswerVisible(true);
+}
+};
+
+const newQuestion2 = () => {
+  let [initialValue, operation, steps] = yearTwoPlanetTwoQuestion();
+  console.log("initialValue = ", initialValue);
+  console.log("operation = ", operation);
+  console.log("steps = ", steps);
+  setInitialValue(initialValue);
+  setOperation(operation);
+  setSteps(steps);
+  let [questionResult, correctAnswer] = yearTwoPlanetTwoAnswer(
+    [initialValue, operation, steps], answerInput
+  );
+  console.log(questionResult, correctAnswer);
+  setAnswerInput("");
+  setResult("");
+  setAnswerVisible(false);
+  return [initialValue, operation, steps];
+};
+
+// Year 2 Planet 3 - converting words to numbers
+const [number, setNumber] = useState(0);
+const [word, setWord] = useState("");
+
+useEffect(() => {
+  let [number, word] = yearTwoPlanetThreeQuestion();
+  setNumber(number);
+  setWord(word);
+}, []);
+
+const checkAnswer3 = () => {
+  console.log("Check answer called");
+  setNoOfQuestions(noOfQuestions + 1);
+  let [questionResult, correctAnswer] = yearTwoPlanetThreeAnswer(
+    [number, word],
+    answerInput
+  );
+  setAnswerInput("");
+  if (questionResult === true) {
+    playCorrect();
+    setResult("Correct!");
+    setScore(Number(score) + 1);
+    newQuestion3();
+  } else {
+    playWrong();
+    setResult(correctAnswer);
+    setAnswerVisible(true);
   }
+};
+
+const newQuestion3 = () => {
+  let [number, word] = yearTwoPlanetThreeQuestion();
+  setNumber(number);
+  setWord(word);
+  console.log("number = ", number); 
+  console.log("word = ", word);
+  let [questionResult, correctAnswer] = yearTwoPlanetThreeAnswer(
+    [number, word],
+    answerInput
+  );
+  setAnswerInput("");
+  setResult("");
+  setAnswerVisible(false);
+  return [questionResult, correctAnswer];
+};
 
 
 
+// Year 2 Planet 5 - "Add together three single-digit numbers"
+const [firstNumber, setFirstNumber] = useState(0);
+const [secondNumber, setSecondNumber] = useState(0);
+const [thirdNumber, setThirdNumber] = useState(0);
+
+useEffect(() => {
+  let [firstNumber, secondNumber, thirdNumber] = yearTwoPlanetFiveQuestion();
+  setFirstNumber(firstNumber);
+  setSecondNumber(secondNumber);
+  setThirdNumber(thirdNumber);
+}, []);
+
+const checkAnswer5 = () => {
+  setNoOfQuestions(noOfQuestions + 1);
+  let [questionResult, correctAnswer] = yearTwoPlanetFiveAnswer(
+    [firstNumber, secondNumber, thirdNumber],
+    answerInput
+  );
+  setAnswerInput("");
+  if (questionResult === true) {
+    playCorrect();
+    setResult("Correct!");
+    setScore(Number(score) + 1);
+    newQuestion5();
+  } else {
+    playWrong();
+    setResult(correctAnswer);
+    setAnswerVisible(true);
+  }
+}
+
+const newQuestion5 = () => {
+  let [firstNumber, secondNumber, thirdNumber] = yearTwoPlanetFiveQuestion();
+  setFirstNumber(firstNumber);
+  setSecondNumber(secondNumber);
+  setThirdNumber(thirdNumber);
+  let [questionResult, correctAnswer] = yearTwoPlanetFiveAnswer(
+    [firstNumber, secondNumber, thirdNumber],
+    answerInput
+  );
+  setAnswerInput("");
+  setResult("");
+  setAnswerVisible(false);
+  return [questionResult, correctAnswer];
+}
+
+// Year 2 Planet 6 - "Fractions of numbers"
+const [numerator, setNumerator] = useState(0);
+const [denominator, setDenominator] = useState(0);
+const [otherValue, setOtherValue] = useState(0);
+
+useEffect(() => {
+  let [numerator, denominator, otherValue] = yearTwoPlanetSixQuestion();
+  setNumerator(numerator);
+  setDenominator(denominator);
+  setOtherValue(otherValue);
+}, []);
+
+const checkAnswer6 = () => {
+  setNoOfQuestions(noOfQuestions + 1);
+  let [questionResult, correctAnswer] = yearTwoPlanetSixAnswer(
+    [numerator, denominator, otherValue],
+    answerInput
+  );
+  setAnswerInput("");
+  if (questionResult === true) {
+    playCorrect();
+    setResult("Correct!");
+    setScore(Number(score) + 1);
+    newQuestion6();
+  } else {
+    playWrong();
+    setResult(correctAnswer);
+    setAnswerVisible(true);
+  }
+}
+
+const newQuestion6 = () => {
+  let [numerator, denominator, otherValue] = yearTwoPlanetSixQuestion();
+  setNumerator(numerator);
+  setDenominator(denominator);
+  setOtherValue(otherValue);
+  let [questionResult, correctAnswer] = yearTwoPlanetSixAnswer(
+    [numerator, denominator, otherValue],
+    answerInput
+  );
+  setAnswerInput("");
+  setResult("");
+  setAnswerVisible(false);
+  return [questionResult, correctAnswer];
+}
 
 
-  return (
-    <div className="bigdaddy">
-      {/* 1. THESE ARE THE BUTTONS FOR THE COINS GAME */}
-      {/* <button onClick={giveRandomCoin}>Give me a coin</button>
-      <div className="images-div">
-        {Array.from({ length: tenPence }, (_, i) => (
-          <img key={i} src={tenPenny} alt="random" className="ten-pence-pic" />
-        ))}
-        {Array.from({ length: onePence }, (_, i) => (
-          <img key={i} src={onePenny} alt="random" className="one-pence-pic" />
-        ))}
+// Year 2 Planet 7 - "Sort a set of numbers into order"
+const [firstNumberOrder, setFirstNumberOrder] = useState(0);
+const [secondNumberOrder, setSecondNumberOrder] = useState(0);
+const [thirdNumberOrder, setThirdNumberOrder] = useState(0);
+const [fourthNumberOrder, setFourthNumberOrder] = useState(0);
+
+useEffect(() => {
+  let [firstNumberOrder, secondNumberOrder, thirdNumberOrder, fourthNumberOrder] = yearTwoPlanetSevenQuestion();
+  setFirstNumberOrder(firstNumberOrder);
+  setSecondNumberOrder(secondNumberOrder);
+  setThirdNumberOrder(thirdNumberOrder);
+  setFourthNumberOrder(fourthNumberOrder);
+}, []);
+
+const checkAnswer7 = () => {
+  setNoOfQuestions(noOfQuestions + 1);
+  let [questionResult, correctAnswer] = yearTwoPlanetSevenAnswer(
+    [firstNumberOrder, secondNumberOrder, thirdNumberOrder, fourthNumberOrder],
+    answerInput
+  );
+  setAnswerInput("");
+  if (questionResult === true) {
+    playCorrect();
+    setResult("Correct!");
+    setScore(Number(score) + 1);
+    newQuestion7();
+  } else {
+    playWrong();
+    setResult(correctAnswer);
+    setAnswerVisible(true);
+  }
+}
+
+const newQuestion7 = () => {
+  let [firstNumberOrder, secondNumberOrder, thirdNumberOrder, fourthNumberOrder] = yearTwoPlanetSevenQuestion();
+  setFirstNumberOrder(firstNumberOrder);
+  setSecondNumberOrder(secondNumberOrder);
+  setThirdNumberOrder(thirdNumberOrder);
+  setFourthNumberOrder(fourthNumberOrder);
+  let [questionResult, correctAnswer] = yearTwoPlanetSevenAnswer(
+    [firstNumberOrder, secondNumberOrder, thirdNumberOrder, fourthNumberOrder],
+    answerInput
+  );
+  console.log("result", questionResult, correctAnswer);
+  setAnswerInput("");
+  setResult("");
+  setAnswerVisible(false);
+  return [questionResult, correctAnswer];
+}
+
+// Year 2 Planet 8 - "Compare numbers (<, =, >)"
+const [firstNumberCompare, setFirstNumberCompare] = useState(0);
+const [secondNumberCompare, setSecondNumberCompare] = useState(0);
+
+useEffect(() => {
+  let [firstNumberCompare, secondNumberCompare] = yearTwoPlanetEightQuestion();
+  setFirstNumberCompare(firstNumberCompare);
+  setSecondNumberCompare(secondNumberCompare);
+}, []);
+
+const checkAnswer8 = () => {
+  setNoOfQuestions(noOfQuestions + 1);
+  let [questionResult, correctAnswer] = yearTwoPlanetEightAnswer(
+    [firstNumberCompare, secondNumberCompare],
+    answerInput
+  );
+  setAnswerInput("");
+  if (questionResult === true) {
+    playCorrect();
+    setResult("Correct!");
+    setScore(Number(score) + 1);
+    newQuestion8();
+  } else {
+    playWrong();
+    setResult(correctAnswer);
+    setAnswerVisible(true);
+  }
+}
+
+const newQuestion8 = () => {
+  let [firstNumberCompare, secondNumberCompare] = yearTwoPlanetEightQuestion();
+  setFirstNumberCompare(firstNumberCompare);
+  setSecondNumberCompare(secondNumberCompare);
+  let [questionResult, correctAnswer] = yearTwoPlanetEightAnswer(
+    [firstNumberCompare, secondNumberCompare],
+    answerInput
+  );
+  setAnswerInput("");
+  setResult("");
+  setAnswerVisible(false);
+  return [questionResult, correctAnswer];
+}
+
+
+
+// posting the score to the database
+  const updateScore = async (score, user) => {
+    let email = await user.email;
+
+    const response = await fetch(
+      `http://localhost:3001/api/users/email/${email}`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ total_score: score }),
+      }
+    );
+    const data = await response.json();
+    console.log(data);
+  };
+
+
+  if (noOfQuestions === 6) {
+    return (
+      <div className="endDiv">
+        <img className="astronaut" src={astronaut} alt="astronaut" />
+        <div className="endGameDiv">
+          <h1>Game Over!</h1>
+          <h2>Your final score was {score}</h2>
+          <button
+            className="endGameButton"
+            onClick={() => {
+              setNoOfQuestions(1);
+              setAnswerVisible(false);
+              setScore(0);
+            }}
+          >
+            Play Again
+          </button>
+        </div>
       </div>
-      <input
-        className="input"
-        onChange={(e) => setAnswer(e.target.value)}
-        onKeyDown={(e) => {
-          if (e.key === "Enter") {
-            checkAnswer();
-            setAnswer("");
-          }
-        }}
-        {/* 2. THESE ARE THE BUTTONS FOR THE SHAPES GAME - NEED TO ADD SHAPES IMAGE */}
-
-      {/* <h1>Click on the {shape}?</h1>
-      <div className="shapes-div">
-        <button onClick={giveRandomShape} className="new-shape-button">
-          Give me a shape
-        </button>
-        <button
-          className="square-shape"
-          onClick={() => checkAnswer("square")}
-        ></button>
-        <button
-          className="rectangle-shape"
-          onClick={() => checkAnswer("rectangle")}
-        ></button>
-        <button
-          className="circle-shape"
-          onClick={() => checkAnswer("circle")}
-        ></button>
-        <button
-          className="triangle-shape"
-          onClick={() => checkAnswer("triangle")}
-        ></button>
-        <button
-          className="pentagon-shape"
-          onClick={() => checkAnswer("pentagon")}
-        ></button>
-        <button
-          className="hexagon-shape"
-          onClick={() => checkAnswer("hexagon")}
-        ></button>
-        {/* <button
-          className="heptagon-shape"
-          onClick={() => checkAnswer("heptagon")}
-        >
-          heptagon
-        </button> */}
-        {/* <button
-          className="octagon-shape"
-          onClick={() => checkAnswer("octagon")}
-        ></button>
-      </div> */} 
-
-      {/* 3. Adding and Subtracting 1 coins */}
-      {/* <button onClick={giveQuestion}>BUTTTTON</button>
-      <h1>
-        {num1} {operation} {num2}
-      </h1> */}
-      {/* <div className="images-div">
-        {Array.from({ length: num1 }, (_, i) => (
-          <img key={i} src={onePenny} alt="random" className="one-pence-pic" />
-        ))}
-        <h1>{operation}</h1>
-        {Array.from({ length: num2 }, (_, i) => (
-          <img key={i} src={onePenny} alt="random" className="one-pence-pic" />
-        ))}
-        {"="}
-      </div> */}
-      {/* <input
-        className="input"
-        onChange={(e) => setAnswer(e.target.value)}
-        onKeyDown={(e) => {
-          if (e.key === "Enter") {
-            checkAnswer();
-            giveQuestion();
-            setAnswer("");
-          }
-        }}
-      /> */}
-      <button onClick={checkAnswer}>BUTTTTON</button>
-      <h1>
-        {num1} {operation} {num2}
-      </h1>
-      <input
-        className="input"
-        onChange={(e) => setAnswer(e.target.value)}
-        onKeyDown={(e) => {
-          if (e.key === "Enter") {
-            checkAnswer();
-            giveQuestion();
-            setAnswer("");
-          }
-        }}
-      /> 
-
+    );
+  } else if (points === 5) {
+  return (
+    <div>
+      <div className="gameDiv">
+        <AnswerCard
+          answerVisible={answerVisible}
+          result={result}
+          newQuestion={newQuestion2}
+        />
+        <QuestionCard
+          answerInput={answerInput}
+          noOfQuestions={noOfQuestions}
+          value1={initialValue}
+          operation={operation}
+          value2={steps}
+          equals={"="}
+          setAnswerInput={setAnswerInput}
+          checkAnswer={checkAnswer2}
+        />
+        <Score score={score} />
+      </div>
     </div>
   );
+} else if (points === 10) {
+  console.log("10 points = ", points);
+  return (
+    <div className="gameDiv">
+      <AnswerCard
+        answerVisible={answerVisible}
+        result={result}
+        newQuestion={newQuestion3}
+      />
+      <QuestionCard
+        answerInput={answerInput}
+        noOfQuestions={noOfQuestions}
+        value1={"What is"}
+        operation={word}
+        value2={"in numbers?"}
+        setAnswerInput={setAnswerInput}
+        checkAnswer={checkAnswer3}
+      />
+      <Score score={score} />
+    </div>
+  );
+} else if (points === 15) {
+  console.log("15 points = ", points);
+  return (
+    <div className="gameDiv">
+      <AnswerCard
+        answerVisible={answerVisible}
+        result={result}
+        newQuestion={newQuestion5}
+      />
+      <QuestionCardThreeDig
+        answerInput={answerInput}
+        noOfQuestions={noOfQuestions}
+        value1={firstNumber}
+        operation={"+"}
+        value2={secondNumber}
+        operation2={"+"}
+        value3={thirdNumber}
+        equals={"="}
+        setAnswerInput={setAnswerInput}
+        checkAnswer={checkAnswer5}
+      />
+      <Score score={score} />
+    </div>
+  );
+} else if (points === 20) {
+  console.log("20 points = ", points);
+  return (
+    <div className="gameDiv">
+      <AnswerCard
+        answerVisible={answerVisible}
+        result={result}
+        newQuestion={newQuestion6}
+      />
+      <QuestionCardFraction
+        answerInput={answerInput}
+        noOfQuestions={noOfQuestions}
+        value1={numerator}
+        value2={denominator}
+        value3={otherValue}
+        setAnswerInput={setAnswerInput}
+        checkAnswer={checkAnswer6}
+      />
+      <Score score={score} />
+    </div>
+  );
+} else if (points === 25) {
+  console.log("25 points = ", points);
+  return (
+    <div className="gameDiv">
+      <AnswerCard
+        answerVisible={answerVisible}
+        result={result}
+        newQuestion={newQuestion7}
+      />
+      <QuestionCardOrder
+        answerInput={answerInput}
+        noOfQuestions={noOfQuestions}
+        value1={firstNumberOrder}
+        value2={secondNumberOrder}
+        value3={thirdNumberOrder}
+        value4={fourthNumberOrder}
+        setAnswerInput={setAnswerInput}
+        checkAnswer={checkAnswer7}
+      />
+      <Score score={score} />
+    </div>
+  );
+} else if (points === 30) {
+  console.log("30 points = ", points);
+  return (
+    <div className="gameDiv">
+      <AnswerCard
+        answerVisible={answerVisible}
+        result={result}
+        newQuestion={newQuestion8}
+      />
+      <QuestionCardCompare
+        answerInput={answerInput}
+        noOfQuestions={noOfQuestions}
+        value1={firstNumberCompare}
+        value2={secondNumberCompare}
+        setAnswerInput={setAnswerInput}
+        checkAnswer={checkAnswer8}
+      />
+      <Score score={score} />
+    </div>
+  );
+}
 }

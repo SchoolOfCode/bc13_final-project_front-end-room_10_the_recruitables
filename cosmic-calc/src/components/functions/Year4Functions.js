@@ -68,8 +68,18 @@ export function yearFourPlanetFourQuestion() {
 }
 export function yearFourPlanetFourAnswer(values, playerAnswer) {
     let sortedValues = values.sort((a, b) => {return a - b});
+    let playerArray;
+    if (playerAnswer.includes(", ")) {
+        playerArray = playerAnswer.split(", ").map((x) => {return Number(x)});
+    } else if (playerAnswer.includes(",")) {
+        playerArray = playerAnswer.split(",").map((x) => {return Number(x)});
+    } else if (playerAnswer.includes(" ")) {
+        playerArray = playerAnswer.split(" ").map((x) => {return Number(x)});
+    } else {
+        return [false, sortedValues]; // If the user does not consistently split their values
+    }
     for (let i = 0; i < values.length; i++) {
-        if (sortedValues[i] !== playerAnswer[i]) {
+        if (sortedValues[i] !== playerArray[i]) {
             return [false, sortedValues];
         }
     }
@@ -142,7 +152,7 @@ export function yearFourPlanetSevenAnswer(values, playerAnswer) {
 // Year 4 Planet 8 - "Multiplying three numbers together"
 export function yearFourPlanetEightQuestion() {
     let values = [];
-    for (let i = 0; i < 2; i++) {
+    for (let i = 0; i < 3; i++) {
         values.push(randomNumberGenerator(11))
     }
     return values;
