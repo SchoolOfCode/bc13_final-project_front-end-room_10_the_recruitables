@@ -37,8 +37,18 @@ export function yearThreePlanetTwoQuestion() {
 }
 export function yearThreePlanetTwoAnswer(values, playerAnswer) {
     let sortedValues = values.sort((a, b) => {return a - b});
+    let playerArray;
+    if (playerAnswer.includes(", ")) {
+        playerArray = playerAnswer.split(", ").map((x) => {return Number(x)});
+    } else if (playerAnswer.includes(",")) {
+        playerArray = playerAnswer.split(",").map((x) => {return Number(x)});
+    } else if (playerAnswer.includes(" ")) {
+        playerArray = playerAnswer.split(" ").map((x) => {return Number(x)});
+    } else {
+        return [false, sortedValues]; // If the user does not consistently split their values
+    }
     for (let i = 0; i < values.length; i++) {
-        if (sortedValues[i] !== playerAnswer[i]) {
+        if (sortedValues[i] !== playerArray[i]) {
             return [false, sortedValues];
         }
     }
@@ -50,7 +60,7 @@ export function yearThreePlanetTwoAnswer(values, playerAnswer) {
 export function yearThreePlanetThreeQuestion() {
     let values = [];
     for (let i = 0; i < 2; i++) {
-        values.push(randomNumberGenerator(401) + 100);
+        values.push(randomNumberGenerator(401) + 100); // Generate a random number between 100 and 500
     }
     return values;
 }
