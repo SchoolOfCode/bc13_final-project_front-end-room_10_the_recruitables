@@ -54,7 +54,7 @@
 
 
 .square-shape{
-  background-image: url(../../images/Shapes/square.png);
+  /* background-image: url(../../images/Shapes/square.png); */
   background-color: transparent;
    background-size: contain;
    width: 8vw;
@@ -64,7 +64,7 @@
 
 
 .rectangle-shape {
-   background-image: url(../../images/Shapes/rectangle.png);
+   /* background-image: url(../../images/Shapes/rectangle.png); */
    background-color: transparent;
    background-size: contain;
    width: 10vw;
@@ -75,7 +75,7 @@
 
 .circle-shape {
    border: white solid 1px;
-   background-image: url(../../images/Shapes/circle.png);
+   /* background-image: url(../../images/Shapes/circle.png); */
    background-position: center;
    background-color: transparent;
    background-size: contain;
@@ -87,7 +87,7 @@
 
 .triangle-shape {
    border: white solid 1px;
-   background-image: url(../../images/Shapes/triangle.png);
+   /* background-image: url(../../images/Shapes/triangle.png); */
    background-position: center;
    background-color: transparent;
    background-size: contain;
@@ -99,7 +99,7 @@
 
 .pentagon-shape {
    border: white solid 1px;
-   background-image: url(../../images/Shapes/pentagon.png);
+   /* background-image: url(../../images/Shapes/pentagon.png); */
    background-position: center;
    background-color: transparent;
    background-size: contain;
@@ -110,7 +110,7 @@
 
 .hexagon-shape {
    border: white solid 1px;
-   background-image: url(../../images/Shapes/hexagon.png);
+   /* background-image: url(../../images/Shapes/hexagon.png); */
    background-position: center;
    background-color: transparent;
    background-size: contain;
@@ -121,7 +121,7 @@
 
 .octagon-shape {
    border: white solid 1px;
-   background-image: url(../../images/Shapes/octagon.png);
+   /* background-image: url(../../images/Shapes/octagon.png); */
    background-position: center;
    background-color: transparent;
    background-size: contain;

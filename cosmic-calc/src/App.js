@@ -90,10 +90,13 @@ export default function App() {
 
   return (
     <div>
-      {authed.currentUser ? (
+      {/* {authed.currentUser ? ( */}
         <div className="navBarPageDiv">
           <img src={logo} alt="logo" className="logo" />
-          {location.pathname !== "/profile" && (
+          <button onClick={navigateToYearTwo} className="navButtonYearTwo">
+            Year Two
+          </button>
+          {/* {location.pathname !== "/profile" && (
             <button
               onClick={navigateToProfile}
               onMouseOver={playHover}
@@ -128,7 +131,7 @@ export default function App() {
             <div className="progress-score">
               <h1>Score: {context.score}</h1>
             </div>
-          )}
+          )} */}
           <Logout />
           {/* <button onClick={navigateToTimedGame} className="navButtonTimedGame">
             TimedGame
@@ -147,8 +150,8 @@ export default function App() {
             year-Two
           </button>
           </button> */}
-        </div>
-      ) : (
+        {/* </div> */}
+      {/* ) : (
         <div className="navBarLoginDiv">
           {location.pathname !== "/" && (
             <button
@@ -167,7 +170,7 @@ export default function App() {
             >
               Register
             </button>
-          )}
+          )} */}
         </div>
       )}
 

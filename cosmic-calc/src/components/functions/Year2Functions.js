@@ -62,6 +62,7 @@ export function yearTwoPlanetThreeAnswer(values, playerAnswer) {
     return [parseInt(playerAnswer) === values[0], values[0]];
 }
 
+
 // Year 2 Planet 5 - "Add together three single-digit numbers"
 export function yearTwoPlanetFiveQuestion() {
     let values = [];
@@ -124,20 +125,18 @@ export function yearTwoPlanetSevenAnswer(values, playerAnswer) {
 // Year 2 Planet 8 - "Compare numbers (<, =, >)"
 export function yearTwoPlanetEightQuestion() {
     let value1 = randomNumberGenerator(21);
-    if (Math.random() < (1 / 3)) {
-        return [value1, "=", value1];
-    } else {
-        let value2 = randomNumberGenerator(21);
-        while (value1 === value2) {
-            value2 = randomNumberGenerator(21);
-        }
-        if (value1 > value2) {
-            return [value1, ">", value2];
-        } else {
-            return [value1, "<", value2];
-        }
-    }
+    let value2 = randomNumberGenerator(21);
+    return [value1, value2];
 }
+
 export function yearTwoPlanetEightAnswer(values, playerAnswer) {
-    return [playerAnswer === values[1], values[1]];
+    let correctAnswer;
+    if (values[0] < values[1]) {
+        correctAnswer = "<";
+    } else if (values[0] > values[1]) {
+        correctAnswer = ">";
+    } else {
+        correctAnswer = "=";
+    }
+    return [playerAnswer === correctAnswer, correctAnswer];
 }
