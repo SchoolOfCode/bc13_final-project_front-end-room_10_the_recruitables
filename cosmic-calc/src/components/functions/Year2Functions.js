@@ -108,11 +108,11 @@ export function yearTwoPlanetSevenAnswer(values, playerAnswer) {
     let sortedValues = values.sort((a, b) => {return a - b});
     let playerArray;
     if (playerAnswer.includes(", ")) {
-        playerArray = playerAnswer.split(", ").map((x) => {return Number(x);});
+        playerArray = playerAnswer.split(", ").map((x) => {return Number(x)});
     } else if (playerAnswer.includes(",")) {
-        playerArray = playerAnswer.split(",").map((x) => {return Number(x);});
+        playerArray = playerAnswer.split(",").map((x) => {return Number(x)});
     } else if (playerAnswer.includes(" ")) {
-        playerArray = playerAnswer.split(" ").map((x) => {return Number(x);});
+        playerArray = playerAnswer.split(" ").map((x) => {return Number(x)});
     } else {
         return [false, sortedValues]; // If the user does not consistently split their values
     }
