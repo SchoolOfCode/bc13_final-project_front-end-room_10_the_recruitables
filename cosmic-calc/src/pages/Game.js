@@ -402,13 +402,13 @@ export default function Game() {
           result={result}
           newQuestion={newQuestion2}
         />
-        <ShapesQuestionCard
+        {/* <ShapesQuestionCard
           answerInput={answerInput}
           noOfQuestions={noOfQuestions}
           shape={shape}
           // setAnswerInput={setAnswerInput}
           checkAnswer={checkAnswer2}
-        />
+        /> */}
         <Score score={score} />
       </div>
     );

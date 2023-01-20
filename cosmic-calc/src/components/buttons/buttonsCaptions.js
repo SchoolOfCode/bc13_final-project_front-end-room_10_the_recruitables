@@ -1,18 +1,19 @@
 import React from "react";
-import "./levelButtons.css";
+import "./buttonsCaptions.css";
 
-function LevelButtons({ ButtonNumber, clickToGame, text }) {
+function ButtonsCaption({ ButtonNumber, clickToGame, text }) {
   return (
     <div className="levelButton">
       <button
         className={"levelButtons"}
         onClick={clickToGame}
         id={`levelButton-${ButtonNumber}`}
+        text
       >
-        <span>{text}</span>
+        {/* BUTTON {ButtonNumber} */}
       </button>
     </div>
   );
 }
 
-export default LevelButtons;
+export default ButtonsCaption;
