@@ -18,6 +18,8 @@ import useSound from "use-sound";
 import buttonFX from "./components/sound/FX/buttonFX.mp3";
 import YearTwo from "./pages/YearTwoGames";
 import logo from "../src/images/Logo.png";
+import YearThreeGames from "./pages/YearThreeGames";
+import YearFourGames from "./pages/YearFourGames";
 
 
 export default function App() {
@@ -86,6 +88,15 @@ export default function App() {
   const navigateToYearTwo = () => {
     navigate("/year-two-games");
   };
+
+  const navigateToYearThree = () => {
+    navigate("/year-three-games");
+  };
+
+  const navigateToYearFour = () => {
+    navigate("/year-four-games");
+  };
+
   console.log(authed.currentUser);
 
   return (
@@ -95,6 +106,12 @@ export default function App() {
           <img src={logo} alt="logo" className="logo" />
           <button onClick={navigateToYearTwo} className="navButtonYearTwo">
             Year Two
+          </button>
+          <button onClick={navigateToYearThree} className="navButtonYearThree">
+            Year Three
+          </button>
+          <button onClick={navigateToYearFour} className="navButtonYearFour">
+            Year Four
           </button>
           {/* {location.pathname !== "/profile" && (
             <button
@@ -172,7 +189,7 @@ export default function App() {
             </button>
           )} */}
         </div>
-      )}
+    
 
       <Routes>
         <Route path="/" element={<Login />} />
@@ -206,6 +223,22 @@ export default function App() {
           element={
             <ProtectedRoute>
               <Game />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/year-three-games"
+          element={
+            <ProtectedRoute>
+              <YearThreeGames />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/year-four-games"
+          element={
+            <ProtectedRoute>
+              <YearFourGames />
             </ProtectedRoute>
           }
         />

@@ -142,7 +142,7 @@ export function yearFourPlanetSevenAnswer(values, playerAnswer) {
 // Year 4 Planet 8 - "Multiplying three numbers together"
 export function yearFourPlanetEightQuestion() {
     let values = [];
-    for (let i = 0; i < 2; i++) {
+    for (let i = 0; i < 3; i++) {
         values.push(randomNumberGenerator(11))
     }
     return values;

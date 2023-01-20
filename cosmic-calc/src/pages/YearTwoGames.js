@@ -13,7 +13,7 @@ import QuestionCard from "../components/questioncard/QuestionCard";
 import ShapesQuestionCard from "../components/shapesQuestionCard/ShapesQuestionCard";
 import Score from "../components/score/Score";
 import PicQuestionCard from "../components/picQuestionCard/picQuestionCard";
-import QuestionCardThreeDig from "../components/questioncard/QuestionCardThreeDig";
+import QuestionCardThreeDig from "../components/questioncard/QuestionCardColumn";
 import QuestionCardFraction from "../components/questioncard/QuestionCardFraction";
 import QuestionCardOrder from "../components/questioncard/QuestionCardOrder";
 import QuestionCardCompare from "../components/questioncard/QuestionCardCompare";
