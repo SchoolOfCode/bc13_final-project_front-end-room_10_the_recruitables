@@ -154,6 +154,36 @@ export default function Game() {
     return [questionResult, correctAnswer];
   };
 
+  //yearOnePlanetThree
+  const [starsCounter1, setStarsCounter1] = useState("");
+  const [correctAnswer1, setCorrectAnswer1] = useState(0);
+  const [starsCounterArray, setStarsCounterArray] = useState([]);
+
+  useEffect(() => {
+    async function getStarsCounters() {
+      const response = await fetch(
+        `http://localhost:3001/api/mathsQuestions/starsCounters`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      const data = await response.json();
+      if (data.payload) {
+        let newStarsCounter = data.payload;
+        setNumberLineArray(newStarsCounter);
+        let starID1 = randomNumberGenerator(10);
+        let starID2 = randomNumberGenerator(10);
+        //setNumberLineID(randomID);
+        setNumberLineImg(newNumberLineArray[randomID].img_url);
+        setCorrectAnswer1(newNumberLineArray[randomID].answer);
+      }
+    }
+    getNumberLine();
+  }, []);
+
   // yearOnePlanetFour
   const [Y1P4knownValue, setY1P4knownValue] = useState(0);
   const [Y1P4totalValue, setY1P4totalValue] = useState(0);
