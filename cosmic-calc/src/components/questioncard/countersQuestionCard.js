@@ -1,27 +1,37 @@
 import React from "react";
 import "./questionCard.css";
-import Star from "../Star/star";
 
 export default function CountersQuestionCard(props) {
-  let Value1Arr = [];
-  Value1Arr.length = props.value1;
-  let Value2Arr = [];
-  Value2Arr.length = props.value2;
-  console.log(Value1Arr, Value2Arr);
+  const starArray2 = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
   return (
     <div className="questionDiv">
       <h2 className="h2QuestionGame">{props.noOfQuestions + ")  "}</h2>
-      <div>
-        {Value1Arr.map((star) => {
-          return <Star />;
-        })}
+      <div className="value1and2stars">
+        {starArray2
+          .filter((star, index) => index < props.value1)
+          .map((star) => {
+            return (
+              <img
+                className="starsimage"
+                src="https://i.ibb.co/kmp9kkp/OneStar.png"
+                alt="star-counter"
+              />
+            );
+          })}
       </div>
       <h2>{props.operation}</h2>
-      <div>
-        {Value2Arr.map((star) => {
-          return <Star />;
-        })}
-        ;
+      <div className="value1and2stars">
+        {starArray2
+          .filter((star, index) => index < props.value2)
+          .map((star) => {
+            return (
+              <img
+                className="starsimage"
+                src="https://i.ibb.co/kmp9kkp/OneStar.png"
+                alt="star-counter"
+              />
+            );
+          })}
       </div>
       <input
         className="inputGame"

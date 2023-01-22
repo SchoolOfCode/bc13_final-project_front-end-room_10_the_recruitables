@@ -1,9 +1,16 @@
-import React from "react";
+import star from "../../images/StarCounters/OneStar.png";
 
-export default function Star(props) {
-  return (
-    <div>
-      <img src="../../images/StarCounters/OneStar.png" alt="star_counter"></img>
-    </div>
-  );
-}
+export const starArray = [
+  star,
+  star,
+  star,
+  star,
+  star,
+  star,
+  star,
+  star,
+  star,
+  star,
+  star,
+  star,
+];

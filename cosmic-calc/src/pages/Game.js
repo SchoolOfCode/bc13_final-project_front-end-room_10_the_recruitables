@@ -159,13 +159,15 @@ export default function Game() {
   const [Y1P3value1, setY1P3Value1] = useState(0);
   const [Y1P3value2, setY1P3Value2] = useState(0);
   const [Y1P3operation, setY1P3Operation] = useState("");
+
   useEffect(() => {
     let [Y1P3value1, Y1P3operation, Y1P3value2] = yearOnePlanetFiveQuestion();
+    console.log(Y1P3value1, Y1P3value2, Y1P3operation);
     setY1P3Value1(Y1P3value1);
     setY1P3Operation(Y1P3operation);
     setY1P3Value2(Y1P3value2);
-    console.log(Y1P3value1, Y1P3value2, Y1P3operation);
   }, []);
+
   const checkAnswer3 = () => {
     console.log("Check answer called");
     setNoOfQuestions(noOfQuestions + 1);
@@ -186,6 +188,7 @@ export default function Game() {
       setAnswerVisible(true);
     }
   };
+
   const newQuestion3 = () => {
     let [Y1P3value1, Y1P3operation, Y1P3value2] = yearOnePlanetFiveQuestion();
     setY1P3Value1(Y1P3value1);
@@ -473,8 +476,8 @@ export default function Game() {
           answerInput={answerInput}
           noOfQuestions={noOfQuestions}
           value1={Y1P3value1}
-          operation={setY1P3Operation}
-          value2={Y1P3value1}
+          operation={Y1P3operation}
+          value2={Y1P3value2}
           setAnswerInput={setAnswerInput}
           checkAnswer={checkAnswer3}
         />
