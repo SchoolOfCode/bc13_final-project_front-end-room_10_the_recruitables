@@ -10,6 +10,7 @@ import win from ".././components/sound/FX/win.mp3";
 import { ScoreContext } from "../components/score/ScoreContext";
 import AnswerCard from "../components/answercard/AnswerCard";
 import QuestionCard from "../components/questioncard/QuestionCard";
+import CountersQuestionCard from "../components/questioncard/countersQuestionCard";
 import ShapesQuestionCard from "../components/shapesQuestionCard/ShapesQuestionCard";
 import Score from "../components/score/Score";
 import PicQuestionCard from "../components/picQuestionCard/picQuestionCard";
@@ -40,7 +41,7 @@ export default function Game() {
   });
   const [result, setResult] = useState("");
   const context = useContext(ScoreContext);
-  let points = 5;
+  let points = 8;
   //let points = context.score;
   console.log(context);
 
@@ -155,34 +156,50 @@ export default function Game() {
   };
 
   //yearOnePlanetThree
-  const [starsCounter1, setStarsCounter1] = useState("");
-  const [correctAnswer1, setCorrectAnswer1] = useState(0);
-  const [starsCounterArray, setStarsCounterArray] = useState([]);
-
+  const [Y1P3value1, setY1P3Value1] = useState(0);
+  const [Y1P3value2, setY1P3Value2] = useState(0);
+  const [Y1P3operation, setY1P3Operation] = useState("");
   useEffect(() => {
-    async function getStarsCounters() {
-      const response = await fetch(
-        `http://localhost:3001/api/mathsQuestions/starsCounters`,
-        {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
-      const data = await response.json();
-      if (data.payload) {
-        let newStarsCounter = data.payload;
-        setNumberLineArray(newStarsCounter);
-        let starID1 = randomNumberGenerator(10);
-        let starID2 = randomNumberGenerator(10);
-        //setNumberLineID(randomID);
-        setNumberLineImg(newNumberLineArray[randomID].img_url);
-        setCorrectAnswer1(newNumberLineArray[randomID].answer);
-      }
-    }
-    getNumberLine();
+    let [Y1P3value1, Y1P3operation, Y1P3value2] = yearOnePlanetFiveQuestion();
+    setY1P3Value1(Y1P3value1);
+    setY1P3Operation(Y1P3operation);
+    setY1P3Value2(Y1P3value2);
+    console.log(Y1P3value1, Y1P3value2, Y1P3operation);
   }, []);
+  const checkAnswer3 = () => {
+    console.log("Check answer called");
+    setNoOfQuestions(noOfQuestions + 1);
+    let [questionResult, correctAnswer] = yearOnePlanetFiveAnswer(
+      [Y1P3value1, Y1P3operation, Y1P3value2],
+      answerInput
+    );
+    console.log(questionResult, correctAnswer);
+    setAnswerInput("");
+    if (questionResult === true) {
+      playCorrect();
+      setResult("Correct!");
+      setScore(Number(score) + 1);
+      newQuestion3();
+    } else {
+      playWrong();
+      setResult(correctAnswer);
+      setAnswerVisible(true);
+    }
+  };
+  const newQuestion3 = () => {
+    let [Y1P3value1, Y1P3operation, Y1P3value2] = yearOnePlanetFiveQuestion();
+    setY1P3Value1(Y1P3value1);
+    setY1P3Operation(Y1P3operation);
+    setY1P3Value2(Y1P3value2);
+    let [questionResult, correctAnswer] = yearOnePlanetFiveAnswer(
+      [Y1P3value1, Y1P3operation, Y1P3value2],
+      answerInput
+    );
+    setAnswerInput("");
+    setResult("");
+    setAnswerVisible(false);
+    return [questionResult, correctAnswer];
+  };
 
   // yearOnePlanetFour
   const [Y1P4knownValue, setY1P4knownValue] = useState(0);
@@ -438,6 +455,28 @@ export default function Game() {
           shape={shape}
           // setAnswerInput={setAnswerInput}
           checkAnswer={checkAnswer2}
+        />
+        <Score score={score} />
+      </div>
+    );
+  } else if (points === 8) {
+    console.log("In counters game!");
+    console.log("points = ", points);
+    return (
+      <div className="gameDiv">
+        <AnswerCard
+          answerVisible={answerVisible}
+          result={result}
+          newQuestion={newQuestion3}
+        />
+        <CountersQuestionCard
+          answerInput={answerInput}
+          noOfQuestions={noOfQuestions}
+          value1={Y1P3value1}
+          operation={setY1P3Operation}
+          value2={Y1P3value1}
+          setAnswerInput={setAnswerInput}
+          checkAnswer={checkAnswer3}
         />
         <Score score={score} />
       </div>
