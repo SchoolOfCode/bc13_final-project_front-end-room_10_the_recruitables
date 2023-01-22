@@ -51,7 +51,7 @@ const YearThreeGames = () => {
     });
     const [result, setResult] = useState("");
     const context = useContext(ScoreContext);
-    let points = 25;
+    let points = 10;
     //let points = context.score;
     console.log(context);
   
@@ -119,9 +119,54 @@ const newQuestion1 = () => {
 
 
 // Year 3 planet 2 - "Given a set of 5 numbers between 0 and 1000 and sort them."
+const [firstNumberOrder, setFirstNumberOrder] = useState(0);
+const [secondNumberOrder, setSecondNumberOrder] = useState(0);
+const [thirdNumberOrder, setThirdNumberOrder] = useState(0);
+const [fourthNumberOrder, setFourthNumberOrder] = useState(0);
 
+useEffect(() => {
+  let [firstNumberOrder, secondNumberOrder, thirdNumberOrder, fourthNumberOrder] = yearThreePlanetTwoQuestion();
+  setFirstNumberOrder(firstNumberOrder);
+  setSecondNumberOrder(secondNumberOrder);
+  setThirdNumberOrder(thirdNumberOrder);
+  setFourthNumberOrder(fourthNumberOrder);
+}, []);
 
+const checkAnswer2 = () => {
+  setNoOfQuestions(noOfQuestions + 1);
+  let [questionResult, correctAnswer] = yearThreePlanetTwoAnswer(
+    [firstNumberOrder, secondNumberOrder, thirdNumberOrder, fourthNumberOrder],
+    answerInput
+  );
+  setAnswerInput("");
+  if (questionResult === true) {
+    playCorrect();
+    setResult("Correct!");
+    setScore(Number(score) + 1);
+    newQuestion2();
+  } else {
+    playWrong();
+    setResult(correctAnswer);
+    setAnswerVisible(true);
+  }
+}
 
+const newQuestion2 = () => {
+  let [firstNumberOrder, secondNumberOrder, thirdNumberOrder, fourthNumberOrder] = yearThreePlanetTwoQuestion();
+  setFirstNumberOrder(firstNumberOrder);
+  setSecondNumberOrder(secondNumberOrder);
+  setThirdNumberOrder(thirdNumberOrder);
+  setFourthNumberOrder(fourthNumberOrder);
+  let [questionResult, correctAnswer] = yearThreePlanetTwoAnswer(
+    [firstNumberOrder, secondNumberOrder, thirdNumberOrder, fourthNumberOrder],
+    answerInput
+  );
+  console.log("result", questionResult, correctAnswer);
+  setAnswerInput("");
+  setResult("");
+  setAnswerVisible(false);
+  return [questionResult, correctAnswer];
+}
 
 
 // Year 3 planet 3 - "Add together two 3-digit numbers"
@@ -367,6 +412,28 @@ useEffect(() => {
     </div>
   );
 }else if (points === 10) {
+  console.log("25 points = ", points);
+  return (
+    <div className="gameDiv">
+      <AnswerCard
+        answerVisible={answerVisible}
+        result={result}
+        newQuestion={newQuestion2}
+      />
+      <QuestionCardOrder
+        answerInput={answerInput}
+        noOfQuestions={noOfQuestions}
+        value1={firstNumberOrder}
+        value2={secondNumberOrder}
+        value3={thirdNumberOrder}
+        value4={fourthNumberOrder}
+        setAnswerInput={setAnswerInput}
+        checkAnswer={checkAnswer2}
+      />
+      <Score score={score} />
+    </div>
+  );
+} else if (points === 15) {
     return (
       <div>
         <div className="gameDiv">
@@ -388,7 +455,7 @@ useEffect(() => {
         </div>
       </div>
     );
-  } else if (points === 15) {
+  } else if (points === 20) {
     return (
       <div>
         <div className="gameDiv">
@@ -410,7 +477,7 @@ useEffect(() => {
         </div>
       </div>
     );
-  } else if (points === 20) {
+  } else if (points === 25) {
     return (
       <div>
         <div className="gameDiv">
@@ -433,7 +500,7 @@ useEffect(() => {
         </div>
       </div>
     );
-  } else if (points === 25) {
+  } else if (points === 30) {
     return (
       <div>
         <div className="gameDiv">

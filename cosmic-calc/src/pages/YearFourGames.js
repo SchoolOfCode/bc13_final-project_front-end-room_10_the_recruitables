@@ -13,13 +13,14 @@ import QuestionCard from "../components/questioncard/QuestionCard";
 import ShapesQuestionCard from "../components/shapesQuestionCard/ShapesQuestionCard";
 import Score from "../components/score/Score";
 import PicQuestionCard from "../components/picQuestionCard/picQuestionCard";
-import QuestionCardThreeDig from "../components/questioncard/QuestionCardColumn";
+import QuestionCardThreeDig from "../components/questioncard/QuestionCardThreeDig";
 import QuestionCardFraction from "../components/questioncard/QuestionCardFraction";
 import QuestionCardOrder from "../components/questioncard/QuestionCardOrder";
 import QuestionCardCompare from "../components/questioncard/QuestionCardCompare";
 import QuestionCardColumn from "../components/questioncard/QuestionCardColumn";
 import QuestionCardUnit from "../components/questioncard/QuestionCardUnit";
-
+import QuestionCardTimer from "../components/questioncard/QuestionCardTimer";
+import QuestionCardRound from "../components/questioncard/QuestionCardRound";
 
 import {
     yearFourPlanetOneQuestion,
@@ -55,7 +56,7 @@ const YearFourGames = () => {
     });
     const [result, setResult] = useState("");
     const context = useContext(ScoreContext);
-    let points = 40;
+    let points = 45;
     //let points = context.score;
     console.log(context);
   
@@ -120,8 +121,6 @@ const YearFourGames = () => {
 const [firstInt, setFirstInt] = useState(0);
 const [secondInt, setSecondInt] = useState(0);
 const [operation, setOperation] = useState("+");
-
-
 
 useEffect(() => {
     let [firstInt, secondInt, operation] = yearFourPlanetTwoQuestion();
@@ -208,8 +207,101 @@ useEffect(() => {
     }
 
     // Year 4 Planet 4 - "Sort numbers up to 10,000"
-
+    const [firstNumberOrder, setFirstNumberOrder] = useState(0);
+    const [secondNumberOrder, setSecondNumberOrder] = useState(0);
+    const [thirdNumberOrder, setThirdNumberOrder] = useState(0);
+    const [fourthNumberOrder, setFourthNumberOrder] = useState(0);
+    
+    useEffect(() => {
+      let [firstNumberOrder, secondNumberOrder, thirdNumberOrder, fourthNumberOrder] = yearFourPlanetFourQuestion();
+      setFirstNumberOrder(firstNumberOrder);
+      setSecondNumberOrder(secondNumberOrder);
+      setThirdNumberOrder(thirdNumberOrder);
+      setFourthNumberOrder(fourthNumberOrder);
+    }, []);
+    
+    const checkAnswer4 = () => {
+      setNoOfQuestions(noOfQuestions + 1);
+      let [questionResult, correctAnswer] = yearFourPlanetFourAnswer(
+        [firstNumberOrder, secondNumberOrder, thirdNumberOrder, fourthNumberOrder],
+        answerInput
+      );
+      setAnswerInput("");
+      if (questionResult === true) {
+        playCorrect();
+        setResult("Correct!");
+        setScore(Number(score) + 1);
+        newQuestion4();
+      } else {
+        playWrong();
+        setResult(correctAnswer);
+        setAnswerVisible(true);
+      }
+    }
+    
+    const newQuestion4 = () => {
+      let [firstNumberOrder, secondNumberOrder, thirdNumberOrder, fourthNumberOrder] = yearFourPlanetFourQuestion();
+      setFirstNumberOrder(firstNumberOrder);
+      setSecondNumberOrder(secondNumberOrder);
+      setThirdNumberOrder(thirdNumberOrder);
+      setFourthNumberOrder(fourthNumberOrder);
+      let [questionResult, correctAnswer] = yearFourPlanetFourAnswer(
+        [firstNumberOrder, secondNumberOrder, thirdNumberOrder, fourthNumberOrder],
+        answerInput
+      );
+      console.log("result", questionResult, correctAnswer);
+      setAnswerInput("");
+      setResult("");
+      setAnswerVisible(false);
+      return [questionResult, correctAnswer];
+    }
     // Year 4 Planet 5 - "Round to the nearest 10, 100, or 1000"
+const [firstNumberRound, setFirstNumberRound] = useState(0);
+const [secondNumberRound, setSecondNumberRound] = useState(0);
+
+useEffect(() => {
+    let [firstNumberRound, secondNumberRound] = yearFourPlanetFiveQuestion();
+    setFirstNumberRound(firstNumberRound);
+    setSecondNumberRound(secondNumberRound);
+    }, []);
+
+
+    const checkAnswer5 = () => {
+        setNoOfQuestions(noOfQuestions + 1);
+        let [questionResult, correctAnswer] = yearFourPlanetFiveAnswer(
+            [firstNumberRound, secondNumberRound],
+            answerInput
+        );
+        setAnswerInput("");
+        if (questionResult === true) {
+            playCorrect();
+            setResult("Correct!");
+            setScore(Number(score) + 1);
+            newQuestion5();
+        } else {
+            playWrong();
+            setResult(correctAnswer);
+            setAnswerVisible(true);
+        }
+        }
+    
+        const newQuestion5 = () => {
+        let [firstNumberRound, secondNumberRound] = yearFourPlanetFiveQuestion();
+        setFirstNumberRound(firstNumberRound);
+        setSecondNumberRound(secondNumberRound);
+        let [questionResult, correctAnswer] = yearFourPlanetFiveAnswer(
+            [firstNumberRound, secondNumberRound],
+            answerInput
+        );
+        setAnswerInput("");
+        setResult("");
+        setAnswerVisible(false);
+        return [questionResult, correctAnswer];
+        }
+    
+
+
+
 
     // Year 4 Planet 6 - "Adding and subtracting measurements and then potentially covert them"
     const [firstMeasurement, setFirstMeasurement] = useState(0);
@@ -345,6 +437,7 @@ useEffect(() => {
         setFirstMultiple(firstMultiple);
         setSecondMultiple(secondMultiple);
         setThirdMultiple(thirdMultiple);
+        console.log(firstMultiple, secondMultiple, thirdMultiple);
         let [questionResult, correctAnswer] = yearFourPlanetEightAnswer(
             [firstMultiple, secondMultiple, thirdMultiple],
             answerInput
@@ -463,7 +556,50 @@ useEffect(() => {
             </div>
             </div>
         );
-        } else if (points === 30) {
+        }else if (points === 20) {
+            console.log("25 points = ", points);
+            return (
+              <div className="gameDiv">
+                <AnswerCard
+                  answerVisible={answerVisible}
+                  result={result}
+                  newQuestion={newQuestion4}
+                />
+                <QuestionCardOrder
+                  answerInput={answerInput}
+                  noOfQuestions={noOfQuestions}
+                  value1={firstNumberOrder}
+                  value2={secondNumberOrder}
+                  value3={thirdNumberOrder}
+                  value4={fourthNumberOrder}
+                  setAnswerInput={setAnswerInput}
+                  checkAnswer={checkAnswer4}
+                />
+                <Score score={score} />
+              </div>
+            );
+          } else if (points === 25) {
+            return (
+                <div>
+                <div className="gameDiv">
+                    <AnswerCard
+                    answerVisible={answerVisible}
+                    result={result}
+                    newQuestion={newQuestion5}
+                    />
+                    <QuestionCardRound
+                    answerInput={answerInput}
+                    noOfQuestions={noOfQuestions}
+                    value1={firstNumberRound}
+                    value2={secondNumberRound}
+                    setAnswerInput={setAnswerInput}
+                    checkAnswer={checkAnswer5}
+                    />
+                    <Score score={score} />
+                </div>
+                </div>
+            );
+            } else if (points === 30) {
             return (
               <div>
                 <div className="gameDiv">
@@ -526,6 +662,7 @@ useEffect(() => {
                         value1={firstMultiple}
                         operation={"x"}
                         value2={secondMultiple}
+                        operation2={"x"}
                         value3={thirdMultiple}
                         equals={"="}
                         setAnswerInput={setAnswerInput}
@@ -534,11 +671,33 @@ useEffect(() => {
                   <Score score={score} />
                 </div>
               </div>
-            );
-                
-
-
-}
+            )
+}else if (points === 45) {
+    return (
+      <div>
+        <div className="gameDiv">
+          <AnswerCard
+            answerVisible={answerVisible}
+            result={result}
+            newQuestion={newQuestion7}
+          />
+          <QuestionCardTimer
+            astronaut={astronaut}
+            score={score}
+            answerInput={answerInput}
+            noOfQuestions={noOfQuestions}
+            value1={firstMultiple1}
+            operation={"x"}
+            value2={secondMultiple1}
+            equals={"="}
+            setAnswerInput={setAnswerInput}
+            checkAnswer={checkAnswer7}
+          />
+          <Score score={score} />
+        </div>
+      </div>
+    );
+  }
 }
 
 export default YearFourGames

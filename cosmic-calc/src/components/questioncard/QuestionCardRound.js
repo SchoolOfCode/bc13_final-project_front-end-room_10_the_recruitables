@@ -1,12 +1,12 @@
 import React from "react";
 import "./questionCard.css";
 
-export default function QuestionCard(props) {
+export default function QuestionCardRound(props) {
   return (
     <div className="questionDiv">
       <h2 className="h2QuestionGame">{props.noOfQuestions + ")  "}</h2>
       <h2 className="h2QuestionGame">
-        {props.value1} {props.operation} {props.value2} {props.equals}
+        Round {props.value1} to the nearest {props.value2} 
       </h2>
       <input
         className="inputGame"
