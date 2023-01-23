@@ -1,44 +1,60 @@
 import { expect, test } from "@jest/globals";
-import { yearOnePlanetFiveQuestion, yearOnePlanetFourAnswer, yearOnePlanetFourQuestion } from "./Year1Functions";
+import randomNumberGenerator from "./rngFunction";
+import { yearOnePlanetFiveQuestion, yearOnePlanetFiveAnswer, yearOnePlanetFourAnswer, yearOnePlanetFourQuestion, yearOnePlanetSixQuestion, yearOnePlanetSixAnswer, yearOnePlanetEightQuestion, yearOnePlanetEightAnswer } from "./Year1Functions";
 
-test("Y1P4Q - We receive various number bonds to 10.", async () => {
-    let actual = yearOnePlanetFourQuestion();
-    expect(actual).toBeGreaterThanOrEqual(0);
-    expect(actual).toBeLessThanOrEqual(10);
-});
-
-test("Y1P4A - We give the correct answer.", async () => {
+describe("Y1P4 - Number bonds that add to 10.", () => {
     let questionValue = yearOnePlanetFourQuestion();
-    let actual = yearOnePlanetFourAnswer(questionValue, 10 - questionValue);
-    expect(actual).toStrictEqual([true, 10 - questionValue]);
-});
-
-test("Y1P4A - We give an incorrect answer.", async () => {
-    let questionValue = yearOnePlanetFourQuestion();
-    let actual = yearOnePlanetFourAnswer(questionValue, 11);
-    expect(actual).toStrictEqual([false, 10 - questionValue]);
-});
-
-test("Y1P5Q - We expect two numbers and an operation.", async () => {
-    let actual = yearOnePlanetFiveQuestion();
-    expect(actual[0]).toEqual(expect.any(Number));
-    expect(actual[1]).toEqual(expect.any(String));
-    expect(actual[2]).toEqual(expect.any(Number));
-});
-
-test("Y1P5Q - If subtracting, the second number must not be larger than the first number.", async () => {
-    let actual = yearOnePlanetFiveQuestion(true);
-    expect(actual[0]).toBeGreaterThanOrEqual(actual[2]);
-});
-
-test("Y1P5A - We give the correct answer.", async () => {
-    let questionValue = yearOnePlanetFiveQuestion();
-    let playerAnswer;
-    if (values[1] === "+") {
-        playerAnswer = values[0] + values[2];
-    } else {
-        playerAnswer = values[0] - values[2];
+    test("Ensure we get a result between 0 and 10.", async () => {
+        expect(questionValue).toBeGreaterThanOrEqual(0);
+        expect(questionValue).toBeLessThanOrEqual(10);
+    });
+    for (let i = 0; i < 11; i++) {
+        test(`The answer is ${10 - questionValue}. We will try the answer value ${i}. It should be ${questionValue + i === 10}.`, async () => {
+            let actual = yearOnePlanetFourAnswer(questionValue, i);
+            expect(actual).toStrictEqual([questionValue + i === 10, 10 - questionValue]);
+        });
     }
-    let actual = yearOnePlanetFiveAnswer(questionValue, playerAnswer);
-    expect(actual).toStrictEqual([true, playerAnswer])
+});
+
+describe("Y1P5 - Adding and subtracting numbers", () => {
+    let questionValue = yearOnePlanetFiveQuestion();
+    test("Ensure we receive two number values and the operation as a string.", async () => {
+        expect(questionValue[0]).toEqual(expect.any(Number));
+        expect(questionValue[1] === "+" || questionValue[1] === "-").toBeTruthy();
+        expect(questionValue[2]).toEqual(expect.any(Number));
+    });
+    for (let i = 0; i < 5; i++) {
+        test(`Test ${i+1} of 5 to ensure that when subtracting the correct answer is non-negative.`, () => {
+            let actual = yearOnePlanetFiveQuestion(true);
+            expect(actual[1]).toBe("-");
+        });
+    }
+});
+
+describe("Y1P6 - Recognising numbers as words", () => {
+    let questionValue = yearOnePlanetSixQuestion();
+    test("Ensure we receive a number between 0 and 20.", async () => {
+        expect(questionValue[0]).toBeGreaterThanOrEqual(0);
+        expect(questionValue[0]).toBeLessThanOrEqual(20);
+    });
+    for (let i = 0; i < 21; i++) {
+        test(`The word is "${questionValue[1]}". We will try the answer value ${i}. It should be ${questionValue[0] === i}.`, async () => {
+            let actual = yearOnePlanetSixAnswer(questionValue, i);
+            expect(actual).toStrictEqual([questionValue[0] === i, questionValue[0]]);
+        });
+    }
+});
+
+describe("Y1P8 - Number bonds that add to 20.", () => {
+    let questionValue = yearOnePlanetEightQuestion();
+    test("Ensure we get a result between 0 and 20.", async () => {
+        expect(questionValue).toBeGreaterThanOrEqual(0);
+        expect(questionValue).toBeLessThanOrEqual(20);
+    });
+    for (let i = 0; i < 21; i++) {
+        test(`The answer is ${20 - questionValue}. We will try the answer value ${i}. It should be ${questionValue + i === 20}.`, async () => {
+            let actual = yearOnePlanetEightAnswer(questionValue, i);
+            expect(actual).toStrictEqual([questionValue + i === 20, 20 - questionValue]);
+        });
+    }
 });

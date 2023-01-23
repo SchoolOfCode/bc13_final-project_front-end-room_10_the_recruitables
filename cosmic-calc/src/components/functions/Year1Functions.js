@@ -21,7 +21,7 @@ export function yearOnePlanetFiveQuestion(subtractionTest) {
     operation = "-";
   }
   if (subtractionTest) {
-    operation = "-";
+    operation = "-"; // Solely for testing purposes
   }
   let values = [];
   for (let i = 0; i < 2; i++) {
