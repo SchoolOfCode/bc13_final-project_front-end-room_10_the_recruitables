@@ -497,6 +497,7 @@ useEffect(() => {
               newQuestion={newQuestion1}
             />
             <QuestionCard
+              h1 = "Can you use your multiples of 6, 7 and 9?"
               answerInput={answerInput}
               noOfQuestions={noOfQuestions}
               value1={firstNumber}
@@ -520,6 +521,7 @@ useEffect(() => {
               newQuestion={newQuestion2}
             />
             <QuestionCard
+              h1 = "Can you add and subtract 1000 from any number?"
               answerInput={answerInput}
               noOfQuestions={noOfQuestions}
               value1={firstInt}
@@ -543,6 +545,7 @@ useEffect(() => {
                 newQuestion={newQuestion3}
                 />
                 <QuestionCard
+                h1 = "Can you add and subtract using negative numbers?"
                 answerInput={answerInput}
                 noOfQuestions={noOfQuestions}
                 value1={firstNum}
@@ -566,6 +569,7 @@ useEffect(() => {
                   newQuestion={newQuestion4}
                 />
                 <QuestionCardOrder
+                  h1 = "Can you round nearest 10, 100, or 1000?"
                   answerInput={answerInput}
                   noOfQuestions={noOfQuestions}
                   value1={firstNumberOrder}
@@ -588,6 +592,7 @@ useEffect(() => {
                     newQuestion={newQuestion5}
                     />
                     <QuestionCardRound
+                    h1 = "Can you round nearest 10, 100, or 1000?"
                     answerInput={answerInput}
                     noOfQuestions={noOfQuestions}
                     value1={firstNumberRound}
@@ -609,6 +614,7 @@ useEffect(() => {
                     newQuestion={newQuestion6}
                   />
                   <QuestionCardUnit
+                    h1 = "Can you add measurements and convert them into other measurements?"
                     answerInput={answerInput}
                     noOfQuestions={noOfQuestions}
                     value1={firstMeasurement}
@@ -634,6 +640,7 @@ useEffect(() => {
                     newQuestion={newQuestion7}
                   />
                   <QuestionCard
+                    h1 = "Can you use your 12 times tables to solve these questions?"
                     answerInput={answerInput}
                     noOfQuestions={noOfQuestions}
                     value1={firstMultiple1}
@@ -657,6 +664,7 @@ useEffect(() => {
                     newQuestion={newQuestion8}
                   />
                     <QuestionCardThreeDig
+                        h1 = "Can you multiply 3 digit numbers together?"
                         answerInput={answerInput}
                         noOfQuestions={noOfQuestions}
                         value1={firstMultiple}
@@ -682,6 +690,7 @@ useEffect(() => {
             newQuestion={newQuestion7}
           />
           <QuestionCardTimer
+            h1 = "Can you use your 12 times tables to solve these questions within the time?"
             astronaut={astronaut}
             score={score}
             answerInput={answerInput}
