@@ -11,7 +11,7 @@ export default function QuestionCard(props) {
       </h2>
       <input
         className="inputGame"
-        type="number"
+        type="{props.inputType}"
         value={props.answerInput}
         onChange={(e) => props.setAnswerInput(e.target.value)}
         onKeyDown={(e) => {

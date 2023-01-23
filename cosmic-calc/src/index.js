@@ -5,8 +5,7 @@ import App from "./App";
 import "./index.css";
 import * as serviceWorker from "./serviceWorkerRegistration";
 // import starBackground from "./images/Background2.png";
-
-import Background from "./images/Background_Buttons/Background2.png";
+import Background from "./images/Background_Buttons/Background.png";
 import ScoreProvider from "./components/score/ScoreContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
