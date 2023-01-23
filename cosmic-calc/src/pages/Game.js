@@ -10,6 +10,7 @@ import win from ".././components/sound/FX/win.mp3";
 import { ScoreContext } from "../components/score/ScoreContext";
 import AnswerCard from "../components/answercard/AnswerCard";
 import QuestionCard from "../components/questioncard/QuestionCard";
+import FractionsQuestionCard from "../components/questioncard/fractionsQuestionCard";
 import CountersQuestionCard from "../components/questioncard/countersQuestionCard";
 import ShapesQuestionCard from "../components/shapesQuestionCard/ShapesQuestionCard";
 import Score from "../components/score/Score";
@@ -22,10 +23,13 @@ import {
   yearOnePlanetFiveAnswer,
   yearOnePlanetSixQuestion,
   yearOnePlanetSixAnswer,
-  randomNumberGenerator,
+  getFractionWord,
+  yearOnePlanetSevenAnswer,
   giveRandomShape,
   checkShapeAnswer,
-} from "../components/functions/yearOneFunctions";
+} from "../components/functions/Year1Functions";
+
+import randomNumberGenerator from "../components/functions/rngFunction";
 
 export default function Game() {
   const [score, setScore] = useState(0);
@@ -41,7 +45,7 @@ export default function Game() {
   });
   const [result, setResult] = useState("");
   const context = useContext(ScoreContext);
-  let points = 8;
+  let points = 7;
   //let points = context.score;
   console.log(context);
 
@@ -206,18 +210,16 @@ export default function Game() {
 
   // yearOnePlanetFour
   const [Y1P4knownValue, setY1P4knownValue] = useState(0);
-  const [Y1P4totalValue, setY1P4totalValue] = useState(0);
 
   useEffect(() => {
-    let [Y1P4knownValue, Y1P4totalValue] = yearOnePlanetFourQuestion();
+    let Y1P4knownValue = yearOnePlanetFourQuestion();
     setY1P4knownValue(Y1P4knownValue);
-    setY1P4totalValue(Y1P4totalValue);
   }, []);
 
   const checkAnswer4 = () => {
     setNoOfQuestions(noOfQuestions + 1);
     let [questionResult, correctAnswer] = yearOnePlanetFourAnswer(
-      [Y1P4knownValue, Y1P4totalValue],
+      Y1P4knownValue,
       answerInput
     );
     setAnswerInput("");
@@ -234,11 +236,11 @@ export default function Game() {
   };
 
   const newQuestion4 = () => {
-    let [Y1P4knownValue, Y1P4totalValue] = yearOnePlanetFourQuestion();
+    let Y1P4knownValue = yearOnePlanetFourQuestion();
     setY1P4knownValue(Y1P4knownValue);
-    setY1P4totalValue(Y1P4totalValue);
+
     let [questionResult, correctAnswer] = yearOnePlanetFourAnswer(
-      [Y1P4knownValue, Y1P4totalValue],
+      Y1P4knownValue,
       answerInput
     );
     setAnswerInput("");
@@ -341,20 +343,59 @@ export default function Game() {
     return [questionResult, correctAnswer];
   };
 
-  // yearOnePlanetEight
-  const [Y1P8knownValue, setY1P8knownValue] = useState(0);
-  const [Y1P8totalValue, setY1P8totalValue] = useState(0);
+  //yearOnePlanetSeven
+  const [fractionWord, setFractionWord] = useState("");
 
   useEffect(() => {
-    let [Y1P8knownValue, Y1P8totalValue] = yearOnePlanetFourQuestion(8);
+    let newFractionWord = getFractionWord();
+    setFractionWord(newFractionWord);
+  }, []);
+
+  function checkAnswer7(playerInput) {
+    console.log(fractionWord);
+    console.log(playerInput);
+    setNoOfQuestions(noOfQuestions + 1);
+    let [questionResult, correctAnswer] = yearOnePlanetSevenAnswer(
+      fractionWord,
+      playerInput
+    );
+    if (questionResult === true) {
+      playCorrect();
+      setResult("Correct!");
+      setScore(Number(score) + 1);
+      newQuestion7();
+    } else {
+      playWrong();
+      setResult(correctAnswer);
+      setAnswerVisible(true);
+    }
+  }
+
+  const newQuestion7 = (playerInput) => {
+    let newFractionWord = getFractionWord();
+    setFractionWord(newFractionWord);
+    console.log(`right answer${fractionWord} and input${playerInput}`);
+    let [correctAnswer, questionResult] = yearOnePlanetSevenAnswer(
+      fractionWord,
+      playerInput
+    );
+    setResult("");
+    setAnswerVisible(false);
+    return [questionResult, correctAnswer];
+  };
+
+  // yearOnePlanetEight
+  const [Y1P8knownValue, setY1P8knownValue] = useState(0);
+
+  useEffect(() => {
+    let Y1P8knownValue = yearOnePlanetFourQuestion(8);
     setY1P8knownValue(Y1P8knownValue);
-    setY1P8totalValue(Y1P8totalValue);
   }, []);
 
   const checkAnswer8 = () => {
     setNoOfQuestions(noOfQuestions + 1);
     let [questionResult, correctAnswer] = yearOnePlanetFourAnswer(
-      [Y1P8knownValue, Y1P8totalValue],
+      Y1P8knownValue,
       answerInput
     );
     console.log(questionResult, correctAnswer);
@@ -373,11 +414,11 @@ export default function Game() {
   };
 
   const newQuestion8 = () => {
-    let [Y1P8knownValue, Y1P8totalValue] = yearOnePlanetFourQuestion(8);
+    let Y1P8knownValue = yearOnePlanetFourQuestion(8);
     setY1P8knownValue(Y1P8knownValue);
-    setY1P8totalValue(Y1P8totalValue);
+
     let [questionResult, correctAnswer] = yearOnePlanetFourAnswer(
-      [Y1P8knownValue, Y1P8totalValue],
+      Y1P8knownValue,
       answerInput
     );
     setAnswerInput("");
@@ -456,7 +497,6 @@ export default function Game() {
           answerInput={answerInput}
           noOfQuestions={noOfQuestions}
           shape={shape}
-          // setAnswerInput={setAnswerInput}
           checkAnswer={checkAnswer2}
         />
         <Score score={score} />
@@ -527,7 +567,7 @@ export default function Game() {
         <Score score={score} />
       </div>
     );
-  } else if (points < 100) {
+  } else if (points === 99) {
     return (
       <div className="gameDiv">
         <AnswerCard
@@ -543,6 +583,23 @@ export default function Game() {
           value2={"in numbers?"}
           setAnswerInput={setAnswerInput}
           checkAnswer={checkAnswer6}
+        />
+        <Score score={score} />
+      </div>
+    );
+  } else if (points === 91) {
+    return (
+      <div className="gameDiv">
+        <AnswerCard
+          answerVisible={answerVisible}
+          result={result}
+          newQuestion={newQuestion7}
+        />
+        <FractionsQuestionCard
+          answerInput={answerInput}
+          noOfQuestions={noOfQuestions}
+          fractionWord={fractionWord}
+          checkAnswer={checkAnswer7}
         />
         <Score score={score} />
       </div>

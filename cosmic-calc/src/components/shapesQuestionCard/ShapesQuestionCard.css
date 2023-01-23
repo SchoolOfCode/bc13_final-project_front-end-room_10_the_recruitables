@@ -52,54 +52,53 @@
    border: white solid 1px;
 }
 
-
 .square-shape{
-  /* background-image: url(../../images/Shapes/square.png); */
+  background-image: url(https://i.ibb.co/FJFtQwL/square.png); 
   background-color: transparent;
    background-size: contain;
    width: 8vw;
    height: 10vh;
-   border: white solid 1px;
+   background-repeat: no-repeat;
 }
 
 
 .rectangle-shape {
-   /* background-image: url(../../images/Shapes/rectangle.png); */
+    background-image: url(https://i.ibb.co/2WrD5Ct/rectangle.png); 
    background-color: transparent;
    background-size: contain;
    width: 10vw;
    height: 8vh;
-   border: white solid 1px;
+   background-repeat: no-repeat;
+   
 
 }
 
 .circle-shape {
-   border: white solid 1px;
-   /* background-image: url(../../images/Shapes/circle.png); */
+  
+   background-image: url(https://i.ibb.co/T02kdMH/whole.png);
    background-position: center;
    background-color: transparent;
    background-size: contain;
    background-repeat: no-repeat;
    width: 10vw;
    height: 10vh;
-   border: white solid 1px;
+   
+   
 }
 
 .triangle-shape {
-   border: white solid 1px;
-   /* background-image: url(../../images/Shapes/triangle.png); */
+   background-image: url(https://i.ibb.co/wQt8Ygf/triangle.png); 
    background-position: center;
    background-color: transparent;
    background-size: contain;
    background-repeat: no-repeat;
    width: 10vw;
    height: 10vh;
-   border: white solid 1px;
+   
 }
 
 .pentagon-shape {
-   border: white solid 1px;
-   /* background-image: url(../../images/Shapes/pentagon.png); */
+ background-image: url(https://i.ibb.co/HX5HntJ/pentagon.png); 
    background-position: center;
    background-color: transparent;
    background-size: contain;
@@ -109,8 +108,7 @@
 }
 
 .hexagon-shape {
-   border: white solid 1px;
-   /* background-image: url(../../images/Shapes/hexagon.png); */
+   background-image: url(https://i.ibb.co/q7LnVwR/hexagon.png); 
    background-position: center;
    background-color: transparent;
    background-size: contain;
@@ -120,8 +118,7 @@
 }
 
 .octagon-shape {
-   border: white solid 1px;
-   /* background-image: url(../../images/Shapes/octagon.png); */
+   background-image: url(https://i.ibb.co/8XFHswK/octagon.png); 
    background-position: center;
    background-color: transparent;
    background-size: contain;
