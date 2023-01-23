@@ -27,6 +27,8 @@ import {
   yearOnePlanetSevenAnswer,
   giveRandomShape,
   checkShapeAnswer,
+  yearOnePlanetEightQuestion,
+  yearOnePlanetEightAnswer,
 } from "../components/functions/Year1Functions";
 
 import randomNumberGenerator from "../components/functions/rngFunction";
@@ -48,24 +50,23 @@ export default function Game() {
   });
   const [result, setResult] = useState("");
   const context = useContext(ScoreContext);
-  let points = 15;
+  let points = 798;
   // let points = context.score;
 
   useEffect(() => {
-    if (noOfQuestions === 6) {
+    if (noOfQuestions === 11) {
       onAuthStateChanged(auth, (user) => {
         updateScore(score, user);
       });
     }
   }, [noOfQuestions, score]);
 
-  if (noOfQuestions === 6) {
+  if (noOfQuestions === 11) {
     playWin();
   }
 
   // yearOnePlanetOne
 
-  //const [numberLineID, setNumberLineID] = useState(0);
   const [numberLineImg, setNumberLineImg] = useState("");
   const [correctAnswer1, setCorrectAnswer1] = useState(0);
   const [numberLineArray, setNumberLineArray] = useState([]);
@@ -86,7 +87,6 @@ export default function Game() {
         let newNumberLineArray = data.payload;
         setNumberLineArray(data.payload);
         let randomID = randomNumberGenerator(10);
-        //setNumberLineID(randomID);
         setNumberLineImg(newNumberLineArray[randomID].img_url);
         setCorrectAnswer1(newNumberLineArray[randomID].answer);
       }
@@ -390,13 +390,13 @@ export default function Game() {
   const [Y1P8knownValue, setY1P8knownValue] = useState(0);
 
   useEffect(() => {
-    let Y1P8knownValue = yearOnePlanetFourQuestion(8);
+    let Y1P8knownValue = yearOnePlanetEightQuestion();
     setY1P8knownValue(Y1P8knownValue);
   }, []);
 
   const checkAnswer8 = () => {
     setNoOfQuestions(noOfQuestions + 1);
-    let [questionResult, correctAnswer] = yearOnePlanetFourAnswer(
+    let [questionResult, correctAnswer] = yearOnePlanetEightAnswer(
       Y1P8knownValue,
       answerInput
     );
@@ -415,10 +415,10 @@ export default function Game() {
   };
 
   const newQuestion8 = () => {
-    let Y1P8knownValue = yearOnePlanetFourQuestion(8);
+    let Y1P8knownValue = yearOnePlanetEightQuestion();
     setY1P8knownValue(Y1P8knownValue);
 
-    let [questionResult, correctAnswer] = yearOnePlanetFourAnswer(
+    let [questionResult, correctAnswer] = yearOnePlanetEightAnswer(
       Y1P8knownValue,
       answerInput
     );
@@ -444,7 +444,7 @@ export default function Game() {
     console.log(data);
   };
 
-  if (noOfQuestions === 6) {
+  if (noOfQuestions === 11) {
     return (
       <div className="endDiv">
         <img className="astronaut" src={astronaut} alt="astronaut" />
@@ -464,7 +464,7 @@ export default function Game() {
         </div>
       </div>
     );
-  } else if (points === 5) {
+  } else if (points < 100) {
     return (
       <div className="gameDiv">
         <AnswerCard
@@ -484,7 +484,7 @@ export default function Game() {
         <Score score={score} />
       </div>
     );
-  } else if (points === 7) {
+  } else if (points < 200) {
     console.log("In shapes game");
 
     return (
@@ -503,7 +503,7 @@ export default function Game() {
         <Score score={score} />
       </div>
     );
-  } else if (points === 8) {
+  } else if (points < 300) {
     console.log("In counters game!");
     console.log("points = ", points);
     return (
@@ -525,7 +525,7 @@ export default function Game() {
         <Score score={score} />
       </div>
     );
-  } else if (points < 20) {
+  } else if (points < 400) {
     console.log("Inside points < 20 if statement");
     console.log("points = ", points);
     return (
@@ -546,7 +546,7 @@ export default function Game() {
         <Score score={score} />
       </div>
     );
-  } else if (points < 50) {
+  } else if (points < 500) {
     console.log("Inside 20 <= points < 50 if statement");
     console.log("points = ", points);
     return (
@@ -570,7 +570,7 @@ export default function Game() {
         <Score score={score} />
       </div>
     );
-  } else if (points === 99) {
+  } else if (points < 600) {
     return (
       <div className="gameDiv">
         <AnswerCard
@@ -591,7 +591,7 @@ export default function Game() {
         <Score score={score} />
       </div>
     );
-  } else if (points === 91) {
+  } else if (points < 700) {
     return (
       <div className="gameDiv">
         <AnswerCard
@@ -608,7 +608,7 @@ export default function Game() {
         <Score score={score} />
       </div>
     );
-  } else if (points >= 100) {
+  } else if (points < 800) {
     console.log("Inside points >= 100 if statement");
     console.log("points = ", points);
     return (

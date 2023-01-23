@@ -28,11 +28,9 @@ export default function App() {
   const [profileHighlighted, setProfileHighlighted] = useState(false);
   const [progressHighlighted, setProgressHighlighted] = useState(false);
   const [gameHighlighted, setGameHighlighted] = useState(false);
-  const [soundEnabled, setSoundEnabled] = useState(true);
   const [playHover] = useSound(buttonFX, {
     volume: 0.3,
     playbackRate: Math.floor(Math.random() * (2 - 0.8) + 0.8),
-    soundEnabled: soundEnabled,
   });
 
   const navigateToLogin = () => {
@@ -70,9 +68,6 @@ export default function App() {
 
   const navigateToRegister = () => {
     navigate("/register");
-  };
-  const navigateToLeaderboard = () => {
-    navigate("/leaderboard");
   };
 
   const navigateToYearOne = () => {
@@ -165,6 +160,26 @@ export default function App() {
           {authed.currentUser.email === "teacher@teacher.com" && (
             <button onClick={navigateToLeaderboard}>Leaderboard</button>
           )}
+          {location.pathname !== "/game" && (
+            <div className="progress-score">
+              <h1>Score: {context.score}</h1>
+            </div>
+          )}
+          <button onClick={navigateToTimedGame} className="navButtonTimedGame">
+            TimedGame
+          </button>
+          <button onClick={navigateToAvatars} className="navButtonAvatars">
+            Avatars
+          </button>
+          <button onClick={navigateToLevel1} className="navButtonLevel1">
+            Level1
+          </button>
+          <button onClick={navigateToLevel5} className="navButtonLevel5">
+            Level5
+          </button>
+          <button onClick={navigateToYearTwo} className="navButtonLevel6">
+            year-Two
+          </button>
           <Logout />
         </div>
       ) : (
