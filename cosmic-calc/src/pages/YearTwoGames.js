@@ -50,7 +50,7 @@ export default function YearTwoGames() {
   });
   const [result, setResult] = useState("");
   const context = useContext(ScoreContext);
-  let points = 4;
+  let points = 14;
   //let points = context.score;
   console.log(context);
 
@@ -228,7 +228,66 @@ const newQuestion3 = () => {
   return [questionResult, correctAnswer];
 };
 
+   // yearTwoPlanetFour
 
+  //const [numberLineID, setNumberLineID] = useState(0);
+  const [placeValueImg, setplaceValueImg] = useState("");
+  const [correctAnswer2, setCorrectAnswer2] = useState(0);
+  const [placeValueArray, setplaceValueArray] = useState([]);
+
+  useEffect(() => {
+    async function getplaceValue() {
+      const response = await fetch(
+        `http://localhost:3001/api/mathsQuestions/coinsPlaceValue`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      const data = await response.json();
+      if (data.payload) {
+        let newplaceValueArray = data.payload;
+        console.log(newplaceValueArray)
+        setplaceValueArray(data.payload);
+        let randomID = randomNumberGenerator(10);
+        //setNumberLineID(randomID);
+        setplaceValueImg(newplaceValueArray[randomID].img_url);
+        setCorrectAnswer2(newplaceValueArray[randomID].answer);
+      }
+    }
+    getplaceValue();
+  }, []);
+
+  const checkAnswer4 = () => {
+    setNoOfQuestions(noOfQuestions + 1);
+    let questionResult = "";
+    if (correctAnswer2 == answerInput) {
+      questionResult = true;
+    } else {
+      questionResult = false;
+    }
+    setAnswerInput("");
+    if (questionResult === true) {
+      playCorrect();
+      setResult("Correct!");
+      setScore(Number(score) + 1);
+      newQuestion4();
+    } else {
+      playWrong();
+      setResult(correctAnswer2);
+      setAnswerVisible(true);
+    }
+  };
+
+  const newQuestion4 = () => {
+    let randomID = randomNumberGenerator(7);
+    setplaceValueImg(placeValueArray[randomID].img_url);
+    setCorrectAnswer2(placeValueArray[randomID].answer);
+    setResult("");
+    setAnswerVisible(false);
+  };
 
 // Year 2 Planet 5 - "Add together three single-digit numbers"
 const [firstNumber, setFirstNumber] = useState(0);
@@ -518,6 +577,25 @@ const newQuestion8 = () => {
         value2={"in numbers?"}
         setAnswerInput={setAnswerInput}
         checkAnswer={checkAnswer3}
+      />
+      <Score score={score} />
+    </div>
+  );
+} else if (points === 14) {
+  return (
+    <div className="gameDiv">
+      <AnswerCard
+        answerVisible={answerVisible}
+        result={result}
+        newQuestion={newQuestion4}
+      />
+      <PicQuestionCard
+        src={placeValueImg}
+        answerInput={answerInput}
+        noOfQuestions={noOfQuestions}
+        value1={"Which does this equal?"}
+        setAnswerInput={setAnswerInput}
+        checkAnswer={checkAnswer4}
       />
       <Score score={score} />
     </div>
