@@ -91,7 +91,6 @@ export default function App() {
     navigate("/leaderboard");
   };
 
-
   const navigateToYearOne = () => {
     navigate("/Game");
   };
@@ -114,19 +113,20 @@ export default function App() {
     setSoundEnabled(!soundEnabled);
   };
 
-  return (
-    <div>
-      {/* <div className="muteButton">
-        <button
-          className="muteButton"
-          onClick={() => {
-            mute();
-          }}
+  {
+    /* <div className="muteButton">
+  <button
+        className="muteButton"
+        onClick={() => {
+          mute();
+        }}
         >
-          Mute
+        Mute
         </button>
-      </div> */}
-
+      </div> */
+  }
+  return (
+    <div className="App">
       {authed.currentUser ? (
         <div className="navBarPageDiv">
           <img src={logo} alt="logo" className="logo" />
@@ -135,23 +135,20 @@ export default function App() {
               <h1>Score: {context.score}</h1>
             </div>
           )}
+          <img src={logo} alt="logo" className="logo" />
+          <button onClick={navigateToYearOne} className="navButtonYearTwo">
+            Year One
+          </button>
+          <button onClick={navigateToYearTwo} className="navButtonYearTwo">
+            Year Two
+          </button>
+          <button onClick={navigateToYearThree} className="navButtonYearThree">
+            Year Three
+          </button>
+          <button onClick={navigateToYearFour} className="navButtonYearFour">
+            Year Four
+          </button>
           {location.pathname !== "/profile" && (
-      {/* {authed.currentUser ? ( */}
-      <div className="navBarPageDiv">
-        <img src={logo} alt="logo" className="logo" />
-        <button onClick={navigateToYearOne} className="navButtonYearTwo">
-          Year One
-        </button>
-        <button onClick={navigateToYearTwo} className="navButtonYearTwo">
-          Year Two
-        </button>
-        <button onClick={navigateToYearThree} className="navButtonYearThree">
-          Year Three
-        </button>
-        <button onClick={navigateToYearFour} className="navButtonYearFour">
-          Year Four
-        </button>
-        {/* {location.pathname !== "/profile" && (
             <button
               onClick={navigateToProfile}
               onMouseOver={playHover}
@@ -182,21 +179,17 @@ export default function App() {
               }
             ></button>
           )}
+
           <Logout />
-          {/* <button onClick={navigateToAvatars} className="navButtonAvatars">
-            Avatars
-          </button> */}
           {authed.currentUser.email === "teacher@teacher.com" && (
             <button onClick={navigateToLeaderboard}>Leaderboard</button>
           )}
-          {/* <button onClick={navigateToTimedGame} className="navButtonTimedGame">
           {location.pathname !== "/game" && (
             <div className="progress-score">
               <h1>Score: {context.score}</h1>
             </div>
-          )} */}
-        <Logout />
-        {/* <button onClick={navigateToTimedGame} className="navButtonTimedGame">
+          )}
+          <button onClick={navigateToTimedGame} className="navButtonTimedGame">
             TimedGame
           </button>
           <button onClick={navigateToLevel1} className="navButtonLevel1">
@@ -204,14 +197,13 @@ export default function App() {
           </button>
           <button onClick={navigateToLevel5} className="navButtonLevel5">
             Level5
-
           </button>
           <button onClick={navigateToYearTwo} className="navButtonLevel6">
             year-Two
           </button>
-          </button> */}
-        {/* </div> */}
-        {/* ) : (
+          <Logout />
+        </div>
+      ) : (
         <div className="navBarLoginDiv">
           {location.pathname !== "/" && (
             <button
@@ -230,8 +222,9 @@ export default function App() {
             >
               Register
             </button>
-          )} */}
-      </div>
+          )}
+        </div>
+      )}
 
       <Routes>
         <Route path="/" element={<Login />} />

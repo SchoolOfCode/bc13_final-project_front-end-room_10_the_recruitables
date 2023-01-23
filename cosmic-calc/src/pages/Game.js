@@ -242,7 +242,6 @@ export default function Game() {
 
   const newQuestion4 = () => {
     console.log("new question 4");
-    let [Y1P4knownValue, Y1P4totalValue] = yearOnePlanetFourQuestion();
     let Y1P4knownValue = yearOnePlanetFourQuestion();
     setY1P4knownValue(Y1P4knownValue);
 
