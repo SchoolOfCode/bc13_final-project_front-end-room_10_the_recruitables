@@ -12,12 +12,15 @@ export function yearOnePlanetFourAnswer(knownValue, playerAnswer) {
 
 
 // Year 1 Planet 5 - "Adding and subtracting numbers"
-export function yearOnePlanetFiveQuestion() {
+export function yearOnePlanetFiveQuestion(subtractionTest) {
   // Randomly choose if adding or subtracting
   let operation;
   if (Math.random() < 0.5) {
     operation = "+";
   } else {
+    operation = "-";
+  }
+  if (subtractionTest) {
     operation = "-";
   }
   let values = [];
