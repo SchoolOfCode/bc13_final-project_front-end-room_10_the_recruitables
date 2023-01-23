@@ -16,11 +16,8 @@ import Level1 from "./pages/Level1";
 import Level5 from "./pages/Level5";
 import useSound from "use-sound";
 import buttonFX from "./components/sound/FX/buttonFX.mp3";
-import YearTwo from "./pages/YearTwoGames";
 import logo from "../src/images/Logo.png";
 import Leaderboard from "./pages/Leaderboard";
-import YearThreeGames from "./pages/YearThreeGames";
-import YearFourGames from "./pages/YearFourGames";
 
 export default function App() {
   const authed = auth;
@@ -86,7 +83,6 @@ export default function App() {
   const navigateToRegister = () => {
     navigate("/register");
   };
-
   const navigateToLeaderboard = () => {
     navigate("/leaderboard");
   };
@@ -106,6 +102,7 @@ export default function App() {
   const navigateToYearFour = () => {
     navigate("/year-four-games");
   };
+
 
   console.log(authed.currentUser);
 
@@ -190,6 +187,7 @@ export default function App() {
             </div>
           )}
           <button onClick={navigateToTimedGame} className="navButtonTimedGame">
+
             TimedGame
           </button>
           <button onClick={navigateToLevel1} className="navButtonLevel1">
@@ -197,11 +195,13 @@ export default function App() {
           </button>
           <button onClick={navigateToLevel5} className="navButtonLevel5">
             Level5
+
           </button>
           <button onClick={navigateToYearTwo} className="navButtonLevel6">
             year-Two
           </button>
           <Logout />
+
         </div>
       ) : (
         <div className="navBarLoginDiv">
@@ -246,34 +246,10 @@ export default function App() {
           }
         />
         <Route
-          path="/year-two-games"
-          element={
-            <ProtectedRoute>
-              <YearTwo />
-            </ProtectedRoute>
-          }
-        />
-        <Route
           path="/game"
           element={
             <ProtectedRoute>
               <Game />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/year-three-games"
-          element={
-            <ProtectedRoute>
-              <YearThreeGames />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/year-four-games"
-          element={
-            <ProtectedRoute>
-              <YearFourGames />
             </ProtectedRoute>
           }
         />
