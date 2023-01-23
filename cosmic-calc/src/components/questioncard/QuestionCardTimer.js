@@ -9,7 +9,7 @@ export default function QuestionCardTimer(props) {
      //   start timer 
      const handleStart = () => {
       setTimer(setInterval(() => {
-          setTime(time => time - 1);
+          setTime(time => Math.max(time - 1, 0));
       }, 1000));
   }
 

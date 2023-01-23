@@ -404,6 +404,7 @@ const newQuestion8 = () => {
           newQuestion={newQuestion2}
         />
         <QuestionCard
+          h1 = "Can you add and subtract 10 from any number?"
           answerInput={answerInput}
           noOfQuestions={noOfQuestions}
           value1={initialValue}
@@ -427,6 +428,7 @@ const newQuestion8 = () => {
         newQuestion={newQuestion3}
       />
       <QuestionCard
+        h1 = "Can "
         answerInput={answerInput}
         noOfQuestions={noOfQuestions}
         value1={"What is"}
