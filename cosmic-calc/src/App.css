@@ -141,6 +141,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  /* width: 30vw; */
   height: 2cm;
   margin: 1cm 1cm;
 }
@@ -182,6 +183,4 @@
 .logo:hover {
   transition: 2s;
   transform: rotate(360deg);
-}
-@media screen {
 }

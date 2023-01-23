@@ -1,7 +1,7 @@
 import React from "react";
 import "./levelButtons.css";
 
-function LevelButtons({ ButtonNumber, clickToGame }) {
+function LevelButtons({ ButtonNumber, clickToGame, text }) {
   return (
     <div className="levelButton">
       <button
@@ -9,7 +9,7 @@ function LevelButtons({ ButtonNumber, clickToGame }) {
         onClick={clickToGame}
         id={`levelButton-${ButtonNumber}`}
       >
-        {/* BUTTON {ButtonNumber} */}
+        <span>{text}</span>
       </button>
     </div>
   );

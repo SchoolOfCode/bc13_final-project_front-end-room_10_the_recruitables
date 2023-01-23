@@ -15,6 +15,15 @@
   margin: 2vh;
 }
 
+.value1and2stars{
+  display:flex;
+  flex-direction: row;
+}
+.starsimage{
+  height: 10px;
+  width: 10px;
+}
+
 .inputGame {
   border-radius: 10px;
   background: white;

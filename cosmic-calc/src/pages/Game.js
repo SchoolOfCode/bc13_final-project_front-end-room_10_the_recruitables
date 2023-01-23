@@ -10,6 +10,9 @@ import win from ".././components/sound/FX/win.mp3";
 import { ScoreContext } from "../components/score/ScoreContext";
 import AnswerCard from "../components/answercard/AnswerCard";
 import QuestionCard from "../components/questioncard/QuestionCard";
+import FractionsQuestionCard from "../components/questioncard/fractionsQuestionCard";
+import CountersQuestionCard from "../components/questioncard/countersQuestionCard";
+import ShapesQuestionCard from "../components/shapesQuestionCard/ShapesQuestionCard";
 import Score from "../components/score/Score";
 import PicQuestionCard from "../components/picQuestionCard/picQuestionCard";
 
@@ -20,8 +23,13 @@ import {
   yearOnePlanetFiveAnswer,
   yearOnePlanetSixQuestion,
   yearOnePlanetSixAnswer,
-  randomNumberGenerator,
-} from "../components/functions/yearOneFunctions";
+  getFractionWord,
+  yearOnePlanetSevenAnswer,
+  giveRandomShape,
+  checkShapeAnswer,
+} from "../components/functions/Year1Functions";
+
+import randomNumberGenerator from "../components/functions/rngFunction";
 
 export default function Game() {
   const [score, setScore] = useState(0);
@@ -57,9 +65,10 @@ export default function Game() {
 
   // yearOnePlanetOne
 
-  const [numberLineID, setNumberLineID] = useState(0);
+  //const [numberLineID, setNumberLineID] = useState(0);
   const [numberLineImg, setNumberLineImg] = useState("");
-  const [numberLineArray, setNumberLineArray] = useState([{}]);
+  const [correctAnswer1, setCorrectAnswer1] = useState(0);
+  const [numberLineArray, setNumberLineArray] = useState([]);
 
   useEffect(() => {
     async function getNumberLine() {
@@ -74,10 +83,12 @@ export default function Game() {
       );
       const data = await response.json();
       if (data.payload) {
+        let newNumberLineArray = data.payload;
         setNumberLineArray(data.payload);
         let randomID = randomNumberGenerator(10);
-        setNumberLineID(randomID);
-        setNumberLineImg("");
+        //setNumberLineID(randomID);
+        setNumberLineImg(newNumberLineArray[randomID].img_url);
+        setCorrectAnswer1(newNumberLineArray[randomID].answer);
       }
     }
     getNumberLine();
@@ -85,8 +96,12 @@ export default function Game() {
 
   const checkAnswer1 = () => {
     setNoOfQuestions(noOfQuestions + 1);
-    let correctAnswer = numberLineArray[numberLineID].answer;
-    let questionResult = (correctAnswer = answerInput);
+    let questionResult = "";
+    if (correctAnswer1 == answerInput) {
+      questionResult = true;
+    } else {
+      questionResult = false;
+    }
     setAnswerInput("");
     if (questionResult === true) {
       playCorrect();
@@ -95,35 +110,117 @@ export default function Game() {
       newQuestion1();
     } else {
       playWrong();
-      setResult(correctAnswer);
+      setResult(correctAnswer1);
       setAnswerVisible(true);
     }
   };
 
   const newQuestion1 = () => {
     let randomID = randomNumberGenerator(10);
-    setNumberLineID(randomID);
-    setNumberLineImg(numberLineArray[numberLineID].img_url);
-    setAnswerInput("");
+    setNumberLineImg(numberLineArray[randomID].img_url);
+    setCorrectAnswer1(numberLineArray[randomID].answer);
     setResult("");
     setAnswerVisible(false);
   };
 
-  // yearOnePlanetFour
-  const [Y1P4knownValue, setY1P4knownValue] = useState(0);
-  const [Y1P4totalValue, setY1P4totalValue] = useState(0);
+  //yearOnePlanetTwo
+
+  const [shape, setShape] = useState("square");
 
   useEffect(() => {
-    let [Y1P4knownValue, Y1P4totalValue] = yearOnePlanetFourQuestion();
+    let newShape = giveRandomShape();
+    setShape(newShape);
+  }, []);
+
+  function checkAnswer2(playerInput) {
+    setNoOfQuestions(noOfQuestions + 1);
+    let [questionResult, correctAnswer] = checkShapeAnswer(playerInput, shape);
+    if (questionResult === true) {
+      playCorrect();
+      setResult("Correct!");
+      setScore(Number(score) + 1);
+      newQuestion2();
+    } else {
+      playWrong();
+      setResult(correctAnswer);
+      setAnswerVisible(true);
+    }
+  }
+
+  const newQuestion2 = (playerInput) => {
+    let newShape = giveRandomShape();
+    setShape(newShape);
+    let [questionResult, correctAnswer] = checkShapeAnswer(
+      playerInput,
+      newShape
+    );
+    setResult("");
+    setAnswerVisible(false);
+    return [questionResult, correctAnswer];
+  };
+
+  //yearOnePlanetThree
+  const [Y1P3value1, setY1P3Value1] = useState(0);
+  const [Y1P3value2, setY1P3Value2] = useState(0);
+  const [Y1P3operation, setY1P3Operation] = useState("");
+
+  useEffect(() => {
+    let [Y1P3value1, Y1P3operation, Y1P3value2] = yearOnePlanetFiveQuestion();
+    console.log(Y1P3value1, Y1P3value2, Y1P3operation);
+    setY1P3Value1(Y1P3value1);
+    setY1P3Operation(Y1P3operation);
+    setY1P3Value2(Y1P3value2);
+  }, []);
+
+  const checkAnswer3 = () => {
+    console.log("Check answer called");
+    setNoOfQuestions(noOfQuestions + 1);
+    let [questionResult, correctAnswer] = yearOnePlanetFiveAnswer(
+      [Y1P3value1, Y1P3operation, Y1P3value2],
+      answerInput
+    );
+    console.log(questionResult, correctAnswer);
+    setAnswerInput("");
+    if (questionResult === true) {
+      playCorrect();
+      setResult("Correct!");
+      setScore(Number(score) + 1);
+      newQuestion3();
+    } else {
+      playWrong();
+      setResult(correctAnswer);
+      setAnswerVisible(true);
+    }
+  };
+
+  const newQuestion3 = () => {
+    let [Y1P3value1, Y1P3operation, Y1P3value2] = yearOnePlanetFiveQuestion();
+    setY1P3Value1(Y1P3value1);
+    setY1P3Operation(Y1P3operation);
+    setY1P3Value2(Y1P3value2);
+    let [questionResult, correctAnswer] = yearOnePlanetFiveAnswer(
+      [Y1P3value1, Y1P3operation, Y1P3value2],
+      answerInput
+    );
+    setAnswerInput("");
+    setResult("");
+    setAnswerVisible(false);
+    return [questionResult, correctAnswer];
+  };
+
+  // yearOnePlanetFour
+  const [Y1P4knownValue, setY1P4knownValue] = useState(0);
+
+  useEffect(() => {
+    let Y1P4knownValue = yearOnePlanetFourQuestion();
     setY1P4knownValue(Y1P4knownValue);
-    setY1P4totalValue(Y1P4totalValue);
   }, []);
 
   const checkAnswer4 = () => {
     console.log("check answer 4");
     setNoOfQuestions(noOfQuestions + 1);
     let [questionResult, correctAnswer] = yearOnePlanetFourAnswer(
-      [Y1P4knownValue, Y1P4totalValue],
+      Y1P4knownValue,
       answerInput
     );
     setAnswerInput("");
@@ -146,10 +243,11 @@ export default function Game() {
   const newQuestion4 = () => {
     console.log("new question 4");
     let [Y1P4knownValue, Y1P4totalValue] = yearOnePlanetFourQuestion();
+    let Y1P4knownValue = yearOnePlanetFourQuestion();
     setY1P4knownValue(Y1P4knownValue);
-    setY1P4totalValue(Y1P4totalValue);
+
     let [questionResult, correctAnswer] = yearOnePlanetFourAnswer(
-      [Y1P4knownValue, Y1P4totalValue],
+      Y1P4knownValue,
       answerInput
     );
     setAnswerInput("");
@@ -248,20 +346,59 @@ export default function Game() {
     return [questionResult, correctAnswer];
   };
 
-  // yearOnePlanetEight
-  const [Y1P8knownValue, setY1P8knownValue] = useState(0);
-  const [Y1P8totalValue, setY1P8totalValue] = useState(0);
+  //yearOnePlanetSeven
+  const [fractionWord, setFractionWord] = useState("");
 
   useEffect(() => {
-    let [Y1P8knownValue, Y1P8totalValue] = yearOnePlanetFourQuestion(8);
+    let newFractionWord = getFractionWord();
+    setFractionWord(newFractionWord);
+  }, []);
+
+  function checkAnswer7(playerInput) {
+    console.log(fractionWord);
+    console.log(playerInput);
+    setNoOfQuestions(noOfQuestions + 1);
+    let [questionResult, correctAnswer] = yearOnePlanetSevenAnswer(
+      fractionWord,
+      playerInput
+    );
+    if (questionResult === true) {
+      playCorrect();
+      setResult("Correct!");
+      setScore(Number(score) + 1);
+      newQuestion7();
+    } else {
+      playWrong();
+      setResult(correctAnswer);
+      setAnswerVisible(true);
+    }
+  }
+
+  const newQuestion7 = (playerInput) => {
+    let newFractionWord = getFractionWord();
+    setFractionWord(newFractionWord);
+    console.log(`right answer${fractionWord} and input${playerInput}`);
+    let [correctAnswer, questionResult] = yearOnePlanetSevenAnswer(
+      fractionWord,
+      playerInput
+    );
+    setResult("");
+    setAnswerVisible(false);
+    return [questionResult, correctAnswer];
+  };
+
+  // yearOnePlanetEight
+  const [Y1P8knownValue, setY1P8knownValue] = useState(0);
+
+  useEffect(() => {
+    let Y1P8knownValue = yearOnePlanetFourQuestion(8);
     setY1P8knownValue(Y1P8knownValue);
-    setY1P8totalValue(Y1P8totalValue);
   }, []);
 
   const checkAnswer8 = () => {
     setNoOfQuestions(noOfQuestions + 1);
     let [questionResult, correctAnswer] = yearOnePlanetFourAnswer(
-      [Y1P8knownValue, Y1P8totalValue],
+      Y1P8knownValue,
       answerInput
     );
     setAnswerInput("");
@@ -279,11 +416,11 @@ export default function Game() {
   };
 
   const newQuestion8 = () => {
-    let [Y1P8knownValue, Y1P8totalValue] = yearOnePlanetFourQuestion(8);
+    let Y1P8knownValue = yearOnePlanetFourQuestion(8);
     setY1P8knownValue(Y1P8knownValue);
-    setY1P8totalValue(Y1P8totalValue);
+
     let [questionResult, correctAnswer] = yearOnePlanetFourAnswer(
-      [Y1P8knownValue, Y1P8totalValue],
+      Y1P8knownValue,
       answerInput
     );
     setAnswerInput("");
@@ -341,9 +478,50 @@ export default function Game() {
           src={numberLineImg}
           answerInput={answerInput}
           noOfQuestions={noOfQuestions}
-          value1={""}
+          value1={"Which number is missing?"}
           setAnswerInput={setAnswerInput}
           checkAnswer={checkAnswer1}
+        />
+        <Score score={score} />
+      </div>
+    );
+  } else if (points === 7) {
+    console.log("In shapes game");
+
+    return (
+      <div className="gameDiv">
+        <AnswerCard
+          answerVisible={answerVisible}
+          result={result}
+          newQuestion={newQuestion2}
+        />
+        <ShapesQuestionCard
+          answerInput={answerInput}
+          noOfQuestions={noOfQuestions}
+          shape={shape}
+          checkAnswer={checkAnswer2}
+        />
+        <Score score={score} />
+      </div>
+    );
+  } else if (points === 8) {
+    console.log("In counters game!");
+    console.log("points = ", points);
+    return (
+      <div className="gameDiv">
+        <AnswerCard
+          answerVisible={answerVisible}
+          result={result}
+          newQuestion={newQuestion3}
+        />
+        <CountersQuestionCard
+          answerInput={answerInput}
+          noOfQuestions={noOfQuestions}
+          value1={Y1P3value1}
+          operation={Y1P3operation}
+          value2={Y1P3value2}
+          setAnswerInput={setAnswerInput}
+          checkAnswer={checkAnswer3}
         />
         <Score score={score} />
       </div>
@@ -393,7 +571,7 @@ export default function Game() {
         <Score score={score} />
       </div>
     );
-  } else if (points < 100) {
+  } else if (points === 99) {
     return (
       <div className="gameDiv">
         <AnswerCard
@@ -410,6 +588,23 @@ export default function Game() {
           value2={"in numbers?"}
           setAnswerInput={setAnswerInput}
           checkAnswer={checkAnswer6}
+        />
+        <Score score={score} />
+      </div>
+    );
+  } else if (points === 91) {
+    return (
+      <div className="gameDiv">
+        <AnswerCard
+          answerVisible={answerVisible}
+          result={result}
+          newQuestion={newQuestion7}
+        />
+        <FractionsQuestionCard
+          answerInput={answerInput}
+          noOfQuestions={noOfQuestions}
+          fractionWord={fractionWord}
+          checkAnswer={checkAnswer7}
         />
         <Score score={score} />
       </div>

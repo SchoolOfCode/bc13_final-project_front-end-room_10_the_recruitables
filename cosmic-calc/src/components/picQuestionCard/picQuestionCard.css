@@ -15,6 +15,11 @@
     margin: 5vh;
  } 
 
+ .QuestionImg{
+    width: 200px;
+    height: 50px;
+ }
+
 
  .inputGame{
     border-radius: 10px;
