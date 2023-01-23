@@ -1,5 +1,29 @@
 import randomNumberGenerator from "./rngFunction";
 
+//Year 1 Planet 2
+
+// const [shape, setShape] = useState("square");
+
+const shapes = [
+  "square",
+  "rectangle",
+  "circle",
+  "triangle",
+  "pentagon",
+  "hexagon",
+  "heptagon",
+  "octagon",
+];
+
+export function giveRandomShape() {
+  let newShape = shapes[Math.floor(Math.random() * shapes.length)];
+  return newShape;
+}
+
+export function checkShapeAnswer(playerInput, newShape) {
+  let correctAnswer = newShape;
+  return [playerInput === correctAnswer, correctAnswer];
+}
 
 // Year 1 Planet 4 - "Number bonds to 10"
 export function yearOnePlanetFourQuestion() {
@@ -9,7 +33,6 @@ export function yearOnePlanetFourAnswer(knownValue, playerAnswer) {
   let correctAnswer = 10 - knownValue;
   return [parseInt(playerAnswer) === correctAnswer, correctAnswer];
 }
-
 
 // Year 1 Planet 5 - "Adding and subtracting numbers"
 export function yearOnePlanetFiveQuestion() {
@@ -47,14 +70,43 @@ export function yearOnePlanetFiveAnswer(values, playerAnswer) {
 export function yearOnePlanetSixQuestion() {
   const data = [
     "zero",
-    "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten",
-    "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen", "twenty"
+    "one",
+    "two",
+    "three",
+    "four",
+    "five",
+    "six",
+    "seven",
+    "eight",
+    "nine",
+    "ten",
+    "eleven",
+    "twelve",
+    "thirteen",
+    "fourteen",
+    "fifteen",
+    "sixteen",
+    "seventeen",
+    "eighteen",
+    "nineteen",
+    "twenty",
   ];
   let index = randomNumberGenerator(21);
   return [index, data[index]]; // Returns the number in both numerical and word form
 }
 export function yearOnePlanetSixAnswer(values, playerAnswer) {
   return [parseInt(playerAnswer) === values[0], values[0]];
+}
+
+//Year 1 Planet 7- "Halves and Quarters"
+export function getFractionWord() {
+  const fractions = ["half", "quarter", "three-quarters", "whole"];
+  let index = randomNumberGenerator(4);
+  return fractions[index];
+}
+
+export function yearOnePlanetSevenAnswer(correctAnswer, playerAnswer) {
+  return [playerAnswer === correctAnswer, correctAnswer];
 }
 
 // Year 1 Planet 8 - "Number bonds to 20"
