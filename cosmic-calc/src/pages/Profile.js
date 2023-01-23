@@ -67,10 +67,14 @@ function Profile() {
 
   return (
     <div>
-      <div className="profilePageDiv">
+      <div className="profilePageDiv" data-testid="profilePageDiv">
         {/* <img className="profileImage" src={profileImage} alt="profileImage" /> */}
         <div class="container">
-          <button className="avatarButton" onClick={() => navigate("/avatars")}>
+          <button
+            className="avatarButton"
+            onClick={() => navigate("/avatars")}
+            data-testid="avatarButton"
+          >
             Customise
           </button>
           <div class="avatarWrapProfile" onMouseOver={play}>
