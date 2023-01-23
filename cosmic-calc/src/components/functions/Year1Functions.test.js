@@ -1,6 +1,5 @@
 import { expect, test } from "@jest/globals";
-import randomNumberGenerator from "./rngFunction";
-import { yearOnePlanetFiveQuestion, yearOnePlanetFiveAnswer, yearOnePlanetFourAnswer, yearOnePlanetFourQuestion, yearOnePlanetSixQuestion, yearOnePlanetSixAnswer, yearOnePlanetEightQuestion, yearOnePlanetEightAnswer } from "./Year1Functions";
+import { yearOnePlanetFiveQuestion, yearOnePlanetFourAnswer, yearOnePlanetFourQuestion, yearOnePlanetSixQuestion, yearOnePlanetSixAnswer, yearOnePlanetEightQuestion, yearOnePlanetEightAnswer } from "./Year1Functions";
 
 describe("Y1P4 - Number bonds that add to 10.", () => {
     let questionValue = yearOnePlanetFourQuestion();
