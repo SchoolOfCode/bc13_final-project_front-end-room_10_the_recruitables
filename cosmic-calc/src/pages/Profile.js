@@ -42,7 +42,7 @@ function Profile() {
     navigate("/progress");
   };
 
-  console.log(useContext(ScoreContext));
+  console.log("userData", userData);
 
   useEffect(() => {
     async function getAvatars(email) {
@@ -128,6 +128,7 @@ function Profile() {
           <h3 className="welcome">Welcome</h3>
           <h4 className="name">{userData.name}</h4>
           <h4 className="score">Total score: {context.score} </h4>
+          <h4 className="Year">Year: {context.year}</h4>
 
           <button
             className="gameButton"

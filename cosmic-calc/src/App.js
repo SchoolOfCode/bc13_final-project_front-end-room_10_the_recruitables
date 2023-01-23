@@ -12,12 +12,13 @@ import { auth } from "./pages/firebaseConfig";
 import { ScoreContext } from "./components/score/ScoreContext";
 import TimedGame from "./pages/TimedGame";
 import Avatars from "./pages/Avatars";
-import Level1 from "./pages/Level1";
-import Level5 from "./pages/Level5";
 import useSound from "use-sound";
 import buttonFX from "./components/sound/FX/buttonFX.mp3";
 import logo from "../src/images/Logo.png";
 import Leaderboard from "./pages/Leaderboard";
+import YearTwoGames from "./pages/YearTwoGames";
+import YearThreeGames from "./pages/YearThreeGames";
+import YearFourGames from "./pages/YearFourGames";
 
 export default function App() {
   const authed = auth;
@@ -40,7 +41,6 @@ export default function App() {
 
   const navigateToProfile = () => {
     navigate("/profile");
-
     setProfileHighlighted(true);
     setProgressHighlighted(false);
     setGameHighlighted(false);
@@ -68,18 +68,6 @@ export default function App() {
     navigate("/timedGame");
   };
 
-  const navigateToAvatars = () => {
-    navigate("/avatars");
-  };
-
-  const navigateToLevel1 = () => {
-    navigate("/level1");
-  };
-
-  const navigateToLevel5 = () => {
-    navigate("/level5");
-  };
-
   const navigateToRegister = () => {
     navigate("/register");
   };
@@ -102,7 +90,6 @@ export default function App() {
   const navigateToYearFour = () => {
     navigate("/year-four-games");
   };
-
 
   console.log(authed.currentUser);
 
@@ -132,7 +119,6 @@ export default function App() {
               <h1>Score: {context.score}</h1>
             </div>
           )}
-          <img src={logo} alt="logo" className="logo" />
           <button onClick={navigateToYearOne} className="navButtonYearTwo">
             Year One
           </button>
@@ -176,32 +162,10 @@ export default function App() {
               }
             ></button>
           )}
-
-          <Logout />
           {authed.currentUser.email === "teacher@teacher.com" && (
             <button onClick={navigateToLeaderboard}>Leaderboard</button>
           )}
-          {location.pathname !== "/game" && (
-            <div className="progress-score">
-              <h1>Score: {context.score}</h1>
-            </div>
-          )}
-          <button onClick={navigateToTimedGame} className="navButtonTimedGame">
-
-            TimedGame
-          </button>
-          <button onClick={navigateToLevel1} className="navButtonLevel1">
-            Level1
-          </button>
-          <button onClick={navigateToLevel5} className="navButtonLevel5">
-            Level5
-
-          </button>
-          <button onClick={navigateToYearTwo} className="navButtonLevel6">
-            year-Two
-          </button>
           <Logout />
-
         </div>
       ) : (
         <div className="navBarLoginDiv">
@@ -270,26 +234,34 @@ export default function App() {
           }
         />
         <Route
-          path="/level1"
-          element={
-            <ProtectedRoute>
-              <Level1 />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/level5"
-          element={
-            <ProtectedRoute>
-              <Level5 />
-            </ProtectedRoute>
-          }
-        />
-        <Route
           path="/leaderboard"
           element={
             <ProtectedRoute>
               <Leaderboard />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/year-two-games"
+          element={
+            <ProtectedRoute>
+              <YearTwoGames />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/year-three-games"
+          element={
+            <ProtectedRoute>
+              <YearThreeGames />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/year-four-games"
+          element={
+            <ProtectedRoute>
+              <YearFourGames />
             </ProtectedRoute>
           }
         />
