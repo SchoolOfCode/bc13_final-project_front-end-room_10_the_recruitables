@@ -10,7 +10,14 @@ function wait(time) {
 describe("go to profile - should be logged in", () => {
   it("Go to site", () => {
     cy.visit("http://localhost:3000/");
+   
   });
+
+//  it("type in email and password", () => {
+//   cy.get('[data-testid="emailInput"]').type('lucy@lucy.com');
+//   cy.get('[data-testid="passwordInput"]').type('password');
+//   cy.get('[data-testid="loginButton"]').click();
+//  });
 
   it("Check if customise avatar button exists", () => {
     cy.get('[data-testid="avatarButton"]').should("exist");
@@ -37,10 +44,58 @@ describe("go to profile - should be logged in", () => {
   //   wait(1000);
   //   cy.get('[data-testid="avatarButton"]').click();
   // });
+
 });
 
-// test avatar button
-// check if name appears
-// check score is not empty
-// check all three top buttons are there
-// check if logo exists
+describe ("go to avatar - should be logged in", () => {
+  it("Go to site", () => {
+    cy.visit("http://localhost:3000/avatars");
+  });
+
+  it("Check if customise avatar button exists", () => {
+    cy.get('[data-testid="avatarButton"]').should("exist");
+  });
+
+  it("Click on button to change", () => {
+    cy.get('[data-testid="avatarButton"]').click();
+  });
+
+  it("Check if avatar exists", () => {
+    cy.get('[data-testid="avatar"]').should("exist");
+  });
+
+});
+
+describe("go to profile - should be logged in", () => {
+  it("Go to site", () => {
+    cy.visit("http://localhost:3000/profile");
+  });
+
+  it("Check if customise avatar button exists", () => {
+    cy.get('[data-testid="avatarButton"]').should("exist");
+  });
+
+  it("Check if name appears", () => {
+    cy.get('[data-testid="name"]').should("exist");
+  });
+
+  it("Check score is not empty", () => {
+    cy.get('[data-testid="score"]').should("not.be.empty");
+  });
+
+  it ("check customise button navigates to /avatars", () => {
+    cy.get('[data-testid="avatarButton"]').click();
+    cy.url().should("include", "/avatars");
+});
+});
+
+describe("go to profile - should be logged in", () => {
+  it("Go to site", () => {
+    cy.visit("http://localhost:3000/profile");
+  });
+
+  it("Check if game button takes you to the games page", () => {
+    cy.get('[data-testid="gameButton"]').click();
+    cy.url().should("include", "/game");
+  });
+});

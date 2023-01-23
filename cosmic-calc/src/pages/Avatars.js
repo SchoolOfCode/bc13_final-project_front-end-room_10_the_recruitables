@@ -191,6 +191,7 @@ const AvatarBuilder = () => {
 
           <button
             className="ants-button-right"
+            data-testid = "avatarButton"
             onClick={() => handleHeadClick("ant", "right")}
           >
             ➡
@@ -236,7 +237,7 @@ const AvatarBuilder = () => {
 
       <div class="avatarcontainer">
         <div class="avatarWrap">
-          <div class="avatar">
+          <div class="avatar" data-testid="avatar">
             <div class="headWrap">
               <div class="antenna">
                 <div class="curlyHair"></div>

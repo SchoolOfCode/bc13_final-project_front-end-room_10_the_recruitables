@@ -130,11 +130,12 @@ function Profile() {
         </div>
         <div className="profileDiv">
           <h3 className="welcome">Welcome</h3>
-          <h4 className="name">{userData.name}</h4>
-          <h4 className="score">Total score: {context.score} </h4>
+          <h4 className="name" data-testid="name">{userData.name}</h4>
+          <h4 className="score" data-testid="score">Total score: {context.score} </h4>
 
           <button
             className="gameButton"
+            data-testid="gameButton"
             onClick={() => {
               handleGame();
               stop();
