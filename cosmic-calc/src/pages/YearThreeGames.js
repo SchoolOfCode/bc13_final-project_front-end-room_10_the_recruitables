@@ -398,6 +398,7 @@ useEffect(() => {
           newQuestion={newQuestion1}
         />
         <QuestionCard
+          h1 = "Can you add or subtract 1, 10, or 100?"
           answerInput={answerInput}
           noOfQuestions={noOfQuestions}
           value1={initialValue}
@@ -421,6 +422,7 @@ useEffect(() => {
         newQuestion={newQuestion2}
       />
       <QuestionCardOrder
+        h1 = "Can you order numbers between 0 and 1000?"
         answerInput={answerInput}
         noOfQuestions={noOfQuestions}
         value1={firstNumberOrder}
@@ -443,6 +445,7 @@ useEffect(() => {
             newQuestion={newQuestion3}
           />
           <QuestionCardColumn
+            h1 = "Can you add these three digit numbers?"
             answerInput={answerInput}
             noOfQuestions={noOfQuestions}
             value1={firstNumber}
@@ -465,6 +468,7 @@ useEffect(() => {
             newQuestion={newQuestion4}
           />
           <QuestionCardColumn
+            h1 = "Can you subtract these three digit numbers?"
             answerInput={answerInput}
             noOfQuestions={noOfQuestions}
             value1={firstInt}
@@ -487,6 +491,7 @@ useEffect(() => {
             newQuestion={newQuestion5}
           />
           <QuestionCard
+            h1 = "Can you use your multiplications of solve these problems?"
             answerInput={answerInput}
             noOfQuestions={noOfQuestions}
             value1={firstMultiple}
@@ -510,6 +515,7 @@ useEffect(() => {
             newQuestion={newQuestion8}
           />
           <QuestionCardUnit
+           h1 = "Can you add and subtract different measurements?."
             answerInput={answerInput}
             noOfQuestions={noOfQuestions}
             value1={firstMeasurement}
