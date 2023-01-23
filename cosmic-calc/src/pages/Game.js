@@ -45,7 +45,7 @@ export default function Game() {
   });
   const [result, setResult] = useState("");
   const context = useContext(ScoreContext);
-  let points = 91;
+  let points = 7;
   //let points = context.score;
   console.log(context);
 
