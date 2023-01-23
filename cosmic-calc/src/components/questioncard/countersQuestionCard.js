@@ -5,6 +5,7 @@ export default function CountersQuestionCard(props) {
   const starArray2 = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
   return (
     <div className="questionDiv">
+    <h1> {props.h1}</h1>
       <h2 className="h2QuestionGame">{props.noOfQuestions + ")  "}</h2>
       <div className="value1and2stars">
         {starArray2
