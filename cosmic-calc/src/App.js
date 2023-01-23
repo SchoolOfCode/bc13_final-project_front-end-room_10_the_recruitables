@@ -16,11 +16,8 @@ import Level1 from "./pages/Level1";
 import Level5 from "./pages/Level5";
 import useSound from "use-sound";
 import buttonFX from "./components/sound/FX/buttonFX.mp3";
-import YearTwo from "./pages/YearTwoGames";
 import logo from "../src/images/Logo.png";
 import Leaderboard from "./pages/Leaderboard";
-import YearThreeGames from "./pages/YearThreeGames";
-import YearFourGames from "./pages/YearFourGames";
 
 export default function App() {
   const authed = auth;
@@ -86,28 +83,9 @@ export default function App() {
   const navigateToRegister = () => {
     navigate("/register");
   };
-
   const navigateToLeaderboard = () => {
     navigate("/leaderboard");
   };
-
-
-  const navigateToYearOne = () => {
-    navigate("/Game");
-  };
-
-  const navigateToYearTwo = () => {
-    navigate("/year-two-games");
-  };
-
-  const navigateToYearThree = () => {
-    navigate("/year-three-games");
-  };
-
-  const navigateToYearFour = () => {
-    navigate("/year-four-games");
-  };
-
   console.log(authed.currentUser);
 
   const mute = () => {
@@ -136,22 +114,6 @@ export default function App() {
             </div>
           )}
           {location.pathname !== "/profile" && (
-      {/* {authed.currentUser ? ( */}
-      <div className="navBarPageDiv">
-        <img src={logo} alt="logo" className="logo" />
-        <button onClick={navigateToYearOne} className="navButtonYearTwo">
-          Year One
-        </button>
-        <button onClick={navigateToYearTwo} className="navButtonYearTwo">
-          Year Two
-        </button>
-        <button onClick={navigateToYearThree} className="navButtonYearThree">
-          Year Three
-        </button>
-        <button onClick={navigateToYearFour} className="navButtonYearFour">
-          Year Four
-        </button>
-        {/* {location.pathname !== "/profile" && (
             <button
               onClick={navigateToProfile}
               onMouseOver={playHover}
@@ -190,13 +152,6 @@ export default function App() {
             <button onClick={navigateToLeaderboard}>Leaderboard</button>
           )}
           {/* <button onClick={navigateToTimedGame} className="navButtonTimedGame">
-          {location.pathname !== "/game" && (
-            <div className="progress-score">
-              <h1>Score: {context.score}</h1>
-            </div>
-          )} */}
-        <Logout />
-        {/* <button onClick={navigateToTimedGame} className="navButtonTimedGame">
             TimedGame
           </button>
           <button onClick={navigateToLevel1} className="navButtonLevel1">
@@ -204,14 +159,9 @@ export default function App() {
           </button>
           <button onClick={navigateToLevel5} className="navButtonLevel5">
             Level5
-
-          </button>
-          <button onClick={navigateToYearTwo} className="navButtonLevel6">
-            year-Two
-          </button>
           </button> */}
-        {/* </div> */}
-        {/* ) : (
+        </div>
+      ) : (
         <div className="navBarLoginDiv">
           {location.pathname !== "/" && (
             <button
@@ -230,8 +180,9 @@ export default function App() {
             >
               Register
             </button>
-          )} */}
-      </div>
+          )}
+        </div>
+      )}
 
       <Routes>
         <Route path="/" element={<Login />} />
@@ -253,34 +204,10 @@ export default function App() {
           }
         />
         <Route
-          path="/year-two-games"
-          element={
-            <ProtectedRoute>
-              <YearTwo />
-            </ProtectedRoute>
-          }
-        />
-        <Route
           path="/game"
           element={
             <ProtectedRoute>
               <Game />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/year-three-games"
-          element={
-            <ProtectedRoute>
-              <YearThreeGames />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/year-four-games"
-          element={
-            <ProtectedRoute>
-              <YearFourGames />
             </ProtectedRoute>
           }
         />
