@@ -16,10 +16,7 @@ import Level1 from "./pages/Level1";
 import Level5 from "./pages/Level5";
 import useSound from "use-sound";
 import buttonFX from "./components/sound/FX/buttonFX.mp3";
-import YearTwo from "./pages/YearTwoGames";
 import logo from "../src/images/Logo.png";
-import YearThreeGames from "./pages/YearThreeGames";
-import YearFourGames from "./pages/YearFourGames";
 
 export default function App() {
   const authed = auth;
@@ -100,26 +97,9 @@ export default function App() {
     navigate("/year-four-games");
   };
 
+
   console.log(authed.currentUser);
 
-  return (
-    <div>
-      {/* {authed.currentUser ? ( */}
-      <div className="navBarPageDiv">
-        <img src={logo} alt="logo" className="logo" />
-        <button onClick={navigateToYearOne} className="navButtonYearTwo">
-          Year One
-        </button>
-        <button onClick={navigateToYearTwo} className="navButtonYearTwo">
-          Year Two
-        </button>
-        <button onClick={navigateToYearThree} className="navButtonYearThree">
-          Year Three
-        </button>
-        <button onClick={navigateToYearFour} className="navButtonYearFour">
-          Year Four
-        </button>
-        {/* {location.pathname !== "/profile" && (
             <button
               onClick={navigateToProfile}
               onMouseOver={playHover}
@@ -150,13 +130,14 @@ export default function App() {
               }
             ></button>
           )}
+
           {location.pathname !== "/game" && (
             <div className="progress-score">
               <h1>Score: {context.score}</h1>
             </div>
-          )} */}
-        <Logout />
-        {/* <button onClick={navigateToTimedGame} className="navButtonTimedGame">
+          )}
+          <button onClick={navigateToTimedGame} className="navButtonTimedGame">
+
             TimedGame
           </button>
           <button onClick={navigateToAvatars} className="navButtonAvatars">
@@ -171,9 +152,10 @@ export default function App() {
           <button onClick={navigateToYearTwo} className="navButtonLevel6">
             year-Two
           </button>
-          </button> */}
-        {/* </div> */}
-        {/* ) : (
+          <Logout />
+
+        </div>
+      ) : (
         <div className="navBarLoginDiv">
           {location.pathname !== "/" && (
             <button
@@ -192,8 +174,9 @@ export default function App() {
             >
               Register
             </button>
-          )} */}
-      </div>
+          )}
+        </div>
+      )}
 
       <Routes>
         <Route path="/" element={<Login />} />
@@ -215,34 +198,10 @@ export default function App() {
           }
         />
         <Route
-          path="/year-two-games"
-          element={
-            <ProtectedRoute>
-              <YearTwo />
-            </ProtectedRoute>
-          }
-        />
-        <Route
           path="/game"
           element={
             <ProtectedRoute>
               <Game />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/year-three-games"
-          element={
-            <ProtectedRoute>
-              <YearThreeGames />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/year-four-games"
-          element={
-            <ProtectedRoute>
-              <YearFourGames />
             </ProtectedRoute>
           }
         />
