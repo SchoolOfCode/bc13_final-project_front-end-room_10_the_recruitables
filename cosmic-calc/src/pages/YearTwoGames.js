@@ -428,7 +428,7 @@ const newQuestion8 = () => {
         newQuestion={newQuestion3}
       />
       <QuestionCard
-        h1 = "Can "
+        h1 = "Can write these words in numbers?"
         answerInput={answerInput}
         noOfQuestions={noOfQuestions}
         value1={"What is"}
@@ -450,6 +450,7 @@ const newQuestion8 = () => {
         newQuestion={newQuestion5}
       />
       <QuestionCardThreeDig
+        h1 = "Can you add three numbers together?"
         answerInput={answerInput}
         noOfQuestions={noOfQuestions}
         value1={firstNumber}
@@ -474,6 +475,7 @@ const newQuestion8 = () => {
         newQuestion={newQuestion6}
       />
       <QuestionCardFraction
+        h1 = "Can you add fractions together?"
         answerInput={answerInput}
         noOfQuestions={noOfQuestions}
         value1={numerator}
@@ -495,6 +497,7 @@ const newQuestion8 = () => {
         newQuestion={newQuestion7}
       />
       <QuestionCardOrder
+        h1 = "Can you order these numbers from smallest to largest?"
         answerInput={answerInput}
         noOfQuestions={noOfQuestions}
         value1={firstNumberOrder}
@@ -517,6 +520,7 @@ const newQuestion8 = () => {
         newQuestion={newQuestion8}
       />
       <QuestionCardCompare
+        h1 = "Can you compare these numbers (< , = , >)?"
         answerInput={answerInput}
         noOfQuestions={noOfQuestions}
         value1={firstNumberCompare}
