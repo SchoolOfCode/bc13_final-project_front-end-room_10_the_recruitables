@@ -14,7 +14,7 @@ function Login() {
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
   const [, setUser] = useState(null);
-  const [play, { stop }] = useSound(intro, { volume: 0.2 });
+  const [play, { stop }] = useSound(intro, { volume: 0.3 });
   const [playHover] = useSound(buttonFX, {
     volume: 0.3,
     playbackRate: Math.random() * (2 - 0.8) + 0.8,

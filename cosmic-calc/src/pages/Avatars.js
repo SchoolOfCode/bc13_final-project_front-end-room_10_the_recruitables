@@ -154,7 +154,7 @@ const AvatarBuilder = () => {
     <div className="avatarPageDiv">
       <br />
       {/* <h2>Customise your alien! Unlock more items with your points</h2> */}
-      <div className="avatarButtonDiv">
+      <div className="colourSubmit">
         <div id="swatch">
           <input
             type="color"
@@ -167,6 +167,20 @@ const AvatarBuilder = () => {
             <h1 className="avatar-h1-color">change colour</h1>
           </div>
         </div>
+        <button
+          className="submit-button"
+          onClick={() =>
+            patchAvatars(
+              context.user.email,
+              selectedBody,
+              selectedAnt,
+              selectedHead,
+              avatarColor
+            )
+          }
+        ></button>
+      </div>
+      <div className="avatarButtonDiv">
         <div className="ants-selector">
           <button
             className="ants-button-left"
@@ -215,11 +229,12 @@ const AvatarBuilder = () => {
         </div>
       </div>
       <div className="avatar-color-selector"></div>
+
       <div class="avatar-wardrobe-div">
         <img src={wardrobe} alt="wardrobe" className="avatar-wardrobe"></img>
       </div>
 
-      <div class="container">
+      <div class="avatarcontainer">
         <div class="avatarWrap">
           <div class="avatar">
             <div class="headWrap">
@@ -271,18 +286,6 @@ const AvatarBuilder = () => {
           </div>
         </div>
       </div>
-      <button
-        className="submit-button"
-        onClick={() =>
-          patchAvatars(
-            context.user.email,
-            selectedBody,
-            selectedAnt,
-            selectedHead,
-            avatarColor
-          )
-        }
-      ></button>
     </div>
   );
 };

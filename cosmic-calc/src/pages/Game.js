@@ -359,7 +359,7 @@ export default function Game() {
           newQuestion={newQuestion4}
         />
         <QuestionCard
-          inputType="hidden"
+          inputType={"hidden"}
           answerInput={answerInput}
           noOfQuestions={noOfQuestions}
           value1={`What do I need to add to ${Y1P4knownValue} to make 10?`}

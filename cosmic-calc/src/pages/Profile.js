@@ -70,6 +70,9 @@ function Profile() {
       <div className="profilePageDiv">
         {/* <img className="profileImage" src={profileImage} alt="profileImage" /> */}
         <div class="container">
+          <button className="avatarButton" onClick={() => navigate("/avatars")}>
+            Customise
+          </button>
           <div class="avatarWrapProfile" onMouseOver={play}>
             <div class="avatar">
               <div class="headWrap">
