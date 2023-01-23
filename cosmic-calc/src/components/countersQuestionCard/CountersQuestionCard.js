@@ -1,13 +1,13 @@
 import React from "react";
-// import "./questionCard.css";
+import "./CountersQuestionCard.css";
 
-export default function QuestionCard(props) {
+export default function CountersQuestionCard(props) {
   return (
     <div className="questionDiv">
       <h2 className="h2QuestionGame">{props.noOfQuestions + ")  "}</h2>
-      <h2 className="h2QuestionGame">
-        {props.value1} {props.operation} {props.value2} {props.equals}
-      </h2>
+      <img className="QuestionImg" src={props.src} alt={props.imgAlt} />
+      <h2 className="h2QuestionGame">{props.operation}</h2>
+      <img className="QuestionImg" src={props.src} alt={props.imgAlt} />
       <input
         className="inputGame"
         type="number"

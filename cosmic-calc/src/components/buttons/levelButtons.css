@@ -1,3 +1,50 @@
+@import url("https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap");
+
 .levelButton{
-    padding-top: 10%;
+   
+    vertical-align: middle;
+        justify-content: center;
+        align-items: center;
 }
+.levelButtons{
+    
+    font-family: "Bubblegum Sans";
+        padding-top: 10%;
+        margin-top: 2cm;
+        text-align: center;
+        vertical-align: middle;
+        justify-content: center;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        width: 15vw;
+        height: 15vh;
+        margin: 2%;
+        background-color: transparent;
+        display: flex;
+        position: absolute;
+        z-index: 2;
+        
+      }
+
+      .levelButtons span {
+       
+        display: none;
+      }
+
+      .levelButtons:hover span {
+        font-size: 20px; 
+        position:absolute;
+        display: inline-block;
+        vertical-align: middle;
+        text-align: center;
+        float: center;
+        justify-content: center;
+        align-items: center;
+        color: white; 
+        z-index: 3;
+      }
+
+      
+
+           

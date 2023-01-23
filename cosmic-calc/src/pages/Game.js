@@ -10,6 +10,7 @@ import win from ".././components/sound/FX/win.mp3";
 import { ScoreContext } from "../components/score/ScoreContext";
 import AnswerCard from "../components/answercard/AnswerCard";
 import QuestionCard from "../components/questioncard/QuestionCard";
+import CountersQuestionCard from "../components/questioncard/countersQuestionCard";
 import ShapesQuestionCard from "../components/shapesQuestionCard/ShapesQuestionCard";
 import Score from "../components/score/Score";
 import PicQuestionCard from "../components/picQuestionCard/picQuestionCard";
@@ -40,7 +41,7 @@ export default function Game() {
   });
   const [result, setResult] = useState("");
   const context = useContext(ScoreContext);
-  let points = 5;
+  let points = 8;
   //let points = context.score;
   console.log(context);
 
@@ -149,6 +150,55 @@ export default function Game() {
       playerInput,
       newShape
     );
+    setResult("");
+    setAnswerVisible(false);
+    return [questionResult, correctAnswer];
+  };
+
+  //yearOnePlanetThree
+  const [Y1P3value1, setY1P3Value1] = useState(0);
+  const [Y1P3value2, setY1P3Value2] = useState(0);
+  const [Y1P3operation, setY1P3Operation] = useState("");
+
+  useEffect(() => {
+    let [Y1P3value1, Y1P3operation, Y1P3value2] = yearOnePlanetFiveQuestion();
+    console.log(Y1P3value1, Y1P3value2, Y1P3operation);
+    setY1P3Value1(Y1P3value1);
+    setY1P3Operation(Y1P3operation);
+    setY1P3Value2(Y1P3value2);
+  }, []);
+
+  const checkAnswer3 = () => {
+    console.log("Check answer called");
+    setNoOfQuestions(noOfQuestions + 1);
+    let [questionResult, correctAnswer] = yearOnePlanetFiveAnswer(
+      [Y1P3value1, Y1P3operation, Y1P3value2],
+      answerInput
+    );
+    console.log(questionResult, correctAnswer);
+    setAnswerInput("");
+    if (questionResult === true) {
+      playCorrect();
+      setResult("Correct!");
+      setScore(Number(score) + 1);
+      newQuestion3();
+    } else {
+      playWrong();
+      setResult(correctAnswer);
+      setAnswerVisible(true);
+    }
+  };
+
+  const newQuestion3 = () => {
+    let [Y1P3value1, Y1P3operation, Y1P3value2] = yearOnePlanetFiveQuestion();
+    setY1P3Value1(Y1P3value1);
+    setY1P3Operation(Y1P3operation);
+    setY1P3Value2(Y1P3value2);
+    let [questionResult, correctAnswer] = yearOnePlanetFiveAnswer(
+      [Y1P3value1, Y1P3operation, Y1P3value2],
+      answerInput
+    );
+    setAnswerInput("");
     setResult("");
     setAnswerVisible(false);
     return [questionResult, correctAnswer];
@@ -408,6 +458,28 @@ export default function Game() {
           shape={shape}
           // setAnswerInput={setAnswerInput}
           checkAnswer={checkAnswer2}
+        />
+        <Score score={score} />
+      </div>
+    );
+  } else if (points === 8) {
+    console.log("In counters game!");
+    console.log("points = ", points);
+    return (
+      <div className="gameDiv">
+        <AnswerCard
+          answerVisible={answerVisible}
+          result={result}
+          newQuestion={newQuestion3}
+        />
+        <CountersQuestionCard
+          answerInput={answerInput}
+          noOfQuestions={noOfQuestions}
+          value1={Y1P3value1}
+          operation={Y1P3operation}
+          value2={Y1P3value2}
+          setAnswerInput={setAnswerInput}
+          checkAnswer={checkAnswer3}
         />
         <Score score={score} />
       </div>

@@ -1,6 +1,7 @@
 import React from "react";
 import { useState, useContext, useEffect } from "react";
 import LevelButtons from "../components/buttons/LevelButtons";
+import ButtonsCaption from "../components/buttons/buttonsCaptions";
 import "./progress.css";
 import { useNavigate } from "react-router-dom";
 import { ScoreContext } from "../../src/components/score/ScoreContext";
@@ -10,6 +11,17 @@ import woosh from ".././components/sound/FX/woosh.mp3";
 
 // icon/image array to be used instead/aswell as buttons. Passed as a prop to levelButtons.
 // const icons = ["😀", "😁", "😂", "🤣", "😃", "😆", "😎", "👽", "👾", "🤖"];
+const captions = [
+  "Number Lines",
+  "Shapes and Names",
+  "Adding and Subtracting",
+  "Number Bonds to 10",
+  "Advanced Adding and Subtracting",
+  "Reading Numbers",
+  "Number Bonds to 20",
+  "Halves and Quarters",
+  "Lucky Dip",
+];
 
 export const Progress = () => {
   // state for score count of player
@@ -75,11 +87,23 @@ export const Progress = () => {
           clickToGame={handleGotoLevel}
           key={levels.level}
           ButtonNumber={index + 1 + "-unlock"}
+          text={captions[index]}
         />
       ))}
       {lockLevels.map((level, index) => (
-        <LevelButtons key={levels.level} ButtonNumber={index + 1 + "-lock"} />
+        <LevelButtons
+          key={levels.level}
+          ButtonNumber={index + 1 + "-lock"}
+          text={captions[index]}
+        />
       ))}
+      {/* {captions.map((level, index) => (
+        <ButtonsCaption
+          key={levels.level}
+          ButtonNumber={index + 1}
+          text={captions.index}
+        />
+      ))} */}
     </div>
   );
 };

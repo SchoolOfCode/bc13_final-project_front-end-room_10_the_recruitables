@@ -21,7 +21,6 @@ import logo from "../src/images/Logo.png";
 import YearThreeGames from "./pages/YearThreeGames";
 import YearFourGames from "./pages/YearFourGames";
 
-
 export default function App() {
   const authed = auth;
   let context = useContext(ScoreContext);
@@ -85,6 +84,10 @@ export default function App() {
     navigate("/register");
   };
 
+  const navigateToYearOne = () => {
+    navigate("/Game");
+  };
+
   const navigateToYearTwo = () => {
     navigate("/year-two-games");
   };
@@ -102,18 +105,21 @@ export default function App() {
   return (
     <div>
       {/* {authed.currentUser ? ( */}
-        <div className="navBarPageDiv">
-          <img src={logo} alt="logo" className="logo" />
-          <button onClick={navigateToYearTwo} className="navButtonYearTwo">
-            Year Two
-          </button>
-          <button onClick={navigateToYearThree} className="navButtonYearThree">
-            Year Three
-          </button>
-          <button onClick={navigateToYearFour} className="navButtonYearFour">
-            Year Four
-          </button>
-          {/* {location.pathname !== "/profile" && (
+      <div className="navBarPageDiv">
+        <img src={logo} alt="logo" className="logo" />
+        <button onClick={navigateToYearOne} className="navButtonYearTwo">
+          Year One
+        </button>
+        <button onClick={navigateToYearTwo} className="navButtonYearTwo">
+          Year Two
+        </button>
+        <button onClick={navigateToYearThree} className="navButtonYearThree">
+          Year Three
+        </button>
+        <button onClick={navigateToYearFour} className="navButtonYearFour">
+          Year Four
+        </button>
+        {/* {location.pathname !== "/profile" && (
             <button
               onClick={navigateToProfile}
               onMouseOver={playHover}
@@ -149,8 +155,8 @@ export default function App() {
               <h1>Score: {context.score}</h1>
             </div>
           )} */}
-          <Logout />
-          {/* <button onClick={navigateToTimedGame} className="navButtonTimedGame">
+        <Logout />
+        {/* <button onClick={navigateToTimedGame} className="navButtonTimedGame">
             TimedGame
           </button>
           <button onClick={navigateToAvatars} className="navButtonAvatars">
@@ -168,7 +174,7 @@ export default function App() {
           </button>
           </button> */}
         {/* </div> */}
-      {/* ) : (
+        {/* ) : (
         <div className="navBarLoginDiv">
           {location.pathname !== "/" && (
             <button
@@ -188,8 +194,7 @@ export default function App() {
               Register
             </button>
           )} */}
-        </div>
-    
+      </div>
 
       <Routes>
         <Route path="/" element={<Login />} />
