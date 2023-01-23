@@ -17,6 +17,7 @@ import QuestionCardThreeDig from "../components/questioncard/QuestionCardColumn"
 import QuestionCardFraction from "../components/questioncard/QuestionCardFraction";
 import QuestionCardOrder from "../components/questioncard/QuestionCardOrder";
 import QuestionCardCompare from "../components/questioncard/QuestionCardCompare";
+import randomNumberGenerator from "../components/functions/rngFunction";
 
 
 import {
@@ -49,7 +50,7 @@ export default function YearTwoGames() {
   });
   const [result, setResult] = useState("");
   const context = useContext(ScoreContext);
-  let points = 30;
+  let points = 4;
   //let points = context.score;
   console.log(context);
 
@@ -66,6 +67,68 @@ export default function YearTwoGames() {
   if (noOfQuestions === 6) {
     playWin();
   }
+
+
+   // yearTwoPlanetOne
+
+  //const [numberLineID, setNumberLineID] = useState(0);
+  const [coinCountingImg, setcoinCountingImg] = useState("");
+  const [correctAnswer1, setCorrectAnswer1] = useState(0);
+  const [coinCountingArray, setcoinCountingArray] = useState([]);
+
+  useEffect(() => {
+    async function getcoinCounting() {
+      const response = await fetch(
+        `http://localhost:3001/api/mathsQuestions/coinCounting`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      const data = await response.json();
+      if (data.payload) {
+        let newcoinCountingArray = data.payload;
+        console.log(newcoinCountingArray)
+        setcoinCountingArray(data.payload);
+        let randomID = randomNumberGenerator(10);
+        //setNumberLineID(randomID);
+        setcoinCountingImg(newcoinCountingArray[randomID].img_url);
+        setCorrectAnswer1(newcoinCountingArray[randomID].answer);
+      }
+    }
+    getcoinCounting();
+  }, []);
+
+  const checkAnswer1 = () => {
+    setNoOfQuestions(noOfQuestions + 1);
+    let questionResult = "";
+    if (correctAnswer1 == answerInput) {
+      questionResult = true;
+    } else {
+      questionResult = false;
+    }
+    setAnswerInput("");
+    if (questionResult === true) {
+      playCorrect();
+      setResult("Correct!");
+      setScore(Number(score) + 1);
+      newQuestion1();
+    } else {
+      playWrong();
+      setResult(correctAnswer1);
+      setAnswerVisible(true);
+    }
+  };
+
+  const newQuestion1 = () => {
+    let randomID = randomNumberGenerator(7);
+    setcoinCountingImg(coinCountingArray[randomID].img_url);
+    setCorrectAnswer1(coinCountingArray[randomID].answer);
+    setResult("");
+    setAnswerVisible(false);
+  };
 
   // Year 2 Planet 2 - "Addition"
   const [initialValue, setInitialValue] = useState(0);
@@ -392,6 +455,25 @@ const newQuestion8 = () => {
             Play Again
           </button>
         </div>
+      </div>
+    );
+  } else if (points === 4) {
+    return (
+      <div className="gameDiv">
+        <AnswerCard
+          answerVisible={answerVisible}
+          result={result}
+          newQuestion={newQuestion1}
+        />
+        <PicQuestionCard
+          src={coinCountingImg}
+          answerInput={answerInput}
+          noOfQuestions={noOfQuestions}
+          value1={"Which number is missing?"}
+          setAnswerInput={setAnswerInput}
+          checkAnswer={checkAnswer1}
+        />
+        <Score score={score} />
       </div>
     );
   } else if (points === 5) {
