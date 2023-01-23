@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<LevelButtons/> successfully renders the component, matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="levelButton"
+  >
+    <button
+      class="levelButtons"
+      id="levelButton-7"
+    >
+      <span>
+        Go to level 7
+      </span>
+    </button>
+  </div>
+</DocumentFragment>
+`;
