@@ -43,8 +43,8 @@ export function yearFourPlanetTwoAnswer(values, playerAnswer) {
 
 //Year 4 Planet 3 - "Basic subtraction into the negative numbers."
 export function yearFourPlanetThreeQuestion() {
-    let value1 = randomNumberGenerator(11);
-    let value2 = randomNumberGenerator(10) + value1 + 1;
+    let value1 = randomNumberGenerator(11);                 // 0 to 10
+    let value2 = randomNumberGenerator(10) + value1 + 1;    // 1 to 20
     return [value1, value2];
 }
 
@@ -103,7 +103,7 @@ export function yearFourPlanetFiveAnswer(values, playerAnswer) {
 
 
 // Year 4 Planet 6 - "Adding and subtracting measurements and then potentially covert them"
-export function yearFourPlanetSixQuestion() {
+export function yearFourPlanetSixQuestion(negativeTest) {
     let units = [["m", "cm", "mm"], ["l", "ml"], ["kg", "g"]];
     let unitChoice = randomNumberGenerator(3);
     let questionChoice = randomNumberGenerator(units[unitChoice].length - 1) + 1; // Ensure that m, l, or kg are not picked
@@ -111,6 +111,9 @@ export function yearFourPlanetSixQuestion() {
     let answerChoice = Math.max(0, questionChoice - 1 - randomNumberGenerator(2)); // Ensure that mm, ml, or g are not picked
     let answerScale = units[unitChoice][answerChoice];
     let operation = ["+", "-"][randomNumberGenerator(2)];
+    if (negativeTest) {
+        operation = "-";
+    }
     let values = [randomNumberGenerator(1000) + 1];
     if (operation === "+") {
         let maxValue2 = 1000 - values[0];

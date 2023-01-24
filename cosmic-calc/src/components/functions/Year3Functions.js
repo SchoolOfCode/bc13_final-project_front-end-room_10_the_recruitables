@@ -101,10 +101,13 @@ export function yearThreePlanetFiveAnswer(values, playerAnswer) {
 
 
 // Year 3 Planet 8 - "Adding and subtracting measurements"
-export function yearThreePlanetEightQuestion() {
+export function yearThreePlanetEightQuestion(negativeTest) {
     let unitsPossible = ["m", "cm", "mm", "l", "ml", "kg", "g"];
     let unitsQuestion = unitsPossible[randomNumberGenerator(7)];
     let operation = ["+", "-"][randomNumberGenerator(2)];
+    if (negativeTest) {
+        operation = "-";
+    }
     let values = [randomNumberGenerator(1000) + 1];
     if (operation === "+") {
         let maxValue2 = 1000 - values[0];
