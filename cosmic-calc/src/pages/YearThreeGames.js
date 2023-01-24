@@ -49,7 +49,7 @@ const YearThreeGames = () => {
   });
   const [result, setResult] = useState("");
   const context = useContext(ScoreContext);
-  let points = 698;
+  let points = 98;
   //let points = context.score;
   console.log(context);
 
@@ -77,10 +77,9 @@ const YearThreeGames = () => {
     setInitialValue(initialValue);
     setOperation(operation);
     setMultipleValue(multipleValue);
-  }, [noOfQuestions]);
+  }, []);
 
   const checkAnswer1 = () => {
-    setNoOfQuestions(noOfQuestions + 1);
     let [questionResult, correctAnswer] = yearThreePlanetOneAnswer(
       [initialValue, operation, multipleValue],
       answerInput
@@ -99,6 +98,7 @@ const YearThreeGames = () => {
   };
 
   const newQuestion1 = () => {
+    setNoOfQuestions(noOfQuestions + 1);
     let [initialValue, operation, multipleValue] = yearThreePlanetOneQuestion();
     setInitialValue(initialValue);
     setOperation(operation);
@@ -135,7 +135,6 @@ const YearThreeGames = () => {
   }, []);
 
   const checkAnswer2 = () => {
-    setNoOfQuestions(noOfQuestions + 1);
     let [questionResult, correctAnswer] = yearThreePlanetTwoAnswer(
       [
         firstNumberOrder,
@@ -159,6 +158,7 @@ const YearThreeGames = () => {
   };
 
   const newQuestion2 = () => {
+    setNoOfQuestions(noOfQuestions + 1);
     let [
       firstNumberOrder,
       secondNumberOrder,
@@ -196,7 +196,6 @@ const YearThreeGames = () => {
   }, []);
 
   const checkAnswer3 = () => {
-    setNoOfQuestions(noOfQuestions + 1);
     let [questionResult, correctAnswer] = yearThreePlanetThreeAnswer(
       [firstNumber, secondNumber],
       answerInput
@@ -215,6 +214,7 @@ const YearThreeGames = () => {
   };
 
   const newQuestion3 = () => {
+    setNoOfQuestions(noOfQuestions + 1);
     let [firstNumber, secondNumber] = yearThreePlanetThreeQuestion();
     setFirstNumber(firstNumber);
     setSecondNumber(secondNumber);
@@ -239,7 +239,6 @@ const YearThreeGames = () => {
   }, []);
 
   const checkAnswer4 = () => {
-    setNoOfQuestions(noOfQuestions + 1);
     let [questionResult, correctAnswer] = yearThreePlanetFourAnswer(
       [firstInt, secondInt],
       answerInput
@@ -258,6 +257,7 @@ const YearThreeGames = () => {
   };
 
   const newQuestion4 = () => {
+    setNoOfQuestions(noOfQuestions + 1);
     let [firstNumber, secondNumber] = yearThreePlanetFourQuestion();
     setFirstInt(firstNumber);
     setSecondInt(secondNumber);
@@ -282,7 +282,6 @@ const YearThreeGames = () => {
   }, []);
 
   const checkAnswer5 = () => {
-    setNoOfQuestions(noOfQuestions + 1);
     let [questionResult, correctAnswer] = yearThreePlanetFiveAnswer(
       [firstMultiple, secondMultiple],
       answerInput
@@ -301,6 +300,7 @@ const YearThreeGames = () => {
   };
 
   const newQuestion5 = () => {
+    setNoOfQuestions(noOfQuestions + 1);
     let [firstMultiple, secondMultiple] = yearThreePlanetFiveQuestion();
     setFirstMultiple(firstMultiple);
     setSecondMultiple(secondMultiple);
@@ -330,7 +330,6 @@ const YearThreeGames = () => {
   }, []);
 
   const checkAnswer8 = () => {
-    setNoOfQuestions(noOfQuestions + 1);
     let [questionResult, correctAnswer] = yearThreePlanetEightAnswer(
       [firstMeasurement, secondMeasurement, operationMeasurement, unit],
       answerInput
@@ -349,6 +348,7 @@ const YearThreeGames = () => {
   };
 
   const newQuestion8 = () => {
+    setNoOfQuestions(noOfQuestions + 1);
     let [firstMeasurement, secondMeasurement, operationMeasurement, unit] =
       yearThreePlanetEightQuestion();
     setFirstMeasurement(firstMeasurement);
