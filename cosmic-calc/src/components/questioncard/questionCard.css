@@ -69,3 +69,11 @@ column-div{
 .h2QuestionGame {
   font-size: vw;
 }
+
+#value1and2stars1{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+   gap: 1vw;
+   grid-auto-rows: minmax(0vh, auto);
+   align-items: center;
+}

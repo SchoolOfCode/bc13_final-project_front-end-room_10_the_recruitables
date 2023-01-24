@@ -15,14 +15,17 @@
     border-style: solid;
     border-width: 10px;
     color: #fff;
-    margin: 5vh;
+    /* contain: content; */
  } 
 
  column-direction{
    display: flexbox;
    flex-direction: column;
    grid-gap: 2vh;
+   grid-auto-columns: repeat(4, 10%)
  }
+
+
  .QuestionImg{
     width: 100px;
     height: 20px;
@@ -49,17 +52,17 @@
    gap: 2vw;
    grid-auto-rows: minmax(2vh, auto);
    align-items: center;
-   
 }
 
 .shapes-div-2 {
    width: 40vw;
    display: grid;
-   grid-template-columns: repeat(3, 1fr);
+   grid-template-columns: repeat(4, 1fr);
    gap: 2vw;
    grid-auto-rows: minmax(2vh, auto);
-   align-items: center;
-   
+   align-items: center; 
+   margin-right: 10px;
+   border: solid, black;
 }
 
 .new-shape-button{
@@ -73,7 +76,6 @@
 }
 
 .square-shape{
-
   background-image: url(https://i.ibb.co/FJFtQwL/square.png); 
   background-color: transparent;
    background-size: contain;
@@ -90,12 +92,9 @@
    width: 15vw;
    height: 12vh;
    background-repeat: no-repeat;
-   
-
 }
 
 .circle-shape {
-  
    background-image: url(https://i.ibb.co/T02kdMH/whole.png);
    background-position: center;
    background-color: transparent;
@@ -103,8 +102,6 @@
    background-repeat: no-repeat;
    width: 15vw;
    height: 15vh;
-   
-   
 }
 
 .triangle-shape {
@@ -115,7 +112,7 @@
    background-repeat: no-repeat;
    width: 15vw;
    height: 15vh;
-   
+   top: 0;
 }
 
 .pentagon-shape {
@@ -128,7 +125,7 @@
    height: 15vh;
 }
 
-.hexagon-shape {
+/* .hexagon-shape {
    background-image: url(https://i.ibb.co/q7LnVwR/hexagon.png); 
    background-position: center;
    background-color: transparent;
@@ -136,7 +133,7 @@
    background-repeat: no-repeat;
    width: 15vw;
    height: 15vh;
-}
+} */
 
 .octagon-shape {
    background-image: url(https://i.ibb.co/8XFHswK/octagon.png); 
@@ -147,3 +144,28 @@
    width: 15vw;
    height: 15vh;
 }
+
+
+@media only screen and (max-width: 700px) {
+   
+   .questionDiv{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-evenly;
+      padding: 0;
+   }
+
+   .shapes-div-1{
+      margin-bottom: -40%;
+      margin-top: -30%;
+   }
+
+   .square-shape {
+      margin-top: 80px;
+   }
+   .rectangle-shape {
+      margin-top: 80px;
+   }
+}
+

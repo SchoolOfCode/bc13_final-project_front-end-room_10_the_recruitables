@@ -10,8 +10,6 @@ const shapes = [
   "circle",
   "triangle",
   "pentagon",
-  "hexagon",
-  "heptagon",
   "octagon",
 ];
 
