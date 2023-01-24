@@ -93,22 +93,22 @@ export default function App() {
 
   console.log(authed.currentUser);
 
-  const mute = () => {
-    setSoundEnabled(!soundEnabled);
-  };
+  // const mute = () => {
+  //   setSoundEnabled(!soundEnabled);
+  // };
 
-  {
-    /* <div className="muteButton">
-  <button
-        className="muteButton"
-        onClick={() => {
-          mute();
-        }}
-        >
-        Mute
-        </button>
-      </div> */
-  }
+  // {
+  //   /* <div className="muteButton">
+  // <button
+  //       className="muteButton"
+  //       onClick={() => {
+  //         mute();
+  //       }}
+  //       >
+  //       Mute
+  //       </button>
+  //     </div> */
+  // }
   return (
     <div className="App">
       {authed.currentUser ? (

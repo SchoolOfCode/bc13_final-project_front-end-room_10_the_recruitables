@@ -70,40 +70,55 @@ export const Progress = () => {
   const navigateToGame = () => {
     navigate("/game", { state: { totalScore: totalScore } });
   };
+  console.log(levels);
 
   // onClick event handler to pass to buttons. If need to go depending on levels can add conditions based on button index 1-10
   function handleGotoLevel(level) {
     stop();
     playWoosh();
+    // context.updateLevel(level);
+    // console.log(level);
+
     navigateToGame();
   }
+
+  const onClick = () => {
+    context.updateLevel(5);
+  };
+
+  // console.log(ButtonNumber);
 
   // JSX below returns a grid container.
   // then maps over the levels array which returns a button for each new item in the array. Array increases depending on score. New item every 5 points = new button returned.
   return (
-    <div className="progress-page">
-      {levels.map((levels, index) => (
-        <LevelButtons
-          clickToGame={handleGotoLevel}
-          key={levels.level}
-          ButtonNumber={index + 1 + "-unlock"}
-          text={captions[index]}
-        />
-      ))}
-      {lockLevels.map((level, index) => (
-        <LevelButtons
-          key={levels.level}
-          ButtonNumber={index + 1 + "-lock"}
-          text={captions[index]}
-        />
-      ))}
-      {/* {captions.map((level, index) => (
+    <div className="progress-container">
+      <div className="progress-page">
+        {levels.map((levels, index) => (
+          <LevelButtons
+            clickToGame={handleGotoLevel}
+            key={levels.level}
+            ButtonNumber={index + 1 + "-unlock"}
+            text={captions[index]}
+          />
+        ))}
+        {lockLevels.map((level, index) => (
+          <LevelButtons
+            key={levels.level}
+            ButtonNumber={index + 1 + "-lock"}
+            text={captions[index]}
+          />
+        ))}
+        {/* {captions.map((level, index) => (
         <ButtonsCaption
           key={levels.level}
           ButtonNumber={index + 1}
           text={captions.index}
         />
       ))} */}
+      </div>
+      <div>
+        <button onClick={onClick}>add level</button>
+      </div>
     </div>
   );
 };

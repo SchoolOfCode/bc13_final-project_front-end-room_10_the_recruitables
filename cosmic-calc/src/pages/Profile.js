@@ -42,7 +42,7 @@ function Profile() {
     navigate("/progress");
   };
 
-  console.log("userData", userData);
+  // console.log("userData", userData);
 
   useEffect(() => {
     async function getAvatars(email) {
