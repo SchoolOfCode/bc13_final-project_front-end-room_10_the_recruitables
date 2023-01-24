@@ -109,7 +109,7 @@ export default function App() {
         <div className="navBarPageDiv">
           <img src={logo} alt="logo" className="logo" />
           {location.pathname !== "/game" && (
-            <div className="progress-score">
+            <div className="progress-score" data-testid="navBarScore">
               <h1>Score: {context.score}</h1>
             </div>
           )}

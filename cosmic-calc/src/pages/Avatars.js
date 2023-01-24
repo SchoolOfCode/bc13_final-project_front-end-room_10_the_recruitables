@@ -154,7 +154,7 @@ const AvatarBuilder = () => {
     <div className="avatarPageDiv">
       <br />
       {/* <h2>Customise your alien! Unlock more items with your points</h2> */}
-      <div className="colourSubmit">
+      <div className="colourSubmit" data-testid="colorSubmitButton">
         <div id="swatch">
           <input
             type="color"
@@ -168,6 +168,7 @@ const AvatarBuilder = () => {
           </div>
         </div>
         <button
+          data-testid="submit-button"
           className="submit-button"
           onClick={() =>
             patchAvatars(
@@ -180,7 +181,7 @@ const AvatarBuilder = () => {
           }
         ></button>
       </div>
-      <div className="avatarButtonDiv">
+      <div className="avatarButtonDiv" data-testid="avatarButtonDiv">
         <div className="ants-selector">
           <button
             className="ants-button-left"
@@ -191,12 +192,10 @@ const AvatarBuilder = () => {
 
           <button
             className="ants-button-right"
-            data-testid = "avatarButton"
             onClick={() => handleHeadClick("ant", "right")}
           >
             ➡
           </button>
-          {/* <button onClick={() => getAvatars(context.user.email)}>TEST</button> */}
         </div>
         <div className="head-selector">
           <button
@@ -205,7 +204,6 @@ const AvatarBuilder = () => {
           >
             ⬅
           </button>
-
           <button
             className="head-button-right"
             onClick={() => handleHeadClick("head", "right")}
@@ -220,7 +218,6 @@ const AvatarBuilder = () => {
           >
             ⬅
           </button>
-
           <button
             className="body-button-right"
             onClick={() => handleHeadClick("body", "right")}
@@ -232,7 +229,12 @@ const AvatarBuilder = () => {
       <div className="avatar-color-selector"></div>
 
       <div class="avatar-wardrobe-div">
-        <img src={wardrobe} alt="wardrobe" className="avatar-wardrobe"></img>
+        <img
+          src={wardrobe}
+          alt="wardrobe"
+          className="avatar-wardrobe"
+          data-testid="avatar-wardrobe"
+        ></img>
       </div>
 
       <div class="avatarcontainer">

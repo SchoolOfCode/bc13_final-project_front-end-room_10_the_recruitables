@@ -114,3 +114,16 @@ describe("Check features of avatar page", () => {
     });
   });
 });
+
+// describe("Check features of game page", () => {
+
+// describe("go to profile - should be logged in", () => {
+//   it("Go to site", () => {
+//     cy.visit("http://localhost:3000/profile");
+//   });
+
+//   it("Check if game button takes you to the games page", () => {
+//     cy.get('[data-testid="gameButtonProfile"]').click();
+//     cy.url().should("include", "/game");
+//   });
+// })
