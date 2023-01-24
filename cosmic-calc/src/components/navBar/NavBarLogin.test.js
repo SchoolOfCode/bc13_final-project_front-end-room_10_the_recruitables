@@ -4,44 +4,39 @@ import {screen, render } from "@testing-library/react";
 import {BrowserRouter, Router} from 'react-router-dom';
 import userEvent from "@testing-library/user-event";
 
-import NavBar from "./NavBar";
+import NavBarLogin from "./NavBarLogin";
 
-describe("<NavBar/>", () => {
+describe("<NavBarLogin/>", () => {
     it("successfully renders the component, matches snapshot", () => {
         const { asFragment } = render(
             <BrowserRouter>
-                <NavBar />
+                <NavBarLogin />
             </BrowserRouter>
-        
         );
         expect(asFragment()).toMatchSnapshot();
       });
 
-    it('renders 4 links on the screen', () => {
+    it('renders all 2 links on the screen', () => {
         render(
             <BrowserRouter>
-                <NavBar />
+                <NavBarLogin />
             </BrowserRouter>
-        
         );
        
         const links = screen.getAllByRole('link')
-        expect(links.length).toBe(4)
+        expect(links.length).toBe(2)
     })
 
-    it('renders all 3 link texts on the screen', () => {
+
+    it('renders all 2 link texts on the screen', () => {
         const {getAllByText} = render(
             <BrowserRouter>
-                <NavBar />
+                <NavBarLogin />
             </BrowserRouter>
-        
         );
-
-   
-    expect(getAllByText('Profile')[0]).toBeInTheDocument();
-    expect(getAllByText('Progress')[0]).toBeInTheDocument();
-    expect(getAllByText('Game')[0]).toBeInTheDocument();
-    
+        expect(getAllByText(/login/i)[0]).toBeInTheDocument();
+        expect(getAllByText(/register/i)[0]).toBeInTheDocument();
     })
-
+   
+    
 })

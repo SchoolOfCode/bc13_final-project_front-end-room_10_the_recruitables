@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<NavBarLogin/> successfully renders the component, matches snapshot 1`] = `
+<DocumentFragment>
+  <nav
+    class="sc-bcXHqe llTDYN"
+  >
+    <img
+      alt="logo"
+      class="logo"
+      src="logo.png"
+    />
+    <div
+      class="sc-dkrFOg fLDoxR"
+    >
+      <a
+        aria-current="page"
+        class="sc-gswNZR kjkvCA active"
+        href="/"
+      >
+        login
+      </a>
+      <a
+        class="sc-gswNZR kjkvCA"
+        href="/register"
+      >
+        register
+      </a>
+    </div>
+  </nav>
+</DocumentFragment>
+`;
