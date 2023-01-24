@@ -22,21 +22,20 @@ export default function ShapesQuestionCard(props) {
             className="circle-shape"
             onClick={() => props.checkAnswer("circle")}
           ></button>
+        </div>
+        <div className="shapes-div-2">
           <button
             className="triangle-shape"
             onClick={() => props.checkAnswer("triangle")}
           ></button>
-        </div>
-        <div className="shapes-div-2">
           <button
             className="pentagon-shape"
             onClick={() => props.checkAnswer("pentagon")}
           ></button>
-          <button
+          {/* <button
             className="hexagon-shape"
             onClick={() => props.checkAnswer("hexagon")}
-          ></button>
-
+          ></button> */}
           <button
             className="octagon-shape"
             onClick={() => props.checkAnswer("octagon")}

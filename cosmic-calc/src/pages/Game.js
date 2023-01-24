@@ -50,7 +50,7 @@ export default function Game() {
   });
   const [result, setResult] = useState("");
   const context = useContext(ScoreContext);
-  let points = 398;
+  let points = 200;
   // let points = context.score;
 
   useEffect(() => {
@@ -607,7 +607,7 @@ export default function Game() {
           newQuestion={newQuestion7}
         />
         <FractionsQuestionCard
-          h1={"How well fo you know your fractions?"}
+          h1={"How well do you know your fractions?"}
           answerInput={answerInput}
           noOfQuestions={noOfQuestions}
           fractionWord={fractionWord}

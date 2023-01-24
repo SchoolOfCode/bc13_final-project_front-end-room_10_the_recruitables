@@ -20,7 +20,6 @@ import YearTwo from "./pages/YearTwoGames";
 import logo from "../src/images/Logo.png";
 import YearThreeGames from "./pages/YearThreeGames";
 import YearFourGames from "./pages/YearFourGames";
-
 export default function App() {
   const authed = auth;
   let context = useContext(ScoreContext);
@@ -33,20 +32,16 @@ export default function App() {
     volume: 0.3,
     playbackRate: Math.floor(Math.random() * (2 - 0.8) + 0.8),
   });
-
   const navigateToLogin = () => {
     navigate("/");
   };
-
   const navigateToProfile = () => {
     navigate("/profile");
-
     setProfileHighlighted(true);
     setProgressHighlighted(false);
     setGameHighlighted(false);
     context.update();
   };
-
   const navigateToProgress = () => {
     navigate("/progress");
     setProfileHighlighted(false);
@@ -54,7 +49,6 @@ export default function App() {
     setGameHighlighted(false);
     context.update();
   };
-
   const navigateToGame = () => {
     navigate("/game");
     setProfileHighlighted(false);
@@ -63,45 +57,34 @@ export default function App() {
     context.update();
     console.log(navigate);
   };
-
   const navigateToTimedGame = () => {
     navigate("/timedGame");
   };
-
   const navigateToAvatars = () => {
     navigate("/avatars");
   };
-
   const navigateToLevel1 = () => {
     navigate("/level1");
   };
-
   const navigateToLevel5 = () => {
     navigate("/level5");
   };
-
   const navigateToRegister = () => {
     navigate("/register");
   };
-
   const navigateToYearOne = () => {
     navigate("/Game");
   };
-
   const navigateToYearTwo = () => {
     navigate("/year-two-games");
   };
-
   const navigateToYearThree = () => {
     navigate("/year-three-games");
   };
-
   const navigateToYearFour = () => {
     navigate("/year-four-games");
   };
-
   console.log(authed.currentUser);
-
   return (
     <div>
       {/* {authed.currentUser ? ( */}
@@ -194,7 +177,6 @@ export default function App() {
             </button>
           )} */}
       </div>
-
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/register" element={<Register />} />

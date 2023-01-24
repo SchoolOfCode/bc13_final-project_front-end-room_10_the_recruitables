@@ -8,7 +8,7 @@ export default function CountersQuestionCard(props) {
       <h1> {props.h1}</h1>
       <div className="elementsInRow">
         <h2 className="h2QuestionGame">{props.noOfQuestions + ")  "}</h2>
-        <div className="value1and2stars">
+        <div className="value1and2stars" id="value1and2stars1">
           {starArray2
             .filter((star, index) => index < props.value1)
             .map((star) => {
@@ -22,7 +22,7 @@ export default function CountersQuestionCard(props) {
             })}
         </div>
         <h2>{props.operation}</h2>
-        <div className="value1and2stars">
+        <div className="value1and2stars" id="value1and2stars2">
           {starArray2
             .filter((star, index) => index < props.value2)
             .map((star) => {
