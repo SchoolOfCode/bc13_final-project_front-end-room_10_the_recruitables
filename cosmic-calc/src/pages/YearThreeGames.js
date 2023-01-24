@@ -9,6 +9,7 @@ import wrong from ".././components/sound/FX/wrong.mp3";
 import win from ".././components/sound/FX/win.mp3";
 import { ScoreContext } from "../components/score/ScoreContext";
 import AnswerCard from "../components/answercard/AnswerCard";
+import AnswerCardOrder from "../components/answercard/AnswerCard";
 import QuestionCard from "../components/questioncard/QuestionCard";
 import ShapesQuestionCard from "../components/shapesQuestionCard/ShapesQuestionCard";
 import Score from "../components/score/Score";
@@ -49,7 +50,7 @@ const YearThreeGames = () => {
   });
   const [result, setResult] = useState("");
   const context = useContext(ScoreContext);
-  let points = 698;
+  let points = 598;
   //let points = context.score;
   console.log(context);
 
@@ -77,10 +78,9 @@ const YearThreeGames = () => {
     setInitialValue(initialValue);
     setOperation(operation);
     setMultipleValue(multipleValue);
-  }, [noOfQuestions]);
+  }, []);
 
   const checkAnswer1 = () => {
-    setNoOfQuestions(noOfQuestions + 1);
     let [questionResult, correctAnswer] = yearThreePlanetOneAnswer(
       [initialValue, operation, multipleValue],
       answerInput
@@ -99,6 +99,7 @@ const YearThreeGames = () => {
   };
 
   const newQuestion1 = () => {
+    setNoOfQuestions(noOfQuestions + 1);
     let [initialValue, operation, multipleValue] = yearThreePlanetOneQuestion();
     setInitialValue(initialValue);
     setOperation(operation);
@@ -135,7 +136,6 @@ const YearThreeGames = () => {
   }, []);
 
   const checkAnswer2 = () => {
-    setNoOfQuestions(noOfQuestions + 1);
     let [questionResult, correctAnswer] = yearThreePlanetTwoAnswer(
       [
         firstNumberOrder,
@@ -159,6 +159,7 @@ const YearThreeGames = () => {
   };
 
   const newQuestion2 = () => {
+    setNoOfQuestions(noOfQuestions + 1);
     let [
       firstNumberOrder,
       secondNumberOrder,
@@ -196,7 +197,6 @@ const YearThreeGames = () => {
   }, []);
 
   const checkAnswer3 = () => {
-    setNoOfQuestions(noOfQuestions + 1);
     let [questionResult, correctAnswer] = yearThreePlanetThreeAnswer(
       [firstNumber, secondNumber],
       answerInput
@@ -215,6 +215,7 @@ const YearThreeGames = () => {
   };
 
   const newQuestion3 = () => {
+    setNoOfQuestions(noOfQuestions + 1);
     let [firstNumber, secondNumber] = yearThreePlanetThreeQuestion();
     setFirstNumber(firstNumber);
     setSecondNumber(secondNumber);
@@ -239,7 +240,6 @@ const YearThreeGames = () => {
   }, []);
 
   const checkAnswer4 = () => {
-    setNoOfQuestions(noOfQuestions + 1);
     let [questionResult, correctAnswer] = yearThreePlanetFourAnswer(
       [firstInt, secondInt],
       answerInput
@@ -258,6 +258,7 @@ const YearThreeGames = () => {
   };
 
   const newQuestion4 = () => {
+    setNoOfQuestions(noOfQuestions + 1);
     let [firstNumber, secondNumber] = yearThreePlanetFourQuestion();
     setFirstInt(firstNumber);
     setSecondInt(secondNumber);
@@ -282,7 +283,6 @@ const YearThreeGames = () => {
   }, []);
 
   const checkAnswer5 = () => {
-    setNoOfQuestions(noOfQuestions + 1);
     let [questionResult, correctAnswer] = yearThreePlanetFiveAnswer(
       [firstMultiple, secondMultiple],
       answerInput
@@ -301,6 +301,7 @@ const YearThreeGames = () => {
   };
 
   const newQuestion5 = () => {
+    setNoOfQuestions(noOfQuestions + 1);
     let [firstMultiple, secondMultiple] = yearThreePlanetFiveQuestion();
     setFirstMultiple(firstMultiple);
     setSecondMultiple(secondMultiple);
@@ -330,7 +331,6 @@ const YearThreeGames = () => {
   }, []);
 
   const checkAnswer8 = () => {
-    setNoOfQuestions(noOfQuestions + 1);
     let [questionResult, correctAnswer] = yearThreePlanetEightAnswer(
       [firstMeasurement, secondMeasurement, operationMeasurement, unit],
       answerInput
@@ -349,6 +349,7 @@ const YearThreeGames = () => {
   };
 
   const newQuestion8 = () => {
+    setNoOfQuestions(noOfQuestions + 1);
     let [firstMeasurement, secondMeasurement, operationMeasurement, unit] =
       yearThreePlanetEightQuestion();
     setFirstMeasurement(firstMeasurement);
@@ -431,13 +432,13 @@ const YearThreeGames = () => {
     console.log("25 points = ", points);
     return (
       <div className="gameDiv">
-        <AnswerCard
+        <AnswerCardOrder
           answerVisible={answerVisible}
           result={result}
           newQuestion={newQuestion2}
         />
         <QuestionCardOrder
-          h1="Can you order numbers between 0 and 1000?"
+          h1="Can you put these numbers in the right order?"
           answerInput={answerInput}
           noOfQuestions={noOfQuestions}
           value1={firstNumberOrder}
@@ -460,7 +461,7 @@ const YearThreeGames = () => {
             newQuestion={newQuestion3}
           />
           <QuestionCardColumn
-            h1="Can you add these three digit numbers?"
+            h1="Can you add these three-digit numbers?"
             answerInput={answerInput}
             noOfQuestions={noOfQuestions}
             value1={firstNumber}
@@ -483,7 +484,7 @@ const YearThreeGames = () => {
             newQuestion={newQuestion4}
           />
           <QuestionCardColumn
-            h1="Can you subtract these three digit numbers?"
+            h1="Can you subtract using two- and three-digit numbers?"
             answerInput={answerInput}
             noOfQuestions={noOfQuestions}
             value1={firstInt}
@@ -506,7 +507,7 @@ const YearThreeGames = () => {
             newQuestion={newQuestion5}
           />
           <QuestionCard
-            h1="Can you use your multiplications of solve these problems?"
+            h1="Can you use your times tables skills to solve these problems?"
             answerInput={answerInput}
             noOfQuestions={noOfQuestions}
             value1={firstMultiple}
@@ -530,7 +531,7 @@ const YearThreeGames = () => {
             newQuestion={newQuestion8}
           />
           <QuestionCardUnit
-            h1="Can you add and subtract different measurements?."
+            h1="Can you add and subtract using units of measurement?"
             answerInput={answerInput}
             noOfQuestions={noOfQuestions}
             value1={firstMeasurement}

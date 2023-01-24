@@ -13,11 +13,12 @@ import QuestionCard from "../components/questioncard/QuestionCard";
 import ShapesQuestionCard from "../components/shapesQuestionCard/ShapesQuestionCard";
 import Score from "../components/score/Score";
 import PicQuestionCard from "../components/picQuestionCard/picQuestionCard";
-import QuestionCardThreeDig from "../components/questioncard/QuestionCardColumn";
+import QuestionCardThreeDig from "../components/questioncard/QuestionCardThreeDig";
 import QuestionCardFraction from "../components/questioncard/QuestionCardFraction";
 import QuestionCardOrder from "../components/questioncard/QuestionCardOrder";
 import QuestionCardCompare from "../components/questioncard/QuestionCardCompare";
 import randomNumberGenerator from "../components/functions/rngFunction";
+import ResourceButton from "../components/questioncard/ResourceButton";
 
 import {
   yearTwoPlanetTwoQuestion,
@@ -48,7 +49,7 @@ export default function YearTwoGames() {
   });
   const [result, setResult] = useState("");
   const context = useContext(ScoreContext);
-  let points = 798;
+  let points = 190;
   //let points = context.score;
   console.log(context);
 
@@ -540,6 +541,7 @@ export default function YearTwoGames() {
           newQuestion={newQuestion1}
         />
         <PicQuestionCard
+          text = "Can you count in 2s, 5s and 10,s from 0?"
           src={coinCountingImg}
           answerInput={answerInput}
           noOfQuestions={noOfQuestions}
@@ -548,6 +550,7 @@ export default function YearTwoGames() {
           checkAnswer={checkAnswer1}
         />
         <Score score={score} />
+        <ResourceButton url="https://www.youtube.com/watch?v=8nokRGhevCw" />
       </div>
     );
   } else if (points < 200) {
@@ -560,7 +563,7 @@ export default function YearTwoGames() {
             newQuestion={newQuestion2}
           />
           <QuestionCard
-            h1="Can you add and subtract 10 from any number?"
+            h1="Let's practice addition and subtraction!"
             answerInput={answerInput}
             noOfQuestions={noOfQuestions}
             value1={initialValue}
@@ -571,6 +574,7 @@ export default function YearTwoGames() {
             checkAnswer={checkAnswer2}
           />
           <Score score={score} />
+          <ResourceButton url="https://www.bbc.co.uk/bitesize/topics/zwv39j6/articles/zkd98xs" />
         </div>
       </div>
     );
@@ -584,7 +588,7 @@ export default function YearTwoGames() {
           newQuestion={newQuestion3}
         />
         <QuestionCard
-          h1="Can write these words in numbers?"
+          h1="Can you read and write your numbers up to 100?"
           answerInput={answerInput}
           noOfQuestions={noOfQuestions}
           value1={"What is"}
@@ -594,6 +598,7 @@ export default function YearTwoGames() {
           checkAnswer={checkAnswer3}
         />
         <Score score={score} />
+        <ResourceButton url="https://www.youtube.com/watch?v=bGetqbqDVaA" />
       </div>
     );
   } else if (points < 400) {
@@ -605,6 +610,7 @@ export default function YearTwoGames() {
           newQuestion={newQuestion4}
         />
         <PicQuestionCard
+          text = "Can you count up the coins?"
           src={placeValueImg}
           answerInput={answerInput}
           noOfQuestions={noOfQuestions}
@@ -613,6 +619,7 @@ export default function YearTwoGames() {
           checkAnswer={checkAnswer4}
         />
         <Score score={score} />
+        <ResourceButton url="https://www.youtube.com/watch?v=bGetqbqDVaA" />
       </div>
     );
   } else if (points < 500) {
@@ -638,6 +645,7 @@ export default function YearTwoGames() {
           checkAnswer={checkAnswer5}
         />
         <Score score={score} />
+        <ResourceButton url="https://www.bbc.co.uk/bitesize/topics/zf72pv4/articles/zr68r2p" />
       </div>
     );
   } else if (points < 600) {
@@ -650,7 +658,7 @@ export default function YearTwoGames() {
           newQuestion={newQuestion6}
         />
         <QuestionCardFraction
-          h1="Can you add fractions together?"
+          h1="Can you find the factions of these amounts?"
           answerInput={answerInput}
           noOfQuestions={noOfQuestions}
           value1={numerator}
@@ -660,6 +668,7 @@ export default function YearTwoGames() {
           checkAnswer={checkAnswer6}
         />
         <Score score={score} />
+        <ResourceButton url="https://www.bbc.co.uk/bitesize/topics/z3rbg82" />
       </div>
     );
   } else if (points < 700) {
@@ -683,6 +692,7 @@ export default function YearTwoGames() {
           checkAnswer={checkAnswer7}
         />
         <Score score={score} />
+        <ResourceButton url="https://www.youtube.com/watch?v=bGetqbqDVaA" />
       </div>
     );
   } else if (points < 800) {
@@ -695,7 +705,7 @@ export default function YearTwoGames() {
           newQuestion={newQuestion8}
         />
         <QuestionCardCompare
-          h1="Can you compare these numbers (< , = , >)?"
+          h1="Use your crocodiles (> and <)  to compare these numbers!"
           answerInput={answerInput}
           noOfQuestions={noOfQuestions}
           value1={firstNumberCompare}
@@ -704,6 +714,7 @@ export default function YearTwoGames() {
           checkAnswer={checkAnswer8}
         />
         <Score score={score} />
+        <ResourceButton url="https://www.bbc.co.uk/bitesize/topics/z8sfr82/articles/z3cm8hv" />
       </div>
     );
   }
