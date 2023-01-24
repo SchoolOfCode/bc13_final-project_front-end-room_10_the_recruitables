@@ -48,7 +48,7 @@ export default function YearTwoGames() {
   });
   const [result, setResult] = useState("");
   const context = useContext(ScoreContext);
-  let points = 798;
+  let points = 498;
   //let points = context.score;
   console.log(context);
 
@@ -560,7 +560,7 @@ export default function YearTwoGames() {
             newQuestion={newQuestion2}
           />
           <QuestionCard
-            h1="Can you add and subtract 10 from any number?"
+            h1="Let's practice addition and subtraction!"
             answerInput={answerInput}
             noOfQuestions={noOfQuestions}
             value1={initialValue}
@@ -584,7 +584,7 @@ export default function YearTwoGames() {
           newQuestion={newQuestion3}
         />
         <QuestionCard
-          h1="Can write these words in numbers?"
+          h1="Can you read and write your numbers up to 100?"
           answerInput={answerInput}
           noOfQuestions={noOfQuestions}
           value1={"What is"}
@@ -695,7 +695,7 @@ export default function YearTwoGames() {
           newQuestion={newQuestion8}
         />
         <QuestionCardCompare
-          h1="Can you compare these numbers (< , = , >)?"
+          h1="Use your crocodiles (> and <)  to compare these numbers!"
           answerInput={answerInput}
           noOfQuestions={noOfQuestions}
           value1={firstNumberCompare}

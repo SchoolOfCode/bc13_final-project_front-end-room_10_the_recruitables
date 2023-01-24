@@ -5,10 +5,10 @@ export default function PicQuestionCard(props) {
   return (
     <div className="questionDiv">
       <h2 className="h2QuestionGame">{props.noOfQuestions + ")  "}</h2>
-      <h2 className="h2QuestionGame">
-        {props.value1} {props.operation} {props.value2} {props.equals}
-      </h2>
-      <img className="QuestionImg" src={props.src} alt={props.imgAlt} />
+      <div className="question-container">
+        <h2 className="h2QuestionGame">{props.text}</h2>
+        <img className="QuestionImg" src={props.src} alt={props.imgAlt} />
+      </div>
       <input
         className="inputGame"
         type="number"
