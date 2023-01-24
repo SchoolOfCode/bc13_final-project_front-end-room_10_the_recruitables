@@ -13,7 +13,7 @@ describe('<App/> rendering and navigataing', () => {
         expect(asFragment()).toMatchSnapshot();
       });
 
-    //   screen.debug()
+      screen.debug()
     it("verifies page content for default route", async () => {
         render(<App />, {wrapper: BrowserRouter})              
         expect(screen.getByPlaceholderText(/email/i)).toBeInTheDocument()
