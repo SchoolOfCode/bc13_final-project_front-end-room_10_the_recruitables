@@ -13,7 +13,7 @@ import QuestionCard from "../components/questioncard/QuestionCard";
 import ShapesQuestionCard from "../components/shapesQuestionCard/ShapesQuestionCard";
 import Score from "../components/score/Score";
 import PicQuestionCard from "../components/picQuestionCard/picQuestionCard";
-import QuestionCardThreeDig from "../components/questioncard/QuestionCardColumn";
+import QuestionCardThreeDig from "../components/questioncard/QuestionCardThreeDig";
 import QuestionCardFraction from "../components/questioncard/QuestionCardFraction";
 import QuestionCardOrder from "../components/questioncard/QuestionCardOrder";
 import QuestionCardCompare from "../components/questioncard/QuestionCardCompare";
@@ -48,7 +48,7 @@ export default function YearTwoGames() {
   });
   const [result, setResult] = useState("");
   const context = useContext(ScoreContext);
-  let points = 498;
+  let points = 510;
   //let points = context.score;
   console.log(context);
 
@@ -540,6 +540,7 @@ export default function YearTwoGames() {
           newQuestion={newQuestion1}
         />
         <PicQuestionCard
+          text = "Can you count in 2s, 5s and 10,s from 0?"
           src={coinCountingImg}
           answerInput={answerInput}
           noOfQuestions={noOfQuestions}
@@ -605,6 +606,7 @@ export default function YearTwoGames() {
           newQuestion={newQuestion4}
         />
         <PicQuestionCard
+          text = "Can you count up the coins?"
           src={placeValueImg}
           answerInput={answerInput}
           noOfQuestions={noOfQuestions}
@@ -650,7 +652,7 @@ export default function YearTwoGames() {
           newQuestion={newQuestion6}
         />
         <QuestionCardFraction
-          h1="Can you add fractions together?"
+          h1="Can you find the factions of these amounts?"
           answerInput={answerInput}
           noOfQuestions={noOfQuestions}
           value1={numerator}
