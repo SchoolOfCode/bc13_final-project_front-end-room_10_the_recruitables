@@ -98,6 +98,40 @@
   border-style: groove;
 }
 
+.antenna_circle_5 {
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 50px;
+  background-image: url("https://www.icegif.com/wp-content/uploads/2022/09/icegif-1023.gif");
+  background-size: cover;
+}
+
+.antenna_circle_6 {
+  position: absolute;
+  top: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 150px;
+  height: 150px;
+  background-image: url("https://i.gifer.com/KHEK.gif");
+  background-size: cover;
+}
+
+.antenna_circle_7 {
+  position: absolute;
+  top: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 150px;
+  height: 150px;
+  background-image: url("https://i.gifer.com/origin/a6/a68461676c04a0e1df077f096bedad68.gif");
+  background-size: cover;
+  z-index: 1;
+}
+
 .ears {
   position: absolute;
   top: 115px;
@@ -158,6 +192,51 @@
   width: 140px;
   height: 181px;
   border-radius: 80px 80px 100px 100px;
+  background-color: var(--avatar-body-color);
+}
+
+
+.face_4 {
+  position: absolute;
+  top: 44px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 140px;
+  height: 181px;
+  border-radius: 90px 90px 20px 20px;
+  background-color: var(--avatar-body-color);
+}
+
+.face_5 {
+  position: absolute;
+  top: 44px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 140px;
+  height: 181px;
+  border-radius: 20px 20px 20px 20px;
+  background-color: var(--avatar-body-color);
+}
+
+.face_6 {
+  position: absolute;
+  top: 44px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 110px;
+  height: 181px;
+  border-radius: 20px 20px 20px 20px;
+  background-color: var(--avatar-body-color);
+}
+
+.face_7 {
+  position: absolute;
+  top: 44px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 130px;
+  height: 181px;
+  border-radius: 50px 50px 50px 50px;
   background-color: var(--avatar-body-color);
 }
 
@@ -328,6 +407,8 @@
   height: 150px;
   border-radius: 0px 0px 50px 50px;
   background-color: rgb(25, 0, 255);
+  background-image: url("../images/LogoAnimated.gif");
+  background-size: contain;
 }
 
 .arms_leftSleeve_1 {
@@ -338,7 +419,7 @@
   width: 10px;
   height: 20px;
   border-radius: 50px 0px 0px 50px;
-  background-color: rgb(25, 0, 255);
+  background-color: rgb(0, 255, 251);
 }
 
 .arms_rightSleeve_1 {
@@ -349,7 +430,7 @@
   width: 10px;
   height: 20px;
   border-radius: 0px 50px 50px 0px;
-  background-color: rgb(25, 0, 255);
+  background-color: rgb(0, 255, 251);
 }
 
 .bodyWrap_body_2 {
@@ -361,6 +442,9 @@
   height: 150px;
   border-radius: 0px 0px 50px 50px;
   background-color: rgb(255, 0, 242);
+  background-image: url("https://mir-s3-cdn-cf.behance.net/project_modules/disp/d4159442094811.57c019c41da55.gif");
+  background-size: contain;
+
 }
 
 .arms_leftSleeve_2 {
@@ -371,7 +455,7 @@
   width: 10px;
   height: 20px;
   border-radius: 50px 0px 0px 50px;
-  background-color: rgb(255, 0, 242);
+  background-color: rgb(222, 16, 211);
 }
 
 .arms_rightSleeve_2 {
@@ -382,7 +466,7 @@
   width: 10px;
   height: 20px;
   border-radius: 0px 50px 50px 0px;
-  background-color: rgb(255, 0, 242);
+  background-color: rgb(222, 16, 211);
 }
 
 .bodyWrap_body_3 {
@@ -393,7 +477,10 @@
   width: 100px;
   height: 150px;
   border-radius: 0px 0px 50px 50px;
-  background-color: rgb(255, 251, 0);
+  background-image: url("https://thumbs.gfycat.com/HarmfulSlightBrahmanbull-max-1mb.gif");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-color: rgb(99, 91, 211)
 }
 
 .arms_leftSleeve_3 {
@@ -404,7 +491,7 @@
   width: 10px;
   height: 20px;
   border-radius: 50px 0px 0px 50px;
-  background-color: rgb(255, 251, 0);
+  background-color: rgb(72, 64, 185);
 }
 
 .arms_rightSleeve_3 {
@@ -415,7 +502,7 @@
   width: 10px;
   height: 20px;
   border-radius: 0px 50px 50px 0px;
-  background-color: rgb(255, 251, 0);
+  background-color:rgb(72, 64, 185);
 }
 
 .bodyWrap_body_4 {
@@ -426,8 +513,9 @@
   width: 100px;
   height: 150px;
   border-radius: 0px 0px 50px 50px;
-  background-image: url("../images/Logo.png");
+  background-image: url("https://i.pinimg.com/originals/d4/f4/5b/d4f45b31e61f9808077099233c3093c6.gif");
   background-size: contain;
+  background-repeat: no-repeat;
   background-color: blue;
 }
 
@@ -439,7 +527,7 @@
   width: 10px;
   height: 20px;
   border-radius: 50px 0px 0px 50px;
-  background-color: blue;
+  background-color: rgb(9, 9, 198);
 }
 
 .arms_rightSleeve_4 {
@@ -450,7 +538,115 @@
   width: 10px;
   height: 20px;
   border-radius: 0px 50px 50px 0px;
-  background-color: blue;
+  background-color: rgb(9, 9, 198);
+}
+
+.bodyWrap_body_5 {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 150px;
+  border-radius: 0px 0px 50px 50px;
+  background-image: url("https://media3.giphy.com/media/IfrtVRiikHiWMVIpfx/giphy.gif?cid=6c09b9523757db8b1dd2e72c343db59c333725a56647ac74&rid=giphy.gif&ct=s");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-color: rgb(0, 255, 179);
+}
+
+.arms_leftSleeve_5 {
+  position: absolute;
+  bottom: 0px;
+  left: 28%;
+  transform: translateX(-50%);
+  width: 10px;
+  height: 20px;
+  border-radius: 50px 0px 0px 50px;
+  background-color: rgb(15, 193, 140);
+}
+
+.arms_rightSleeve_5 {
+  position: absolute;
+  bottom: 0px;
+  right: 24%;
+  transform: translateX(-50%);
+  width: 10px;
+  height: 20px;
+  border-radius: 0px 50px 50px 0px;
+  background-color: rgb(15, 193, 140);
+}
+
+.bodyWrap_body_6 {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 150px;
+  border-radius: 0px 0px 50px 50px;
+  background-image: url("https://i.pinimg.com/originals/2d/b8/b1/2db8b1792fe929aec28248a30292915d.gif");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-color: rgb(255, 0, 111);
+}
+
+.arms_leftSleeve_6 {
+  position: absolute;
+  bottom: 0px;
+  left: 28%;
+  transform: translateX(-50%);
+  width: 10px;
+  height: 20px;
+  border-radius: 50px 0px 0px 50px;
+  background-color: rgb(193, 15, 57);
+}
+
+.arms_rightSleeve_6 {
+  position: absolute;
+  bottom: 0px;
+  right: 24%;
+  transform: translateX(-50%);
+  width: 10px;
+  height: 20px;
+  border-radius: 0px 50px 50px 0px;
+  background-color: rgb(193, 15, 57);
+}
+
+.bodyWrap_body_7 {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 150px;
+  border-radius: 0px 0px 50px 50px;
+  background-image: url("https://i.pinimg.com/originals/f0/90/17/f090171595f1ca77ecfae1170012ac49.gif");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-color: rgb(55, 143, 205);
+}
+
+.arms_leftSleeve_7 {
+  position: absolute;
+  bottom: 0px;
+  left: 28%;
+  transform: translateX(-50%);
+  width: 10px;
+  height: 20px;
+  border-radius: 50px 0px 0px 50px;
+  background-color: rgb(45, 151, 226);
+}
+
+.arms_rightSleeve_7 {
+  position: absolute;
+  bottom: 0px;
+  right: 24%;
+  transform: translateX(-50%);
+  width: 10px;
+  height: 20px;
+  border-radius: 0px 50px 50px 0px;
+  background-color: rgb(45, 151, 226);
 }
 
 .bodyWrap_bottom {

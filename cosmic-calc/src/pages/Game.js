@@ -27,6 +27,8 @@ import {
   yearOnePlanetSevenAnswer,
   giveRandomShape,
   checkShapeAnswer,
+  yearOnePlanetEightQuestion,
+  yearOnePlanetEightAnswer,
 } from "../components/functions/Year1Functions";
 
 import randomNumberGenerator from "../components/functions/rngFunction";
@@ -48,24 +50,23 @@ export default function Game() {
   });
   const [result, setResult] = useState("");
   const context = useContext(ScoreContext);
-  let points = 15;
+  let points = 200;
   // let points = context.score;
 
   useEffect(() => {
-    if (noOfQuestions === 6) {
+    if (noOfQuestions === 11) {
       onAuthStateChanged(auth, (user) => {
         updateScore(score, user);
       });
     }
   }, [noOfQuestions, score]);
 
-  if (noOfQuestions === 6) {
+  if (noOfQuestions === 11) {
     playWin();
   }
 
   // yearOnePlanetOne
 
-  //const [numberLineID, setNumberLineID] = useState(0);
   const [numberLineImg, setNumberLineImg] = useState("");
   const [correctAnswer1, setCorrectAnswer1] = useState(0);
   const [numberLineArray, setNumberLineArray] = useState([]);
@@ -86,7 +87,7 @@ export default function Game() {
         let newNumberLineArray = data.payload;
         setNumberLineArray(data.payload);
         let randomID = randomNumberGenerator(10);
-        //setNumberLineID(randomID);
+
         setNumberLineImg(newNumberLineArray[randomID].img_url);
         setCorrectAnswer1(newNumberLineArray[randomID].answer);
       }
@@ -95,7 +96,6 @@ export default function Game() {
   }, []);
 
   const checkAnswer1 = () => {
-    setNoOfQuestions(noOfQuestions + 1);
     let questionResult = "";
     if (correctAnswer1 == answerInput) {
       questionResult = true;
@@ -116,7 +116,9 @@ export default function Game() {
   };
 
   const newQuestion1 = () => {
+    setNoOfQuestions(noOfQuestions + 1);
     let randomID = randomNumberGenerator(10);
+
     setNumberLineImg(numberLineArray[randomID].img_url);
     setCorrectAnswer1(numberLineArray[randomID].answer);
     setResult("");
@@ -133,7 +135,6 @@ export default function Game() {
   }, []);
 
   function checkAnswer2(playerInput) {
-    setNoOfQuestions(noOfQuestions + 1);
     let [questionResult, correctAnswer] = checkShapeAnswer(playerInput, shape);
     if (questionResult === true) {
       playCorrect();
@@ -148,6 +149,7 @@ export default function Game() {
   }
 
   const newQuestion2 = (playerInput) => {
+    setNoOfQuestions(noOfQuestions + 1);
     let newShape = giveRandomShape();
     setShape(newShape);
     let [questionResult, correctAnswer] = checkShapeAnswer(
@@ -173,8 +175,6 @@ export default function Game() {
   }, []);
 
   const checkAnswer3 = () => {
-    console.log("Check answer called");
-    setNoOfQuestions(noOfQuestions + 1);
     let [questionResult, correctAnswer] = yearOnePlanetFiveAnswer(
       [Y1P3value1, Y1P3operation, Y1P3value2],
       answerInput
@@ -194,6 +194,7 @@ export default function Game() {
   };
 
   const newQuestion3 = () => {
+    setNoOfQuestions(noOfQuestions + 1);
     let [Y1P3value1, Y1P3operation, Y1P3value2] = yearOnePlanetFiveQuestion();
     setY1P3Value1(Y1P3value1);
     setY1P3Operation(Y1P3operation);
@@ -217,8 +218,6 @@ export default function Game() {
   }, []);
 
   const checkAnswer4 = () => {
-    console.log("check answer 4");
-    setNoOfQuestions(noOfQuestions + 1);
     let [questionResult, correctAnswer] = yearOnePlanetFourAnswer(
       Y1P4knownValue,
       answerInput
@@ -241,6 +240,7 @@ export default function Game() {
   };
 
   const newQuestion4 = () => {
+    setNoOfQuestions(noOfQuestions + 1);
     console.log("new question 4");
     let Y1P4knownValue = yearOnePlanetFourQuestion();
     setY1P4knownValue(Y1P4knownValue);
@@ -268,7 +268,6 @@ export default function Game() {
   }, []);
 
   const checkAnswer5 = () => {
-    setNoOfQuestions(noOfQuestions + 1);
     let [questionResult, correctAnswer] = yearOnePlanetFiveAnswer(
       [value1, operation, value2],
       answerInput
@@ -287,6 +286,7 @@ export default function Game() {
   };
 
   const newQuestion5 = () => {
+    setNoOfQuestions(noOfQuestions + 1);
     let [value1, operation, value2] = yearOnePlanetFiveQuestion();
     setValue1(value1);
     setValue2(value2);
@@ -313,7 +313,6 @@ export default function Game() {
   }, []);
 
   const checkAnswer6 = () => {
-    setNoOfQuestions(noOfQuestions + 1);
     let [questionResult, correctAnswer] = yearOnePlanetSixAnswer(
       [number, word],
       answerInput
@@ -332,6 +331,7 @@ export default function Game() {
   };
 
   const newQuestion6 = () => {
+    setNoOfQuestions(noOfQuestions + 1);
     let [number, word] = yearOnePlanetSixQuestion();
     setNumber(number);
     setWord(word);
@@ -356,7 +356,7 @@ export default function Game() {
   function checkAnswer7(playerInput) {
     console.log(fractionWord);
     console.log(playerInput);
-    setNoOfQuestions(noOfQuestions + 1);
+
     let [questionResult, correctAnswer] = yearOnePlanetSevenAnswer(
       fractionWord,
       playerInput
@@ -374,6 +374,7 @@ export default function Game() {
   }
 
   const newQuestion7 = (playerInput) => {
+    setNoOfQuestions(noOfQuestions + 1);
     let newFractionWord = getFractionWord();
     setFractionWord(newFractionWord);
     console.log(`right answer${fractionWord} and input${playerInput}`);
@@ -390,13 +391,12 @@ export default function Game() {
   const [Y1P8knownValue, setY1P8knownValue] = useState(0);
 
   useEffect(() => {
-    let Y1P8knownValue = yearOnePlanetFourQuestion(8);
+    let Y1P8knownValue = yearOnePlanetEightQuestion();
     setY1P8knownValue(Y1P8knownValue);
   }, []);
 
   const checkAnswer8 = () => {
-    setNoOfQuestions(noOfQuestions + 1);
-    let [questionResult, correctAnswer] = yearOnePlanetFourAnswer(
+    let [questionResult, correctAnswer] = yearOnePlanetEightAnswer(
       Y1P8knownValue,
       answerInput
     );
@@ -415,10 +415,11 @@ export default function Game() {
   };
 
   const newQuestion8 = () => {
-    let Y1P8knownValue = yearOnePlanetFourQuestion(8);
+    setNoOfQuestions(noOfQuestions + 1);
+    let Y1P8knownValue = yearOnePlanetEightQuestion();
     setY1P8knownValue(Y1P8knownValue);
 
-    let [questionResult, correctAnswer] = yearOnePlanetFourAnswer(
+    let [questionResult, correctAnswer] = yearOnePlanetEightAnswer(
       Y1P8knownValue,
       answerInput
     );
@@ -444,7 +445,7 @@ export default function Game() {
     console.log(data);
   };
 
-  if (noOfQuestions === 6) {
+  if (noOfQuestions === 11) {
     return (
       <div className="endDiv">
         <img className="astronaut" src={astronaut} alt="astronaut" />
@@ -464,7 +465,7 @@ export default function Game() {
         </div>
       </div>
     );
-  } else if (points === 5) {
+  } else if (points < 100) {
     return (
       <div className="gameDiv">
         <AnswerCard
@@ -477,14 +478,14 @@ export default function Game() {
           src={numberLineImg}
           answerInput={answerInput}
           noOfQuestions={noOfQuestions}
-          value1={"Which number is missing?"}
+          text={"Can you fill in the missing number?"}
           setAnswerInput={setAnswerInput}
           checkAnswer={checkAnswer1}
         />
         <Score score={score} />
       </div>
     );
-  } else if (points === 7) {
+  } else if (points < 200) {
     console.log("In shapes game");
 
     return (
@@ -503,7 +504,7 @@ export default function Game() {
         <Score score={score} />
       </div>
     );
-  } else if (points === 8) {
+  } else if (points < 300) {
     console.log("In counters game!");
     console.log("points = ", points);
     return (
@@ -514,6 +515,9 @@ export default function Game() {
           newQuestion={newQuestion3}
         />
         <CountersQuestionCard
+          h1={
+            "Can you add and subtract the stars to work out the total number?"
+          }
           answerInput={answerInput}
           noOfQuestions={noOfQuestions}
           value1={Y1P3value1}
@@ -525,7 +529,7 @@ export default function Game() {
         <Score score={score} />
       </div>
     );
-  } else if (points < 20) {
+  } else if (points < 400) {
     console.log("Inside points < 20 if statement");
     console.log("points = ", points);
     return (
@@ -537,6 +541,7 @@ export default function Game() {
         />
         <QuestionCard
           inputType={"hidden"}
+          h1={"Can you match up your number bonds to 10?"}
           answerInput={answerInput}
           noOfQuestions={noOfQuestions}
           value1={`What do I need to add to ${Y1P4knownValue} to make 10?`}
@@ -546,7 +551,7 @@ export default function Game() {
         <Score score={score} />
       </div>
     );
-  } else if (points < 50) {
+  } else if (points < 500) {
     console.log("Inside 20 <= points < 50 if statement");
     console.log("points = ", points);
     return (
@@ -557,6 +562,7 @@ export default function Game() {
           newQuestion={newQuestion5}
         />
         <QuestionCard
+          h1={"How many sums can you get right?"}
           inputType={inputType}
           answerInput={answerInput}
           noOfQuestions={noOfQuestions}
@@ -570,7 +576,7 @@ export default function Game() {
         <Score score={score} />
       </div>
     );
-  } else if (points === 99) {
+  } else if (points < 600) {
     return (
       <div className="gameDiv">
         <AnswerCard
@@ -579,6 +585,7 @@ export default function Game() {
           newQuestion={newQuestion6}
         />
         <QuestionCard
+          h1={"Can you read your numbers from 1 to 10?"}
           inputType={inputType}
           answerInput={answerInput}
           noOfQuestions={noOfQuestions}
@@ -591,7 +598,7 @@ export default function Game() {
         <Score score={score} />
       </div>
     );
-  } else if (points === 91) {
+  } else if (points < 700) {
     return (
       <div className="gameDiv">
         <AnswerCard
@@ -600,6 +607,7 @@ export default function Game() {
           newQuestion={newQuestion7}
         />
         <FractionsQuestionCard
+          h1={"How well do you know your fractions?"}
           answerInput={answerInput}
           noOfQuestions={noOfQuestions}
           fractionWord={fractionWord}
@@ -608,7 +616,7 @@ export default function Game() {
         <Score score={score} />
       </div>
     );
-  } else if (points >= 100) {
+  } else if (points < 800) {
     console.log("Inside points >= 100 if statement");
     console.log("points = ", points);
     return (
@@ -619,6 +627,7 @@ export default function Game() {
           newQuestion={newQuestion8}
         />
         <QuestionCard
+          h1={"Can you match up all your number bonds to 20?"}
           inputType={inputType}
           answerInput={answerInput}
           noOfQuestions={noOfQuestions}

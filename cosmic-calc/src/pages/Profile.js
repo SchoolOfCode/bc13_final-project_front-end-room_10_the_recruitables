@@ -67,13 +67,21 @@ function Profile() {
 
   return (
     <div>
-      <div className="profilePageDiv">
+      <div className="profilePageDiv" data-testid="profilePageDiv">
         {/* <img className="profileImage" src={profileImage} alt="profileImage" /> */}
         <div class="container">
-          <button className="avatarButton" onClick={() => navigate("/avatars")}>
+          <button
+            className="avatarButton"
+            onClick={() => navigate("/avatars")}
+            data-testid="avatarButton"
+          >
             Customise
           </button>
-          <div class="avatarWrapProfile" onMouseOver={play}>
+          <div
+            class="avatarWrapProfile"
+            onMouseOver={play}
+            data-testid="avatarWrapProfile"
+          >
             <div class="avatar">
               <div class="headWrap">
                 <div class="antenna">
@@ -126,12 +134,15 @@ function Profile() {
         </div>
         <div className="profileDiv">
           <h3 className="welcome">Welcome</h3>
-          <h4 className="name">{userData.name}</h4>
-          <h4 className="score">Total score: {context.score} </h4>
-          <h4 className="Year">Year: {context.year}</h4>
-
+          <h4 className="name" data-testid="name">
+            {userData.name}
+          </h4>
+          <h4 className="score" data-testid="score">
+            Total score: {context.score}{" "}
+          </h4>
           <button
             className="gameButton"
+            data-testid="gameButtonProfile"
             onClick={() => {
               handleGame();
               stop();
