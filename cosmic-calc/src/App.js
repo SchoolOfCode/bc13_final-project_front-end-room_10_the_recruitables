@@ -17,7 +17,6 @@ import Level5 from "./pages/Level5";
 import useSound from "use-sound";
 import buttonFX from "./components/sound/FX/buttonFX.mp3";
 import logo from "../src/images/Logo.png";
-import Leaderboard from "./pages/Leaderboard";
 
 export default function App() {
   const authed = auth;
@@ -27,11 +26,9 @@ export default function App() {
   const [profileHighlighted, setProfileHighlighted] = useState(false);
   const [progressHighlighted, setProgressHighlighted] = useState(false);
   const [gameHighlighted, setGameHighlighted] = useState(false);
-  const [soundEnabled, setSoundEnabled] = useState(true);
   const [playHover] = useSound(buttonFX, {
     volume: 0.3,
     playbackRate: Math.floor(Math.random() * (2 - 0.8) + 0.8),
-    soundEnabled: soundEnabled,
   });
 
   const navigateToLogin = () => {
@@ -83,37 +80,27 @@ export default function App() {
   const navigateToRegister = () => {
     navigate("/register");
   };
-  const navigateToLeaderboard = () => {
-    navigate("/leaderboard");
+
+  const navigateToYearOne = () => {
+    navigate("/Game");
   };
+
+  const navigateToYearTwo = () => {
+    navigate("/year-two-games");
+  };
+
+  const navigateToYearThree = () => {
+    navigate("/year-three-games");
+  };
+
+  const navigateToYearFour = () => {
+    navigate("/year-four-games");
+  };
+
+
   console.log(authed.currentUser);
 
-  const mute = () => {
-    setSoundEnabled(!soundEnabled);
-  };
 
-  return (
-    <div>
-      {/* <div className="muteButton">
-        <button
-          className="muteButton"
-          onClick={() => {
-            mute();
-          }}
-        >
-          Mute
-        </button>
-      </div> */}
-
-      {authed.currentUser ? (
-        <div className="navBarPageDiv">
-          <img src={logo} alt="logo" className="logo" />
-          {location.pathname !== "/game" && (
-            <div className="progress-score" data-testid="navBarScore">
-              <h1>Score: {context.score}</h1>
-            </div>
-          )}
-          {location.pathname !== "/profile" && (
             <button
               onClick={navigateToProfile}
               onMouseOver={playHover}
@@ -146,22 +133,30 @@ export default function App() {
               }
             ></button>
           )}
-          <Logout />
-          {/* <button onClick={navigateToAvatars} className="navButtonAvatars">
-            Avatars
-          </button> */}
-          {authed.currentUser.email === "teacher@teacher.com" && (
-            <button onClick={navigateToLeaderboard}>Leaderboard</button>
+
+          {location.pathname !== "/game" && (
+            <div className="progress-score">
+              <h1>Score: {context.score}</h1>
+            </div>
           )}
-          {/* <button onClick={navigateToTimedGame} className="navButtonTimedGame">
+          <button onClick={navigateToTimedGame} className="navButtonTimedGame">
+
             TimedGame
+          </button>
+          <button onClick={navigateToAvatars} className="navButtonAvatars">
+            Avatars
           </button>
           <button onClick={navigateToLevel1} className="navButtonLevel1">
             Level1
           </button>
           <button onClick={navigateToLevel5} className="navButtonLevel5">
             Level5
-          </button> */}
+          </button>
+          <button onClick={navigateToYearTwo} className="navButtonLevel6">
+            year-Two
+          </button>
+          <Logout />
+
         </div>
       ) : (
         <div className="navBarLoginDiv">
@@ -242,14 +237,6 @@ export default function App() {
           element={
             <ProtectedRoute>
               <Level5 />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/leaderboard"
-          element={
-            <ProtectedRoute>
-              <Leaderboard />
             </ProtectedRoute>
           }
         />
