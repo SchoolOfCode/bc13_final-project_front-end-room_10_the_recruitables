@@ -25,8 +25,8 @@ const AvatarBuilder = () => {
     Bodies: 1,
     Ants: 1,
   };
-  if (context.score >= 50) {
-    let increment = Math.floor(context.score / 50);
+  if (context.score >= 5) {
+    let increment = Math.floor(context.score / 5);
     bodyPartAmounts.Heads += increment;
     bodyPartAmounts.Bodies += increment;
     bodyPartAmounts.Ants += increment;
