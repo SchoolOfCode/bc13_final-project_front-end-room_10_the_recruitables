@@ -14,7 +14,7 @@ export default function QuestionCardUnit (props) {
         value={props.answerInput}
         onChange={(e) => props.setAnswerInput(e.target.value)}
         onKeyDown={(e) => {
-          // console.log(e);
+          console.log('onKeyDown');
           if (e.key === "Enter") {
             props.checkAnswer();
             props.setAnswerInput("");

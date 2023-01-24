@@ -24,7 +24,7 @@ describe('<App/> rendering and navigataing', () => {
 
     // it('verifies page content for expected route after navigating- from home page to register page', async () => {
     //     render(<App />, {wrapper: BrowserRouter})   
-    //     await userEvent.click(screen.getByRole('button', {name: /register/i}))
+    //     userEvent.click(screen.getByRole('button', {name: /register/i}))
     //     expect(screen.getByPlaceholderText(/name/i)).toBeInTheDocument()
     //     expect(screen.getByPlaceholderText(/email/i)).toBeInTheDocument()
     // })
