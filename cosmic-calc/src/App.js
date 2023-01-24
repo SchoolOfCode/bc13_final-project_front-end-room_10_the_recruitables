@@ -100,6 +100,7 @@ export default function App() {
 
   console.log(authed.currentUser);
 
+
             <button
               onClick={navigateToProfile}
               onMouseOver={playHover}
@@ -112,6 +113,7 @@ export default function App() {
           )}
           {location.pathname !== "/progress" && (
             <button
+              data-testid="progressButton"
               onClick={navigateToProgress}
               onMouseOver={playHover}
               className={
@@ -123,6 +125,7 @@ export default function App() {
           )}
           {location.pathname !== "/game" && (
             <button
+              data-testid="gameButton"
               onClick={navigateToGame}
               onMouseOver={playHover}
               className={
