@@ -1,0 +1,97 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Login/> rendering and navigataing successfully renders the component, matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="Login"
+  >
+    <div>
+      <div
+        class="loginLogoDiv"
+      >
+        <img
+          alt="logo"
+          class="loginLogo"
+          src="Logo.png"
+        />
+      </div>
+      <form>
+        <div
+          class="inputLoginDiv"
+        >
+          <input
+            class="loginInput"
+            placeholder="email"
+            type="email"
+            value=""
+          />
+          <input
+            class="passwordInput"
+            placeholder="password"
+            type="password"
+            value=""
+          />
+        </div>
+        <div
+          class="loginButtonDiv"
+        >
+          <button
+            class="loginButton"
+            type="submit"
+          >
+            Login
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`<LoginPage/> rendering and navigataing successfully renders the component, matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="Login"
+  >
+    <div>
+      <div
+        class="loginLogoDiv"
+      >
+        <img
+          alt="logo"
+          class="loginLogo"
+          src="Logo.png"
+        />
+      </div>
+      <form>
+        <div
+          class="inputLoginDiv"
+        >
+          <input
+            class="loginInput"
+            placeholder="email"
+            type="email"
+            value=""
+          />
+          <input
+            class="passwordInput"
+            placeholder="password"
+            type="password"
+            value=""
+          />
+        </div>
+        <div
+          class="loginButtonDiv"
+        >
+          <button
+            class="loginButton"
+            type="submit"
+          >
+            Login
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</DocumentFragment>
+`;

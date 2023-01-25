@@ -32,6 +32,7 @@ function Profile() {
     const response = await fetch(
       `http://localhost:3001/api/users/email/${email}`
     );
+
     const data = await response.json();
     console.log(data.payload);
     setUserData(data.payload);
