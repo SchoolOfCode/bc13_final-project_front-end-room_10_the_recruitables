@@ -21,6 +21,7 @@ import QuestionCardColumn from "../components/questioncard/QuestionCardColumn";
 import QuestionCardUnit from "../components/questioncard/QuestionCardUnit";
 import QuestionCardTimer from "../components/questioncard/QuestionCardTimer";
 import QuestionCardRound from "../components/questioncard/QuestionCardRound";
+import ResourceButton from "../components/questioncard/ResourceButton";
 
 import {
   yearFourPlanetOneQuestion,
@@ -547,6 +548,7 @@ const YearFourGames = () => {
             checkAnswer={checkAnswer1}
           />
           <Score score={score} />
+          <ResourceButton url="https://www.bbc.co.uk/teach/supermovers/ks2-maths-the-6-times-table-with-fred-the-red/zrq3xyc" />
         </div>
       </div>
     );
@@ -571,6 +573,7 @@ const YearFourGames = () => {
             checkAnswer={checkAnswer2}
           />
           <Score score={score} />
+          <ResourceButton url="https://www.bbc.co.uk/bitesize/topics/zf72pv4/articles/zw267yc"/>
         </div>
       </div>
     );
@@ -595,6 +598,7 @@ const YearFourGames = () => {
             checkAnswer={checkAnswer3}
           />
           <Score score={score} />
+          <ResourceButton url="https://www.bbc.co.uk/bitesize/topics/znwj6sg/articles/zxthnbk"/>
         </div>
       </div>
     );
@@ -619,6 +623,7 @@ const YearFourGames = () => {
           checkAnswer={checkAnswer4}
         />
         <Score score={score} />
+        <ResourceButton url="https://www.bbc.co.uk/bitesize/topics/zsjqtfr/articles/zhpq7nb" />
       </div>
     );
   } else if (points < 500) {
@@ -640,6 +645,7 @@ const YearFourGames = () => {
             checkAnswer={checkAnswer5}
           />
           <Score score={score} />
+          <ResourceButton url="https://www.bbc.co.uk/bitesize/topics/zh8dmp3/articles/zpx2qty" /> 
         </div>
       </div>
     );
@@ -666,6 +672,7 @@ const YearFourGames = () => {
             checkAnswer={checkAnswer6}
           />
           <Score score={score} />
+          <ResourceButton url="https://www.bbc.co.uk/bitesize/topics/z4nsgk7/articles/z63qdp3" />
         </div>
       </div>
     );
@@ -690,6 +697,7 @@ const YearFourGames = () => {
             checkAnswer={checkAnswer7}
           />
           <Score score={score} />
+          <ResourceButton url="https://www.bbc.co.uk/teach/supermovers/times-table-collection/z4vv6v4" />
         </div>
       </div>
     );
@@ -716,6 +724,7 @@ const YearFourGames = () => {
             checkAnswer={checkAnswer8}
           />
           <Score score={score} />
+          <ResourceButton url="https://www.bbc.co.uk/bitesize/topics/z36tyrd/articles/zr9xqfr" />
         </div>
       </div>
     );
@@ -742,6 +751,7 @@ const YearFourGames = () => {
             checkAnswer={checkAnswer7}
           />
           <Score score={score} />
+          <ResourceButton url="https://www.bbc.co.uk/teach/supermovers/times-table-collection/z4vv6v4" /> 
         </div>
       </div>
     );

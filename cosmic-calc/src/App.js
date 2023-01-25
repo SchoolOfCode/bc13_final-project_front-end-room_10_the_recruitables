@@ -177,9 +177,7 @@ export default function App() {
               <h1>Score: {context.score}</h1>
             </div>
           )}
-          <Logout />
-        </div>
-      )}
+       
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/register" element={<Register />} />

@@ -26,11 +26,7 @@ export default function QuestionCardTimer(props) {
       setTime(300);
   }
 
-  // stop timer
-  const handleStop = () => {
-      clearInterval(timer);
-      setIsOn(false);
-  }
+
 
   // reset timer
   const handleReset = () => {
@@ -83,7 +79,6 @@ if (time === 0) {
        <h1>Timer</h1>
             <h2>{showTime()}</h2>
             <button onClick={handleStart}>Start</button>
-            <button onClick={handleStop}>Stop</button>
             <button onClick={handleReset}>Reset</button>
             <button onClick={oneMin}>1 min</button>
             <button onClick={twoMin}>2 min</button>
