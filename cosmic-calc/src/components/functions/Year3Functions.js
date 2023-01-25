@@ -46,7 +46,7 @@ export function yearThreePlanetTwoAnswer(values, playerAnswer) {
     } else if (playerAnswer.includes(" ")) {
         playerArray = playerAnswer.split(" ").map((x) => {return Number(x)});
     } else {
-        return [false, sortedValues]; // If the user does not consistently split their values
+        return [false, sortedString]; // If the user does not consistently split their values
     }
     for (let i = 0; i < values.length; i++) {
         if (sortedValues[i] !== playerArray[i]) {

@@ -153,7 +153,7 @@ const YearThreeGames = () => {
       newQuestion2();
     } else {
       playWrong();
-      setResult(correctAnswer.join(", "));
+      setResult(correctAnswer);
       setAnswerVisible(true);
     }
   };

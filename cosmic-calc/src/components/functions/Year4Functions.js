@@ -79,7 +79,7 @@ export function yearFourPlanetFourAnswer(values, playerAnswer) {
       return Number(x);
     });
   } else {
-    return [false, sortedValues]; // If the user does not consistently split their values
+    return [false, sortedString]; // If the user does not consistently split their values
   }
   for (let i = 0; i < values.length; i++) {
     if (sortedValues[i] !== playerArray[i]) {
