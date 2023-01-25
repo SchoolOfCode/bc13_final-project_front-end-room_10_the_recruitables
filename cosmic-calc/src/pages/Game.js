@@ -15,6 +15,7 @@ import CountersQuestionCard from "../components/questioncard/countersQuestionCar
 import ShapesQuestionCard from "../components/shapesQuestionCard/ShapesQuestionCard";
 import Score from "../components/score/Score";
 import PicQuestionCard from "../components/picQuestionCard/picQuestionCard";
+import ResourceButton from "../components/questioncard/ResourceButton";
 
 import {
   yearOnePlanetFourQuestion,
@@ -50,8 +51,10 @@ export default function Game() {
   });
   const [result, setResult] = useState("");
   const context = useContext(ScoreContext);
-  let points = 15;
-  // let points = context.score;
+
+  //let points = 390;
+  let points = context.score;
+
 
   useEffect(() => {
     if (noOfQuestions === 11) {
@@ -482,6 +485,7 @@ export default function Game() {
           checkAnswer={checkAnswer1}
         />
         <Score score={score} />
+        <ResourceButton url="https://www.youtube.com/watch?v=e0dJWfQHF8Y" />
       </div>
     );
   } else if (points < 200) {
@@ -501,6 +505,7 @@ export default function Game() {
           checkAnswer={checkAnswer2}
         />
         <Score score={score} />
+        <ResourceButton url="https://www.youtube.com/watch?v=WTeqUejf3D0" />
       </div>
     );
   } else if (points < 300) {
@@ -526,6 +531,7 @@ export default function Game() {
           checkAnswer={checkAnswer3}
         />
         <Score score={score} />
+        <ResourceButton url="https://www.bbc.co.uk/bitesize/topics/zwv39j6/articles/zbpbrj6" />
       </div>
     );
   } else if (points < 400) {
@@ -548,6 +554,7 @@ export default function Game() {
           checkAnswer={checkAnswer4}
         />
         <Score score={score} />
+        <ResourceButton url="https://www.bbc.co.uk/bitesize/topics/zwv39j6/articles/zkd98xs" />
       </div>
     );
   } else if (points < 500) {
@@ -573,6 +580,7 @@ export default function Game() {
           checkAnswer={checkAnswer5}
         />
         <Score score={score} />
+        <ResourceButton url="https://www.bbc.co.uk/bitesize/topics/zwv39j6/articles/ztpmrwx" />
       </div>
     );
   } else if (points < 600) {
@@ -595,6 +603,7 @@ export default function Game() {
           checkAnswer={checkAnswer6}
         />
         <Score score={score} />
+        <ResourceButton  url="https://www.youtube.com/watch?gl=CO&hl=es-419&context=C38ccb90ADOEgsToPDskLi8_jjTLcMDO7pvUR7WrMl&v=e0dJWfQHF8Y" /> 
       </div>
     );
   } else if (points < 700) {
@@ -613,6 +622,7 @@ export default function Game() {
           checkAnswer={checkAnswer7}
         />
         <Score score={score} />
+        <ResourceButton url="https://www.bbc.co.uk/bitesize/topics/z3rbg82" /> 
       </div>
     );
   } else if (points < 800) {
@@ -635,6 +645,7 @@ export default function Game() {
           checkAnswer={checkAnswer8}
         />
         <Score score={score} />
+        <ResourceButton url="https://www.bbc.co.uk/bitesize/topics/zwv39j6/articles/zx3982p" />
       </div>
     );
   }

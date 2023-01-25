@@ -197,21 +197,21 @@
 }
 
 #levelButton-1-complete {
-  background-image: url(../images/Tick.png);
+  background-image: url(https://i.ibb.co/gPpmPWz/planet-complete-neptune.png);
   top: 22vh;
   right: 85%;
   z-index: 2;
 }
 
 #levelButton-2-complete {
-  background-image: url(../images/Tick.png);
+  background-image: url(https://i.ibb.co/m0NcCGS/planet-complete-uranus.png);
   left: 10%;
   top: 25vh;
   z-index: 2;
 }
 
 #levelButton-3-complete {
-  background-image: url(../images/Tick.png);
+  background-image: url(https://i.ibb.co/JnB2rzS/planet-complete-saturn.png);
   left: 20%;
   top: 30vh;
   height: 25vh;
@@ -220,7 +220,7 @@
 }
 
 #levelButton-4-complete {
-  background-image: url(../images/Tick.png);
+  background-image: url(https://i.ibb.co/XLVfLDB/planet-complete-jupiter.png);
   left: 35%;
   top: 50vh;
   height: 16vh;
@@ -229,7 +229,7 @@
 }
 
 #levelButton-5-complete {
-  background-image: url(../images/Tick.png);
+  background-image: url(https://i.ibb.co/s2M75HZ/planet-complete-mars.png);
   left: 50%;
   top: 35vh;
   height: 10vh;
@@ -238,7 +238,7 @@
 }
 
 #levelButton-6-complete {
-  background-image: url(../images/Tick.png);
+  background-image: url(https://i.ibb.co/TgzRJR2/planet-complete-earth.png);
   left: 55%;
   top: 55vh;
   height: 16vh;
@@ -247,14 +247,14 @@
 }
 
 #levelButton-7-complete {
-  background-image: url(../images/Tick.png);
+  background-image: url(https://i.ibb.co/PT5Vrhj/planet-complete-venus.png);
   left: 65%;
   top: 30vh;
   z-index: 2;
 }
 
 #levelButton-8-complete {
-  background-image: url(../images/Tick.png);
+  background-image: url(https://i.ibb.co/XkdrBdS/planet-complete-mercury.png);
   left: 80%;
   top: 50vh;
   height: 10vh;

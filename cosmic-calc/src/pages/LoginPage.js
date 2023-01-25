@@ -93,7 +93,20 @@ function Login() {
               }}
               type="submit"
             >
-              Login
+            </button>
+          </div>
+          <div className="registerButtonDiv">
+            <button
+              className="registerButton"
+              data-testid="registerButton"
+              onMouseOver={playHover}
+              onClick={() => {
+                playOpen();
+                stop();
+              }}
+              type="submit"
+            >
+              Register
             </button>
           </div>
         </form>
