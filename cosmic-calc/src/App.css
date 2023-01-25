@@ -167,6 +167,7 @@
 }
 
 .logo {
+  margin-top: 2%;
   object-fit: scale-down;
   overflow: visible;
   width: 15vw;

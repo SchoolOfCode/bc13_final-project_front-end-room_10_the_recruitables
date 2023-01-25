@@ -12,12 +12,12 @@ import { auth } from "./pages/firebaseConfig";
 import { ScoreContext } from "./components/score/ScoreContext";
 import TimedGame from "./pages/TimedGame";
 import Avatars from "./pages/Avatars";
-import Level1 from "./pages/Level1";
-import Level5 from "./pages/Level5";
 import useSound from "use-sound";
 import buttonFX from "./components/sound/FX/buttonFX.mp3";
 import YearTwo from "./pages/YearTwoGames";
 import logo from "../src/images/Logo.png";
+import Leaderboard from "./pages/Leaderboard";
+import YearTwoGames from "./pages/YearTwoGames";
 import YearThreeGames from "./pages/YearThreeGames";
 import YearFourGames from "./pages/YearFourGames";
 export default function App() {
@@ -50,16 +50,27 @@ export default function App() {
     context.update();
   };
   const navigateToGame = () => {
-    navigate("/game");
+    let year = context.year;
+    console.log(year);
+    if (year === 1) {
+      navigate("/game");
+    } else if (year === 2) {
+      navigate("/year-two-games");
+    } else if (year === 3) {
+      navigate("/year-three-games");
+    } else if (year === 4) {
+      console.log("year 4");
+      navigate("/year-four-games");
+    }
     setProfileHighlighted(false);
     setProgressHighlighted(false);
     setGameHighlighted(true);
     context.update();
     console.log(navigate);
   };
-  const navigateToTimedGame = () => {
-    navigate("/timedGame");
-  };
+  // const navigateToTimedGame = () => {
+  //   navigate("/timedGame");
+  // };
   const navigateToAvatars = () => {
     navigate("/avatars");
   };
@@ -85,24 +96,46 @@ export default function App() {
     navigate("/year-four-games");
   };
   console.log(authed.currentUser);
+
+  // const mute = () => {
+  //   setSoundEnabled(!soundEnabled);
+  // };
+
+  // {
+  //   /* <div className="muteButton">
+  // <button
+  //       className="muteButton"
+  //       onClick={() => {
+  //         mute();
+  //       }}
+  //       >
+  //       Mute
+  //       </button>
+  //     </div> */
+  // }
   return (
-    <div>
-      {/* {authed.currentUser ? ( */}
-      <div className="navBarPageDiv">
-        <img src={logo} alt="logo" className="logo" />
-        <button onClick={navigateToYearOne} className="navButtonYearTwo">
-          Year One
-        </button>
-        <button onClick={navigateToYearTwo} className="navButtonYearTwo">
-          Year Two
-        </button>
-        <button onClick={navigateToYearThree} className="navButtonYearThree">
-          Year Three
-        </button>
-        <button onClick={navigateToYearFour} className="navButtonYearFour">
-          Year Four
-        </button>
-        {/* {location.pathname !== "/profile" && (
+    <div className="App">
+      {authed.currentUser ? (
+        <div className="navBarPageDiv">
+          <img src={logo} alt="logo" className="logo" />
+          {location.pathname !== "/game" && (
+            <div className="progress-score">
+              <h1>Score: {context.score}</h1>
+            </div>
+          )}
+          <button onClick={navigateToYearOne} className="navButtonYearTwo">
+            Year One
+          </button>
+          <button onClick={navigateToYearTwo} className="navButtonYearTwo">
+            Year Two
+          </button>
+          <button onClick={navigateToYearThree} className="navButtonYearThree">
+            Year Three
+          </button>
+          <button onClick={navigateToYearFour} className="navButtonYearFour">
+            Year Four
+          </button>
+          {location.pathname !== "/profile" && (
             <button
               onClick={navigateToProfile}
               onMouseOver={playHover}
@@ -133,6 +166,12 @@ export default function App() {
               }
             ></button>
           )}
+          {authed.currentUser.email === "teacher@teacher.com" && (
+            <button onClick={navigateToLeaderboard}>Leaderboard</button>
+          )}
+          <Logout />
+        </div>
+      ) : (
           {location.pathname !== "/game" && (
             <div className="progress-score">
               <h1>Score: {context.score}</h1>
@@ -245,18 +284,34 @@ export default function App() {
           }
         />
         <Route
-          path="/level1"
+          path="/leaderboard"
           element={
             <ProtectedRoute>
-              <Level1 />
+              <Leaderboard />
             </ProtectedRoute>
           }
         />
         <Route
-          path="/level5"
+          path="/year-two-games"
           element={
             <ProtectedRoute>
-              <Level5 />
+              <YearTwoGames />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/year-three-games"
+          element={
+            <ProtectedRoute>
+              <YearThreeGames />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/year-four-games"
+          element={
+            <ProtectedRoute>
+              <YearFourGames />
             </ProtectedRoute>
           }
         />
