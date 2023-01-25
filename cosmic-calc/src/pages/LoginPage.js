@@ -93,7 +93,6 @@ function Login() {
               }}
               type="submit"
             >
-              Login
             </button>
           </div>
           <div className="registerButtonDiv">

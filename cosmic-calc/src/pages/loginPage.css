@@ -57,14 +57,15 @@
 }
 
 .loginButton {
-  /* background-image: url(https://i.ibb.co/7gm9cj1/login-Button.png); 
+  background-image: url(../images/Background_Buttons/LoginButton2.png);
+  background-size: cover;
   background-repeat: no-repeat;
-  background-color: transparent; */
-  width: 15vw;
-  height: 8vh;
-  border-radius: 10px;
-  background: var(--colour-red);
-  color: #fff;
-  margin: 2vw;
-  font-size: 3vw;
+  background-position: center;
+  background-color: rgba(0, 0, 255, 0);
+  width: 10vw;
+  height: 10vh;
+  min-width: 200px;
+  min-height: 100px;
+  text-align: center;
+  object-fit: fill;
 }
