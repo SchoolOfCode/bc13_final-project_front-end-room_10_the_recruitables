@@ -28,21 +28,41 @@ describe("<QuestionCardColumn/>", () => {
     });
 
   
-   it("Typing in provided 'anwerInput' prop and pressing 'enter' key fires  provided 'checkAnswer' and 'setAnswerInput' callback props" , () => {
-     render(<QuestionCardColumn {...mockedProps} />);
-     const input = screen.getByRole('spinbutton')
-     userEvent.type(input, `${mockedProps.answerInput}, {enter}`)
-     expect(mockedProps.checkAnswer).toHaveBeenCalled();
-     expect(mockedProps.setAnswerInput).toHaveBeenCalled();
-   });
-
-    it("Typing in provided 'anwerInput' prop renders 'displayValue' to the input box" , () => {
+    it("Typing in a value and pressing 'Enter' key fires  the provided 'checkAnswer' and 'setAnswerInput' callback props" , () => {
+      render(<QuestionCardColumn {...mockedProps} />);
+      const input = screen.getByRole('spinbutton')
+      userEvent.type(input, `${mockedProps.answerInput}, {enter}`)
+      expect(mockedProps.checkAnswer).toHaveBeenCalled();
+      expect(mockedProps.setAnswerInput).toHaveBeenCalled();
+    
+    });
+  
+    
+    it("Only typing in a value without pressing 'Enter' key fires 'setAnswerInput' but not 'checkAnswer' callback prop." , () => {
     render(<QuestionCardColumn {...mockedProps} />);
     const input = screen.getByRole('spinbutton')
     userEvent.type(input, `${mockedProps.answerInput}`)
-    // expect(screen.getByRole('spinbutton')).toHaveValue(mockedProps.answerInput); 
-    expect(input).toHaveValue(mockedProps.answerInput)
-            
-    });
+    expect(mockedProps.setAnswerInput).toHaveBeenCalled();  
+    expect(mockedProps.checkAnswer).not.toHaveBeenCalled();
+    
+  });
+  
+  
+  it("Typing in the provided 'anwerInput' prop renders 'displayValue' to the input field" , () => {
+  render(<QuestionCardColumn {...mockedProps} />);
+  const input = screen.getByRole('spinbutton')
+  userEvent.type(input, `${mockedProps.answerInput}`)
+  expect(input).toHaveValue(mockedProps.answerInput)
+          
+  });
+  
+  it("Typing in a value and pressing 'Enter' key clears the input field" , () => {
+    render(<QuestionCardColumn {...mockedProps} />);
+    let input = screen.getByRole('spinbutton')
+    userEvent.type(input, `${mockedProps.answerInput}, {enter}`)
+    input = screen.findByRole('spinbutton')
+    expect(input.value).toBeUndefined()
+    
+  });
   
 })

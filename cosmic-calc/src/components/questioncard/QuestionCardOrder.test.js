@@ -18,42 +18,48 @@ describe("<QuestionCardOrder/>", () => {
     };
 
 
-
 it("renders the provided 'value1', 'value2', 'value3', 'value4' prop content to the DOM", () => {
     render(<QuestionCardOrder  {...mockedProps} />);
-    // const element = screen.getByTestId('order')
-    // expect(element.textContent).toHaveValue(50)
+ 
     expect(screen.getByTestId('order')).toHaveTextContent(50, 20, 10);
-
-
-    // const value1 = screen.getByText(/50/i);    
-    // expect(element.textContent).toBeInTheDocument();    
     
     });
 
-it("Typing in provided 'anwerInput' prop and pressing 'enter' key fires  provided 'checkAnswer' and 'setAnswerInput' callback props" , () => {
-    render(<QuestionCardOrder {...mockedProps} />);
-    const input = screen.getByRole('textbox')
-    userEvent.type(input, `${mockedProps.answerInput}, {enter}`)
-    expect(mockedProps.checkAnswer).toHaveBeenCalled();
-    expect(mockedProps.setAnswerInput).toHaveBeenCalled();
+    it("Typing in a value and pressing 'Enter' key fires  the provided 'checkAnswer' and 'setAnswerInput' callback props" , () => {
+      render(<QuestionCardOrder  {...mockedProps} />);
+      const input = screen.getByRole('textbox')
+      userEvent.type(input, `${mockedProps.answerInput}, {enter}`)
+      expect(mockedProps.checkAnswer).toHaveBeenCalled();
+      expect(mockedProps.setAnswerInput).toHaveBeenCalled();
+
   });
 
+  
+  it("Only typing in a value without pressing 'Enter' key fires 'setAnswerInput' but not 'checkAnswer' callback prop." , () => {
+      render(<QuestionCardOrder  {...mockedProps} />);
+      const input = screen.getByRole('textbox')
+      userEvent.type(input, `${mockedProps.answerInput}`)
+      expect(mockedProps.setAnswerInput).toHaveBeenCalled();  
+      expect(mockedProps.checkAnswer).not.toHaveBeenCalled();
+  
+});
 
-   it("Typing in provided 'anwerInput' prop and pressing 'enter' key fires  provided 'checkAnswer' and 'setAnswerInput' callback props" , () => {
-     render(<QuestionCardOrder {...mockedProps} />);
-     const input = screen.getByRole('textbox')
-     userEvent.type(input, `${mockedProps.answerInput}, {enter}`)
-     expect(mockedProps.checkAnswer).toHaveBeenCalled();
-     expect(mockedProps.setAnswerInput).toHaveBeenCalled();
-   });
 
-    it("Typing in provided 'anwerInput' prop renders 'displayValue' to the input box" , () => {
-    render(<QuestionCardOrder {...mockedProps} />);
+it("Typing in the provided 'anwerInput' prop renders 'displayValue' to the input field" , () => {
+    render(<QuestionCardOrder{...mockedProps} />);
     const input = screen.getByRole('textbox')
     userEvent.type(input, `${mockedProps.answerInput}`)
     expect(input).toHaveValue(mockedProps.answerInput)
-            
-    });
+        
+});
+
+it("Typing in a value and pressing 'Enter' key clears the input field" , () => {
+  render(<QuestionCardOrder {...mockedProps} />);
+  let input = screen.getByRole('textbox')
+  userEvent.type(input, `${mockedProps.answerInput}, {enter}`)
+  input = screen.findByRole('textbox')
+  expect(input.value).toBeUndefined()
+  
+});
   
 })

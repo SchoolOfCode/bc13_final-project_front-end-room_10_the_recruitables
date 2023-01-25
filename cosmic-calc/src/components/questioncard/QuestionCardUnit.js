@@ -5,7 +5,7 @@ export default function QuestionCardUnit (props) {
   return (
     <div className="questionDiv">
       <h2 className="h2QuestionGame">{props.noOfQuestions + ")  "}</h2>
-      <h2 className="h2QuestionGame">
+      <h2 className="h2QuestionGame" data-testid='questionUnit'>
         {props.value1} {props.unit} {props.value2} {props.operation} {props.unit} {props.equals}
       </h2>
       <input
@@ -14,7 +14,7 @@ export default function QuestionCardUnit (props) {
         value={props.answerInput}
         onChange={(e) => props.setAnswerInput(e.target.value)}
         onKeyDown={(e) => {
-          console.log('onKeyDown');
+          
           if (e.key === "Enter") {
             props.checkAnswer();
             props.setAnswerInput("");

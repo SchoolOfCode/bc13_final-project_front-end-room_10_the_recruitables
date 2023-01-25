@@ -8,9 +8,9 @@ function ButtonsCaption({ ButtonNumber, clickToGame, text }) {
         className={"levelButtons"}
         onClick={clickToGame}
         id={`levelButton-${ButtonNumber}`}
-        text
+       text
       >
-        {/* BUTTON {ButtonNumber} */}
+        {/* ${ButtonNumber} */}
       </button>
     </div>
   );
