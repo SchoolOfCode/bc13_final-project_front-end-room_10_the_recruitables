@@ -124,3 +124,45 @@ export function yearThreePlanetEightAnswer(values, playerAnswer) {
     }
     return [Number(playerAnswer) === correctAnswer, correctAnswer];
 }
+
+
+// Year 3 Planet 9 - "Randomly choose questions from the previous selection"
+export function yearOnePlanetNineQuestion() {
+    let questionsAvailable = [1, 2, 3, 4, 5, 8];
+    let randomIndex = randomNumberGenerator(questionsAvailable.length);
+    let questionChoice = questionsAvailable[randomIndex];
+    switch (questionChoice) {
+      case 1:
+        return [questionChoice, yearThreePlanetOneQuestion()];
+      case 2:
+        return [questionChoice, yearThreePlanetTwoQuestion()];
+      case 3:
+        return [questionChoice, yearThreePlanetThreeQuestion()];
+      case 4:
+        return [questionChoice, yearThreePlanetFourQuestion()];
+      case 5:
+        return [questionChoice, yearThreePlanetFiveQuestion()];
+      case 8:
+        return [questionChoice, yearThreePlanetEightQuestion()];
+      default:
+        throw new Error("Question choice not valid.")
+    }
+}
+export function yearOnePlanetNineAnswer(entranceArray, playerAnswer) {
+    switch (entranceArray[0]) {
+      case 1:
+        return yearThreePlanetOneAnswer(entranceArray[1], playerAnswer);
+      case 2:
+        return yearThreePlanetTwoAnswer(entranceArray[1], playerAnswer);
+      case 3:
+        return yearThreePlanetThreeAnswer(entranceArray[1], playerAnswer);
+      case 4:
+        return yearThreePlanetFourAnswer(entranceArray[1], playerAnswer);
+      case 5:
+        return yearThreePlanetFiveAnswer(entranceArray[1], playerAnswer);
+      case 8:
+        return yearThreePlanetEightAnswer(entranceArray[1], playerAnswer);
+      default:
+        throw new Error("Answer choice not valid");
+    }
+}
