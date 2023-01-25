@@ -10,12 +10,16 @@ export default function QuestionCardColumn(props) {
       <div className="QandA">
         <h2 className="h2QuestionGame">{props.noOfQuestions + ")  "}</h2>
         <div className="numbersColumn">
-          <h2 className="h2QuestionGame">{props.value1}</h2>
-          <h2 className="h2QuestionGame">
-            {props.operation}
-            {"  "}
-            {props.value2}
-          </h2>
+          <div className="negativeMargins">
+            <h2 className="h2QuestionGame">{props.value1}</h2>
+          </div>
+          <div className="negativeMargins">
+            <h2 className="h2QuestionGame">
+              {props.operation}
+              {"  "}
+              {props.value2}
+            </h2>
+          </div>
         </div>
         <input
           className="inputGame"

@@ -56,8 +56,8 @@ const YearFourGames = () => {
   });
   const [result, setResult] = useState("");
   const context = useContext(ScoreContext);
-  let points = 898;
-  //let points = context.score;
+  //let points = 898;
+  let points = context.score;
   console.log(context);
 
   console.log("Points = ", points);
@@ -573,7 +573,7 @@ const YearFourGames = () => {
             checkAnswer={checkAnswer2}
           />
           <Score score={score} />
-          <ResourceButton url="https://www.bbc.co.uk/bitesize/topics/zf72pv4/articles/zw267yc"/>
+          <ResourceButton url="https://www.bbc.co.uk/bitesize/topics/zf72pv4/articles/zw267yc" />
         </div>
       </div>
     );
@@ -598,7 +598,7 @@ const YearFourGames = () => {
             checkAnswer={checkAnswer3}
           />
           <Score score={score} />
-          <ResourceButton url="https://www.bbc.co.uk/bitesize/topics/znwj6sg/articles/zxthnbk"/>
+          <ResourceButton url="https://www.bbc.co.uk/bitesize/topics/znwj6sg/articles/zxthnbk" />
         </div>
       </div>
     );
@@ -645,7 +645,7 @@ const YearFourGames = () => {
             checkAnswer={checkAnswer5}
           />
           <Score score={score} />
-          <ResourceButton url="https://www.bbc.co.uk/bitesize/topics/zh8dmp3/articles/zpx2qty" /> 
+          <ResourceButton url="https://www.bbc.co.uk/bitesize/topics/zh8dmp3/articles/zpx2qty" />
         </div>
       </div>
     );
@@ -659,7 +659,7 @@ const YearFourGames = () => {
             newQuestion={newQuestion6}
           />
           <QuestionCardUnit
-            h1="Can you add measurements and convert them into other measurements?"
+            h1="Can you add measurements and convert them into other units of measurements?"
             answerInput={answerInput}
             noOfQuestions={noOfQuestions}
             value1={firstMeasurement}
@@ -751,7 +751,7 @@ const YearFourGames = () => {
             checkAnswer={checkAnswer7}
           />
           <Score score={score} />
-          <ResourceButton url="https://www.bbc.co.uk/teach/supermovers/times-table-collection/z4vv6v4" /> 
+          <ResourceButton url="https://www.bbc.co.uk/teach/supermovers/times-table-collection/z4vv6v4" />
         </div>
       </div>
     );
