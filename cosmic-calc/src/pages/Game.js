@@ -50,8 +50,8 @@ export default function Game() {
   });
   const [result, setResult] = useState("");
   const context = useContext(ScoreContext);
-  // let points = 15;
-  let points = context.score;
+  let points = 615;
+  //let points = context.score;
 
   useEffect(() => {
     if (noOfQuestions === 11) {

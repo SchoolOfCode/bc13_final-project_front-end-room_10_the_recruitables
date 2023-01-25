@@ -21,41 +21,40 @@ import YearTwoGames from "./pages/YearTwoGames";
 import YearThreeGames from "./pages/YearThreeGames";
 import YearFourGames from "./pages/YearFourGames";
 export default function App() {
-
-const authed = auth;
-let context = useContext(ScoreContext);
-const location = useLocation();
-const navigate = useNavigate();
-const [profileHighlighted, setProfileHighlighted] = useState(false);
-const [progressHighlighted, setProgressHighlighted] = useState(false);
-const [gameHighlighted, setGameHighlighted] = useState(false);
-const [playHover] = useSound(buttonFX, {
-  volume: 0.3,
-  playbackRate: Math.floor(Math.random() * (2 - 0.8) + 0.8),
-});
-const navigateToLogin = () => {
-  navigate("/");
-};
-const navigateToProfile = () => {
-  navigate("/profile");
-  setProfileHighlighted(true);
-  setProgressHighlighted(false);
-  setGameHighlighted(false);
-  context.update();
-};
-const navigateToProgress = () => {
-  navigate("/progress");
-  setProfileHighlighted(false);
-  setProgressHighlighted(true);
-  setGameHighlighted(false);
-  context.update();
-};
-const navigateToGame = () => {
-  let year = context.year;
-  console.log(year);
-  if (year === 1) {
-    navigate("/game");
-  } else if (year === 2) {
+  const authed = auth;
+  let context = useContext(ScoreContext);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const [profileHighlighted, setProfileHighlighted] = useState(false);
+  const [progressHighlighted, setProgressHighlighted] = useState(false);
+  const [gameHighlighted, setGameHighlighted] = useState(false);
+  const [playHover] = useSound(buttonFX, {
+    volume: 0.3,
+    playbackRate: Math.floor(Math.random() * (2 - 0.8) + 0.8),
+  });
+  const navigateToLogin = () => {
+    navigate("/");
+  };
+  const navigateToProfile = () => {
+    navigate("/profile");
+    setProfileHighlighted(true);
+    setProgressHighlighted(false);
+    setGameHighlighted(false);
+    context.update();
+  };
+  const navigateToProgress = () => {
+    navigate("/progress");
+    setProfileHighlighted(false);
+    setProgressHighlighted(true);
+    setGameHighlighted(false);
+    context.update();
+  };
+  const navigateToGame = () => {
+    let year = context.year;
+    console.log(year);
+    if (year === 1) {
+      navigate("/game");
+    } else if (year === 2) {
       navigate("/year-two-games");
     } else if (year === 3) {
       navigate("/year-three-games");
@@ -88,30 +87,30 @@ const navigateToGame = () => {
     navigate("/Game");
   };
   const navigateToYearTwo = () => {
-  navigate("/year-two-games");
-};
-const navigateToYearThree = () => {
-  navigate("/year-three-games");
-};
-const navigateToYearFour = () => {
-  navigate("/year-four-games");
-};
-console.log(authed.currentUser);
-// const mute = () => {
-//   setSoundEnabled(!soundEnabled);
-// };
-// {
-//   /* <div className="muteButton">
-// <button
-//       className="muteButton"
-//       onClick={() => {
-//         mute();
-//       }}
-//       >
-//       Mute
-//       </button>
-//     </div> */
-// }
+    navigate("/year-two-games");
+  };
+  const navigateToYearThree = () => {
+    navigate("/year-three-games");
+  };
+  const navigateToYearFour = () => {
+    navigate("/year-four-games");
+  };
+  console.log(authed.currentUser);
+  // const mute = () => {
+  //   setSoundEnabled(!soundEnabled);
+  // };
+  // {
+  //   /* <div className="muteButton">
+  // <button
+  //       className="muteButton"
+  //       onClick={() => {
+  //         mute();
+  //       }}
+  //       >
+  //       Mute
+  //       </button>
+  //     </div> */
+  // }
 
   return (
     <div className="App">
@@ -166,121 +165,121 @@ console.log(authed.currentUser);
               }
             ></button>
           )}
-          {authed.currentUser.email === "teacher@teacher.com" && (
+          {/* {authed.currentUser.email === "teacher@teacher.com" && (
             <button onClick={navigateToLeaderboard}>Leaderboard</button>
+          )} */}
+          <Logout />
+        </div>
+      ) : (
+        <div className="navBarPageDiv">
+          {location.pathname !== "/game" && (
+            <div className="progress-score">
+              <h1>Score: {context.score}</h1>
+            </div>
           )}
           <Logout />
         </div>
-    ) : (
-      <div className="navBarPageDiv">
-        {location.pathname !== "/game" && (
-          <div className="progress-score">
-            <h1>Score: {context.score}</h1>
-          </div>
-        )} 
-      <Logout />
-      </div>
-    )}
-    <Routes>
-      <Route path="/" element={<Login />} />
-      <Route path="/register" element={<Register />} />
-      <Route
-        path="/profile"
-        element={
-          <ProtectedRoute>
-            <Profile />
-          </ProtectedRoute>
-        }
-      />
-      <Route
-        path="/progress"
-        element={
-          <ProtectedRoute>
-            <Progress />
-          </ProtectedRoute>
-        }
-      />
-      <Route
-        path="/year-two-games"
-        element={
-          <ProtectedRoute>
-            <YearTwo />
-          </ProtectedRoute>
-        }
-      />
-      <Route
-        path="/game"
-        element={
-          <ProtectedRoute>
-            <Game />
-          </ProtectedRoute>
-        }
-      />
-      <Route
-        path="/year-three-games"
-        element={
-          <ProtectedRoute>
-            <YearThreeGames />
-          </ProtectedRoute>
-        }
-      />
-      <Route
-        path="/year-four-games"
-        element={
-          <ProtectedRoute>
-            <YearFourGames />
-          </ProtectedRoute>
-        }
-      />
-      <Route
-        path="/timedGame"
-        element={
-          <ProtectedRoute>
-            <TimedGame />
-          </ProtectedRoute>
-        }
-      />
-      <Route
-        path="/avatars"
-        element={
-          <ProtectedRoute>
-            <Avatars />
-          </ProtectedRoute>
-        }
-      />
-      <Route
-        path="/leaderboard"
-        element={
-          <ProtectedRoute>
-            <Leaderboard />
-          </ProtectedRoute>
-        }
-      />
-      <Route
-        path="/year-two-games"
-        element={
-          <ProtectedRoute>
-            <YearTwoGames />
-          </ProtectedRoute>
-        }
-      />
-      <Route
-        path="/year-three-games"
-        element={
-          <ProtectedRoute>
-            <YearThreeGames />
-          </ProtectedRoute>
-        }
-      />
-      <Route
-        path="/year-four-games"
-        element={
-          <ProtectedRoute>
-            <YearFourGames />
-          </ProtectedRoute>
-        }
-      />
-    </Routes>
-  </div>
-)
+      )}
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route
+          path="/profile"
+          element={
+            <ProtectedRoute>
+              <Profile />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/progress"
+          element={
+            <ProtectedRoute>
+              <Progress />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/year-two-games"
+          element={
+            <ProtectedRoute>
+              <YearTwo />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/game"
+          element={
+            <ProtectedRoute>
+              <Game />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/year-three-games"
+          element={
+            <ProtectedRoute>
+              <YearThreeGames />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/year-four-games"
+          element={
+            <ProtectedRoute>
+              <YearFourGames />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/timedGame"
+          element={
+            <ProtectedRoute>
+              <TimedGame />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/avatars"
+          element={
+            <ProtectedRoute>
+              <Avatars />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/leaderboard"
+          element={
+            <ProtectedRoute>
+              <Leaderboard />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/year-two-games"
+          element={
+            <ProtectedRoute>
+              <YearTwoGames />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/year-three-games"
+          element={
+            <ProtectedRoute>
+              <YearThreeGames />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/year-four-games"
+          element={
+            <ProtectedRoute>
+              <YearFourGames />
+            </ProtectedRoute>
+          }
+        />
+      </Routes>
+    </div>
+  );
 }

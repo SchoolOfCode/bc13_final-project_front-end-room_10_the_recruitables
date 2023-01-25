@@ -1,12 +1,12 @@
-.fractions-Question-h1{
+/* .fractions-Question-h1{
    padding-bottom: 100px;
    font-size: 1.7vw;
-}
+} */
 
 
 .questionDiv {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
     height: auto;
@@ -21,37 +21,27 @@
     margin: 5vh;
  } 
 
+ .question-number-and-text{
+   display: flex;
+   flex-direction:row;
+   gap: 2vw;
+ }
+
  .fractions-Question-h1{
    display: flex;
    align-items: center;
    justify-content: center;
  }
 
- .QuestionImg{
-    width: 100px;
-    height: 20px;
- }
 
 
- .inputGame{
-    border-radius: 10px;
-    background: white;
-    border-color: white;
-    border-style: solid;
-    border-width: 3px;
-    color: black;
-    width: 10vw;
-    height: 10vh;
-    text-align: center;
-    font-size: 2vw;
-}
 
 .shapes-div {
    display: flex;
    flex-wrap: wrap;
    justify-content: space-evenly;
    align-items: center;
-   border: solid 2px;
+   width: 60vw;
 }
 
 
