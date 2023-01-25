@@ -20,6 +20,7 @@ import QuestionCardOrder from "../components/questioncard/QuestionCardOrder";
 import QuestionCardCompare from "../components/questioncard/QuestionCardCompare";
 import QuestionCardColumn from "../components/questioncard/QuestionCardColumn";
 import QuestionCardUnit from "../components/questioncard/QuestionCardUnit";
+import ResourceButton from "../components/questioncard/ResourceButton";
 
 import {
   yearThreePlanetOneQuestion,
@@ -50,7 +51,7 @@ const YearThreeGames = () => {
   });
   const [result, setResult] = useState("");
   const context = useContext(ScoreContext);
-  let points = 198;
+  let points = 98;
   //let points = context.score;
   console.log(context);
 
@@ -425,6 +426,7 @@ const YearThreeGames = () => {
             checkAnswer={checkAnswer1}
           />
           <Score score={score} />
+          <ResourceButton url="https://www.bbc.co.uk/bitesize/topics/zy2mn39/articles/z7kw4xs" />
         </div>
       </div>
     );
@@ -449,6 +451,7 @@ const YearThreeGames = () => {
           checkAnswer={checkAnswer2}
         />
         <Score score={score} />
+        <ResourceButton url="https://www.bbc.co.uk/bitesize/topics/zknsgk7/articles/z2pjwxs" />
       </div>
     );
   } else if (points < 300) {
@@ -471,6 +474,7 @@ const YearThreeGames = () => {
             checkAnswer={checkAnswer3}
           />
           <Score score={score} />
+          <ResourceButton url="https://www.bbc.co.uk/bitesize/topics/zy2mn39/articles/zvxxt39" />
         </div>
       </div>
     );
@@ -494,6 +498,7 @@ const YearThreeGames = () => {
             checkAnswer={checkAnswer4}
           />
           <Score score={score} />
+          <ResourceButton url="https://www.youtube.com/watch?v=L3ANvTHKf7U" />
         </div>
       </div>
     );
@@ -518,6 +523,7 @@ const YearThreeGames = () => {
             checkAnswer={checkAnswer5}
           />
           <Score score={score} />
+          <ResourceButton url="https://www.bbc.co.uk/teach/supermovers/ks2-maths-the-3-times-table/z6sw382" />
         </div>
       </div>
     );
@@ -544,6 +550,7 @@ const YearThreeGames = () => {
             checkAnswer={checkAnswer8}
           />
           <Score score={score} />
+          <ResourceButton url="https://www.bbc.co.uk/bitesize/topics/z9sfr82/articles/z7mwr2p" />
         </div>
       </div>
     );
