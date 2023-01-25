@@ -18,7 +18,7 @@ export function giveRandomShape() {
   return newShape;
 }
 
-export function checkShapeAnswer(newShape, playerAnswer) {
+export function checkShapeAnswer(playerAnswer, newShape) {
   let correctAnswer = newShape;
   return [playerAnswer === correctAnswer, correctAnswer];
 }
@@ -142,7 +142,7 @@ export function yearOnePlanetNineQuestion() {
 export function yearOnePlanetNineAnswer(entranceArray, playerAnswer) {
   switch (entranceArray[0]) {
     case 2:
-      return checkShapeAnswer(entranceArray[1], playerAnswer);
+      return checkShapeAnswer(playerAnswer, entranceArray[1]);
     case 4:
       return yearOnePlanetFourAnswer(entranceArray[1], playerAnswer);
     case 5:

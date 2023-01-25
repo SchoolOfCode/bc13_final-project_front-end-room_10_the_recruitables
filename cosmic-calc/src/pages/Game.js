@@ -70,7 +70,6 @@ export default function Game() {
   const [numberLineImg, setNumberLineImg] = useState("");
   const [correctAnswer1, setCorrectAnswer1] = useState(0);
   const [numberLineArray, setNumberLineArray] = useState([]);
-  const [chosenElements, setChosenElements] = useState([]);
 
   useEffect(() => {
     async function getNumberLine() {
@@ -88,6 +87,7 @@ export default function Game() {
         let newNumberLineArray = data.payload;
         setNumberLineArray(data.payload);
         let randomID = randomNumberGenerator(10);
+
         setNumberLineImg(newNumberLineArray[randomID].img_url);
         setCorrectAnswer1(newNumberLineArray[randomID].answer);
       }
@@ -117,17 +117,7 @@ export default function Game() {
 
   const newQuestion1 = () => {
     setNoOfQuestions(noOfQuestions + 1);
-    console.log("About to add a new element to the random ID array!");
-        console.log("Array is currently", chosenElements);
     let randomID = randomNumberGenerator(10);
-    console.log("First we have chosen ", randomID);
-        while (chosenElements.includes(randomID)) {
-          randomID = randomNumberGenerator(10);
-          console.log("That's no good! Instead try ", randomID);
-        }
-        console.log("Great! Now push it in!");
-        setChosenElements(chosenElements.push(randomID));
-        console.log("Array is now ", chosenElements);
     setNumberLineImg(numberLineArray[randomID].img_url);
     setCorrectAnswer1(numberLineArray[randomID].answer);
     setResult("");
