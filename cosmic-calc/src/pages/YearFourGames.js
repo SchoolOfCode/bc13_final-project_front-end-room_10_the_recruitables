@@ -243,7 +243,7 @@ const YearFourGames = () => {
       newQuestion4();
     } else {
       playWrong();
-      setResult(correctAnswer);
+      setResult(correctAnswer.join(", "));
       setAnswerVisible(true);
     }
   };

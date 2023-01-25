@@ -37,6 +37,7 @@ export function yearThreePlanetTwoQuestion() {
 }
 export function yearThreePlanetTwoAnswer(values, playerAnswer) {
     let sortedValues = values.sort((a, b) => {return a - b});
+    let sortedString = sortedValues.join(", ");
     let playerArray;
     if (playerAnswer.includes(", ")) {
         playerArray = playerAnswer.split(", ").map((x) => {return Number(x)});
@@ -49,10 +50,10 @@ export function yearThreePlanetTwoAnswer(values, playerAnswer) {
     }
     for (let i = 0; i < values.length; i++) {
         if (sortedValues[i] !== playerArray[i]) {
-            return [false, sortedValues];
+            return [false, sortedString];
         }
     }
-    return [true, sortedValues];
+    return [true, sortedString];
 }
 
 

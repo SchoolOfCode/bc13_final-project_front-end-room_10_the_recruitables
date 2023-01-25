@@ -9,7 +9,7 @@ import wrong from ".././components/sound/FX/wrong.mp3";
 import win from ".././components/sound/FX/win.mp3";
 import { ScoreContext } from "../components/score/ScoreContext";
 import AnswerCard from "../components/answercard/AnswerCard";
-import AnswerCardOrder from "../components/answercard/AnswerCard";
+import AnswerCardOrder from "../components/answercard/AnswerCardOrder";
 import QuestionCard from "../components/questioncard/QuestionCard";
 import ShapesQuestionCard from "../components/shapesQuestionCard/ShapesQuestionCard";
 import Score from "../components/score/Score";
@@ -153,7 +153,7 @@ const YearThreeGames = () => {
       newQuestion2();
     } else {
       playWrong();
-      setResult(correctAnswer);
+      setResult(correctAnswer.join(", "));
       setAnswerVisible(true);
     }
   };

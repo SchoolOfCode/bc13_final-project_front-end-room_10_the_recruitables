@@ -166,9 +166,9 @@ console.log(authed.currentUser);
               }
             ></button>
           )}
-          {authed.currentUser.email === "teacher@teacher.com" && (
+          {/* {authed.currentUser.email === "teacher@teacher.com" && (
             <button onClick={navigateToLeaderboard}>Leaderboard</button>
-          )}
+          )} */}
           <Logout />
         </div>
     ) : (

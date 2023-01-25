@@ -63,9 +63,8 @@ export function yearFourPlanetFourQuestion() {
   return values;
 }
 export function yearFourPlanetFourAnswer(values, playerAnswer) {
-  let sortedValues = values.sort((a, b) => {
-    return a - b;
-  });
+  let sortedValues = values.sort((a, b) => {return a - b});
+  let sortedString = sortedValues.join(", ");
   let playerArray;
   if (playerAnswer.includes(", ")) {
     playerArray = playerAnswer.split(", ").map((x) => {
@@ -84,11 +83,11 @@ export function yearFourPlanetFourAnswer(values, playerAnswer) {
   }
   for (let i = 0; i < values.length; i++) {
     if (sortedValues[i] !== playerArray[i]) {
-      return [false, sortedValues];
+      return [false, sortedString];
     }
   }
   console.log(sortedValues);
-  return [true, sortedValues];
+  return [true, sortedString];
 }
 
 // Year 4 Planet 5 - "Round to the nearest 10, 100, or 1000"
