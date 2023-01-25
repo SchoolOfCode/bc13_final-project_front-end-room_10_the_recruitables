@@ -1,0 +1,12 @@
+.resource-button{
+    font-family: "Bubblegum Sans";
+  padding: 2vw;
+  border-radius: 50%;
+  background: var(--colour-yellow-transparent);
+  border-color: var(--colour-yellow);
+  border-style: solid;
+  border-width: 10px;
+  color: #fff;
+  margin: 2vw;
+  font-size: 2vw;
+}
