@@ -15,6 +15,9 @@
     margin: 2vh;
   }
   
+  .negativeMargins{
+    margin: -2vw;
+  }
 .QandA{
     display: flex;
     flex-direction: row;

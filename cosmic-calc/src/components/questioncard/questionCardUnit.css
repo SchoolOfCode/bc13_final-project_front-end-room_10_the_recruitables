@@ -24,7 +24,7 @@
   }
   
 
-  .inputGame {
+  .inputGameUnits {
     padding: 2vh;
     border-radius: 10px;
     background: white;
@@ -32,7 +32,7 @@
     border-style: solid;
     border-width: 3px;
     color: black;
-    width: 10vw;
+    width: 25vw;
     height: 10vh;
     text-align: center;
     font-size: 2vw;

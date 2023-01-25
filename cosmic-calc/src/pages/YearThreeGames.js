@@ -51,8 +51,8 @@ const YearThreeGames = () => {
   });
   const [result, setResult] = useState("");
   const context = useContext(ScoreContext);
-  let points = 98;
-  //let points = context.score;
+  //let points = 98;
+  let points = context.score;
   console.log(context);
 
   console.log("Points = ", points);

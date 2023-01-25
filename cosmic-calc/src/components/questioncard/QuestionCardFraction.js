@@ -8,8 +8,12 @@ export default function QuestionCardFraction(props) {
       <div className="questionDisplayFraction">
         <h2 className="h2QuestionGame">{props.noOfQuestions + ")  "}</h2>
         <div className="fractionDiv">
-          <h2 className="h2QuestionGameValue1">{props.value1}</h2>
-          <h2 className="h2QuestionGameValue2">{props.value2}</h2>
+          <div className="negativeMargins">
+            <h2 className="h2QuestionGameValue1">{props.value1}</h2>
+          </div>
+          <div className="negativeMargins">
+            <h2 className="h2QuestionGameValue2">{props.value2}</h2>
+          </div>
         </div>
         <h2 className="h2QuestionGame">of {props.value3}</h2>
         <h2 className="h2QuestionGame">=</h2>

@@ -49,8 +49,8 @@ export default function YearTwoGames() {
   });
   const [result, setResult] = useState("");
   const context = useContext(ScoreContext);
-  let points = 690;
-  //let points = context.score;
+  //let points = 590;
+  let points = context.score;
   console.log(context);
 
   console.log("Points = ", points);
