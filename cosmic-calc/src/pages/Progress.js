@@ -1,7 +1,6 @@
 import React from "react";
 import { useState, useContext, useEffect } from "react";
 import LevelButtons from "../components/buttons/LevelButtons";
-import ButtonsCaption from "../components/buttons/buttonsCaptions";
 import "./progress.css";
 import { useNavigate } from "react-router-dom";
 import { ScoreContext } from "../../src/components/score/ScoreContext";
@@ -29,7 +28,9 @@ export const Progress = () => {
 
   // count for array of levels. New level pushed into array ever X amount of points. Then mapped below to return a new button each time score level reached.
   const [levels, setLevels] = useState([1]);
+  //?does this need to be a useState? Can it be a const?
   const [lockLevels, setLockLevels] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+  const [completedLevels, setCompletedLevels] = useState([0]);
   const [payload, setPayload] = useState([]);
   const [totalScore, setTotalScore] = useState();
 
@@ -61,49 +62,76 @@ export const Progress = () => {
         ...lockLevels.slice(0, Math.floor(payload.total_score / 50)),
       ];
       setLevels(unlockedLevels);
+      console.log(levels);
     } else setLevels([1]);
-  }, [totalScore]);
+  }, [payload.total_score]);
 
-  // every 100 points or more new planet
-  // set up the navigation variables and function
-  const navigate = useNavigate();
-  const navigateToGame = () => {
-    navigate("/game", { state: { totalScore: totalScore } });
-  };
+  useEffect(() => {
+    let newLevelArray = levels.slice(0, -1);
+    setCompletedLevels(newLevelArray);
+  }, [levels]);
 
-  // onClick event handler to pass to buttons. If need to go depending on levels can add conditions based on button index 1-10
-  function handleGotoLevel(level) {
+  function handleGotoLevel() {
     stop();
     playWoosh();
     navigateToGame();
   }
+  // every 100 points or more new planet
+  // set up the navigation variables and function
+  const navigate = useNavigate();
+
+  const navigateToGame = () => {
+    let year = context.year;
+    console.log(year);
+    if (year === 1) {
+      navigate("/game", { state: { totalScore: totalScore } });
+    } else if (year === 2) {
+      navigate("/year-two-games", { state: { totalScore: totalScore } });
+    } else if (year === 3) {
+      navigate("/year-three-games", { state: { totalScore: totalScore } });
+    } else if (year === 4) {
+      console.log("year 4");
+      navigate("/year-four-games", { state: { totalScore: totalScore } });
+    }
+  };
+
+  // onClick event handler to pass to buttons. If need to go depending on levels can add conditions based on button index 1-10
+
+  // const onClick = () => {
+  //   context.updateLevel(5);
+  // };
 
   // JSX below returns a grid container.
   // then maps over the levels array which returns a button for each new item in the array. Array increases depending on score. New item every 5 points = new button returned.
   return (
-    <div className="progress-page">
-      {levels.map((levels, index) => (
-        <LevelButtons
-          clickToGame={handleGotoLevel}
-          key={levels.level}
-          ButtonNumber={index + 1 + "-unlock"}
-          text={captions[index]}
-        />
-      ))}
-      {lockLevels.map((level, index) => (
-        <LevelButtons
-          key={levels.level}
-          ButtonNumber={index + 1 + "-lock"}
-          text={captions[index]}
-        />
-      ))}
-      {/* {captions.map((level, index) => (
-        <ButtonsCaption
-          key={levels.level}
-          ButtonNumber={index + 1}
-          text={captions.index}
-        />
-      ))} */}
+    <div className="progress-container">
+      <div className="progress-page">
+        {levels.map((levels, index) => (
+          <LevelButtons
+            clickToGame={handleGotoLevel}
+            key={levels.level}
+            ButtonNumber={index + 1 + "-unlock"}
+            text={captions[index]}
+          />
+        ))}
+        {lockLevels.map((level, index) => (
+          <LevelButtons
+            key={levels.level}
+            ButtonNumber={index + 1 + "-lock"}
+            text={captions[index]}
+          />
+        ))}
+        {completedLevels.map((levels, index) => (
+          <LevelButtons
+            key={levels.level}
+            ButtonNumber={index + 1 + "-complete"}
+            text={captions[index]}
+          />
+        ))}
+      </div>
+      {/* <div>
+        <button onClick={onClick}>add level</button>
+      </div> */}
     </div>
   );
 };

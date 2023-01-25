@@ -3,7 +3,6 @@ import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./firebaseConfig";
 import React from "react";
 import "./profile.css";
-import profileImage from "../images/Background_Buttons/MonsterRed.png";
 import { useNavigate } from "react-router-dom";
 import { ScoreContext } from "../components/score/ScoreContext";
 import useSound from "use-sound";
@@ -15,6 +14,7 @@ function Profile() {
   const [selectedHead, setSelectedHead] = useState(1);
   const [selectedBody, setSelectedBody] = useState(1);
   const [selectedAnt, setSelectedAnt] = useState(1);
+  //? does this need to be a state?
   const [avatarColor, setAvatarColor] = useState("#000000");
   const [play, { stop }] = useSound(alien, { interrupt: true, volume: 0.3 });
   const [playShip] = useSound(ship, { interrupt: true, volume: 0.3 });
@@ -41,8 +41,6 @@ function Profile() {
   const handleGame = () => {
     navigate("/progress");
   };
-
-  console.log(useContext(ScoreContext));
 
   useEffect(() => {
     async function getAvatars(email) {
@@ -140,7 +138,7 @@ function Profile() {
           <h4 className="score" data-testid="score">
             Total score: {context.score}{" "}
           </h4>
-
+             <h4 className="Year">Year: {context.year}</h4>
           <button
             className="gameButton"
             data-testid="gameButtonProfile"

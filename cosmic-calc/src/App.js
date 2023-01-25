@@ -21,6 +21,7 @@ import YearTwoGames from "./pages/YearTwoGames";
 import YearThreeGames from "./pages/YearThreeGames";
 import YearFourGames from "./pages/YearFourGames";
 export default function App() {
+
 const authed = auth;
 let context = useContext(ScoreContext);
 const location = useLocation();
@@ -55,38 +56,38 @@ const navigateToGame = () => {
   if (year === 1) {
     navigate("/game");
   } else if (year === 2) {
-    navigate("/year-two-games");
-  } else if (year === 3) {
-    navigate("/year-three-games");
-  } else if (year === 4) {
-    console.log("year 4");
-    navigate("/year-four-games");
-  }
-  setProfileHighlighted(false);
-  setProgressHighlighted(false);
-  setGameHighlighted(true);
-  context.update();
-  console.log(navigate);
-};
-// const navigateToTimedGame = () => {
-//   navigate("/timedGame");
-// };
-const navigateToAvatars = () => {
-  navigate("/avatars");
-};
-const navigateToLevel1 = () => {
-  navigate("/level1");
-};
-const navigateToLevel5 = () => {
-  navigate("/level5");
-};
-const navigateToRegister = () => {
-  navigate("/register");
-};
-const navigateToYearOne = () => {
-  navigate("/Game");
-};
-const navigateToYearTwo = () => {
+      navigate("/year-two-games");
+    } else if (year === 3) {
+      navigate("/year-three-games");
+    } else if (year === 4) {
+      console.log("year 4");
+      navigate("/year-four-games");
+    }
+    setProfileHighlighted(false);
+    setProgressHighlighted(false);
+    setGameHighlighted(true);
+    context.update();
+    console.log(navigate);
+  };
+  // const navigateToTimedGame = () => {
+  //   navigate("/timedGame");
+  // };
+  const navigateToAvatars = () => {
+    navigate("/avatars");
+  };
+  const navigateToLevel1 = () => {
+    navigate("/level1");
+  };
+  const navigateToLevel5 = () => {
+    navigate("/level5");
+  };
+  const navigateToRegister = () => {
+    navigate("/register");
+  };
+  const navigateToYearOne = () => {
+    navigate("/Game");
+  };
+  const navigateToYearTwo = () => {
   navigate("/year-two-games");
 };
 const navigateToYearThree = () => {
@@ -111,65 +112,65 @@ console.log(authed.currentUser);
 //       </button>
 //     </div> */
 // }
-return (
 
-  <div className="App">
-    {authed.currentUser ? (
-      <div className="navBarPageDiv">
-        <img src={logo} alt="logo" className="logo" />
-        {location.pathname !== "/game" && (
-          <div className="progress-score">
-            <h1>Score: {context.score}</h1>
-          </div>
-        )}
-        <button onClick={navigateToYearOne} className="navButtonYearTwo">
-          Year One
-        </button>
-        <button onClick={navigateToYearTwo} className="navButtonYearTwo">
-          Year Two
-        </button>
-        <button onClick={navigateToYearThree} className="navButtonYearThree">
-          Year Three
-        </button>
-        <button onClick={navigateToYearFour} className="navButtonYearFour">
-          Year Four
-        </button>
-        {location.pathname !== "/profile" && (
-          <button
-            onClick={navigateToProfile}
-            onMouseOver={playHover}
-            className={
-              profileHighlighted
-                ? "navButtonProfileHighlighted"
-                : "navButtonProfile"
-            }
-          ></button>
-        )}
-        {location.pathname !== "/progress" && (
-          <button
-            onClick={navigateToProgress}
-            onMouseOver={playHover}
-            className={
-              progressHighlighted
-                ? "navButtonProgressHighlighted"
-                : "navButtonProgress"
-            }
-          ></button>
-        )}
-        {location.pathname !== "/game" && (
-          <button
-            onClick={navigateToGame}
-            onMouseOver={playHover}
-            className={
-              gameHighlighted ? "navButtonGameHighlighted" : "navButtonGame"
-            }
-          ></button>
-        )}
-        {/* {authed.currentUser.email === "teacher@teacher.com" && (
-          <button onClick={navigateToLeaderboard}>Leaderboard</button>
-        )} */}
-        <Logout />
-      </div>
+  return (
+    <div className="App">
+      {authed.currentUser ? (
+        <div className="navBarPageDiv">
+          <img src={logo} alt="logo" className="logo" />
+          {location.pathname !== "/game" && (
+            <div className="progress-score">
+              <h1>Score: {context.score}</h1>
+            </div>
+          )}
+          <button onClick={navigateToYearOne} className="navButtonYearTwo">
+            Year One
+          </button>
+          <button onClick={navigateToYearTwo} className="navButtonYearTwo">
+            Year Two
+          </button>
+          <button onClick={navigateToYearThree} className="navButtonYearThree">
+            Year Three
+          </button>
+          <button onClick={navigateToYearFour} className="navButtonYearFour">
+            Year Four
+          </button>
+          {location.pathname !== "/profile" && (
+            <button
+              onClick={navigateToProfile}
+              onMouseOver={playHover}
+              className={
+                profileHighlighted
+                  ? "navButtonProfileHighlighted"
+                  : "navButtonProfile"
+              }
+            ></button>
+          )}
+          {location.pathname !== "/progress" && (
+            <button
+              onClick={navigateToProgress}
+              onMouseOver={playHover}
+              className={
+                progressHighlighted
+                  ? "navButtonProgressHighlighted"
+                  : "navButtonProgress"
+              }
+            ></button>
+          )}
+          {location.pathname !== "/game" && (
+            <button
+              onClick={navigateToGame}
+              onMouseOver={playHover}
+              className={
+                gameHighlighted ? "navButtonGameHighlighted" : "navButtonGame"
+              }
+            ></button>
+          )}
+          {authed.currentUser.email === "teacher@teacher.com" && (
+            <button onClick={navigateToLeaderboard}>Leaderboard</button>
+          )}
+          <Logout />
+        </div>
     ) : (
       <div className="navBarPageDiv">
         {location.pathname !== "/game" && (
