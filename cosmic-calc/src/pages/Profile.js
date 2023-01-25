@@ -72,9 +72,7 @@ function Profile() {
             className="avatarButton"
             onClick={() => navigate("/avatars")}
             data-testid="avatarButton"
-          >
-            Customise
-          </button>
+          ></button>
           <div
             class="avatarWrapProfile"
             onMouseOver={play}
@@ -138,7 +136,7 @@ function Profile() {
           <h4 className="score" data-testid="score">
             Total score: {context.score}{" "}
           </h4>
-             <h4 className="Year">Year: {context.year}</h4>
+          <h4 className="Year">Year: {context.year}</h4>
           <button
             className="gameButton"
             data-testid="gameButtonProfile"

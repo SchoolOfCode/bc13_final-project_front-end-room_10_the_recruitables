@@ -7,6 +7,7 @@
 } */
 
 .Login {
+ 
   display: flex;
   justify-content: center;
   align-items: center;
@@ -56,8 +57,11 @@
 }
 
 .loginButton {
+  /* background-image: url(https://i.ibb.co/7gm9cj1/login-Button.png); 
+  background-repeat: no-repeat;
+  background-color: transparent; */
   width: 15vw;
-  height: 7vh;
+  height: 8vh;
   border-radius: 10px;
   background: var(--colour-red);
   color: #fff;

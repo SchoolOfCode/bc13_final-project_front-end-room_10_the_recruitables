@@ -49,7 +49,7 @@ export default function YearTwoGames() {
   });
   const [result, setResult] = useState("");
   const context = useContext(ScoreContext);
-  let points = 190;
+  let points = 690;
   //let points = context.score;
   console.log(context);
 
@@ -91,14 +91,13 @@ export default function YearTwoGames() {
         setcoinCountingArray(data.payload);
         let randomID = randomNumberGenerator(10);
         setcoinCountingImg(newcoinCountingArray[randomID].img_url);
-        setCorrectAnswer1(newcoinCountingArray[randomID].answer);
+        setCorrectAnswer1(newcoinCountingArray[randomID].number);
       }
     }
     getcoinCounting();
   }, []);
 
   const checkAnswer1 = () => {
-    setNoOfQuestions(noOfQuestions + 1);
     let questionResult = "";
     if (correctAnswer1 == answerInput) {
       questionResult = true;
@@ -119,9 +118,10 @@ export default function YearTwoGames() {
   };
 
   const newQuestion1 = () => {
+    setNoOfQuestions(noOfQuestions + 1);
     let randomID = randomNumberGenerator(7);
     setcoinCountingImg(coinCountingArray[randomID].img_url);
-    setCorrectAnswer1(coinCountingArray[randomID].answer);
+    setCorrectAnswer1(coinCountingArray[randomID].number);
     setResult("");
     setAnswerVisible(false);
   };
@@ -142,7 +142,6 @@ export default function YearTwoGames() {
   }, []);
 
   const checkAnswer2 = () => {
-    setNoOfQuestions(noOfQuestions + 1);
     let [questionResult, correctAnswer] = yearTwoPlanetTwoAnswer(
       [initialValue, operation, steps],
       answerInput
@@ -162,6 +161,7 @@ export default function YearTwoGames() {
   };
 
   const newQuestion2 = () => {
+    setNoOfQuestions(noOfQuestions + 1);
     let [initialValue, operation, steps] = yearTwoPlanetTwoQuestion();
     console.log("initialValue = ", initialValue);
     console.log("operation = ", operation);
@@ -192,7 +192,7 @@ export default function YearTwoGames() {
 
   const checkAnswer3 = () => {
     console.log("Check answer called");
-    setNoOfQuestions(noOfQuestions + 1);
+
     let [questionResult, correctAnswer] = yearTwoPlanetThreeAnswer(
       [number, word],
       answerInput
@@ -211,6 +211,7 @@ export default function YearTwoGames() {
   };
 
   const newQuestion3 = () => {
+    setNoOfQuestions(noOfQuestions + 1);
     let [number, word] = yearTwoPlanetThreeQuestion();
     setNumber(number);
     setWord(word);
@@ -250,14 +251,13 @@ export default function YearTwoGames() {
         setplaceValueArray(data.payload);
         let randomID = randomNumberGenerator(10);
         setplaceValueImg(newplaceValueArray[randomID].img_url);
-        setCorrectAnswer2(newplaceValueArray[randomID].answer);
+        setCorrectAnswer2(newplaceValueArray[randomID].number);
       }
     }
     getplaceValue();
   }, []);
 
   const checkAnswer4 = () => {
-    setNoOfQuestions(noOfQuestions + 1);
     let questionResult = "";
     if (correctAnswer2 == answerInput) {
       questionResult = true;
@@ -278,9 +278,10 @@ export default function YearTwoGames() {
   };
 
   const newQuestion4 = () => {
+    setNoOfQuestions(noOfQuestions + 1);
     let randomID = randomNumberGenerator(7);
     setplaceValueImg(placeValueArray[randomID].img_url);
-    setCorrectAnswer2(placeValueArray[randomID].answer);
+    setCorrectAnswer2(placeValueArray[randomID].number);
     setResult("");
     setAnswerVisible(false);
   };
@@ -299,7 +300,6 @@ export default function YearTwoGames() {
   }, []);
 
   const checkAnswer5 = () => {
-    setNoOfQuestions(noOfQuestions + 1);
     let [questionResult, correctAnswer] = yearTwoPlanetFiveAnswer(
       [firstNumber, secondNumber, thirdNumber],
       answerInput
@@ -318,6 +318,7 @@ export default function YearTwoGames() {
   };
 
   const newQuestion5 = () => {
+    setNoOfQuestions(noOfQuestions + 1);
     let [firstNumber, secondNumber, thirdNumber] = yearTwoPlanetFiveQuestion();
     setFirstNumber(firstNumber);
     setSecondNumber(secondNumber);
@@ -346,7 +347,6 @@ export default function YearTwoGames() {
   }, []);
 
   const checkAnswer6 = () => {
-    setNoOfQuestions(noOfQuestions + 1);
     let [questionResult, correctAnswer] = yearTwoPlanetSixAnswer(
       [numerator, denominator, otherValue],
       answerInput
@@ -365,6 +365,7 @@ export default function YearTwoGames() {
   };
 
   const newQuestion6 = () => {
+    setNoOfQuestions(noOfQuestions + 1);
     let [numerator, denominator, otherValue] = yearTwoPlanetSixQuestion();
     setNumerator(numerator);
     setDenominator(denominator);
@@ -399,7 +400,6 @@ export default function YearTwoGames() {
   }, []);
 
   const checkAnswer7 = () => {
-    setNoOfQuestions(noOfQuestions + 1);
     let [questionResult, correctAnswer] = yearTwoPlanetSevenAnswer(
       [
         firstNumberOrder,
@@ -423,6 +423,7 @@ export default function YearTwoGames() {
   };
 
   const newQuestion7 = () => {
+    setNoOfQuestions(noOfQuestions + 1);
     let [
       firstNumberOrder,
       secondNumberOrder,
@@ -541,7 +542,8 @@ export default function YearTwoGames() {
           newQuestion={newQuestion1}
         />
         <PicQuestionCard
-          text = "Can you count in 2s, 5s and 10,s from 0?"
+          h1={"Can you count in 2s, 5s and 10s from 0?"}
+          text="What number is missing?"
           src={coinCountingImg}
           answerInput={answerInput}
           noOfQuestions={noOfQuestions}
@@ -610,7 +612,7 @@ export default function YearTwoGames() {
           newQuestion={newQuestion4}
         />
         <PicQuestionCard
-          text = "Can you count up the coins?"
+          h1="Can you count up the coins?"
           src={placeValueImg}
           answerInput={answerInput}
           noOfQuestions={noOfQuestions}
@@ -658,7 +660,7 @@ export default function YearTwoGames() {
           newQuestion={newQuestion6}
         />
         <QuestionCardFraction
-          h1="Can you find the factions of these amounts?"
+          h1="Can you find the fractions of these amounts?"
           answerInput={answerInput}
           noOfQuestions={noOfQuestions}
           value1={numerator}

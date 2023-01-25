@@ -50,7 +50,7 @@ export default function Game() {
   });
   const [result, setResult] = useState("");
   const context = useContext(ScoreContext);
-  let points = 615;
+  let points = 390;
   //let points = context.score;
 
   useEffect(() => {

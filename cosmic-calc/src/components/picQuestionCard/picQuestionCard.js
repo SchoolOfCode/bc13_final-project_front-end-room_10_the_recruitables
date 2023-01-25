@@ -4,8 +4,8 @@ import "./picQuestionCard.css";
 export default function PicQuestionCard(props) {
   return (
     <div className="questionDiv">
+      {props.h1}
       <div className="question-container">
-        {" "}
         <h2 className="h2QuestionGame">{props.noOfQuestions + ")  "}</h2>
         <h2 className="h2QuestionGame">{props.text}</h2>
         <img className="QuestionImg" src={props.src} alt={props.imgAlt} />

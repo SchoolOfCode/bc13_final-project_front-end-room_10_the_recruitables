@@ -96,6 +96,20 @@ function Login() {
               Login
             </button>
           </div>
+          <div className="registerButtonDiv">
+            <button
+              className="registerButton"
+              data-testid="registerButton"
+              onMouseOver={playHover}
+              onClick={() => {
+                playOpen();
+                stop();
+              }}
+              type="submit"
+            >
+              Register
+            </button>
+          </div>
         </form>
       </div>
       {/* <button className="playMusicButton" onClick={handleClick}>
