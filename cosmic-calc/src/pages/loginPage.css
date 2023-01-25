@@ -55,7 +55,7 @@
   align-items: center;
 }
 
-.loginButton {
+/* .loginButton {
   width: 15vw;
   height: 7vh;
   border-radius: 10px;
@@ -63,4 +63,18 @@
   color: #fff;
   margin: 2vw;
   font-size: 3vw;
+} */
+
+.loginButton {
+  background-image: url(../images/Background_Buttons/LoginButton2.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: rgba(0, 0, 255, 0);
+  width: 10vw;
+  height: 10vh;
+  min-width: 200px;
+  min-height: 100px;
+  text-align: center;
+  object-fit: fill;
 }
