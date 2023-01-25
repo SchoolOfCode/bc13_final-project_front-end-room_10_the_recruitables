@@ -13,7 +13,7 @@ export default function QuestionCardUnit(props) {
         </h2>
         <div className="answerAndUnits">
           <input
-            className="inputGame"
+            className="inputGameUnits"
             type="number"
             value={props.answerInput}
             onChange={(e) => props.setAnswerInput(e.target.value)}

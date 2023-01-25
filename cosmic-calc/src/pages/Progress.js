@@ -10,7 +10,7 @@ import woosh from ".././components/sound/FX/woosh.mp3";
 
 // icon/image array to be used instead/aswell as buttons. Passed as a prop to levelButtons.
 // const icons = ["😀", "😁", "😂", "🤣", "😃", "😆", "😎", "👽", "👾", "🤖"];
-const captions = [
+const captions1 = [
   "Number Lines",
   "Shapes and Names",
   "Adding and Subtracting",
@@ -20,6 +20,42 @@ const captions = [
   "Number Bonds to 20",
   "Halves and Quarters",
   "Lucky Dip",
+];
+
+const captions2 = [
+  "Counting in 2s, 5s, and 10s",
+  "Adding and Subtracting Using Counters",
+  "Reading and Writing Numbers",
+  "Counting Money",
+  "Adding Three Numbers Together",
+  "Finding Fractions of Whole Numbers",
+  "Putting Numbers in Order",
+  "Comparing Values",
+  "Lucky Dip",
+];
+
+const captions3 = [
+  "Adding and Subtracting 1, 10 and 100",
+  "Putting Large Numbers in Order",
+  "Adding Three-Digit Numbers",
+  "Adding and Subtracting Larger Numbers",
+  "Practicing Times Tables",
+  "Units of Measurement",
+  "Adding Fractions",
+  "Times Tables- Timed!",
+  "Lucky Dip",
+];
+
+const captions4 = [
+  "Multiples of 6, 7 and 9",
+  "Adding and Subtracting using 10, 100 and 1000",
+  "Negative Numbers",
+  "Putting Large Numbers in Order",
+  "Rouding Up and Down",
+  "Converting Units of Measurement",
+  "Times Tables Skills",
+  "Multiplying Three Numbers",
+  "Times Tables- Timed!",
 ];
 
 export const Progress = () => {
@@ -103,6 +139,19 @@ export const Progress = () => {
 
   // JSX below returns a grid container.
   // then maps over the levels array which returns a button for each new item in the array. Array increases depending on score. New item every 5 points = new button returned.
+
+  let yearGroup = context.year;
+  let captions = [];
+  if (yearGroup === 1) {
+    captions = captions1;
+  } else if (yearGroup === 2) {
+    captions = captions2;
+  } else if (yearGroup === 3) {
+    captions = captions3;
+  } else if (yearGroup === 4) {
+    captions = captions4;
+  }
+
   return (
     <div className="progress-container">
       <div className="progress-page">
