@@ -3,7 +3,6 @@ import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./firebaseConfig";
 import React from "react";
 import "./profile.css";
-import profileImage from "../images/Background_Buttons/MonsterRed.png";
 import { useNavigate } from "react-router-dom";
 import { ScoreContext } from "../components/score/ScoreContext";
 import useSound from "use-sound";
@@ -15,6 +14,7 @@ function Profile() {
   const [selectedHead, setSelectedHead] = useState(1);
   const [selectedBody, setSelectedBody] = useState(1);
   const [selectedAnt, setSelectedAnt] = useState(1);
+  //? does this need to be a state?
   const [avatarColor, setAvatarColor] = useState("#000000");
   const [play, { stop }] = useSound(alien, { interrupt: true, volume: 0.3 });
   const [playShip] = useSound(ship, { interrupt: true, volume: 0.3 });
@@ -42,8 +42,6 @@ function Profile() {
     navigate("/progress");
   };
 
-  // console.log("userData", userData);
-
   useEffect(() => {
     async function getAvatars(email) {
       const response = await fetch(
@@ -68,7 +66,6 @@ function Profile() {
   return (
     <div>
       <div className="profilePageDiv">
-        {/* <img className="profileImage" src={profileImage} alt="profileImage" /> */}
         <div class="container">
           <button className="avatarButton" onClick={() => navigate("/avatars")}>
             Customise
