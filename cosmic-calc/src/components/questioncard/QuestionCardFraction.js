@@ -3,17 +3,20 @@ import "./questionCardFraction.css";
 
 export default function QuestionCardFraction(props) {
   return (
-    <div className="questionDiv">
+    <div className="questionDivFraction">
     <h1> {props.h1}</h1>
+    <div className= "questionDisplayFraction">
       <h2 className="h2QuestionGame">{props.noOfQuestions + ")  "}</h2>
-      <h2 className="h2QuestionGame">
+      <div className="fractionDiv">
+      <h2 className="h2QuestionGameValue1">
         {props.value1}
       </h2>
-      <h2 className="h2QuestionGame">
+      <h2 className="h2QuestionGameValue2">
       {props.value2} 
       </h2>
+      </div>
       <h2 className="h2QuestionGame">
-      {props.value3}
+      of {props.value3} 
       </h2>
       <h2 className="h2QuestionGame">
       =
@@ -31,6 +34,7 @@ export default function QuestionCardFraction(props) {
           }
         }}
       />
+    </div>
     </div>
   );
 }
