@@ -7,6 +7,7 @@ export const ScoreContext = createContext();
 function ScoreProvider({ children }) {
   const [score, setScore] = useState(0);
   const [user, setUser] = useState(null);
+  const [year, setYear] = useState(0);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -28,7 +29,6 @@ function ScoreProvider({ children }) {
     setYear(data.payload.year);
     return data.payload;
   };
-
 
   const [level, setLevel] = useState(0);
 
