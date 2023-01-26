@@ -12,7 +12,7 @@ export default function AnswerCardOrder(props) {
         style={{ visibility: props.answerVisible ? "visible" : "hidden" }}
       >
         <h3 className="h3ResultGame">The correct answer is: </h3>
-        <h3 className="h3ResultAnswerGame">{props.result[1].join(", ")}</h3>
+        <h3 className="h3ResultAnswerGameOrder">{props.result}</h3>
       </div>
       <button
         className="newQuestionGameButton"
