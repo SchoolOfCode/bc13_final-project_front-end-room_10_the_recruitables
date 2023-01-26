@@ -122,20 +122,16 @@ export function yearOnePlanetEightAnswer(knownValue, playerAnswer) {
 
 // Year 1 Planet 9 - "Randomly choose questions from the previous selection"
 export function yearOnePlanetNineQuestion() {
-  let questionsAvailable = [2, 4, 5, 6, 7, 8];
+  let questionsAvailable = [4, 5, 6, 8];
   let randomIndex = randomNumberGenerator(questionsAvailable.length);
   let questionChoice = questionsAvailable[randomIndex];
   switch (questionChoice) {
-    case 2:
-      return [questionChoice, giveRandomShape()];
     case 4:
       return [questionChoice, yearOnePlanetFourQuestion()];
     case 5:
       return [questionChoice, yearOnePlanetFiveQuestion()];
     case 6:
       return [questionChoice, yearOnePlanetSixQuestion()];
-    case 7:
-      return [questionChoice, getFractionWord()];
     case 8:
       return [questionChoice, yearOnePlanetEightQuestion()];
     default:
@@ -144,16 +140,12 @@ export function yearOnePlanetNineQuestion() {
 }
 export function yearOnePlanetNineAnswer(entranceArray, playerAnswer) {
   switch (entranceArray[0]) {
-    case 2:
-      return checkShapeAnswer(playerAnswer, entranceArray[1]);
     case 4:
       return yearOnePlanetFourAnswer(entranceArray[1], playerAnswer);
     case 5:
       return yearOnePlanetFiveAnswer(entranceArray[1], playerAnswer);
     case 6:
       return yearOnePlanetSixAnswer(entranceArray[1], playerAnswer);
-    case 7:
-      return yearOnePlanetSevenAnswer(entranceArray[1], playerAnswer);
     case 8:
       return yearOnePlanetEightAnswer(entranceArray[1], playerAnswer);
     default:
