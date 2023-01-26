@@ -34,32 +34,24 @@ export function yearThreePlanetTwoQuestion() {
   return values;
 }
 export function yearThreePlanetTwoAnswer(values, playerAnswer) {
-  let sortedValues = values.sort((a, b) => {
-    return a - b;
-  });
+  let sortedValues = values.sort((a, b) => {return a - b});
   let sortedString = sortedValues.join(", ");
   let playerArray;
   if (playerAnswer.includes(", ")) {
-    playerArray = playerAnswer.split(", ").map((x) => {
-      return Number(x);
-    });
+    playerArray = playerAnswer.split(", ").map((x) => {return Number(x)});
   } else if (playerAnswer.includes(",")) {
-    playerArray = playerAnswer.split(",").map((x) => {
-      return Number(x);
-    });
+    playerArray = playerAnswer.split(",").map((x) => {return Number(x)});
   } else if (playerAnswer.includes(" ")) {
-    playerArray = playerAnswer.split(" ").map((x) => {
-      return Number(x);
-    });
+    playerArray = playerAnswer.split(" ").map((x) => {return Number(x)});
   } else {
-    return [false, sortedString]; // If the user does not consistently split their values
+    return [false, sortedString]; // If the user does not consistently split their values, return false
   }
   for (let i = 0; i < values.length; i++) {
     if (sortedValues[i] !== playerArray[i]) {
-      return [false, sortedString];
+      return [false, sortedString]; // If any of the user's values do not match the correct order, return false
     }
   }
-  return [true, sortedString];
+  return [true, sortedString]; // Else return true
 }
 
 // Year 3 Planet 3 - "Add together two 3-digit numbers"
