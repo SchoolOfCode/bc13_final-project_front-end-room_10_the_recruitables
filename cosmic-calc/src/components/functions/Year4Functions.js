@@ -67,17 +67,11 @@ export function yearFourPlanetFourAnswer(values, playerAnswer) {
   let sortedString = sortedValues.join(", ");
   let playerArray;
   if (playerAnswer.includes(", ")) {
-    playerArray = playerAnswer.split(", ").map((x) => {
-      return Number(x);
-    });
+    playerArray = playerAnswer.split(", ").map((x) => {return Number(x)});
   } else if (playerAnswer.includes(",")) {
-    playerArray = playerAnswer.split(",").map((x) => {
-      return Number(x);
-    });
+    playerArray = playerAnswer.split(",").map((x) => {return Number(x)});
   } else if (playerAnswer.includes(" ")) {
-    playerArray = playerAnswer.split(" ").map((x) => {
-      return Number(x);
-    });
+    playerArray = playerAnswer.split(" ").map((x) => {return Number(x)});
   } else {
     return [false, sortedString]; // If the user does not consistently split their values
   }
