@@ -1,6 +1,8 @@
 **[DEMO LINK](https://frolicking-chaja-1991dd.netlify.app/)**
 ---
 
+<img align="center" src="./cosmic-calc/src/images/Logo.png" width="150" height="150">
+
 <br />
 
 ## List of Contents
