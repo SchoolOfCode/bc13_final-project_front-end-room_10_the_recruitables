@@ -495,7 +495,7 @@ const YearFourGames = () => {
     let email = await user.email;
 
     const response = await fetch(
-      `http://cosmic-calculations-backend.onrender.com/api/users/email/${email}`,
+      `https://cosmic-calculations-backend.onrender.com/api/users/email/${email}`,
       {
         method: "POST",
         headers: {
