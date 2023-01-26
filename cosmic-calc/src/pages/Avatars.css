@@ -195,7 +195,6 @@
   background-color: var(--avatar-body-color);
 }
 
-
 .face_4 {
   position: absolute;
   top: 44px;
@@ -444,7 +443,6 @@
   background-color: rgb(255, 0, 242);
   background-image: url("https://mir-s3-cdn-cf.behance.net/project_modules/disp/d4159442094811.57c019c41da55.gif");
   background-size: contain;
-
 }
 
 .arms_leftSleeve_2 {
@@ -480,7 +478,7 @@
   background-image: url("https://thumbs.gfycat.com/HarmfulSlightBrahmanbull-max-1mb.gif");
   background-size: contain;
   background-repeat: no-repeat;
-  background-color: rgb(99, 91, 211)
+  background-color: rgb(99, 91, 211);
 }
 
 .arms_leftSleeve_3 {
@@ -502,7 +500,7 @@
   width: 10px;
   height: 20px;
   border-radius: 0px 50px 50px 0px;
-  background-color:rgb(72, 64, 185);
+  background-color: rgb(72, 64, 185);
 }
 
 .bodyWrap_body_4 {

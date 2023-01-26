@@ -93,9 +93,9 @@ export const Progress = () => {
       return data.payload.total_score;
     };
     getScore(1);
-    if (payload.total_score >= 50) {
+    if (payload.total_score >= 10) {
       let unlockedLevels = [
-        ...lockLevels.slice(0, Math.floor(payload.total_score / 50)),
+        ...lockLevels.slice(0, Math.floor(payload.total_score / 10)),
       ];
       setLevels(unlockedLevels);
       console.log(levels);

@@ -262,16 +262,6 @@
   z-index: 2;
 }
 
-#levelButton-9-complete {
-  background-image: url(../images/Tick.png);
-  left: 80%;
-  top: 60vh;
-  bottom: 5vh;
-  width: 40vh;
-  height: 40vh;
-  z-index: 2;
-}
-
 /* .planets {
   display: grid;  
 }

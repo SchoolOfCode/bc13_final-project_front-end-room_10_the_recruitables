@@ -1,6 +1,4 @@
 import { useState, useEffect, useContext } from "react";
-import { onAuthStateChanged } from "firebase/auth";
-import { auth } from "./firebaseConfig";
 import React from "react";
 import "./profile.css";
 import { useNavigate } from "react-router-dom";
@@ -10,34 +8,22 @@ import alien from ".././components/sound/FX/alien.mp3";
 import ship from ".././components/sound/FX/ship.mp3";
 
 function Profile() {
-  const [userData, setUserData] = useState({});
   const [selectedHead, setSelectedHead] = useState(1);
   const [selectedBody, setSelectedBody] = useState(1);
   const [selectedAnt, setSelectedAnt] = useState(1);
   //? does this need to be a state?
-  const [avatarColor, setAvatarColor] = useState("#000000");
+  const [, setAvatarColor] = useState("#000000");
   const [play, { stop }] = useSound(alien, { interrupt: true, volume: 0.3 });
   const [playShip] = useSound(ship, { interrupt: true, volume: 0.3 });
 
-  useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
-      retrieveUserData(user);
-    });
-  }, []);
-
   let context = useContext(ScoreContext);
 
-  const retrieveUserData = async (user) => {
-    let email = await user.email;
-    const response = await fetch(
-      `https://cosmic-calculations-backend.onrender.com/api/users/email/${email}`
-    );
+  useEffect(() => {
+    console.log("hello world");
+    context.update();
+    //eslint-disable-next-line
+  }, []);
 
-    const data = await response.json();
-    console.log(data.payload);
-    setUserData(data.payload);
-    return data.payload;
-  };
   const navigate = useNavigate();
   const handleGame = () => {
     navigate("/progress");
@@ -46,7 +32,7 @@ function Profile() {
   useEffect(() => {
     async function getAvatars(email) {
       const response = await fetch(
-        `https://cosmic-calculations-backend.onrender.com/api/users/avatars/${email}`,
+        `https://cosmic-calculations-backend.onrender.com/api/users/email/${email}`,
         {
           method: "GET",
           headers: {
@@ -55,14 +41,15 @@ function Profile() {
         }
       );
       const data = await response.json();
-      console.log("data", data);
+      console.log(data);
       setSelectedAnt(data.payload.antid);
       setSelectedBody(data.payload.bodyid);
       setSelectedHead(data.payload.headid);
       setAvatarColor(data.payload.avcolour);
     }
-    getAvatars(context.user.email);
-  }, []);
+    console.log(context.email);
+    getAvatars(context.email);
+  }, [context.email]);
 
   return (
     <div>
@@ -132,7 +119,7 @@ function Profile() {
         <div className="profileDiv">
           <h3 className="welcome">Welcome</h3>
           <h4 className="name" data-testid="name">
-            {userData.name}
+            {context.name}
           </h4>
           <h4 className="score" data-testid="score">
             Total score: {context.score}{" "}
