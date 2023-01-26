@@ -18,9 +18,9 @@ export function giveRandomShape() {
   return newShape;
 }
 
-export function checkShapeAnswer(playerInput, newShape) {
+export function checkShapeAnswer(playerAnswer, newShape) {
   let correctAnswer = newShape;
-  return [playerInput === correctAnswer, correctAnswer];
+  return [playerAnswer === correctAnswer, correctAnswer];
 }
 
 // Year 1 Planet 4 - "Number bonds to 10"
@@ -114,4 +114,46 @@ export function yearOnePlanetEightQuestion() {
 export function yearOnePlanetEightAnswer(knownValue, playerAnswer) {
   let correctAnswer = 20 - knownValue;
   return [parseInt(playerAnswer) === correctAnswer, correctAnswer];
+}
+
+
+// Year 1 Planet 9 - "Randomly choose questions from the previous selection"
+export function yearOnePlanetNineQuestion() {
+  let questionsAvailable = [2, 4, 5, 6, 7, 8];
+  let randomIndex = randomNumberGenerator(questionsAvailable.length);
+  let questionChoice = questionsAvailable[randomIndex];
+  switch (questionChoice) {
+    case 2:
+      return [questionChoice, giveRandomShape()];
+    case 4:
+      return [questionChoice, yearOnePlanetFourQuestion()];
+    case 5:
+      return [questionChoice, yearOnePlanetFiveQuestion()];
+    case 6:
+      return [questionChoice, yearOnePlanetSixQuestion()];
+    case 7:
+      return [questionChoice, getFractionWord()];
+    case 8:
+      return [questionChoice, yearOnePlanetEightQuestion()];
+    default:
+      throw new Error("Question choice not valid.")
+  }
+}
+export function yearOnePlanetNineAnswer(entranceArray, playerAnswer) {
+  switch (entranceArray[0]) {
+    case 2:
+      return checkShapeAnswer(playerAnswer, entranceArray[1]);
+    case 4:
+      return yearOnePlanetFourAnswer(entranceArray[1], playerAnswer);
+    case 5:
+      return yearOnePlanetFiveAnswer(entranceArray[1], playerAnswer);
+    case 6:
+      return yearOnePlanetSixAnswer(entranceArray[1], playerAnswer);
+    case 7:
+      return yearOnePlanetSevenAnswer(entranceArray[1], playerAnswer);
+    case 8:
+      return yearOnePlanetEightAnswer(entranceArray[1], playerAnswer);
+    default:
+      throw new Error("Answer choice not valid");
+  }
 }

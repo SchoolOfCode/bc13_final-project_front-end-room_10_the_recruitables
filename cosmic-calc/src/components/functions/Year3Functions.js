@@ -37,6 +37,7 @@ export function yearThreePlanetTwoQuestion() {
 }
 export function yearThreePlanetTwoAnswer(values, playerAnswer) {
     let sortedValues = values.sort((a, b) => {return a - b});
+    let sortedString = sortedValues.join(", ");
     let playerArray;
     if (playerAnswer.includes(", ")) {
         playerArray = playerAnswer.split(", ").map((x) => {return Number(x)});
@@ -45,14 +46,14 @@ export function yearThreePlanetTwoAnswer(values, playerAnswer) {
     } else if (playerAnswer.includes(" ")) {
         playerArray = playerAnswer.split(" ").map((x) => {return Number(x)});
     } else {
-        return [false, sortedValues]; // If the user does not consistently split their values
+        return [false, sortedString]; // If the user does not consistently split their values
     }
     for (let i = 0; i < values.length; i++) {
         if (sortedValues[i] !== playerArray[i]) {
-            return [false, sortedValues];
+            return [false, sortedString];
         }
     }
-    return [true, sortedValues];
+    return [true, sortedString];
 }
 
 
@@ -122,4 +123,46 @@ export function yearThreePlanetEightAnswer(values, playerAnswer) {
         correctAnswer = values[0] - values[2];
     }
     return [Number(playerAnswer) === correctAnswer, correctAnswer];
+}
+
+
+// Year 3 Planet 9 - "Randomly choose questions from the previous selection"
+export function yearOnePlanetNineQuestion() {
+    let questionsAvailable = [1, 2, 3, 4, 5, 8];
+    let randomIndex = randomNumberGenerator(questionsAvailable.length);
+    let questionChoice = questionsAvailable[randomIndex];
+    switch (questionChoice) {
+      case 1:
+        return [questionChoice, yearThreePlanetOneQuestion()];
+      case 2:
+        return [questionChoice, yearThreePlanetTwoQuestion()];
+      case 3:
+        return [questionChoice, yearThreePlanetThreeQuestion()];
+      case 4:
+        return [questionChoice, yearThreePlanetFourQuestion()];
+      case 5:
+        return [questionChoice, yearThreePlanetFiveQuestion()];
+      case 8:
+        return [questionChoice, yearThreePlanetEightQuestion()];
+      default:
+        throw new Error("Question choice not valid.")
+    }
+}
+export function yearOnePlanetNineAnswer(entranceArray, playerAnswer) {
+    switch (entranceArray[0]) {
+      case 1:
+        return yearThreePlanetOneAnswer(entranceArray[1], playerAnswer);
+      case 2:
+        return yearThreePlanetTwoAnswer(entranceArray[1], playerAnswer);
+      case 3:
+        return yearThreePlanetThreeAnswer(entranceArray[1], playerAnswer);
+      case 4:
+        return yearThreePlanetFourAnswer(entranceArray[1], playerAnswer);
+      case 5:
+        return yearThreePlanetFiveAnswer(entranceArray[1], playerAnswer);
+      case 8:
+        return yearThreePlanetEightAnswer(entranceArray[1], playerAnswer);
+      default:
+        throw new Error("Answer choice not valid");
+    }
 }

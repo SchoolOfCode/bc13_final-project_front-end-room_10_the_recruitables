@@ -33,6 +33,12 @@
   text-decoration: underline;
 }
 
+.h3ResultAnswerGameOrder {
+  font-size: 2vw;
+  margin-left: 2vw;
+  text-decoration: underline;
+}
+
 .newQuestionGameButton {
   font-family: "Bubblegum Sans";
   padding: 2vw;

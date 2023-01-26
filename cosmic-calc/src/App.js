@@ -20,6 +20,7 @@ import Leaderboard from "./pages/Leaderboard";
 import YearTwoGames from "./pages/YearTwoGames";
 import YearThreeGames from "./pages/YearThreeGames";
 import YearFourGames from "./pages/YearFourGames";
+
 export default function App() {
   const authed = auth;
   let context = useContext(ScoreContext);
@@ -68,16 +69,10 @@ export default function App() {
     context.update();
     console.log(navigate);
   };
-  // const navigateToTimedGame = () => {
-  //   navigate("/timedGame");
-  // };
   const navigateToRegister = () => {
     navigate("/register");
   };
   console.log(authed.currentUser);
-  // const mute = () => {
-  //   setSoundEnabled(!soundEnabled);
-  // };
   // {
   //   /* <div className="muteButton">
   // <button
@@ -143,6 +138,27 @@ export default function App() {
           )}
           {location.pathname !== "/register" && (
             <button onClick={navigateToRegister} className="registerButton">
+              Register
+            </button>
+          )}
+        </div>
+      ) : (
+        <div className="navBarLoginDiv">
+          {location.pathname !== "/" && (
+            <button
+              className="navButtonLogin"
+              onMouseOver={playHover}
+              onClick={navigateToLogin}
+            >
+              Login
+            </button>
+          )}
+          {location.pathname !== "/register" && (
+            <button
+              className="navButtonRegister"
+              onMouseOver={playHover}
+              onClick={navigateToRegister}
+            >
               Register
             </button>
           )}

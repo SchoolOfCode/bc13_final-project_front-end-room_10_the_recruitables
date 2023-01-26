@@ -51,8 +51,10 @@ export default function Game() {
   });
   const [result, setResult] = useState("");
   const context = useContext(ScoreContext);
+
   //let points = 390;
   let points = context.score;
+
 
   useEffect(() => {
     if (noOfQuestions === 11) {
@@ -119,7 +121,6 @@ export default function Game() {
   const newQuestion1 = () => {
     setNoOfQuestions(noOfQuestions + 1);
     let randomID = randomNumberGenerator(10);
-
     setNumberLineImg(numberLineArray[randomID].img_url);
     setCorrectAnswer1(numberLineArray[randomID].answer);
     setResult("");
