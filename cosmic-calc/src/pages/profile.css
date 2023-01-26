@@ -49,6 +49,16 @@ h4 {
   color: #fff;
   margin: 2vw;
   font-size: 100%;
+  font-family: "Bubblegum Sans";
+  font-size: 3vw;
+  cursor: pointer;
+}
+
+.gameButton:hover {
+  background: var(--colour-purple);
+  border-color: var(--colour-purple-transparent);
+  color: #fff;
+  cursor: pointer;
 }
 
 .profileImage {
@@ -82,11 +92,16 @@ h4 {
   background-image: url(https://i.ibb.co/Zgj3G3g/customise.png);
   background-color: transparent;
   background-repeat: no-repeat;
-  background-size: 100% 100%;
+  background-size: contain;
   background-position: center;
   width: 8vw;
   height: 8vh;
   z-index: 1;
   margin-bottom: 5%;
   margin-top: 3%;
+}
+
+.avatarButton:hover{ 
+  cursor: pointer;
+  transform: rotate(5deg) scale(1.1) ;
 }

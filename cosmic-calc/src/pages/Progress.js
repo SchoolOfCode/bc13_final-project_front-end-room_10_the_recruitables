@@ -19,7 +19,6 @@ const captions1 = [
   "Reading Numbers",
   "Number Bonds to 20",
   "Halves and Quarters",
-  "Lucky Dip",
 ];
 
 const captions2 = [
@@ -31,7 +30,6 @@ const captions2 = [
   "Finding Fractions of Whole Numbers",
   "Putting Numbers in Order",
   "Comparing Values",
-  "Luykcy Dip",
 ];
 
 const captions3 = [
@@ -43,7 +41,6 @@ const captions3 = [
   "Units of Measurement",
   "Adding Fractions",
   "Times Tables- Timed!",
-  "Lucky Dip",
 ];
 
 const captions4 = [

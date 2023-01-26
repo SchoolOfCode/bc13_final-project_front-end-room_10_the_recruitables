@@ -806,7 +806,7 @@
 .head-button-left {
   display: flex;
   background-image: url(../images/Background_Buttons/Avatars/Arrow-left1.png);
-  background-size: cover;
+  background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
   width: 10%;
@@ -821,7 +821,7 @@
 .head-button-right {
   display: flex;
   background-image: url(../images/Background_Buttons/Avatars/Arrow-right1.png);
-  background-size: cover;
+  background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
   width: 10%;
@@ -836,7 +836,7 @@
 .body-button-left {
   display: flex;
   background-image: url(../images/Background_Buttons/Avatars/Arrow-left1.png);
-  background-size: cover;
+  background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
   width: 10%;
@@ -851,7 +851,7 @@
 .body-button-right {
   display: flex;
   background-image: url(../images/Background_Buttons/Avatars/Arrow-right1.png);
-  background-size: cover;
+  background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
   width: 10%;
@@ -866,7 +866,7 @@
 .ants-button-left {
   display: flex;
   background-image: url(../images/Background_Buttons/Avatars/Arrow-left1.png);
-  background-size: cover;
+  background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
   width: 10%;
@@ -881,7 +881,7 @@
 .ants-button-right {
   display: flex;
   background-image: url(../images/Background_Buttons/Avatars/Arrow-right1.png);
-  background-size: cover;
+  background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
   width: 10%;
@@ -917,20 +917,30 @@
 
 .avatarButtonDiv {
   display: flex;
-  /* position: relative; */
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  /* border: 5px solid red; */
   height: 40%;
-  /* bottom: 22%; */
   width: 60%;
   margin-right: 4%;
   max-width: 702px;
+  max-height: 100%;
+  margin-bottom: 12vh;
 }
 
-/* avatar color */
+.ants-button-left:hover,
+.ants-button-right:hover,
+.head-button-left:hover,
+.head-button-right:hover,
+.body-button-left:hover,
+.body-button-right:hover
+{
+  cursor: pointer;
+  transform: scale(1.1);
+}
 
+
+/* avatar color */
 #swatch {
   background: whitesmoke;
   border: #000 solid 1px;
@@ -943,6 +953,11 @@
   /* width: 20%; */
   /*position: relative;
   right: 60%;  */
+}
+
+#swatch:hover{
+  cursor: pointer;
+  transform: scale(1.1);
 }
 
 #swatch .info {
@@ -1009,14 +1024,19 @@ input[type="color"] {
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: rgba(0, 0, 255, 0);
-
-  /* position: absolute; */
   width: 20%;
   height: 80%;
   bottom: 30%;
   margin-left: 50%;
-  /* min-width: 230px;
-  min-height: 130px; */
   text-align: center;
+}
+
+.submit-button:hover {
+      transition: transform 0.3s ease-in-out 0s;
+      transform: rotate(5deg) scale(1.1);
+      cursor: pointer;
 }

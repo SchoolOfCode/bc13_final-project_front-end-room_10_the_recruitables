@@ -25,7 +25,7 @@
   }
   
  
-  .inputGame {
+  .inputGameOrder {
     padding: 2vh;
     border-radius: 10px;
     background: white;
@@ -33,7 +33,7 @@
     border-style: solid;
     border-width: 3px;
     color: black;
-    width: 25vw;
+    width: 30vw;
     height: 8vh;
     text-align: center;
     font-size: 2vw;
