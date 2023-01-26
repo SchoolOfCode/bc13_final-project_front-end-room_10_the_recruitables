@@ -82,7 +82,7 @@ export default function QuestionCardTimer(props) {
       <h2 className="time">{showTime()}</h2>
       <div className="timerDiv">
         <button className="buttonTimer" onClick={handleStart}>
-          Start
+          start
         </button>
         <button className="buttonTimer" onClick={oneMin}>
           1 minute
@@ -94,7 +94,7 @@ export default function QuestionCardTimer(props) {
           5 minute
         </button>
         <button className="buttonTimer" onClick={handleReset}>
-          Reset
+          reset
         </button>
       </div>
     </div>
