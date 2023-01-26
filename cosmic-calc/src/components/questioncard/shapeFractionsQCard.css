@@ -1,0 +1,181 @@
+.questionDiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    height: auto;
+    width: 70vw;
+    background-color: var(--colour-purple-transparent);
+    border-radius: 10px;
+    padding-top: 4vh;
+    padding-bottom: 4vh;;
+    padding-left: 1vw;
+    padding-right: 1vw;
+    border-color: var(--colour-purple);
+    border-style: solid;
+    border-width: 10px;
+    color: #fff;
+    /* contain: content; */
+ } 
+
+ .QuestionNumberAndQuestion{
+   display: flex;
+   flex-direction: row;
+   gap: 2vw
+ }
+
+
+
+ .QuestionImg{
+    width: 100px;
+    height: 20px;
+ }
+
+
+ .inputGame{
+    border-radius: 10px;
+    background: white;
+    border-color: white;
+    border-style: solid;
+    border-width: 3px;
+    color: black;
+    width: 10vw;
+    height: 10vh;
+    text-align: center;
+    font-size: 2vw;
+}
+
+.shapes-div-1 {
+   width: 40vw;
+   display: grid;
+   grid-template-columns: repeat(4, 1fr);
+   gap: 2vw;
+   grid-auto-rows: minmax(2vh, auto);
+   align-items: center;
+}
+
+.shapes-div-2 {
+   width: 40vw;
+   display: grid;
+   grid-template-columns: repeat(4, 1fr);
+   gap: 2vw;
+   grid-auto-rows: minmax(2vh, auto);
+   align-items: center; 
+   margin-right: 10px;
+   border: solid, black;
+}
+
+.new-shape-button{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   width: 100px;
+   height: 100px;
+   margin: 10px;
+   border: white solid 1px;
+}
+
+.onehalf-shape{
+  background-image: url(https://i.ibb.co/KF2pptF/1-2-10.png); 
+  background-color: transparent;
+   background-size: contain;
+   width: 12vw;
+   height: 15vh;
+   background-repeat: no-repeat;
+}
+
+
+.onethird-shape {
+    background-image: url(https://i.ibb.co/9ZKTrx0/1-3.png); 
+   background-color: transparent;
+   background-size: contain;
+   width: 15vw;
+   height: 12vh;
+   background-repeat: no-repeat;
+}
+
+.onequarter-shape {
+   background-image: url(https://i.ibb.co/vkdBxw1/1-4.png);
+   background-position: center;
+   background-color: transparent;
+   background-size: contain;
+   background-repeat: no-repeat;
+   width: 15vw;
+   height: 15vh;
+}
+
+.oneseventh-shape {
+   background-image: url(https://i.ibb.co/NLWrLDZ/1-7.png); 
+   background-position: center;
+   background-color: transparent;
+   background-size: contain;
+   background-repeat: no-repeat;
+   width: 15vw;
+   height: 15vh;
+   top: 0;
+}
+
+.oneeigth-shape {
+ background-image: url(https://i.ibb.co/Smcf4JP/1-8.png); 
+   background-position: center;
+   background-color: transparent;
+   background-size: contain;
+   background-repeat: no-repeat;
+   width: 15vw;
+   height: 15vh;
+}
+
+/* .hexagon-shape {
+   background-image: url(https://i.ibb.co/q7LnVwR/hexagon.png); 
+   background-position: center;
+   background-color: transparent;
+   background-size: contain;
+   background-repeat: no-repeat;
+   width: 15vw;
+   height: 15vh;
+} */
+
+.twothirds-shape {
+   background-image: url(https://i.ibb.co/F4kTvY6/2-3.png); 
+   background-position: center;
+   background-color: transparent;
+   background-size: contain;
+   background-repeat: no-repeat;
+   width: 15vw;
+   height: 15vh;
+}
+
+.twofifths-shape {
+    background-image: url(https://i.ibb.co/Bqztr7F/2-5.png); 
+    background-position: center;
+    background-color: transparent;
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 15vw;
+    height: 15vh;
+ }
+
+
+@media only screen and (max-width: 700px) {
+   
+   .questionDiv{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-evenly;
+      padding: 0;
+   }
+
+   .shapes-div-1{
+      margin-bottom: -40%;
+      margin-top: -30%;
+   }
+
+   .square-shape {
+      margin-top: 80px;
+   }
+   .rectangle-shape {
+      margin-top: 80px;
+   }
+}
+

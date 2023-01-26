@@ -49,6 +49,14 @@ h4 {
   color: #fff;
   margin: 2vw;
   font-size: 3vw;
+  cursor: pointer;
+}
+
+.gameButton:hover {
+  background: var(--colour-purple);
+  border-color: var(--colour-purple-transparent);
+  color: #fff;
+  cursor: pointer;
 }
 
 .profileImage {
@@ -81,20 +89,14 @@ h4 {
   background-image: url(https://i.ibb.co/Zgj3G3g/customise.png);
   background-color: transparent;
   background-repeat: no-repeat;
-  background-size: 100% 100%;
+  background-size: contain;
   background-position: center;
-  /* overflow: visible; */
   width: 15vw;
   height: 12vh;
-  /* background-color: var(--colour-green-transparent); */
-  /* border-radius: 28px;
-  border: 3px solid #18ab29; */
-  /* display: inline-block;
-  font-style: italic;
-  font-size: 20px;
-  font-weight: bold; */
-  /* padding: 16px 31px; */
-  /* color: #fff; */
-  /* text-shadow: 0px 1px 0px #2f6627; */
-  margin-bottom: 5%;
+  margin-bottom: 10%;
+}
+
+.avatarButton:hover{ 
+  cursor: pointer;
+  transform: rotate(5deg) scale(1.1) ;
 }

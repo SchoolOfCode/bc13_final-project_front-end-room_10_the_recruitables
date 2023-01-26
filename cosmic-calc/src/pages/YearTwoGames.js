@@ -697,7 +697,7 @@ export default function YearTwoGames() {
         <ResourceButton url="https://www.youtube.com/watch?v=bGetqbqDVaA" />
       </div>
     );
-  } else if (points < 80) {
+  } else if (points >= 80) {
     console.log("30 points = ", points);
     return (
       <div className="gameDiv">
