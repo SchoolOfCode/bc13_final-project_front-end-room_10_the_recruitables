@@ -20,6 +20,7 @@ import Leaderboard from "./pages/Leaderboard";
 import YearTwoGames from "./pages/YearTwoGames";
 import YearThreeGames from "./pages/YearThreeGames";
 import YearFourGames from "./pages/YearFourGames";
+
 export default function App() {
   const authed = auth;
   let context = useContext(ScoreContext);
@@ -50,15 +51,23 @@ export default function App() {
     context.update();
   };
   const navigateToGame = () => {
-    navigate("/game");
+    let year = context.year;
+    console.log(year);
+    if (year === 1) {
+      navigate("/game");
+    } else if (year === 2) {
+      navigate("/year-two-games");
+    } else if (year === 3) {
+      navigate("/year-three-games");
+    } else if (year === 4) {
+      console.log("year 4");
+      navigate("/year-four-games");
+    }
     setProfileHighlighted(false);
     setProgressHighlighted(false);
     setGameHighlighted(true);
     context.update();
     console.log(navigate);
-  };
-  const navigateToTimedGame = () => {
-    navigate("/timedGame");
   };
   const navigateToRegister = () => {
     navigate("/register");
@@ -78,11 +87,6 @@ export default function App() {
 
 
   console.log(authed.currentUser);
-
-  // const mute = () => {
-  //   setSoundEnabled(!soundEnabled);
-  // };
-
   // {
   //   /* <div className="muteButton">
   // <button
@@ -148,13 +152,19 @@ export default function App() {
               }
             ></button>
           )}
-          {authed.currentUser.email === "teacher@teacher.com" && (
+          {/* {authed.currentUser.email === "teacher@teacher.com" && (
             <button onClick={navigateToLeaderboard}>Leaderboard</button>
-          )}
+          )} */}
           <Logout />
         </div>
       ) : (
-        {/* <button onClick={navigateToTimedGame} className="navButtonTimedGame">
+        <div className="navBarPageDiv">
+          {location.pathname !== "/game" && (
+            <div className="progress-score">
+              <h1>Score: {context.score}</h1>
+            </div>
+          )}
+          <button onClick={navigateToTimedGame} className="navButtonTimedGame">
             TimedGame
           </button>
           <button onClick={navigateToAvatars} className="navButtonAvatars">
@@ -169,10 +179,9 @@ export default function App() {
           <button onClick={navigateToYearTwo} className="navButtonLevel6">
             year-Two
           </button>
-          </button> */}
-        {/* </div> */}
-        {/* ) : (
-
+          <Logout />
+        </div>
+      ) : (
         <div className="navBarLoginDiv">
           {location.pathname !== "/" && (
             <button
@@ -191,8 +200,9 @@ export default function App() {
             >
               Register
             </button>
-          )} */}
-      </div>
+          )}
+        </div>
+      )}
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/register" element={<Register />} />

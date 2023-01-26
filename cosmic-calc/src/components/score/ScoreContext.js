@@ -23,10 +23,12 @@ function ScoreProvider({ children }) {
       `http://localhost:3001/api/users/email/${email}`
     );
     const data = await response.json();
-    // console.log(data.payload.total_score);
+    console.log(data.payload.total_score);
     setScore(data.payload.total_score);
+    setYear(data.payload.year);
     return data.payload;
   };
+
 
   const [level, setLevel] = useState(0);
 
@@ -45,6 +47,7 @@ function ScoreProvider({ children }) {
         user: user,
         // level: level,
         updateLevel: updateLevel,
+        year: year,
       }}
     >
       {children}
