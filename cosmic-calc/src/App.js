@@ -132,17 +132,6 @@ export default function App() {
           <Logout />
         </div>
       ) : (
-        <div className="loginRegisterDiv">
-          {location.pathname !== "/" && (
-            <button onClick={navigateToLogin} className="loginButton"></button>
-          )}
-          {location.pathname !== "/register" && (
-            <button onClick={navigateToRegister} className="registerButton">
-              Register
-            </button>
-          )}
-        </div>
-      ) : (
         <div className="navBarLoginDiv">
           {location.pathname !== "/" && (
             <button
