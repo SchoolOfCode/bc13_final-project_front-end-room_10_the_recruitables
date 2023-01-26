@@ -7,7 +7,7 @@ export default function PicQuestionCard(props) {
       {props.h1}
       <div className="question-container">
         <h2 className="h2QuestionGame">{props.noOfQuestions + ")  "}</h2>
-        <h2 className="h2QuestionGame">{props.text}</h2>
+        <h2 className="h2QuestionGame" data-testid="picQuestion">{props.text}</h2>
         <img className="QuestionImg" src={props.src} alt={props.imgAlt} />
         <input
           className="inputGame"

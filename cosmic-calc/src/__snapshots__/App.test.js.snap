@@ -2,33 +2,17 @@
 
 exports[`<App/> rendering and navigataing successfully renders the component, matches snapshot 1`] = `
 <DocumentFragment>
-  <div>
+  <div
+    class="App"
+  >
     <div
-      class="navBarPageDiv"
+      class="navBarLoginDiv"
     >
-      <img
-        alt="logo"
-        class="logo"
-        src="Logo.png"
-      />
       <button
-        class="navButtonYearTwo"
+        class="navButtonRegister"
       >
-        Year Two
+        Register
       </button>
-      <button
-        class="navButtonYearThree"
-      >
-        Year Three
-      </button>
-      <button
-        class="navButtonYearFour"
-      >
-        Year Four
-      </button>
-      <button
-        class="navButtonLogout"
-      />
     </div>
     <div
       class="Login"
@@ -65,10 +49,9 @@ exports[`<App/> rendering and navigataing successfully renders the component, ma
           >
             <button
               class="loginButton"
+              data-testid="loginButton"
               type="submit"
-            >
-              Login
-            </button>
+            />
           </div>
         </form>
       </div>

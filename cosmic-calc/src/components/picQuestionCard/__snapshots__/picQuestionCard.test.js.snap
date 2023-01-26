@@ -15,7 +15,10 @@ exports[`<PicQuestionCard/> successfully renders the component, matches snapshot
       </h2>
       <h2
         class="h2QuestionGame"
-      />
+        data-testid="picQuestion"
+      >
+        50 * 20
+      </h2>
       <img
         alt="orange"
         class="QuestionImg"

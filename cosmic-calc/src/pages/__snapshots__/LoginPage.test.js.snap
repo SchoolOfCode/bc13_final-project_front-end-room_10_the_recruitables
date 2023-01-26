@@ -21,14 +21,12 @@ exports[`<LoginPage/> rendering and navigataing successfully renders the compone
         >
           <input
             class="loginInput"
-            data-testid="emailInput"
             placeholder="email"
             type="email"
             value=""
           />
           <input
             class="passwordInput"
-            data-testid="passwordInput"
             placeholder="password"
             type="password"
             value=""

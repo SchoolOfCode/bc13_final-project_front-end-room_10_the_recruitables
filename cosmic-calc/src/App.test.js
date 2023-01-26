@@ -19,7 +19,7 @@ describe('<App/> rendering and navigataing', () => {
         render(<App />, {wrapper: BrowserRouter})              
         expect(screen.getByPlaceholderText(/email/i)).toBeInTheDocument()
         expect(screen.getByPlaceholderText(/password/i)).toBeInTheDocument()
-        expect(screen.getByRole('button', {name: /login/i})).toBeInTheDocument()    
+        expect(screen.getByRole('button', {name: /Login/i})).toBeInTheDocument()    
     
     })
 

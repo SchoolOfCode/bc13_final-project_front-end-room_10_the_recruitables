@@ -8,11 +8,8 @@ import PicQuestionCard from "./picQuestionCard";
 
 describe("<PicQuestionCard/>", () => {
   const mockedProps = {
-    value1: 50,
-    value2: 2,
-    operation: "*",
+    text: "50 * 20",
     answerInput: 100,
-    equals: "=",
     src: 'img_orange.jpg',
     imgAlt: "orange",
     checkAnswer: jest.fn(),
@@ -28,7 +25,7 @@ describe("<PicQuestionCard/>", () => {
 
 it("renders the provided 'value1', 'value2', 'operation', 'equals' prop content to the DOM", () => {
     render(<PicQuestionCard  {...mockedProps} />);
-    expect(screen.getByTestId('picQuestion').textContent).toBe("50 * 2 =");
+    expect(screen.getByTestId('picQuestion').textContent).toBe("50 * 20");
 
 });
 

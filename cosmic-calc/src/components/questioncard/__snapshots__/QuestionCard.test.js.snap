@@ -27,7 +27,7 @@ exports[`<QuestionCard/> successfully renders the component, matches snapshot 1`
         </h2>
         <input
           class="inputGame"
-          type="{props.inputType}"
+          type="number"
           value="70"
         />
       </div>

@@ -13,7 +13,7 @@ export default function QuestionCard(props) {
           </h2>
           <input
             className="inputGame"
-            type="{props.inputType}"
+            type={props.inputType}
             value={props.answerInput}
             onChange={(e) => props.setAnswerInput(e.target.value)}
             onKeyDown={(e) => {

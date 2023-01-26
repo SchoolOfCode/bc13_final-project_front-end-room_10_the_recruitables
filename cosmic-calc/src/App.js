@@ -85,6 +85,7 @@ export default function App() {
   //       </button>
   //     </div> */
   // }
+  console.log("this is", authed.currentUser)
   return (
     <div className="App">
       {authed.currentUser ? (
@@ -152,6 +153,7 @@ export default function App() {
             </button>
           )}
         </div>
+      
       )}
       <Routes>
         <Route path="/" element={<Login />} />

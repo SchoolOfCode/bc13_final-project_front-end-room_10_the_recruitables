@@ -184,7 +184,7 @@ export const Progress = () => {
       </div>
       <div>
         <button onClick={onClick}>add level</button>
-      </div>
+      
         {completedLevels.map((levels, index) => (
           <LevelButtons
             key={levels.level}
