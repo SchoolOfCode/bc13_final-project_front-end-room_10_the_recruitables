@@ -44,6 +44,10 @@ function Register() {
           name: registerName,
           total_score: 0,
           year: year,
+          headid: 1,
+          bodyid: 1,
+          antid: 1,
+          avcolour: "#85C214"
         }),
       }
     );
