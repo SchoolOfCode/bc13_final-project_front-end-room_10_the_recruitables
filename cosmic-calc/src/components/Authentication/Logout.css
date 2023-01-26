@@ -1,6 +1,6 @@
 .navButtonLogout {
   background-image: url(../../images/Background_Buttons/logoutButton.png);
-  background-size: cover;
+  background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
   background-color: rgba(0, 0, 255, 0);
@@ -15,4 +15,5 @@
 .navButtonLogout:hover {
   transition: transform 0.3s ease-in-out 0s;
   transform: rotate(360deg);
+  cursor: pointer;
 }
