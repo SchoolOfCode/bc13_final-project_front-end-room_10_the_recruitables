@@ -8,6 +8,8 @@
     width: 80vw;
     background-color: var(--colour-purple-transparent);
     border-color: var(--colour-purple);
+    border-style: solid;
+    border-width: 10px;
     border-radius: 10px;
     padding: 10px;
     margin: 2vh;
