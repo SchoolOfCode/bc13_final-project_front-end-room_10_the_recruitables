@@ -1,5 +1,7 @@
-.resource-button{
-    font-family: "Bubblegum Sans";
+.resource-button {
+  font-family: "Bubblegum Sans";
+  display: block;
+  left: 80%;
   padding: 2vw;
   border-radius: 50%;
   background: var(--colour-yellow-transparent);
