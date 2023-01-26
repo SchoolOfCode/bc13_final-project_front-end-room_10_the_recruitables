@@ -71,29 +71,8 @@ export default function App() {
   // const navigateToTimedGame = () => {
   //   navigate("/timedGame");
   // };
-  const navigateToAvatars = () => {
-    navigate("/avatars");
-  };
-  const navigateToLevel1 = () => {
-    navigate("/level1");
-  };
-  const navigateToLevel5 = () => {
-    navigate("/level5");
-  };
   const navigateToRegister = () => {
     navigate("/register");
-  };
-  const navigateToYearOne = () => {
-    navigate("/Game");
-  };
-  const navigateToYearTwo = () => {
-    navigate("/year-two-games");
-  };
-  const navigateToYearThree = () => {
-    navigate("/year-three-games");
-  };
-  const navigateToYearFour = () => {
-    navigate("/year-four-games");
   };
   console.log(authed.currentUser);
   // const mute = () => {
@@ -121,18 +100,6 @@ export default function App() {
               <h1>Score: {context.score}</h1>
             </div>
           )}
-          <button onClick={navigateToYearOne} className="navButtonYearTwo">
-            Year One
-          </button>
-          <button onClick={navigateToYearTwo} className="navButtonYearTwo">
-            Year Two
-          </button>
-          <button onClick={navigateToYearThree} className="navButtonYearThree">
-            Year Three
-          </button>
-          <button onClick={navigateToYearFour} className="navButtonYearFour">
-            Year Four
-          </button>
           {location.pathname !== "/profile" && (
             <button
               onClick={navigateToProfile}
@@ -170,13 +137,15 @@ export default function App() {
           <Logout />
         </div>
       ) : (
-        <div className="navBarPageDiv">
-          {location.pathname !== "/game" && (
-            <div className="progress-score">
-              <h1>Score: {context.score}</h1>
-            </div>
+        <div className="loginRegisterDiv">
+          {location.pathname !== "/" && (
+            <button onClick={navigateToLogin} className="loginButton"></button>
           )}
-          <Logout />
+          {location.pathname !== "/register" && (
+            <button onClick={navigateToRegister} className="registerButton">
+              Register
+            </button>
+          )}
         </div>
       )}
       <Routes>

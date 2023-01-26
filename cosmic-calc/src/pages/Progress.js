@@ -133,10 +133,6 @@ export const Progress = () => {
 
   // onClick event handler to pass to buttons. If need to go depending on levels can add conditions based on button index 1-10
 
-  // const onClick = () => {
-  //   context.updateLevel(5);
-  // };
-
   // JSX below returns a grid container.
   // then maps over the levels array which returns a button for each new item in the array. Array increases depending on score. New item every 5 points = new button returned.
 
@@ -178,9 +174,6 @@ export const Progress = () => {
           />
         ))}
       </div>
-      {/* <div>
-        <button onClick={onClick}>add level</button>
-      </div> */}
     </div>
   );
 };
