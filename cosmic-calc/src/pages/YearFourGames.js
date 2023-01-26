@@ -729,7 +729,7 @@ const YearFourGames = () => {
         </div>
       </div>
     );
-  } else if (points < 90) {
+  } else if (points >= 90) {
     return (
       <div>
         <div className="gameDiv">

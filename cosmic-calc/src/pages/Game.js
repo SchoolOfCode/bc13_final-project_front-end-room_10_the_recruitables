@@ -55,7 +55,6 @@ export default function Game() {
   //let points = 390;
   let points = context.score;
 
-
   useEffect(() => {
     if (noOfQuestions === 11) {
       onAuthStateChanged(auth, (user) => {
@@ -625,7 +624,7 @@ export default function Game() {
         <ResourceButton url="https://www.bbc.co.uk/bitesize/topics/z3rbg82" />
       </div>
     );
-  } else if (points < 80) {
+  } else if (points >= 80) {
     console.log("Inside points >= 100 if statement");
     console.log("points = ", points);
     return (
