@@ -141,14 +141,6 @@ export const Progress = () => {
 
     navigateToGame();
   }
-
-
-  const onClick = () => {
-    context.updateLevel(5);
-  };
-
-  // console.log(ButtonNumber);
-
   // JSX below returns a grid container.
   // then maps over the levels array which returns a button for each new item in the array. Array increases depending on score. New item every 5 points = new button returned.
 
@@ -201,9 +193,6 @@ export const Progress = () => {
           />
         ))}
       </div>
-      {/* <div>
-        <button onClick={onClick}>add level</button>
-      </div> */}
     </div>
   );
 };

@@ -18,7 +18,7 @@ h4 {
 
 .profileDiv {
   text-align: center;
-  display: flex;
+  display: block;
   flex: 1;
   flex-direction: column;
   align-items: center;
@@ -81,9 +81,11 @@ h4 {
   background-image: url(https://i.ibb.co/Zgj3G3g/customise.png);
   background-color: transparent;
   background-repeat: no-repeat;
-  background-size: cover; 
+  background-size: 100% 100%;
+  background-position: center;
+  /* overflow: visible; */
   width: 15vw;
-  height: 15vh;
+  height: 12vh;
   /* background-color: var(--colour-green-transparent); */
   /* border-radius: 28px;
   border: 3px solid #18ab29; */
@@ -91,8 +93,8 @@ h4 {
   font-style: italic;
   font-size: 20px;
   font-weight: bold; */
-  padding: 16px 31px;
+  /* padding: 16px 31px; */
   /* color: #fff; */
   /* text-shadow: 0px 1px 0px #2f6627; */
-  margin-bottom: 20%;
+  margin-bottom: 5%;
 }
