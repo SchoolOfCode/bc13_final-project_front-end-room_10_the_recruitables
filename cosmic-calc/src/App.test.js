@@ -14,6 +14,7 @@ describe('<App/> rendering and navigataing', () => {
       });
 
       screen.debug()
+
     it("verifies page content for default route", async () => {
         render(<App />, {wrapper: BrowserRouter})              
         expect(screen.getByPlaceholderText(/email/i)).toBeInTheDocument()
@@ -28,4 +29,5 @@ describe('<App/> rendering and navigataing', () => {
     //     expect(screen.getByPlaceholderText(/name/i)).toBeInTheDocument()
     //     expect(screen.getByPlaceholderText(/email/i)).toBeInTheDocument()
     // })
+
 })

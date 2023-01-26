@@ -129,6 +129,13 @@ export function yearTwoPlanetSevenAnswer(values, playerAnswer) {
 export function yearTwoPlanetEightQuestion() {
     let value1 = randomNumberGenerator(21);
     let value2 = randomNumberGenerator(21);
+    if (randomNumberGenerator(3) === 0) {
+        value2 = value1;
+    } else {
+        while (value1 === value2) {
+            value2 = randomNumberGenerator(21);
+        }
+    }
     return [value1, value2];
 }
 export function yearTwoPlanetEightAnswer(values, playerAnswer) {

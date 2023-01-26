@@ -19,9 +19,11 @@ describe("<CountersQuestionCard/>", () => {
     };
   
     it("src contains provided 'src' prop content", () => {
+
         render(<CountersQuestionCard {...mockedProps} />);
         const imageDiv = screen.getAllByRole("img")[0];
         expect(imageDiv.src).toContain("https://www.example.com/image1.png");
+
     });
 
     it("alt contains provided 'imgAlt' prop content", () => {
@@ -32,6 +34,7 @@ describe("<CountersQuestionCard/>", () => {
 
     
      it("renders the provided 'operation' prop content to the DOM", () => {
+
         render(<CountersQuestionCard  {...mockedProps} />);
         const operation = screen.getByText("+");
         expect(operation).toBeInTheDocument();
@@ -39,10 +42,12 @@ describe("<CountersQuestionCard/>", () => {
 
     it("Typing in a value and pressing 'Enter' key fires  the provided 'checkAnswer' and 'setAnswerInput' callback props" , () => {
       render(<CountersQuestionCard  {...mockedProps} />);
+
       const input = screen.getByRole('spinbutton')
       userEvent.type(input, `${mockedProps.answerInput}, {enter}`)
       expect(mockedProps.checkAnswer).toHaveBeenCalled();
       expect(mockedProps.setAnswerInput).toHaveBeenCalled();
+
     
     });
   
@@ -74,4 +79,5 @@ describe("<CountersQuestionCard/>", () => {
     
   });
     
+
   });
