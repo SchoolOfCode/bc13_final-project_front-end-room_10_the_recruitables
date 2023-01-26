@@ -4,11 +4,11 @@
 
 <br/>
 
- ## **_Welcome to Cosmic Calcs!_** 🚀
+ ## ☄️ **_Welcome to Cosmic Calcs!_**  🚀 
 
  A learning resource for teachers, parents and- most importantly- kids! 
  
- We know homework can be dull. Cosmic Calcs turns teduious maths worksheets into short, sharp games which hone mental maths skills for pupils aged 5 to 9. Play for points to progress to new challenges and unlock customisable features for your alien avatar.
+ We know homework can be dull. Cosmic Calcs turns teduious maths worksheets into short, vibrant games which hone mental maths skills for pupils aged 5 to 9. Play for points to progress to new challenges and unlock customisable features for your alien avatar.
  
  ---
  
@@ -22,9 +22,10 @@
  ## **_Features_** 📱
  
  - Personalised profile based on your child's age.
- - Cirriculum-spanning maths activities for year groups 1, 2, 3 and 4.
- - Customisable avatar to keep your kid engaged and incentivised.
- - Fun game feel- sound effects and animation.
+ - Separate login credential for teachers, allowing you to see pupils' progress.
+ - Maths activities spanning the national cirriculum for KS1 and KS2 (years 1, 2, 3 and 4).
+ - Customisable avatars; keeping children engaged and incentivised.
+ - Sound effects and animation.
  
 ---
 
