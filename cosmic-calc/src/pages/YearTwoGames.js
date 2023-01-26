@@ -76,7 +76,7 @@ export default function YearTwoGames() {
   useEffect(() => {
     async function getcoinCounting() {
       const response = await fetch(
-        `http://localhost:3001/api/mathsQuestions/coinCounting`,
+        `https://cosmic-calculations-backend.onrender.com/api/mathsQuestions/coinCounting`,
         {
           method: "GET",
           headers: {
@@ -236,7 +236,7 @@ export default function YearTwoGames() {
   useEffect(() => {
     async function getplaceValue() {
       const response = await fetch(
-        `http://localhost:3001/api/mathsQuestions/coinsPlaceValue`,
+        `https://cosmic-calculations-backend.onrender.com/api/mathsQuestions/coinsPlaceValue`,
         {
           method: "GET",
           headers: {
@@ -500,7 +500,7 @@ export default function YearTwoGames() {
     let email = await user.email;
 
     const response = await fetch(
-      `http://localhost:3001/api/users/email/${email}`,
+      `https://cosmic-calculations-backend.onrender.com/api/users/email/${email}`,
       {
         method: "POST",
         headers: {
@@ -533,7 +533,7 @@ export default function YearTwoGames() {
         </div>
       </div>
     );
-  } else if (points < 100) {
+  } else if (points < 10) {
     return (
       <div className="gameDiv">
         <AnswerCard
@@ -555,7 +555,7 @@ export default function YearTwoGames() {
         <ResourceButton url="https://www.youtube.com/watch?v=8nokRGhevCw" />
       </div>
     );
-  } else if (points < 200) {
+  } else if (points < 20) {
     return (
       <div>
         <div className="gameDiv">
@@ -580,7 +580,7 @@ export default function YearTwoGames() {
         </div>
       </div>
     );
-  } else if (points < 300) {
+  } else if (points < 30) {
     console.log("10 points = ", points);
     return (
       <div className="gameDiv">
@@ -603,7 +603,7 @@ export default function YearTwoGames() {
         <ResourceButton url="https://www.youtube.com/watch?v=bGetqbqDVaA" />
       </div>
     );
-  } else if (points < 400) {
+  } else if (points < 40) {
     return (
       <div className="gameDiv">
         <AnswerCard
@@ -624,7 +624,7 @@ export default function YearTwoGames() {
         <ResourceButton url="https://www.youtube.com/watch?v=bGetqbqDVaA" />
       </div>
     );
-  } else if (points < 500) {
+  } else if (points < 50) {
     console.log("15 points = ", points);
     return (
       <div className="gameDiv">
@@ -650,7 +650,7 @@ export default function YearTwoGames() {
         <ResourceButton url="https://www.bbc.co.uk/bitesize/topics/zf72pv4/articles/zr68r2p" />
       </div>
     );
-  } else if (points < 600) {
+  } else if (points < 60) {
     console.log("20 points = ", points);
     return (
       <div className="gameDiv">
@@ -673,7 +673,7 @@ export default function YearTwoGames() {
         <ResourceButton url="https://www.bbc.co.uk/bitesize/topics/z3rbg82" />
       </div>
     );
-  } else if (points < 700) {
+  } else if (points < 70) {
     console.log("25 points = ", points);
     return (
       <div className="gameDiv">
@@ -697,7 +697,7 @@ export default function YearTwoGames() {
         <ResourceButton url="https://www.youtube.com/watch?v=bGetqbqDVaA" />
       </div>
     );
-  } else if (points < 800) {
+  } else if (points < 80) {
     console.log("30 points = ", points);
     return (
       <div className="gameDiv">

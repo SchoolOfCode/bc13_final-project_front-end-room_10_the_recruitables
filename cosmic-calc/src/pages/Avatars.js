@@ -93,7 +93,7 @@ const AvatarBuilder = () => {
   useEffect(() => {
     async function getAvatars(email) {
       const response = await fetch(
-        `http://localhost:3001/api/users/avatars/${email}`,
+        `https://cosmic-calculations-backend.onrender.com/api/users/avatars/${email}`,
         {
           method: "GET",
           headers: {
@@ -132,7 +132,7 @@ const AvatarBuilder = () => {
   async function patchAvatars(email, bodyNum, antNum, headNum, avatarColor) {
     console.log("hello");
     const response = await fetch(
-      `http://localhost:3001/api/users/avatars/${email}`,
+      `https://cosmic-calculations-backend.onrender.com/api/users/avatars/${email}`,
       {
         method: "PATCH",
         headers: {

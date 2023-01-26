@@ -31,7 +31,7 @@ const captions2 = [
   "Finding Fractions of Whole Numbers",
   "Putting Numbers in Order",
   "Comparing Values",
-  "Lucky Dip",
+  "Luykcy Dip",
 ];
 
 const captions3 = [
@@ -51,7 +51,7 @@ const captions4 = [
   "Adding and Subtracting using 10, 100 and 1000",
   "Negative Numbers",
   "Putting Large Numbers in Order",
-  "Rouding Up and Down",
+  "Rounding Up and Down",
   "Converting Units of Measurement",
   "Times Tables Skills",
   "Multiplying Three Numbers",
@@ -84,7 +84,7 @@ export const Progress = () => {
   useEffect(() => {
     const getScore = async () => {
       const response = await fetch(
-        `http://localhost:3001/api/users/email/${context.user.email}`
+        `https://cosmic-calculations-backend.onrender.com/api/users/email/${context.user.email}`
       );
       const data = await response.json();
       setPayload(data.payload);
