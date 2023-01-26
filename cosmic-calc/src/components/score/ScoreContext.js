@@ -8,6 +8,10 @@ function ScoreProvider({ children }) {
   const [score, setScore] = useState(0);
   const [user, setUser] = useState(null);
   const [year, setYear] = useState(0);
+  onAuthStateChanged(auth, (user) => {
+    retrieveUserData(user);
+    setUser(user);
+  });
 
   const retrieveUserData = async () => {
     console.log("retrieveUserData called");

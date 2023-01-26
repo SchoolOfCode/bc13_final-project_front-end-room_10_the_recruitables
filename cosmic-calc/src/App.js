@@ -20,6 +20,7 @@ import Leaderboard from "./pages/Leaderboard";
 import YearTwoGames from "./pages/YearTwoGames";
 import YearThreeGames from "./pages/YearThreeGames";
 import YearFourGames from "./pages/YearFourGames";
+
 export default function App() {
   const authed = auth;
   let context = useContext(ScoreContext);
@@ -68,18 +69,7 @@ export default function App() {
     context.update();
     console.log(navigate);
   };
-  // const navigateToTimedGame = () => {
-  //   navigate("/timedGame");
-  // };
-  const navigateToAvatars = () => {
-    navigate("/avatars");
-  };
-  const navigateToLevel1 = () => {
-    navigate("/level1");
-  };
-  const navigateToLevel5 = () => {
-    navigate("/level5");
-  };
+  
   const navigateToRegister = () => {
     navigate("/register");
   };
@@ -111,6 +101,7 @@ export default function App() {
   //       </button>
   //     </div> */
   // }
+
   return (
     <div className="App">
       {authed.currentUser ? (
@@ -176,7 +167,43 @@ export default function App() {
               <h1>Score: {context.score}</h1>
             </div>
           )}
+          <button onClick={navigateToTimedGame} className="navButtonTimedGame">
+            TimedGame
+          </button>
+          <button onClick={navigateToAvatars} className="navButtonAvatars">
+            Avatars
+          </button>
+          <button onClick={navigateToLevel1} className="navButtonLevel1">
+            Level1
+          </button>
+          <button onClick={navigateToLevel5} className="navButtonLevel5">
+            Level5
+          </button>
+          <button onClick={navigateToYearTwo} className="navButtonLevel6">
+            year-Two
+          </button>
           <Logout />
+        </div>
+      ) : (
+        <div className="navBarLoginDiv">
+          {location.pathname !== "/" && (
+            <button
+              className="navButtonLogin"
+              onMouseOver={playHover}
+              onClick={navigateToLogin}
+            >
+              Login
+            </button>
+          )}
+          {location.pathname !== "/register" && (
+            <button
+              className="navButtonRegister"
+              onMouseOver={playHover}
+              onClick={navigateToRegister}
+            >
+              Register
+            </button>
+          )}
         </div>
       )}
       <Routes>
