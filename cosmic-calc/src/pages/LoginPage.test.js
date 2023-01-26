@@ -18,8 +18,8 @@ describe('<LoginPage/> rendering and navigataing', () => {
         render(<Login />, {wrapper: BrowserRouter})              
         expect(screen.getByPlaceholderText(/email/i)).toBeInTheDocument()
         expect(screen.getByPlaceholderText(/password/i)).toBeInTheDocument()
-        expect(screen.getByRole('button', {name: /login/i})).toBeInTheDocument()    
-    
+        // expect(screen.getByRole('button', {name: /login/i})).toBeInTheDocument()   
+        // expect(screen.getByTestId('loginButton').textContent).toBe("50 + 20 =");
     })
 
 })

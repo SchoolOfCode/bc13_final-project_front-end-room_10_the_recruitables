@@ -41,6 +41,7 @@ exports[`<NavBar/> successfully renders the component, matches snapshot 1`] = `
         >
           <button
             class="navButtonLogout"
+            data-testid="logoutButton"
           />
         </a>
       </div>

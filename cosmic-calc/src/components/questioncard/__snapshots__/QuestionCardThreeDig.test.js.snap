@@ -5,22 +5,33 @@ exports[`<QuestionCard/> successfully renders the component, matches snapshot 1`
   <div
     class="questionDiv"
   >
-    <h2
-      class="h2QuestionGame"
+    <div
+      class="column-div"
     >
-      undefined)  
-    </h2>
-    <h2
-      class="h2QuestionGame"
-      data-testid="threeDig"
-    >
-      70 - 20 - 30 =
-    </h2>
-    <input
-      class="inputGame"
-      type="number"
-      value="70"
-    />
+      <h1>
+         
+      </h1>
+      <div
+        class="questionDisplay"
+      >
+        <h2
+          class="h2QuestionGame"
+        >
+          undefined)  
+        </h2>
+        <h2
+          class="h2QuestionGame"
+          data-testid="threeDig"
+        >
+          70 - 20 + 30 =
+        </h2>
+        <input
+          class="inputGame"
+          type="number"
+          value="70"
+        />
+      </div>
+    </div>
   </div>
 </DocumentFragment>
 `;

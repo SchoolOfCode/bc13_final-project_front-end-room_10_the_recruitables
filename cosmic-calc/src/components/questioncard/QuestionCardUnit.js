@@ -7,7 +7,7 @@ export default function QuestionCardUnit(props) {
       <h1> {props.h1}</h1>
       <div className="questionDisplay">
         <h2 className="h2QuestionGame">{props.noOfQuestions + ")  "}</h2>
-        <h2 className="h2QuestionGame">
+        <h2 className="h2QuestionGame" data-testid="questionUnit">
           {props.value1} {props.unit} {props.value2} {props.operation}{" "}
           {props.unit} {props.equals}
         </h2>
