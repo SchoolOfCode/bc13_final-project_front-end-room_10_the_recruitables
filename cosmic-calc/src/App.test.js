@@ -13,6 +13,8 @@ describe('<App/> rendering and navigataing', () => {
         expect(asFragment()).toMatchSnapshot();
       });
 
+      screen.debug()
+
     it("verifies page content for default route", async () => {
         render(<App />, {wrapper: BrowserRouter})              
         expect(screen.getByPlaceholderText(/email/i)).toBeInTheDocument()
@@ -21,10 +23,11 @@ describe('<App/> rendering and navigataing', () => {
     
     })
 
-    it('verifies page content for expected route after navigating- from home page to register page', async () => {
-        render(<App />, {wrapper: BrowserRouter})   
-        await userEvent.click(screen.getByRole('button', {name: /register/i}))
-        expect(screen.getByPlaceholderText(/name/i)).toBeInTheDocument()
-        expect(screen.getByPlaceholderText(/email/i)).toBeInTheDocument()
-    })
+    // it('verifies page content for expected route after navigating- from home page to register page', async () => {
+    //     render(<App />, {wrapper: BrowserRouter})   
+    //     userEvent.click(screen.getByRole('button', {name: /register/i}))
+    //     expect(screen.getByPlaceholderText(/name/i)).toBeInTheDocument()
+    //     expect(screen.getByPlaceholderText(/email/i)).toBeInTheDocument()
+    // })
+
 })

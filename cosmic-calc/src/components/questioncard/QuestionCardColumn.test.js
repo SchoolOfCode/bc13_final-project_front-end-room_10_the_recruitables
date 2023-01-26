@@ -4,56 +4,42 @@ import { screen, render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
 
-import CountersQuestionCard from "./CountersQuestionCard";
+import QuestionCardColumn from "./QuestionCardColumn";
 
-describe("<CountersQuestionCard/>", () => {
-    const mockedProps = {
-        noOfQuestions: 10,
-        checkAnswer: jest.fn(),
-        answerInput: 30,
-        setAnswerInput: jest.fn(),
-        operation:  "+",
-        src: "https://www.example.com/image1.png",
-        imgAlt: "apple"
-        
-    };
-  
-    it("src contains provided 'src' prop content", () => {
+describe("<QuestionCardColumn/>", () => {
+  const mockedProps = {
+    value1: 50,
+    value2: 20,
+    answerInput: 100,
+    operation: '+',
+    checkAnswer: jest.fn(),
+    setAnswerInput: jest.fn()
+  };
 
-        render(<CountersQuestionCard {...mockedProps} />);
-        const imageDiv = screen.getAllByRole("img")[0];
-        expect(imageDiv.src).toContain("https://www.example.com/image1.png");
-
-    });
-
-    it("alt contains provided 'imgAlt' prop content", () => {
-        render(<CountersQuestionCard {...mockedProps} />);
-        const imageDiv = screen.getAllByRole("img")[0];
-        expect(imageDiv.alt).toContain("apple");
-       });
-
+    it("renders the provided 'value1', 'value2', 'value3, 'noOfQuestions' prop content to the DOM", () => {
+     render(<QuestionCardColumn  {...mockedProps} />);
     
-     it("renders the provided 'operation' prop content to the DOM", () => {
-
-        render(<CountersQuestionCard  {...mockedProps} />);
-        const operation = screen.getByText("+");
-        expect(operation).toBeInTheDocument();
+    const value1 = screen.getByText(/50/i);
+    const value2 = screen.getByText(/20/i);
+    const operation = screen.getByText('+');
+    expect(value1).toBeInTheDocument();
+    expect(value2).toBeInTheDocument();
+    expect(operation).toBeInTheDocument();
     });
 
+  
     it("Typing in a value and pressing 'Enter' key fires  the provided 'checkAnswer' and 'setAnswerInput' callback props" , () => {
-      render(<CountersQuestionCard  {...mockedProps} />);
-
+      render(<QuestionCardColumn {...mockedProps} />);
       const input = screen.getByRole('spinbutton')
       userEvent.type(input, `${mockedProps.answerInput}, {enter}`)
       expect(mockedProps.checkAnswer).toHaveBeenCalled();
       expect(mockedProps.setAnswerInput).toHaveBeenCalled();
-
     
     });
   
     
     it("Only typing in a value without pressing 'Enter' key fires 'setAnswerInput' but not 'checkAnswer' callback prop." , () => {
-    render(<CountersQuestionCard  {...mockedProps} />);
+    render(<QuestionCardColumn {...mockedProps} />);
     const input = screen.getByRole('spinbutton')
     userEvent.type(input, `${mockedProps.answerInput}`)
     expect(mockedProps.setAnswerInput).toHaveBeenCalled();  
@@ -63,7 +49,7 @@ describe("<CountersQuestionCard/>", () => {
   
   
   it("Typing in the provided 'anwerInput' prop renders 'displayValue' to the input field" , () => {
-  render(<CountersQuestionCard  {...mockedProps} />);
+  render(<QuestionCardColumn {...mockedProps} />);
   const input = screen.getByRole('spinbutton')
   userEvent.type(input, `${mockedProps.answerInput}`)
   expect(input).toHaveValue(mockedProps.answerInput)
@@ -71,13 +57,12 @@ describe("<CountersQuestionCard/>", () => {
   });
   
   it("Typing in a value and pressing 'Enter' key clears the input field" , () => {
-    render(<CountersQuestionCard {...mockedProps} />);
+    render(<QuestionCardColumn {...mockedProps} />);
     let input = screen.getByRole('spinbutton')
     userEvent.type(input, `${mockedProps.answerInput}, {enter}`)
     input = screen.findByRole('spinbutton')
     expect(input.value).toBeUndefined()
     
   });
-    
-
-  });
+  
+})

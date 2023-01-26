@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<PicQuestionCard/> successfully renders the component, matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="questionDiv"
+  >
+    <h2
+      class="h2QuestionGame"
+    >
+      undefined)  
+    </h2>
+    <h2
+      class="h2QuestionGame"
+      data-testid="picQuestion"
+    >
+      50 * 2 =
+    </h2>
+    <img
+      alt="orange"
+      class="QuestionImg"
+      src="img_orange.jpg"
+    />
+    <input
+      class="inputGame"
+      type="number"
+      value="100"
+    />
+  </div>
+</DocumentFragment>
+`;
