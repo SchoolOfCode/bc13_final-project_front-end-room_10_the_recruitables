@@ -182,19 +182,6 @@ export const Progress = () => {
         />
       ))} */}
       </div>
-<<<<<<< HEAD
-      <div>
-        <button onClick={onClick}>add level</button>
-      
-        {completedLevels.map((levels, index) => (
-          <LevelButtons
-            key={levels.level}
-            ButtonNumber={index + 1 + "-complete"}
-            text={captions[index]}
-          />
-        ))}
-      </div>
-=======
       {completedLevels.map((levels, index) => (
         <LevelButtons
           key={levels.level}
@@ -202,7 +189,6 @@ export const Progress = () => {
           text={captions[index]}
         />
       ))}
->>>>>>> main
     </div>
   );
 };
