@@ -21,7 +21,7 @@ function ScoreProvider({ children }) {
     console.log("retrieveUserData called");
     let email = await user.email;
     const response = await fetch(
-      `http://localhost:3001/api/users/email/${email}`
+      `http://cosmic-calculations-backend.onrender.com/api/users/email/${email}`
     );
     const data = await response.json();
     console.log(data.payload.total_score);
