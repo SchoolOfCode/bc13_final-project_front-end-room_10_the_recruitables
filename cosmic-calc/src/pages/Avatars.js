@@ -93,7 +93,7 @@ const AvatarBuilder = () => {
   useEffect(() => {
     async function getAvatars(email) {
       const response = await fetch(
-        `http://localhost:3001/api/users/avatars/${email}`,
+        `https://cosmic-calculations-backend.onrender.com/api/users/avatars/${email}`,
         {
           method: "GET",
           headers: {
@@ -132,7 +132,7 @@ const AvatarBuilder = () => {
   async function patchAvatars(email, bodyNum, antNum, headNum, avatarColor) {
     console.log("hello");
     const response = await fetch(
-      `http://localhost:3001/api/users/avatars/${email}`,
+      `https://cosmic-calculations-backend.onrender.com/api/users/avatars/${email}`,
       {
         method: "PATCH",
         headers: {
@@ -154,19 +154,7 @@ const AvatarBuilder = () => {
     <div className="avatarPageDiv">
       <br />
       {/* <h2>Customise your alien! Unlock more items with your points</h2> */}
-      <button
-        className="submit-button"
-        onClick={() =>
-          patchAvatars(
-            context.user.email,
-            selectedBody,
-            selectedAnt,
-            selectedHead,
-            avatarColor
-          )
-        }
-      ></button>
-      <div className="avatarButtonDiv">
+      <div className="colourSubmit" data-testid="colorSubmitButton">
         <div id="swatch">
           <input
             type="color"
@@ -179,6 +167,21 @@ const AvatarBuilder = () => {
             <h1 className="avatar-h1-color">change colour</h1>
           </div>
         </div>
+        <button
+          data-testid="submit-button"
+          className="submit-button"
+          onClick={() =>
+            patchAvatars(
+              context.user.email,
+              selectedBody,
+              selectedAnt,
+              selectedHead,
+              avatarColor
+            )
+          }
+        ></button>
+      </div>
+      <div className="avatarButtonDiv" data-testid="avatarButtonDiv">
         <div className="ants-selector">
           <button
             className="ants-button-left"
@@ -193,7 +196,6 @@ const AvatarBuilder = () => {
           >
             ➡
           </button>
-          {/* <button onClick={() => getAvatars(context.user.email)}>TEST</button> */}
         </div>
         <div className="head-selector">
           <button
@@ -202,7 +204,6 @@ const AvatarBuilder = () => {
           >
             ⬅
           </button>
-
           <button
             className="head-button-right"
             onClick={() => handleHeadClick("head", "right")}
@@ -217,7 +218,6 @@ const AvatarBuilder = () => {
           >
             ⬅
           </button>
-
           <button
             className="body-button-right"
             onClick={() => handleHeadClick("body", "right")}
@@ -227,13 +227,19 @@ const AvatarBuilder = () => {
         </div>
       </div>
       <div className="avatar-color-selector"></div>
+
       <div class="avatar-wardrobe-div">
-        <img src={wardrobe} alt="wardrobe" className="avatar-wardrobe"></img>
+        <img
+          src={wardrobe}
+          alt="wardrobe"
+          className="avatar-wardrobe"
+          data-testid="avatar-wardrobe"
+        ></img>
       </div>
 
-      <div class="container">
+      <div class="avatarcontainer">
         <div class="avatarWrap">
-          <div class="avatar">
+          <div class="avatar" data-testid="avatar">
             <div class="headWrap">
               <div class="antenna">
                 <div class="curlyHair"></div>

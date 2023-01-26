@@ -1,19 +1,30 @@
 .questionDiv {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
     height: auto;
     width: 70vw;
     background-color: var(--colour-purple-transparent);
     border-radius: 10px;
-    padding: 4vh;
+    padding-top: 4vh;
+    padding-bottom: 4vh;;
+    padding-left: 1vw;
+    padding-right: 1vw;
     border-color: var(--colour-purple);
     border-style: solid;
     border-width: 10px;
     color: #fff;
-    margin: 5vh;
+    /* contain: content; */
  } 
+
+ .QuestionNumberAndQuestion{
+   display: flex;
+   flex-direction: row;
+   gap: 2vw
+ }
+
+
 
  .QuestionImg{
     width: 100px;
@@ -34,12 +45,24 @@
     font-size: 2vw;
 }
 
-.shapes-div {
-   display: flex;
-   flex-wrap: wrap;
-   justify-content: space-evenly;
+.shapes-div-1 {
+   width: 40vw;
+   display: grid;
+   grid-template-columns: repeat(4, 1fr);
+   gap: 2vw;
+   grid-auto-rows: minmax(2vh, auto);
    align-items: center;
-   
+}
+
+.shapes-div-2 {
+   width: 40vw;
+   display: grid;
+   grid-template-columns: repeat(4, 1fr);
+   gap: 2vw;
+   grid-auto-rows: minmax(2vh, auto);
+   align-items: center; 
+   margin-right: 10px;
+   border: solid, black;
 }
 
 .new-shape-button{
@@ -52,80 +75,97 @@
    border: white solid 1px;
 }
 
-
 .square-shape{
-  /* background-image: url(../../images/Shapes/square.png); */
+  background-image: url(https://i.ibb.co/FJFtQwL/square.png); 
   background-color: transparent;
    background-size: contain;
-   width: 8vw;
-   height: 10vh;
-   border: white solid 1px;
+   width: 12vw;
+   height: 15vh;
+   background-repeat: no-repeat;
 }
 
 
 .rectangle-shape {
-   /* background-image: url(../../images/Shapes/rectangle.png); */
+    background-image: url(https://i.ibb.co/2WrD5Ct/rectangle.png); 
    background-color: transparent;
    background-size: contain;
-   width: 10vw;
-   height: 8vh;
-   border: white solid 1px;
-
+   width: 15vw;
+   height: 12vh;
+   background-repeat: no-repeat;
 }
 
 .circle-shape {
-   border: white solid 1px;
-   /* background-image: url(../../images/Shapes/circle.png); */
+   background-image: url(https://i.ibb.co/T02kdMH/whole.png);
    background-position: center;
    background-color: transparent;
    background-size: contain;
    background-repeat: no-repeat;
-   width: 10vw;
-   height: 10vh;
-   border: white solid 1px;
+   width: 15vw;
+   height: 15vh;
 }
 
 .triangle-shape {
-   border: white solid 1px;
-   /* background-image: url(../../images/Shapes/triangle.png); */
+   background-image: url(https://i.ibb.co/wQt8Ygf/triangle.png); 
    background-position: center;
    background-color: transparent;
    background-size: contain;
    background-repeat: no-repeat;
-   width: 10vw;
-   height: 10vh;
-   border: white solid 1px;
+   width: 15vw;
+   height: 15vh;
+   top: 0;
 }
 
 .pentagon-shape {
-   border: white solid 1px;
-   /* background-image: url(../../images/Shapes/pentagon.png); */
+ background-image: url(https://i.ibb.co/HX5HntJ/pentagon.png); 
    background-position: center;
    background-color: transparent;
    background-size: contain;
    background-repeat: no-repeat;
-   width: 10vw;
-   height: 10vh;
+   width: 15vw;
+   height: 15vh;
 }
 
-.hexagon-shape {
-   border: white solid 1px;
-   /* background-image: url(../../images/Shapes/hexagon.png); */
+/* .hexagon-shape {
+   background-image: url(https://i.ibb.co/q7LnVwR/hexagon.png); 
    background-position: center;
    background-color: transparent;
    background-size: contain;
    background-repeat: no-repeat;
-   width: 10vw;
-   height: 10vh;
-}
+   width: 15vw;
+   height: 15vh;
+} */
 
 .octagon-shape {
-   border: white solid 1px;
-   /* background-image: url(../../images/Shapes/octagon.png); */
+   background-image: url(https://i.ibb.co/8XFHswK/octagon.png); 
    background-position: center;
    background-color: transparent;
    background-size: contain;
    background-repeat: no-repeat;
-   width: 10vw;
-   height: 10vh;
+   width: 15vw;
+   height: 15vh;
 }
+
+
+@media only screen and (max-width: 700px) {
+   
+   .questionDiv{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-evenly;
+      padding: 0;
+   }
+
+   .shapes-div-1{
+      margin-bottom: -40%;
+      margin-top: -30%;
+   }
+
+   .square-shape {
+      margin-top: 80px;
+   }
+   .rectangle-shape {
+      margin-top: 80px;
+   }
+}
+

@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap");
+
 .answerDiv {
   display: flex;
   flex-direction: row;
@@ -31,7 +33,14 @@
   text-decoration: underline;
 }
 
+.h3ResultAnswerGameOrder {
+  font-size: 2vw;
+  margin-left: 2vw;
+  text-decoration: underline;
+}
+
 .newQuestionGameButton {
+  font-family: "Bubblegum Sans";
   padding: 2vw;
   border-radius: 10px;
   background: var(--colour-red-transparent);
