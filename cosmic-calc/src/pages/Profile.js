@@ -30,7 +30,7 @@ function Profile() {
   const retrieveUserData = async (user) => {
     let email = await user.email;
     const response = await fetch(
-      `http://localhost:3001/api/users/email/${email}`
+      `https://cosmic-calculations-backend.onrender.com/api/users/email/${email}`
     );
     const data = await response.json();
     console.log(data.payload);
@@ -45,7 +45,7 @@ function Profile() {
   useEffect(() => {
     async function getAvatars(email) {
       const response = await fetch(
-        `http://localhost:3001/api/users/avatars/${email}`,
+        `https://cosmic-calculations-backend.onrender.com/api/users/avatars/${email}`,
         {
           method: "GET",
           headers: {

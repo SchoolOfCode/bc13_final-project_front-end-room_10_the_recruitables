@@ -7,9 +7,12 @@ const Leaderboard = () => {
 
   useEffect(() => {
     const getAllUsers = async () => {
-      const response = await fetch("http://localhost:3001/api/users", {
-        method: "GET",
-      });
+      const response = await fetch(
+        "https://cosmic-calculations-backend.onrender.com/api/users",
+        {
+          method: "GET",
+        }
+      );
       const data = await response.json();
       console.log(data.payload);
       setAllUsers(data.payload);

@@ -32,18 +32,21 @@ function Register() {
   let navigate = useNavigate();
 
   const createUser = async (user) => {
-    const response = await fetch(`http://localhost:3001/api/users/`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        email: user.email,
-        name: registerName,
-        total_score: 0,
-        year: year,
-      }),
-    });
+    const response = await fetch(
+      `https://cosmic-calculations-backend.onrender.com/api/users/`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: user.email,
+          name: registerName,
+          total_score: 0,
+          year: year,
+        }),
+      }
+    );
     const data = await response.json();
     console.log(data);
   };

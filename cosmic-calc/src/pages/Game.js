@@ -77,7 +77,7 @@ export default function Game() {
   useEffect(() => {
     async function getNumberLine() {
       const response = await fetch(
-        `http://localhost:3001/api/mathsQuestions/numberLines`,
+        `https://cosmic-calculations-backend.onrender.com/api/mathsQuestions/numberLines`,
         {
           method: "GET",
           headers: {
@@ -434,7 +434,7 @@ export default function Game() {
   const updateScore = async (score, user) => {
     let email = await context.user.email;
     const response = await fetch(
-      `http://localhost:3001/api/users/email/${email}`,
+      `https://cosmic-calculations-backend.onrender.com/api/users/email/${email}`,
       {
         method: "POST",
         headers: {
@@ -467,7 +467,7 @@ export default function Game() {
         </div>
       </div>
     );
-  } else if (points < 100) {
+  } else if (points < 10) {
     return (
       <div className="gameDiv">
         <AnswerCard
@@ -488,7 +488,7 @@ export default function Game() {
         <ResourceButton url="https://www.youtube.com/watch?v=e0dJWfQHF8Y" />
       </div>
     );
-  } else if (points < 200) {
+  } else if (points < 20) {
     console.log("In shapes game");
 
     return (
@@ -508,7 +508,7 @@ export default function Game() {
         <ResourceButton url="https://www.youtube.com/watch?v=WTeqUejf3D0" />
       </div>
     );
-  } else if (points < 300) {
+  } else if (points < 30) {
     console.log("In counters game!");
     console.log("points = ", points);
     return (
@@ -534,7 +534,7 @@ export default function Game() {
         <ResourceButton url="https://www.bbc.co.uk/bitesize/topics/zwv39j6/articles/zbpbrj6" />
       </div>
     );
-  } else if (points < 400) {
+  } else if (points < 40) {
     console.log("Inside points < 20 if statement");
     console.log("points = ", points);
     return (
@@ -557,7 +557,7 @@ export default function Game() {
         <ResourceButton url="https://www.bbc.co.uk/bitesize/topics/zwv39j6/articles/zkd98xs" />
       </div>
     );
-  } else if (points < 500) {
+  } else if (points < 50) {
     console.log("Inside 20 <= points < 50 if statement");
     console.log("points = ", points);
     return (
@@ -583,7 +583,7 @@ export default function Game() {
         <ResourceButton url="https://www.bbc.co.uk/bitesize/topics/zwv39j6/articles/ztpmrwx" />
       </div>
     );
-  } else if (points < 600) {
+  } else if (points < 60) {
     return (
       <div className="gameDiv">
         <AnswerCard
@@ -603,10 +603,10 @@ export default function Game() {
           checkAnswer={checkAnswer6}
         />
         <Score score={score} />
-        <ResourceButton  url="https://www.youtube.com/watch?gl=CO&hl=es-419&context=C38ccb90ADOEgsToPDskLi8_jjTLcMDO7pvUR7WrMl&v=e0dJWfQHF8Y" /> 
+        <ResourceButton url="https://www.youtube.com/watch?gl=CO&hl=es-419&context=C38ccb90ADOEgsToPDskLi8_jjTLcMDO7pvUR7WrMl&v=e0dJWfQHF8Y" />
       </div>
     );
-  } else if (points < 700) {
+  } else if (points < 70) {
     return (
       <div className="gameDiv">
         <AnswerCard
@@ -622,10 +622,10 @@ export default function Game() {
           checkAnswer={checkAnswer7}
         />
         <Score score={score} />
-        <ResourceButton url="https://www.bbc.co.uk/bitesize/topics/z3rbg82" /> 
+        <ResourceButton url="https://www.bbc.co.uk/bitesize/topics/z3rbg82" />
       </div>
     );
-  } else if (points < 800) {
+  } else if (points < 80) {
     console.log("Inside points >= 100 if statement");
     console.log("points = ", points);
     return (
