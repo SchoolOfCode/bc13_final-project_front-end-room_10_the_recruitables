@@ -89,12 +89,12 @@ To run the front-end locally follow the steps below:
 
 ## **_Our Team_** 🌍
 
-- [Seb French]
-- [Lucy McHugh]
+- [Seb French](https://github.com/sebfrench7)
+- [Lucy McHugh](https://github.com/L-McHugh)
 - [Emily Pritchard](https://github.com/EmilyPri)
-- [Jason Riley]
-- [Louis Wright]
-- [Jeremy Xiong]
+- [Jason Riley](https://github.com/JPR95)
+- [Louis Wright](https://github.com/LouWr)
+- [Jeremy Xiong](https://github.com/JeremyXZ)
 
 
 ---
