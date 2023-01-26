@@ -21,6 +21,7 @@ import QuestionCardCompare from "../components/questioncard/QuestionCardCompare"
 import QuestionCardColumn from "../components/questioncard/QuestionCardColumn";
 import QuestionCardUnit from "../components/questioncard/QuestionCardUnit";
 import ResourceButton from "../components/questioncard/ResourceButton";
+import QuestionCardTimer from "../components/questioncard/QuestionCardTimer"; 
 
 import {
   yearThreePlanetOneQuestion,
@@ -51,8 +52,8 @@ const YearThreeGames = () => {
   });
   const [result, setResult] = useState("");
   const context = useContext(ScoreContext);
-  //let points = 98;
-  let points = context.score;
+  let points = 88;
+  //let points = context.score;
   console.log(context);
 
   console.log("Points = ", points);
@@ -551,6 +552,33 @@ const YearThreeGames = () => {
           />
           <Score score={score} />
           <ResourceButton url="https://www.bbc.co.uk/bitesize/topics/z9sfr82/articles/z7mwr2p" />
+        </div>
+      </div>
+    );
+  } else if (points <= 80) {
+    return (
+      <div>
+        <div className="gameDiv">
+          <AnswerCard
+            answerVisible={answerVisible}
+            result={result}
+            newQuestion={newQuestion5}
+          />
+          <QuestionCardTimer
+            h1="Can you use your times tables to solve these questions within the time?"
+            astronaut={astronaut}
+            score={score}
+            answerInput={answerInput}
+            noOfQuestions={noOfQuestions}
+            value1={firstMultiple}
+            operation={"x"}
+            value2={secondMultiple}
+            equals={"="}
+            setAnswerInput={setAnswerInput}
+            checkAnswer={checkAnswer5}
+          />
+          <Score score={score} />
+          <ResourceButton url="https://www.bbc.co.uk/teach/supermovers/times-table-collection/z4vv6v4" />
         </div>
       </div>
     );
