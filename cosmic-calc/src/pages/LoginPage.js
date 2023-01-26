@@ -14,7 +14,7 @@ function Login() {
   const [loginEmail, setLoginEmail] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
   const [, setUser] = useState(null);
-  const [play, { stop }] = useSound(intro, { volume: 0.2 });
+  const [play, { stop }] = useSound(intro, { volume: 0.3 });
   const [playHover] = useSound(buttonFX, {
     volume: 0.3,
     playbackRate: Math.random() * (2 - 0.8) + 0.8,
@@ -68,6 +68,7 @@ function Login() {
             <input
               type="email"
               placeholder="email"
+              data-testid="emailInput"
               className="loginInput"
               value={loginEmail}
               onChange={(e) => setLoginEmail(e.target.value)}
@@ -75,6 +76,7 @@ function Login() {
             <input
               type="password"
               placeholder="password"
+              data-testid="passwordInput"
               className="passwordInput"
               value={loginPassword}
               onChange={(e) => setLoginPassword(e.target.value)}
@@ -83,15 +85,14 @@ function Login() {
           <div className="loginButtonDiv">
             <button
               className="loginButton"
+              data-testid="loginButton"
               onMouseOver={playHover}
               onClick={() => {
                 playOpen();
                 stop();
               }}
               type="submit"
-            >
-              Login
-            </button>
+            ></button>
           </div>
         </form>
       </div>

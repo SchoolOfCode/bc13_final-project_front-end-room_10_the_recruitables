@@ -29,6 +29,7 @@ function Logout() {
 
   return (
     <button
+      data-testid="logoutButton"
       className="navButtonLogout"
       onMouseOver={playHover}
       onClick={handleLogout}
