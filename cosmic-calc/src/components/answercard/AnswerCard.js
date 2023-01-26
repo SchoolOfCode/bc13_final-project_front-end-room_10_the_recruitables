@@ -15,6 +15,7 @@ export default function AnswerCard(props) {
         <h3 className="h3ResultAnswerGame">{props.result}</h3>
       </div>
       <button
+        data-testid="next-btn"
         className="newQuestionGameButton"
         onClick={props.newQuestion}
         style={{ visibility: props.answerVisible ? "visible" : "hidden" }}

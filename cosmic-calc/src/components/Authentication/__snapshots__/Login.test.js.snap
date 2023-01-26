@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<LoginButton/> successfully renders the component, matches snapshot 1`] = `
+<DocumentFragment>
+  <button>
+    Log In
+  </button>
+</DocumentFragment>
+`;

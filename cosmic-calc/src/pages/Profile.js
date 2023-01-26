@@ -32,6 +32,7 @@ function Profile() {
     const response = await fetch(
       `https://cosmic-calculations-backend.onrender.com/api/users/email/${email}`
     );
+
     const data = await response.json();
     console.log(data.payload);
     setUserData(data.payload);
