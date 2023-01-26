@@ -140,7 +140,7 @@ export default function App() {
               onMouseOver={playHover}
               onClick={navigateToLogin}
             >
-              Login
+              Login more 
             </button>
           )}
           {location.pathname !== "/register" && (
