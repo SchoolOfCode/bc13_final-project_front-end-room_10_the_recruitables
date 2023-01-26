@@ -495,7 +495,7 @@ const YearFourGames = () => {
     let email = await user.email;
 
     const response = await fetch(
-      `http://localhost:3001/api/users/email/${email}`,
+      `http://cosmic-calculations-backend.onrender.com/api/users/email/${email}`,
       {
         method: "POST",
         headers: {
@@ -528,7 +528,7 @@ const YearFourGames = () => {
         </div>
       </div>
     );
-  } else if (points < 100) {
+  } else if (points < 10) {
     return (
       <div>
         <div className="gameDiv">
@@ -553,7 +553,7 @@ const YearFourGames = () => {
         </div>
       </div>
     );
-  } else if (points < 200) {
+  } else if (points < 20) {
     return (
       <div>
         <div className="gameDiv">
@@ -578,7 +578,7 @@ const YearFourGames = () => {
         </div>
       </div>
     );
-  } else if (points < 300) {
+  } else if (points < 30) {
     return (
       <div>
         <div className="gameDiv">
@@ -603,7 +603,7 @@ const YearFourGames = () => {
         </div>
       </div>
     );
-  } else if (points < 400) {
+  } else if (points < 40) {
     console.log("25 points = ", points);
     return (
       <div className="gameDiv">
@@ -627,7 +627,7 @@ const YearFourGames = () => {
         <ResourceButton url="https://www.bbc.co.uk/bitesize/topics/zsjqtfr/articles/zhpq7nb" />
       </div>
     );
-  } else if (points < 500) {
+  } else if (points < 50) {
     return (
       <div>
         <div className="gameDiv">
@@ -650,7 +650,7 @@ const YearFourGames = () => {
         </div>
       </div>
     );
-  } else if (points < 600) {
+  } else if (points < 60) {
     return (
       <div>
         <div className="gameDiv">
@@ -677,7 +677,7 @@ const YearFourGames = () => {
         </div>
       </div>
     );
-  } else if (points < 700) {
+  } else if (points < 70) {
     return (
       <div>
         <div className="gameDiv">
@@ -702,7 +702,7 @@ const YearFourGames = () => {
         </div>
       </div>
     );
-  } else if (points < 800) {
+  } else if (points < 80) {
     return (
       <div>
         <div className="gameDiv">
@@ -729,7 +729,7 @@ const YearFourGames = () => {
         </div>
       </div>
     );
-  } else if (points < 900) {
+  } else if (points < 90) {
     return (
       <div>
         <div className="gameDiv">
