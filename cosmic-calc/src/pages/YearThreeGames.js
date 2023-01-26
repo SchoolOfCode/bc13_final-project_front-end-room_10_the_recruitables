@@ -21,7 +21,9 @@ import QuestionCardCompare from "../components/questioncard/QuestionCardCompare"
 import QuestionCardColumn from "../components/questioncard/QuestionCardColumn";
 import QuestionCardUnit from "../components/questioncard/QuestionCardUnit";
 import ResourceButton from "../components/questioncard/ResourceButton";
+import QuestionCardTimer from "../components/questioncard/QuestionCardTimer"; 
 import ShapesFractionQuestionCard from "../components/questioncard/shapeFractionsQCard";
+
 
 import {
   yearThreePlanetOneQuestion,
@@ -54,7 +56,7 @@ const YearThreeGames = () => {
   });
   const [result, setResult] = useState("");
   const context = useContext(ScoreContext);
-  //let points = 98;
+  // let points = 88;
   let points = context.score;
   console.log(context);
 
@@ -595,7 +597,8 @@ const YearThreeGames = () => {
         </div>
       </div>
     );
-  } else if (points === 101) {
+
+  } else if (points <70) {
     return (
       <div className="gameDiv">
         <AnswerCard
@@ -611,9 +614,37 @@ const YearThreeGames = () => {
         />
         <Score score={score} />
         <ResourceButton url="https://www.youtube.com/watch?v=WTeqUejf3D0" />
+
       </div>
     );
   }
+  else if (points >= 80) {
+    return (
+      <div>
+        <div className="gameDiv">
+          <AnswerCard
+            answerVisible={answerVisible}
+            result={result}
+            newQuestion={newQuestion5}
+          />
+          <QuestionCardTimer
+            h1="Can you use your times tables to solve these questions within the time?"
+            astronaut={astronaut}
+            score={score}
+            answerInput={answerInput}
+            noOfQuestions={noOfQuestions}
+            value1={firstMultiple}
+            operation={"x"}
+            value2={secondMultiple}
+            equals={"="}
+            setAnswerInput={setAnswerInput}
+            checkAnswer={checkAnswer5}
+          />
+          <Score score={score} />
+          <ResourceButton url="https://www.bbc.co.uk/teach/supermovers/times-table-collection/z4vv6v4" />
+        </div>
+
+  } 
 };
 
 export default YearThreeGames;
