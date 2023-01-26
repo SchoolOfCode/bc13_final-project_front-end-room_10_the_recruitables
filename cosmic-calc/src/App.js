@@ -69,7 +69,6 @@ export default function App() {
     context.update();
     console.log(navigate);
   };
-  
   const navigateToRegister = () => {
     navigate("/register");
   };
@@ -85,10 +84,9 @@ export default function App() {
   const navigateToYearFour = () => {
     navigate("/year-four-games");
   };
+
+
   console.log(authed.currentUser);
-  // const mute = () => {
-  //   setSoundEnabled(!soundEnabled);
-  // };
   // {
   //   /* <div className="muteButton">
   // <button
@@ -101,7 +99,6 @@ export default function App() {
   //       </button>
   //     </div> */
   // }
-
   return (
     <div className="App">
       {authed.currentUser ? (

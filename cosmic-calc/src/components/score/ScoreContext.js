@@ -7,11 +7,14 @@ export const ScoreContext = createContext();
 function ScoreProvider({ children }) {
   const [score, setScore] = useState(0);
   const [user, setUser] = useState(null);
-  const [year, setYear] = useState(0);
-  onAuthStateChanged(auth, (user) => {
-    retrieveUserData(user);
-    setUser(user);
-  });
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      retrieveUserData(user);
+      setUser(user);
+    });
+    return unsubscribe;
+  }, []);
 
   const retrieveUserData = async () => {
     console.log("retrieveUserData called");
@@ -26,20 +29,24 @@ function ScoreProvider({ children }) {
     return data.payload;
   };
 
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      retrieveUserData(user);
-      setUser(user);
-    });
-    return unsubscribe;
-  }, []);
 
+  const [level, setLevel] = useState(0);
+
+  function updateLevel(i) {
+    setLevel(i);
+    console.log("hello world");
+  }
+  console.log(level);
+
+  // const value = useMemo(() => {
   return (
     <ScoreContext.Provider
       value={{
         score: score,
         update: retrieveUserData,
         user: user,
+        // level: level,
+        updateLevel: updateLevel,
         year: year,
       }}
     >
@@ -49,3 +56,11 @@ function ScoreProvider({ children }) {
 }
 
 export default ScoreProvider;
+//   return {
+//     score: score,
+//     update: retrieveUserData,
+//     user: user,
+//     level: level,
+//     updateLevel: updateLevel,
+//   };
+// }, [score, user, level]);
