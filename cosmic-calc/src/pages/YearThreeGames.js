@@ -21,6 +21,9 @@ import QuestionCardCompare from "../components/questioncard/QuestionCardCompare"
 import QuestionCardColumn from "../components/questioncard/QuestionCardColumn";
 import QuestionCardUnit from "../components/questioncard/QuestionCardUnit";
 import ResourceButton from "../components/questioncard/ResourceButton";
+import QuestionCardTimer from "../components/questioncard/QuestionCardTimer"; 
+import ShapesFractionQuestionCard from "../components/questioncard/shapeFractionsQCard";
+
 
 import {
   yearThreePlanetOneQuestion,
@@ -35,6 +38,8 @@ import {
   yearThreePlanetFiveAnswer,
   yearThreePlanetEightQuestion,
   yearThreePlanetEightAnswer,
+  giveRandomFraction,
+  checkFractionAnswer,
 } from "../components/functions/Year3Functions.js";
 
 const YearThreeGames = () => {
@@ -51,7 +56,7 @@ const YearThreeGames = () => {
   });
   const [result, setResult] = useState("");
   const context = useContext(ScoreContext);
-  //let points = 98;
+  // let points = 88;
   let points = context.score;
   console.log(context);
 
@@ -316,7 +321,7 @@ const YearThreeGames = () => {
     return [questionResult, correctAnswer];
   };
 
-  // Year 3 Planet 8 - "Adding and subtracting measurements"
+  // Year 3 Planet 6 - "Adding and subtracting measurements"
   const [firstMeasurement, setFirstMeasurement] = useState(0);
   const [secondMeasurement, setSecondMeasurement] = useState(0);
   const [operationMeasurement, setOperationMeasurement] = useState("+");
@@ -362,6 +367,44 @@ const YearThreeGames = () => {
       answerInput
     );
     setAnswerInput("");
+    setResult("");
+    setAnswerVisible(false);
+    return [questionResult, correctAnswer];
+  };
+
+  //year 3 planet 7 - recognsising fractions
+  const [fraction, setFraction] = useState("");
+
+  useEffect(() => {
+    let newFraction = giveRandomFraction();
+    setFraction(newFraction);
+  }, []);
+
+  function checkAnswer7(playerInput) {
+    let [questionResult, correctAnswer] = checkFractionAnswer(
+      playerInput,
+      fraction
+    );
+    if (questionResult === true) {
+      playCorrect();
+      setResult("Correct!");
+      setScore(Number(score) + 1);
+      newQuestion2();
+    } else {
+      playWrong();
+      setResult(correctAnswer);
+      setAnswerVisible(true);
+    }
+  }
+
+  const newQuestion7 = (playerInput) => {
+    setNoOfQuestions(noOfQuestions + 1);
+    let newFraction = giveRandomFraction();
+    setFraction(newFraction);
+    let [questionResult, correctAnswer] = checkFractionAnswer(
+      playerInput,
+      newFraction
+    );
     setResult("");
     setAnswerVisible(false);
     return [questionResult, correctAnswer];
@@ -554,7 +597,54 @@ const YearThreeGames = () => {
         </div>
       </div>
     );
+
+  } else if (points <70) {
+    return (
+      <div className="gameDiv">
+        <AnswerCard
+          answerVisible={answerVisible}
+          result={result}
+          newQuestion={newQuestion7}
+        />
+        <ShapesFractionQuestionCard
+          answerInput={answerInput}
+          noOfQuestions={noOfQuestions}
+          shape={fraction}
+          checkAnswer={checkAnswer7}
+        />
+        <Score score={score} />
+        <ResourceButton url="https://www.youtube.com/watch?v=WTeqUejf3D0" />
+
+      </div>
+    );
   }
+  else if (points >= 80) {
+    return (
+      <div>
+        <div className="gameDiv">
+          <AnswerCard
+            answerVisible={answerVisible}
+            result={result}
+            newQuestion={newQuestion5}
+          />
+          <QuestionCardTimer
+            h1="Can you use your times tables to solve these questions within the time?"
+            astronaut={astronaut}
+            score={score}
+            answerInput={answerInput}
+            noOfQuestions={noOfQuestions}
+            value1={firstMultiple}
+            operation={"x"}
+            value2={secondMultiple}
+            equals={"="}
+            setAnswerInput={setAnswerInput}
+            checkAnswer={checkAnswer5}
+          />
+          <Score score={score} />
+          <ResourceButton url="https://www.bbc.co.uk/teach/supermovers/times-table-collection/z4vv6v4" />
+        </div>
+
+  } 
 };
 
 export default YearThreeGames;
