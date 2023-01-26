@@ -14,6 +14,7 @@ import TimedGame from "./pages/TimedGame";
 import Avatars from "./pages/Avatars";
 import useSound from "use-sound";
 import buttonFX from "./components/sound/FX/buttonFX.mp3";
+import YearTwo from "./pages/YearTwoGames";
 import logo from "../src/images/Logo.png";
 import Leaderboard from "./pages/Leaderboard";
 import YearTwoGames from "./pages/YearTwoGames";
@@ -32,11 +33,9 @@ export default function App() {
     volume: 0.3,
     playbackRate: Math.floor(Math.random() * (2 - 0.8) + 0.8),
   });
-
   const navigateToLogin = () => {
     navigate("/");
   };
-
   const navigateToProfile = () => {
     navigate("/profile");
     setProfileHighlighted(true);
@@ -44,7 +43,6 @@ export default function App() {
     setGameHighlighted(false);
     context.update();
   };
-
   const navigateToProgress = () => {
     navigate("/progress");
     setProfileHighlighted(false);
@@ -52,58 +50,58 @@ export default function App() {
     setGameHighlighted(false);
     context.update();
   };
-
   const navigateToGame = () => {
-    navigate("/game");
+    let year = context.year;
+    console.log(year);
+    if (year === 1) {
+      navigate("/game");
+    } else if (year === 2) {
+      navigate("/year-two-games");
+    } else if (year === 3) {
+      navigate("/year-three-games");
+    } else if (year === 4) {
+      console.log("year 4");
+      navigate("/year-four-games");
+    }
     setProfileHighlighted(false);
     setProgressHighlighted(false);
     setGameHighlighted(true);
     context.update();
     console.log(navigate);
   };
-
-  const navigateToTimedGame = () => {
-    navigate("/timedGame");
-  };
-
+  
   const navigateToRegister = () => {
     navigate("/register");
   };
-
   const navigateToYearOne = () => {
     navigate("/Game");
   };
-
   const navigateToYearTwo = () => {
     navigate("/year-two-games");
   };
-
   const navigateToYearThree = () => {
     navigate("/year-three-games");
   };
-
   const navigateToYearFour = () => {
     navigate("/year-four-games");
   };
-
   console.log(authed.currentUser);
+  // const mute = () => {
+  //   setSoundEnabled(!soundEnabled);
+  // };
+  // {
+  //   /* <div className="muteButton">
+  // <button
+  //       className="muteButton"
+  //       onClick={() => {
+  //         mute();
+  //       }}
+  //       >
+  //       Mute
+  //       </button>
+  //     </div> */
+  // }
 
-  const mute = () => {
-    setSoundEnabled(!soundEnabled);
-  };
-
-  {
-    /* <div className="muteButton">
-  <button
-        className="muteButton"
-        onClick={() => {
-          mute();
-        }}
-        >
-        Mute
-        </button>
-      </div> */
-  }
   return (
     <div className="App">
       {authed.currentUser ? (
@@ -157,9 +155,13 @@ export default function App() {
               }
             ></button>
           )}
-          {authed.currentUser.email === "teacher@teacher.com" && (
+          {/* {authed.currentUser.email === "teacher@teacher.com" && (
             <button onClick={navigateToLeaderboard}>Leaderboard</button>
-          )}
+          )} */}
+          <Logout />
+        </div>
+      ) : (
+        <div className="navBarPageDiv">
           {location.pathname !== "/game" && (
             <div className="progress-score">
               <h1>Score: {context.score}</h1>
@@ -204,7 +206,6 @@ export default function App() {
           )}
         </div>
       )}
-
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/register" element={<Register />} />
@@ -225,10 +226,34 @@ export default function App() {
           }
         />
         <Route
+          path="/year-two-games"
+          element={
+            <ProtectedRoute>
+              <YearTwo />
+            </ProtectedRoute>
+          }
+        />
+        <Route
           path="/game"
           element={
             <ProtectedRoute>
               <Game />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/year-three-games"
+          element={
+            <ProtectedRoute>
+              <YearThreeGames />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/year-four-games"
+          element={
+            <ProtectedRoute>
+              <YearFourGames />
             </ProtectedRoute>
           }
         />

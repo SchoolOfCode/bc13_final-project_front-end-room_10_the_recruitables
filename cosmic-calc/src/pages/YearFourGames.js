@@ -21,6 +21,7 @@ import QuestionCardColumn from "../components/questioncard/QuestionCardColumn";
 import QuestionCardUnit from "../components/questioncard/QuestionCardUnit";
 import QuestionCardTimer from "../components/questioncard/QuestionCardTimer";
 import QuestionCardRound from "../components/questioncard/QuestionCardRound";
+import ResourceButton from "../components/questioncard/ResourceButton";
 
 import {
   yearFourPlanetOneQuestion,
@@ -55,8 +56,8 @@ const YearFourGames = () => {
   });
   const [result, setResult] = useState("");
   const context = useContext(ScoreContext);
-  let points = 798;
-  //let points = context.score;
+  //let points = 898;
+  let points = context.score;
   console.log(context);
 
   console.log("Points = ", points);
@@ -84,7 +85,6 @@ const YearFourGames = () => {
   }, []);
 
   const checkAnswer1 = () => {
-    setNoOfQuestions(noOfQuestions + 1);
     let [questionResult, correctAnswer] = yearFourPlanetOneAnswer(
       [firstNumber, secondNumber],
       answerInput
@@ -103,6 +103,7 @@ const YearFourGames = () => {
   };
 
   const newQuestion1 = () => {
+    setNoOfQuestions(noOfQuestions + 1);
     let [firstNumber, secondNumber] = yearFourPlanetOneQuestion();
     setFirstNumber(firstNumber);
     setSecondNumber(secondNumber);
@@ -129,7 +130,6 @@ const YearFourGames = () => {
   }, []);
 
   const checkAnswer2 = () => {
-    setNoOfQuestions(noOfQuestions + 1);
     let [questionResult, correctAnswer] = yearFourPlanetTwoAnswer(
       [firstInt, operation, secondInt],
       answerInput
@@ -149,6 +149,7 @@ const YearFourGames = () => {
   };
 
   const newQuestion2 = () => {
+    setNoOfQuestions(noOfQuestions + 1);
     let [firstInt, operation, secondInt] = yearFourPlanetTwoQuestion();
     setFirstInt(firstInt);
     setSecondInt(secondInt);
@@ -174,7 +175,6 @@ const YearFourGames = () => {
   }, []);
 
   const checkAnswer3 = () => {
-    setNoOfQuestions(noOfQuestions + 1);
     let [questionResult, correctAnswer] = yearFourPlanetThreeAnswer(
       [firstNum, secondNum],
       answerInput
@@ -193,6 +193,7 @@ const YearFourGames = () => {
   };
 
   const newQuestion3 = () => {
+    setNoOfQuestions(noOfQuestions + 1);
     let [firstNum, secondNum] = yearFourPlanetThreeQuestion();
     setFirstNum(firstNum);
     setSecondNum(secondNum);
@@ -226,7 +227,6 @@ const YearFourGames = () => {
   }, []);
 
   const checkAnswer4 = () => {
-    setNoOfQuestions(noOfQuestions + 1);
     let [questionResult, correctAnswer] = yearFourPlanetFourAnswer(
       [
         firstNumberOrder,
@@ -250,6 +250,7 @@ const YearFourGames = () => {
   };
 
   const newQuestion4 = () => {
+    setNoOfQuestions(noOfQuestions + 1);
     let [
       firstNumberOrder,
       secondNumberOrder,
@@ -286,7 +287,6 @@ const YearFourGames = () => {
   }, []);
 
   const checkAnswer5 = () => {
-    setNoOfQuestions(noOfQuestions + 1);
     let [questionResult, correctAnswer] = yearFourPlanetFiveAnswer(
       [firstNumberRound, secondNumberRound],
       answerInput
@@ -305,6 +305,7 @@ const YearFourGames = () => {
   };
 
   const newQuestion5 = () => {
+    setNoOfQuestions(noOfQuestions + 1);
     let [firstNumberRound, secondNumberRound] = yearFourPlanetFiveQuestion();
     setFirstNumberRound(firstNumberRound);
     setSecondNumberRound(secondNumberRound);
@@ -341,7 +342,6 @@ const YearFourGames = () => {
   }, []);
 
   const checkAnswer6 = () => {
-    setNoOfQuestions(noOfQuestions + 1);
     let [questionResult, correctAnswer] = yearFourPlanetSixAnswer(
       [
         firstMeasurement,
@@ -366,6 +366,7 @@ const YearFourGames = () => {
   };
 
   const newQuestion6 = () => {
+    setNoOfQuestions(noOfQuestions + 1);
     let [
       firstMeasurement,
       secondMeasurement,
@@ -407,7 +408,6 @@ const YearFourGames = () => {
   }, []);
 
   const checkAnswer7 = () => {
-    setNoOfQuestions(noOfQuestions + 1);
     let [questionResult, correctAnswer] = yearFourPlanetSevenAnswer(
       [firstMultiple1, secondMultiple1],
       answerInput
@@ -426,6 +426,7 @@ const YearFourGames = () => {
   };
 
   const newQuestion7 = () => {
+    setNoOfQuestions(noOfQuestions + 1);
     let [firstMultiple1, secondMultiple1] = yearFourPlanetSevenQuestion();
     setFirstMultiple1(firstMultiple1);
     setSecondMultiple1(secondMultiple1);
@@ -453,7 +454,6 @@ const YearFourGames = () => {
   }, []);
 
   const checkAnswer8 = () => {
-    setNoOfQuestions(noOfQuestions + 1);
     let [questionResult, correctAnswer] = yearFourPlanetEightAnswer(
       [firstMultiple, secondMultiple, thirdMultiple],
       answerInput
@@ -472,6 +472,7 @@ const YearFourGames = () => {
   };
 
   const newQuestion8 = () => {
+    setNoOfQuestions(noOfQuestions + 1);
     let [firstMultiple, secondMultiple, thirdMultiple] =
       yearFourPlanetEightQuestion();
     setFirstMultiple(firstMultiple);
@@ -547,6 +548,7 @@ const YearFourGames = () => {
             checkAnswer={checkAnswer1}
           />
           <Score score={score} />
+          <ResourceButton url="https://www.bbc.co.uk/teach/supermovers/ks2-maths-the-6-times-table-with-fred-the-red/zrq3xyc" />
         </div>
       </div>
     );
@@ -560,7 +562,7 @@ const YearFourGames = () => {
             newQuestion={newQuestion2}
           />
           <QuestionCard
-            h1="Can you add and subtract 1000 from any number?"
+            h1="Let's practice adding and subtracting using 10, 100 and 1000!"
             answerInput={answerInput}
             noOfQuestions={noOfQuestions}
             value1={firstInt}
@@ -571,6 +573,7 @@ const YearFourGames = () => {
             checkAnswer={checkAnswer2}
           />
           <Score score={score} />
+          <ResourceButton url="https://www.bbc.co.uk/bitesize/topics/zf72pv4/articles/zw267yc" />
         </div>
       </div>
     );
@@ -584,7 +587,7 @@ const YearFourGames = () => {
             newQuestion={newQuestion3}
           />
           <QuestionCard
-            h1="Can you add and subtract using negative numbers?"
+            h1="Let's practice negative numbers!"
             answerInput={answerInput}
             noOfQuestions={noOfQuestions}
             value1={firstNum}
@@ -595,6 +598,7 @@ const YearFourGames = () => {
             checkAnswer={checkAnswer3}
           />
           <Score score={score} />
+          <ResourceButton url="https://www.bbc.co.uk/bitesize/topics/znwj6sg/articles/zxthnbk" />
         </div>
       </div>
     );
@@ -608,7 +612,7 @@ const YearFourGames = () => {
           newQuestion={newQuestion4}
         />
         <QuestionCardOrder
-          h1="Can you round nearest 10, 100, or 1000?"
+          h1="Let's sort these numbers into order!"
           answerInput={answerInput}
           noOfQuestions={noOfQuestions}
           value1={firstNumberOrder}
@@ -619,6 +623,7 @@ const YearFourGames = () => {
           checkAnswer={checkAnswer4}
         />
         <Score score={score} />
+        <ResourceButton url="https://www.bbc.co.uk/bitesize/topics/zsjqtfr/articles/zhpq7nb" />
       </div>
     );
   } else if (points < 500) {
@@ -640,6 +645,7 @@ const YearFourGames = () => {
             checkAnswer={checkAnswer5}
           />
           <Score score={score} />
+          <ResourceButton url="https://www.bbc.co.uk/bitesize/topics/zh8dmp3/articles/zpx2qty" />
         </div>
       </div>
     );
@@ -653,7 +659,7 @@ const YearFourGames = () => {
             newQuestion={newQuestion6}
           />
           <QuestionCardUnit
-            h1="Can you add measurements and convert them into other measurements?"
+            h1="Can you add measurements and convert them into other units of measurements?"
             answerInput={answerInput}
             noOfQuestions={noOfQuestions}
             value1={firstMeasurement}
@@ -666,6 +672,7 @@ const YearFourGames = () => {
             checkAnswer={checkAnswer6}
           />
           <Score score={score} />
+          <ResourceButton url="https://www.bbc.co.uk/bitesize/topics/z4nsgk7/articles/z63qdp3" />
         </div>
       </div>
     );
@@ -679,7 +686,7 @@ const YearFourGames = () => {
             newQuestion={newQuestion7}
           />
           <QuestionCard
-            h1="Can you use your 12 times tables to solve these questions?"
+            h1="Can you use all your times tables knowledge to solve these questions?"
             answerInput={answerInput}
             noOfQuestions={noOfQuestions}
             value1={firstMultiple1}
@@ -690,6 +697,7 @@ const YearFourGames = () => {
             checkAnswer={checkAnswer7}
           />
           <Score score={score} />
+          <ResourceButton url="https://www.bbc.co.uk/teach/supermovers/times-table-collection/z4vv6v4" />
         </div>
       </div>
     );
@@ -703,7 +711,7 @@ const YearFourGames = () => {
             newQuestion={newQuestion8}
           />
           <QuestionCardThreeDig
-            h1="Can you multiply 3 digit numbers together?"
+            h1="Can you multiply three numbers together?"
             answerInput={answerInput}
             noOfQuestions={noOfQuestions}
             value1={firstMultiple}
@@ -716,6 +724,7 @@ const YearFourGames = () => {
             checkAnswer={checkAnswer8}
           />
           <Score score={score} />
+          <ResourceButton url="https://www.bbc.co.uk/bitesize/topics/z36tyrd/articles/zr9xqfr" />
         </div>
       </div>
     );
@@ -742,6 +751,7 @@ const YearFourGames = () => {
             checkAnswer={checkAnswer7}
           />
           <Score score={score} />
+          <ResourceButton url="https://www.bbc.co.uk/teach/supermovers/times-table-collection/z4vv6v4" />
         </div>
       </div>
     );

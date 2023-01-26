@@ -1,32 +1,34 @@
 .questionDiv {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     justify-content: space-evenly;
-    height: auto;
-    width: 70vw;
+    height: 6cm;
+    width: 60vw;
     background-color: var(--colour-purple-transparent);
     border-radius: 10px;
-    padding: 4vh;
+    padding: 3vh;
     border-color: var(--colour-purple);
     border-style: solid;
     border-width: 10px;
     color: #fff;
-    margin: 5vh;
- } 
-
- .QuestionImg{
-    width: 40vw;
-    height: auto;
- }
-
- .question-container{
-   display: flex;
-   flex-direction: row;
-   align-items: center;
- }
-
- .inputGame{
+    margin: 2vh;
+  }
+  
+  .value1and2stars{
+    width: 20vw;
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+     gap: 1vw;
+     grid-auto-rows: minmax(0vh, auto);
+     align-items: center;
+  }
+  .starsimage{
+    height: 6vh;
+    width: 4vw;
+  }
+  
+  .inputGame {
     border-radius: 10px;
     background: white;
     border-color: white;
@@ -37,4 +39,9 @@
     height: 10vh;
     text-align: center;
     font-size: 2vw;
-}
+  }
+  
+  .h2QuestionGame {
+    font-size: vw;
+  }
+  

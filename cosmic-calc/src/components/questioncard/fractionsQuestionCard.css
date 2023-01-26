@@ -1,6 +1,12 @@
+/* .fractions-Question-h1{
+   padding-bottom: 100px;
+   font-size: 1.7vw;
+} */
+
+
 .questionDiv {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
     height: auto;
@@ -15,45 +21,39 @@
     margin: 5vh;
  } 
 
- .QuestionImg{
-    width: 100px;
-    height: 20px;
+ .question-number-and-text{
+   display: flex;
+   flex-direction:row;
+   gap: 2vw;
+ }
+
+ .fractions-Question-h1{
+   display: flex;
+   align-items: center;
+   justify-content: center;
  }
 
 
- .inputGame{
-    border-radius: 10px;
-    background: white;
-    border-color: white;
-    border-style: solid;
-    border-width: 3px;
-    color: black;
-    width: 10vw;
-    height: 10vh;
-    text-align: center;
-    font-size: 2vw;
-}
+
 
 .shapes-div {
    display: flex;
    flex-wrap: wrap;
    justify-content: space-evenly;
    align-items: center;
-   
+   width: 60vw;
 }
-
-
 
 
 .half-circle{
     background-image: url(../../images/StarCounters/half.png);
-     background-color: transparent;
-      background-size: contain;
-      width: 8vw;
-      height: 10vh;
-      background-repeat: no-repeat;
+   background-color: transparent;
+   background-size: contain;
+   width: 8vw;
+   height: 10vh;
+   background-repeat: no-repeat;
       
-   }
+}
    
 
 .quarter-circle{
@@ -63,7 +63,8 @@
    width: 8vw;
    height: 10vh;
    background-repeat: no-repeat;
-   
+   position: relative;
+   margin-top: 10%;
 }
 
 .three-q-circle{
@@ -86,4 +87,14 @@
       background-repeat: no-repeat;
       
    }
-   
+
+
+@media only screen and (max-width: 600px) {
+   .quarter-circle{
+      margin-right: 40%;
+   }
+   .question-text {
+      display: flex;
+      flex-direction: column;
+   }
+}
