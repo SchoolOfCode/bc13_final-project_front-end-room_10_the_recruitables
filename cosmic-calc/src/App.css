@@ -187,6 +187,18 @@
   transform: rotate(360deg);
 }
 
+.leaderboardButton {
+  display: flex;
+  background-color: #f70d11;
+  color: white;
+  contain: content;
+  font-size: 50%;
+  text-align: center;
+  font-weight: bold;
+  text-shadow: #000 1px 1px;
+  /* border-radius: 50%; */
+}
+=======
 @media screen and (max-width: 650px) {
   .navBarPageDiv {
    width: 110%;
@@ -198,3 +210,4 @@
     width: 160%;
   }
 }
+

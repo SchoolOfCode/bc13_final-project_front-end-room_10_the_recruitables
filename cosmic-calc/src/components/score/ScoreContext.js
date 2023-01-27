@@ -11,7 +11,7 @@ function ScoreProvider({ children }) {
   const [data, setData] = useState(null);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-
+  const [mute, setMute] = useState(true);
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       retrieveUserData(user);
@@ -20,6 +20,8 @@ function ScoreProvider({ children }) {
     return unsubscribe;
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  console.log(mute);
 
   const retrieveUserData = async () => {
     console.log("retrieveUserData called");
@@ -47,6 +49,11 @@ function ScoreProvider({ children }) {
   }
   console.log(level);
 
+  const muteSound = () => {
+    setMute(!mute);
+    console.log("score mute");
+  };
+
   // const value = useMemo(() => {
   return (
     <ScoreContext.Provider
@@ -59,6 +66,8 @@ function ScoreProvider({ children }) {
         email: email,
         updateLevel: updateLevel,
         year: year,
+        muteSound: muteSound,
+        mute: mute,
       }}
     >
       {children}

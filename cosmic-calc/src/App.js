@@ -20,6 +20,7 @@ import Leaderboard from "./pages/Leaderboard";
 import YearTwoGames from "./pages/YearTwoGames";
 import YearThreeGames from "./pages/YearThreeGames";
 import YearFourGames from "./pages/YearFourGames";
+// import { GoMute } from "react-icons/go";
 
 export default function App() {
   const authed = auth;
@@ -73,18 +74,16 @@ export default function App() {
     navigate("/register");
   };
   console.log(authed.currentUser);
-  // {
-  //   /* <div className="muteButton">
-  // <button
-  //       className="muteButton"
-  //       onClick={() => {
-  //         mute();
-  //       }}
-  //       >
-  //       Mute
-  //       </button>
-  //     </div> */
-  // }
+
+  const navigateToLeaderboard = () => {
+    navigate("/leaderboard");
+  };
+
+  // const mute = () => {
+  //   context.muteSound();
+  //   console.log("app mute");
+  // };
+
   return (
     <div className="App">
       {authed.currentUser ? (
@@ -126,10 +125,18 @@ export default function App() {
               }
             ></button>
           )}
-          {/* {authed.currentUser.email === "teacher@teacher.com" && (
-            <button onClick={navigateToLeaderboard}>Leaderboard</button>
-          )} */}
           <Logout />
+          {authed.currentUser.email === "teacher@teacher.com" && (
+            <button
+              className="leaderboardButton"
+              onClick={navigateToLeaderboard}
+            >
+              Leader board
+            </button>
+          )}
+          {/* <button classname="muteButton" onClick={mute}>
+            <GoMute size={50} />
+          </button> */}
         </div>
       ) : (
         <div className="navBarLoginDiv">
@@ -151,6 +158,9 @@ export default function App() {
               Register
             </button>
           )}
+          {/* <button classname="muteButton" onClick={mute}>
+            <GoMute size={50} />
+          </button> */}
         </div>
       )}
       <Routes>

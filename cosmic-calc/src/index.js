@@ -4,7 +4,6 @@ import { BrowserRouter as Router } from "react-router-dom";
 import App from "./App";
 import "./index.css";
 import * as serviceWorker from "./serviceWorkerRegistration";
-// import starBackground from "./images/Background2.png";
 import Background from "./images/Background_Buttons/Background.png";
 import ScoreProvider from "./components/score/ScoreContext";
 

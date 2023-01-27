@@ -68,6 +68,7 @@ export const Progress = () => {
   const [totalScore, setTotalScore] = useState();
 
   const [playProgress, { stop }] = useSound(progressFX, {
+    soundEnabled: context.soundEnabled,
     volume: 0.1,
   });
   const [playWoosh] = useSound(woosh, { playbackRate: 1.8, volume: 0.3 });
