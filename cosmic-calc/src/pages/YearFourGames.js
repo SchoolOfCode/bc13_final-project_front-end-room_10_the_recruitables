@@ -490,6 +490,7 @@ const YearFourGames = () => {
     return [questionResult, correctAnswer];
   };
 
+ 
   // posting the score to the database
   const updateScore = async (score, user) => {
     let email = await user.email;

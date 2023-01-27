@@ -711,7 +711,7 @@ export default function YearTwoGames() {
         </div>
       </div>
     );
-  } else if (points >= 80) {
+  } else if (points < 80) {
     //console.log("30 points = ", points);
     return (
       <div className="gameDiv">
@@ -732,6 +732,33 @@ export default function YearTwoGames() {
         <div className="pointsHelpDiv">
           <Score score={score} />
           <ResourceButton url="https://www.bbc.co.uk/bitesize/topics/z8sfr82/articles/z3cm8hv" />
+        </div>
+      </div>
+    );
+  }else if (points >= 90) {
+    return (
+      <div>
+        <div className="gameDiv">
+          <AnswerCard
+            answerVisible={answerVisible}
+            result={result}
+            newQuestion={newQuestion2}
+          />
+          <QuestionCard
+            h1="Let's practice addition and subtraction!"
+            answerInput={answerInput}
+            noOfQuestions={noOfQuestions}
+            value1={initialValue}
+            operation={operation}
+            value2={steps}
+            equals={"="}
+            setAnswerInput={setAnswerInput}
+            checkAnswer={checkAnswer2}
+          />
+          <div className="pointsHelpDiv">
+            <Score score={score} />
+            <ResourceButton url="https://www.bbc.co.uk/bitesize/topics/zwv39j6/articles/zkd98xs" />
+          </div>
         </div>
       </div>
     );

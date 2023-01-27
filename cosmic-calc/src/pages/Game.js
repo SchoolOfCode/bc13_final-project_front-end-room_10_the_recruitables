@@ -30,6 +30,8 @@ import {
   checkShapeAnswer,
   yearOnePlanetEightQuestion,
   yearOnePlanetEightAnswer,
+  yearOnePlanetNineQuestion,
+  yearOnePlanetNineAnswer,
 } from "../components/functions/Year1Functions";
 
 import randomNumberGenerator from "../components/functions/rngFunction";
@@ -429,6 +431,52 @@ export default function Game() {
     return [questionResult, correctAnswer];
   };
 
+    //yearOnePlanetNine
+    const [value1Mixed, setValue1Mixed] = useState(0);
+    const [value2Mixed, setValue2Mixed] = useState(0);
+    const [operationMixed, setOperationMixed] = useState("");
+  
+    useEffect(() => {
+      let [value1Mixed, operationMixed, value2Mixed]  = yearOnePlanetNineQuestion();
+      setValue1Mixed(value1Mixed);
+      setOperationMixed(operationMixed);
+      setValue2Mixed(value2Mixed);
+    }, []);
+  
+    const checkAnswer9 = () => {
+      let [questionResult, correctAnswer] = yearOnePlanetNineAnswer(
+        [value1Mixed, operationMixed, value2Mixed],
+        answerInput
+      );
+      setAnswerInput("");
+      if (questionResult === true) {
+        playCorrect();
+        setResult("Correct!");
+        setScore(Number(score) + 1);
+        newQuestion9();
+      } else {
+        playWrong();
+        setResult(correctAnswer);
+        setAnswerVisible(true);
+      }
+    };
+  
+    const newQuestion9 = () => {
+      setNoOfQuestions(noOfQuestions + 1);
+      let [value1Mixed, operationMixed, value2Mixed] = yearOnePlanetNineQuestion();
+      setValue1Mixed(value1Mixed);
+      setValue2Mixed(value2Mixed);
+      setOperationMixed(operationMixed);
+      let [questionResult, correctAnswer] = yearOnePlanetNineAnswer(
+        [value1Mixed, operationMixed, value2Mixed],
+        answerInput
+      );
+      setAnswerInput("");
+      setResult("");
+      setAnswerVisible(false);
+      return [questionResult, correctAnswer];
+    };
+
   const updateScore = async (score, user) => {
     let email = await context.user.email;
     const response = await fetch(
@@ -637,7 +685,7 @@ export default function Game() {
         </div>
       </div>
     );
-  } else if (points >= 80) {
+  } else if (points < 80) {
     //console.log("Inside points >= 100 if statement");
     //console.log("points = ", points);
     return (
@@ -659,6 +707,32 @@ export default function Game() {
         <div className="pointsHelpDiv">
           <Score score={score} />
           <ResourceButton url="https://www.bbc.co.uk/bitesize/topics/zwv39j6/articles/zx3982p" />
+        </div>
+      </div>
+    );
+  } else if (points >= 90) {
+    return (
+      <div className="gameDiv">
+        <AnswerCard
+          answerVisible={answerVisible}
+          result={result}
+          newQuestion={newQuestion9}
+        />
+        <QuestionCard
+          h1={"How many sums can you get right?"}
+          inputType={inputType}
+          answerInput={answerInput}
+          noOfQuestions={noOfQuestions}
+          value1={value1Mixed}
+          operation={operationMixed}
+          value2={value2Mixed}
+          equals={"="}
+          setAnswerInput={setAnswerInput}
+          checkAnswer={checkAnswer9}
+        />
+        <div className="pointsHelpDiv">
+          <Score score={score} />
+          <ResourceButton url="https://www.bbc.co.uk/bitesize/topics/zwv39j6/articles/ztpmrwx" />
         </div>
       </div>
     );
