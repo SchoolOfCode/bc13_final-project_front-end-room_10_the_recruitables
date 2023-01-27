@@ -3,7 +3,7 @@
     "short_name": "cosmic-calcs",
     "icons": [
         {
-            "src": "./content/icons/87.png",
+            "src": "favicon.ico",
             "sizes": "87x87",
             "type": "image/png"
         },

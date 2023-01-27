@@ -55,7 +55,6 @@ export default function Game() {
   //let points = 390;
   let points = context.score;
 
-
   useEffect(() => {
     if (noOfQuestions === 11) {
       onAuthStateChanged(auth, (user) => {
@@ -484,8 +483,10 @@ export default function Game() {
           setAnswerInput={setAnswerInput}
           checkAnswer={checkAnswer1}
         />
+        <div className="pointsHelpDiv">
         <Score score={score} />
         <ResourceButton url="https://www.youtube.com/watch?v=e0dJWfQHF8Y" />
+      </div>
       </div>
     );
   } else if (points < 20) {
@@ -504,8 +505,10 @@ export default function Game() {
           shape={shape}
           checkAnswer={checkAnswer2}
         />
+        <div className="pointsHelpDiv">
         <Score score={score} />
         <ResourceButton url="https://www.youtube.com/watch?v=WTeqUejf3D0" />
+      </div>
       </div>
     );
   } else if (points < 30) {
@@ -530,8 +533,10 @@ export default function Game() {
           setAnswerInput={setAnswerInput}
           checkAnswer={checkAnswer3}
         />
+        <div className="pointsHelpDiv">
         <Score score={score} />
         <ResourceButton url="https://www.bbc.co.uk/bitesize/topics/zwv39j6/articles/zbpbrj6" />
+      </div>
       </div>
     );
   } else if (points < 40) {
@@ -553,8 +558,10 @@ export default function Game() {
           setAnswerInput={setAnswerInput}
           checkAnswer={checkAnswer4}
         />
+        <div className="pointsHelpDiv">
         <Score score={score} />
         <ResourceButton url="https://www.bbc.co.uk/bitesize/topics/zwv39j6/articles/zkd98xs" />
+      </div>
       </div>
     );
   } else if (points < 50) {
@@ -579,8 +586,10 @@ export default function Game() {
           setAnswerInput={setAnswerInput}
           checkAnswer={checkAnswer5}
         />
+        <div className="pointsHelpDiv">
         <Score score={score} />
         <ResourceButton url="https://www.bbc.co.uk/bitesize/topics/zwv39j6/articles/ztpmrwx" />
+      </div>
       </div>
     );
   } else if (points < 60) {
@@ -602,8 +611,10 @@ export default function Game() {
           setAnswerInput={setAnswerInput}
           checkAnswer={checkAnswer6}
         />
+        <div className="pointsHelpDiv">
         <Score score={score} />
         <ResourceButton url="https://www.youtube.com/watch?gl=CO&hl=es-419&context=C38ccb90ADOEgsToPDskLi8_jjTLcMDO7pvUR7WrMl&v=e0dJWfQHF8Y" />
+      </div>
       </div>
     );
   } else if (points < 70) {
@@ -621,11 +632,13 @@ export default function Game() {
           fractionWord={fractionWord}
           checkAnswer={checkAnswer7}
         />
+        <div className="pointsHelpDiv">
         <Score score={score} />
         <ResourceButton url="https://www.bbc.co.uk/bitesize/topics/z3rbg82" />
       </div>
+      </div>
     );
-  } else if (points < 80) {
+  } else if (points >= 80) {
     console.log("Inside points >= 100 if statement");
     console.log("points = ", points);
     return (
@@ -644,8 +657,10 @@ export default function Game() {
           setAnswerInput={setAnswerInput}
           checkAnswer={checkAnswer8}
         />
+        <div className="pointsHelpDiv">
         <Score score={score} />
         <ResourceButton url="https://www.bbc.co.uk/bitesize/topics/zwv39j6/articles/zx3982p" />
+      </div>
       </div>
     );
   }

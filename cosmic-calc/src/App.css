@@ -1,10 +1,9 @@
 .navBarPageDiv {
   background-image: url(./images/NavBar.png);
   background-size: cover;
+  width: 1005;
   background-repeat: no-repeat;
   background-position: bottom center;
-  /* background-color: #fed420 ;
-  border-bottom: whitesmoke 15px double; */
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -32,12 +31,12 @@
 
 .navButtonGame {
   background-image: url(./images/Background_Buttons/GameButtonE.png);
-  background-size: cover;
+  background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
   background-color: rgba(0, 0, 255, 0);
-  width: 10vw;
-  height: 10vh;
+  width: 12vw;
+  height: 12vh;
   min-width: 150px;
   min-height: 100px;
   object-fit: fill;
@@ -46,12 +45,12 @@
 
 .navButtonProgress {
   background-image: url(./images/Background_Buttons/ProgressButtonE.png);
-  background-size: cover;
+  background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
   background-color: rgba(0, 0, 255, 0);
-  width: 10vw;
-  height: 10vh;
+  width: 12vw;
+  height: 12vh;
   min-width: 160px;
   min-height: 100px;
   text-align: center;
@@ -134,7 +133,8 @@
 .navButtonRegister:hover,
 .navButtonLogin:hover {
   transition: transform 0.3s ease-in-out 0s;
-  transform: rotate(5deg);
+  transform: rotate(5deg) scale(1.2);
+  cursor: pointer;
 }
 
 .navBarLoginDiv {
@@ -198,3 +198,16 @@
   text-shadow: #000 1px 1px;
   /* border-radius: 50%; */
 }
+=======
+@media screen and (max-width: 650px) {
+  .navBarPageDiv {
+   width: 110%;
+  }
+}
+
+@media screen and (max-width: 380px) {
+  .navBarPageDiv {
+    width: 160%;
+  }
+}
+

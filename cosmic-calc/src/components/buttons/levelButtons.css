@@ -1,50 +1,79 @@
 @import url("https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap");
 
 .levelButton{
-   
-    vertical-align: middle;
-        justify-content: center;
-        align-items: center;
+  vertical-align: middle;
+  justify-content: center;
+  align-items: center;
 }
+
 .levelButtons{
-    
-    font-family: "Bubblegum Sans";
-        padding-top: 10%;
-        margin-top: 2cm;
-        text-align: center;
-        vertical-align: middle;
-        justify-content: center;
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: center;
-        width: 15vw;
-        height: 15vh;
-        margin: 2%;
-        background-color: transparent;
-        display: flex;
-        position: absolute;
-        z-index: 2;
-        
-      }
+  font-family: "Bubblegum Sans";
+  padding-top: 10%;
+  margin-top: 2cm;
+  text-align: center;
+  vertical-align: middle;
+  justify-content: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 15vw;
+  height: 15vh;
+  margin: 2%;
+  background-color: transparent;
+  display: flex;
+  position: absolute;
+  z-index: 2;
+}
 
-      .levelButtons span {
-       
-        display: none;
-      }
+.levelButtons span {
+  display: none;
+}
 
-      .levelButtons:hover span {
-        font-size: 20px; 
-        position:absolute;
-        display: inline-block;
-        vertical-align: middle;
-        text-align: center;
-        float: center;
-        justify-content: center;
-        align-items: center;
-        color: white; 
-        z-index: 3;
-      }
+.levelButtons:hover span {
+  font-size: 20px; 
+  position:absolute;
+  display: inline-block;
+  vertical-align: middle;
+  text-align: center;
+  /* float: center; */
+  justify-content: center;
+  align-items: center;
+  color: rgb(255, 255, 255); 
+  z-index: 4;
+}
 
-      
 
-           
+#levelButton-2-complete:hover span,
+#levelButton-2-lock:hover span,
+#levelButton-2-complete:hover span
+{
+  display: flex;
+  position: absolute;
+  bottom: 16vh;
+}
+
+#levelButton-8-lock:hover span,
+#levelButton-8-complete:hover span,
+#levelButton-8-unlock:hover span {
+  display: flex;
+  position: absolute;
+  top: 0;
+  bottom: 100vh;
+}
+
+#levelButton-5-lock:hover span,
+#levelButton-5-complete:hover span,
+#levelButton-5-unlock:hover span {
+  display: flex;
+  position: absolute;
+  top: 0;
+  bottom: 100vh;
+}
+
+#levelButton-9-lock:hover span,
+#levelButton-9-complete:hover span,
+#levelButton-9-unlock:hover span {
+  display: flex;
+  position: absolute;
+  font-size: 25px
+}

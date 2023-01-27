@@ -5,9 +5,11 @@
     justify-content: space-evenly;
     justify-content: space-between;
     height: 60vh;
-     width: 80vw;
+    width: 80vw;
     background-color: var(--colour-purple-transparent);
     border-color: var(--colour-purple);
+    border-style: solid;
+    border-width: 10px;
     border-radius: 10px;
     padding: 10px;
     margin: 2vh;
@@ -58,12 +60,12 @@
 }
 
 .buttonTimer{
-    border: 5px solid rgb(185, 183, 183);
+    border: 5px solid rgb(78, 207, 49);
     border-radius: 10px;
     padding: 10px;
     margin: 10px;
     text-align: center;
-    background-color: rgb(220, 220, 220);
+    background-color: rgba(78, 207, 49, 0.609);
     font-family: Bubblegum Sans;
     font-size: 2vw;
     color: white;
