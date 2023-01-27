@@ -62,7 +62,6 @@
    grid-auto-rows: minmax(2vh, auto);
    align-items: center; 
    margin-right: 10px;
-   border: solid, black;
 }
 
 .new-shape-button{
