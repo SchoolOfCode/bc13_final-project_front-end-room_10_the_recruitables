@@ -3,12 +3,14 @@ import "./picQuestionCard.css";
 
 export default function PicQuestionCard(props) {
   return (
-    <div className="questionDiv">
+    <div className="pics-questionDiv">
       {props.h1}
-      <div className="question-container">
+      <div className="pics-card-question-container">
         <h2 className="h2QuestionGame">{props.noOfQuestions + ")  "}</h2>
-        <h2 className="h2QuestionGame">{props.text}</h2>
-        <img className="QuestionImg" src={props.src} alt={props.imgAlt} />
+        <div className="pics-NumberandImg">
+          <h2 className="h2QuestionGame">{props.text}</h2>
+          <img className="pics-QuestionImg" src={props.src} alt={props.imgAlt} />
+        </div>
         <input
           className="inputGame"
           type="number"
