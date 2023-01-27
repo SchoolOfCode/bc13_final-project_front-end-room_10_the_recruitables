@@ -122,40 +122,32 @@ export function yearOnePlanetEightAnswer(knownValue, playerAnswer) {
 
 // Year 1 Planet 9 - "Randomly choose questions from the previous selection"
 export function yearOnePlanetNineQuestion() {
-  let questionsAvailable = [2, 4, 5, 6, 7, 8];
+  let questionsAvailable = [4, 5, 8];
   let randomIndex = randomNumberGenerator(questionsAvailable.length);
   let questionChoice = questionsAvailable[randomIndex];
   switch (questionChoice) {
-    case 2:
-      return [questionChoice, giveRandomShape()];
     case 4:
-      return [questionChoice, yearOnePlanetFourQuestion()];
+      let unknownNumber10 = randomNumberGenerator(11);
+      return [questionChoice, [10, "-", unknownNumber10]];
     case 5:
       return [questionChoice, yearOnePlanetFiveQuestion()];
-    case 6:
-      return [questionChoice, yearOnePlanetSixQuestion()];
-    case 7:
-      return [questionChoice, getFractionWord()];
     case 8:
-      return [questionChoice, yearOnePlanetEightQuestion()];
+      let unknownNumber20 = randomNumberGenerator(21);
+      return [questionChoice, [20, "-", unknownNumber20]];
     default:
       throw new Error("Question choice not valid.")
   }
 }
 export function yearOnePlanetNineAnswer(entranceArray, playerAnswer) {
   switch (entranceArray[0]) {
-    case 2:
-      return checkShapeAnswer(playerAnswer, entranceArray[1]);
     case 4:
-      return yearOnePlanetFourAnswer(entranceArray[1], playerAnswer);
+      let correctAnswer10 = 10 - entranceArray[1][2];
+      return [parseInt(playerAnswer) === correctAnswer10, correctAnswer10];
     case 5:
       return yearOnePlanetFiveAnswer(entranceArray[1], playerAnswer);
-    case 6:
-      return yearOnePlanetSixAnswer(entranceArray[1], playerAnswer);
-    case 7:
-      return yearOnePlanetSevenAnswer(entranceArray[1], playerAnswer);
     case 8:
-      return yearOnePlanetEightAnswer(entranceArray[1], playerAnswer);
+      let correctAnswer20 = 20 - entranceArray[1][2];
+      return [parseInt(playerAnswer) === correctAnswer20, correctAnswer20];
     default:
       throw new Error("Answer choice not valid");
   }
