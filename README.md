@@ -1,7 +1,7 @@
 **[DEMO LINK](https://frolicking-chaja-1991dd.netlify.app/)**
 ---
 
-<img align="center" src="https://i.ibb.co/n10Bzws/banner.png" width="1000" height="280">
+<img align="center" src="https://i.ibb.co/6HBpxks/banner.png" width="1000" height="280">
 
 <br />
 
