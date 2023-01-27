@@ -40,7 +40,6 @@ export default function Game() {
   const [answerVisible, setAnswerVisible] = useState(false);
   const [noOfQuestions, setNoOfQuestions] = useState(1);
   const [inputType, setInputType] = useState("");
-  console.log(inputType);
 
   const [playCorrect] = useSound(correct, { interrupt: true, volume: 0.3 });
   const [playWrong] = useSound(wrong, { interrupt: true, volume: 0.3 });
@@ -169,7 +168,7 @@ export default function Game() {
 
   useEffect(() => {
     let [Y1P3value1, Y1P3operation, Y1P3value2] = yearOnePlanetFiveQuestion();
-    console.log(Y1P3value1, Y1P3value2, Y1P3operation);
+    //console.log(Y1P3value1, Y1P3value2, Y1P3operation);
     setY1P3Value1(Y1P3value1);
     setY1P3Operation(Y1P3operation);
     setY1P3Value2(Y1P3value2);
@@ -180,7 +179,7 @@ export default function Game() {
       [Y1P3value1, Y1P3operation, Y1P3value2],
       answerInput
     );
-    console.log(questionResult, correctAnswer);
+    //console.log(questionResult, correctAnswer);
     setAnswerInput("");
     if (questionResult === true) {
       playCorrect();
@@ -231,7 +230,7 @@ export default function Game() {
       newQuestion4();
       setInputType("number");
     } else {
-      console.log("wrong");
+      //console.log("wrong");
       playWrong();
       setInputType("hidden");
       setResult(correctAnswer);
@@ -242,7 +241,7 @@ export default function Game() {
 
   const newQuestion4 = () => {
     setNoOfQuestions(noOfQuestions + 1);
-    console.log("new question 4");
+    //console.log("new question 4");
     let Y1P4knownValue = yearOnePlanetFourQuestion();
     setY1P4knownValue(Y1P4knownValue);
 
@@ -355,8 +354,8 @@ export default function Game() {
   }, []);
 
   function checkAnswer7(playerInput) {
-    console.log(fractionWord);
-    console.log(playerInput);
+    //console.log(fractionWord);
+    //console.log(playerInput);
 
     let [questionResult, correctAnswer] = yearOnePlanetSevenAnswer(
       fractionWord,
@@ -378,7 +377,7 @@ export default function Game() {
     setNoOfQuestions(noOfQuestions + 1);
     let newFractionWord = getFractionWord();
     setFractionWord(newFractionWord);
-    console.log(`right answer${fractionWord} and input${playerInput}`);
+    //console.log(`right answer${fractionWord} and input${playerInput}`);
     let [correctAnswer, questionResult] = yearOnePlanetSevenAnswer(
       fractionWord,
       playerInput
@@ -443,7 +442,7 @@ export default function Game() {
       }
     );
     const data = await response.json();
-    console.log(data);
+    //console.log(data);
   };
 
   if (noOfQuestions === 11) {
@@ -484,13 +483,13 @@ export default function Game() {
           checkAnswer={checkAnswer1}
         />
         <div className="pointsHelpDiv">
-        <Score score={score} />
-        <ResourceButton url="https://www.youtube.com/watch?v=e0dJWfQHF8Y" />
-      </div>
+          <Score score={score} />
+          <ResourceButton url="https://www.youtube.com/watch?v=e0dJWfQHF8Y" />
+        </div>
       </div>
     );
   } else if (points < 20) {
-    console.log("In shapes game");
+    //console.log("In shapes game");
 
     return (
       <div className="gameDiv">
@@ -506,14 +505,14 @@ export default function Game() {
           checkAnswer={checkAnswer2}
         />
         <div className="pointsHelpDiv">
-        <Score score={score} />
-        <ResourceButton url="https://www.youtube.com/watch?v=WTeqUejf3D0" />
-      </div>
+          <Score score={score} />
+          <ResourceButton url="https://www.youtube.com/watch?v=WTeqUejf3D0" />
+        </div>
       </div>
     );
   } else if (points < 30) {
-    console.log("In counters game!");
-    console.log("points = ", points);
+    //console.log("In counters game!");
+    //console.log("points = ", points);
     return (
       <div className="gameDiv">
         <AnswerCard
@@ -534,14 +533,14 @@ export default function Game() {
           checkAnswer={checkAnswer3}
         />
         <div className="pointsHelpDiv">
-        <Score score={score} />
-        <ResourceButton url="https://www.bbc.co.uk/bitesize/topics/zwv39j6/articles/zbpbrj6" />
-      </div>
+          <Score score={score} />
+          <ResourceButton url="https://www.bbc.co.uk/bitesize/topics/zwv39j6/articles/zbpbrj6" />
+        </div>
       </div>
     );
   } else if (points < 40) {
-    console.log("Inside points < 20 if statement");
-    console.log("points = ", points);
+    //console.log("Inside points < 20 if statement");
+    //console.log("points = ", points);
     return (
       <div className="gameDiv">
         <AnswerCard
@@ -559,14 +558,14 @@ export default function Game() {
           checkAnswer={checkAnswer4}
         />
         <div className="pointsHelpDiv">
-        <Score score={score} />
-        <ResourceButton url="https://www.bbc.co.uk/bitesize/topics/zwv39j6/articles/zkd98xs" />
-      </div>
+          <Score score={score} />
+          <ResourceButton url="https://www.bbc.co.uk/bitesize/topics/zwv39j6/articles/zkd98xs" />
+        </div>
       </div>
     );
   } else if (points < 50) {
-    console.log("Inside 20 <= points < 50 if statement");
-    console.log("points = ", points);
+    //console.log("Inside 20 <= points < 50 if statement");
+    //console.log("points = ", points);
     return (
       <div className="gameDiv">
         <AnswerCard
@@ -587,9 +586,9 @@ export default function Game() {
           checkAnswer={checkAnswer5}
         />
         <div className="pointsHelpDiv">
-        <Score score={score} />
-        <ResourceButton url="https://www.bbc.co.uk/bitesize/topics/zwv39j6/articles/ztpmrwx" />
-      </div>
+          <Score score={score} />
+          <ResourceButton url="https://www.bbc.co.uk/bitesize/topics/zwv39j6/articles/ztpmrwx" />
+        </div>
       </div>
     );
   } else if (points < 60) {
@@ -612,9 +611,9 @@ export default function Game() {
           checkAnswer={checkAnswer6}
         />
         <div className="pointsHelpDiv">
-        <Score score={score} />
-        <ResourceButton url="https://www.youtube.com/watch?gl=CO&hl=es-419&context=C38ccb90ADOEgsToPDskLi8_jjTLcMDO7pvUR7WrMl&v=e0dJWfQHF8Y" />
-      </div>
+          <Score score={score} />
+          <ResourceButton url="https://www.youtube.com/watch?gl=CO&hl=es-419&context=C38ccb90ADOEgsToPDskLi8_jjTLcMDO7pvUR7WrMl&v=e0dJWfQHF8Y" />
+        </div>
       </div>
     );
   } else if (points < 70) {
@@ -633,14 +632,14 @@ export default function Game() {
           checkAnswer={checkAnswer7}
         />
         <div className="pointsHelpDiv">
-        <Score score={score} />
-        <ResourceButton url="https://www.bbc.co.uk/bitesize/topics/z3rbg82" />
-      </div>
+          <Score score={score} />
+          <ResourceButton url="https://www.bbc.co.uk/bitesize/topics/z3rbg82" />
+        </div>
       </div>
     );
   } else if (points >= 80) {
-    console.log("Inside points >= 100 if statement");
-    console.log("points = ", points);
+    //console.log("Inside points >= 100 if statement");
+    //console.log("points = ", points);
     return (
       <div className="gameDiv">
         <AnswerCard
@@ -658,9 +657,9 @@ export default function Game() {
           checkAnswer={checkAnswer8}
         />
         <div className="pointsHelpDiv">
-        <Score score={score} />
-        <ResourceButton url="https://www.bbc.co.uk/bitesize/topics/zwv39j6/articles/zx3982p" />
-      </div>
+          <Score score={score} />
+          <ResourceButton url="https://www.bbc.co.uk/bitesize/topics/zwv39j6/articles/zx3982p" />
+        </div>
       </div>
     );
   }

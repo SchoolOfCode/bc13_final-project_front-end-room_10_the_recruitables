@@ -51,9 +51,9 @@ export default function YearTwoGames() {
   const context = useContext(ScoreContext);
   //let points = 590;
   let points = context.score;
-  console.log(context);
+  //console.log(context);
 
-  console.log("Points = ", points);
+  //console.log("Points = ", points);
 
   useEffect(() => {
     if (noOfQuestions === 11) {
@@ -87,7 +87,7 @@ export default function YearTwoGames() {
       const data = await response.json();
       if (data.payload) {
         let newcoinCountingArray = data.payload;
-        console.log(newcoinCountingArray);
+        //console.log(newcoinCountingArray);
         setcoinCountingArray(data.payload);
         let randomID = randomNumberGenerator(10);
         setcoinCountingImg(newcoinCountingArray[randomID].img_url);
@@ -133,9 +133,9 @@ export default function YearTwoGames() {
 
   useEffect(() => {
     let [initialValue, operation, steps] = yearTwoPlanetTwoQuestion();
-    console.log("initialValue = ", initialValue);
-    console.log("operation = ", operation);
-    console.log("steps = ", steps);
+    //console.log("initialValue = ", initialValue);
+    //console.log("operation = ", operation);
+    //console.log("steps = ", steps);
     setInitialValue(initialValue);
     setOperation(operation);
     setSteps(steps);
@@ -146,7 +146,7 @@ export default function YearTwoGames() {
       [initialValue, operation, steps],
       answerInput
     );
-    console.log(questionResult, correctAnswer);
+    //console.log(questionResult, correctAnswer);
     setAnswerInput("");
     if (questionResult === true) {
       playCorrect();
@@ -163,9 +163,9 @@ export default function YearTwoGames() {
   const newQuestion2 = () => {
     setNoOfQuestions(noOfQuestions + 1);
     let [initialValue, operation, steps] = yearTwoPlanetTwoQuestion();
-    console.log("initialValue = ", initialValue);
-    console.log("operation = ", operation);
-    console.log("steps = ", steps);
+    //console.log("initialValue = ", initialValue);
+    //console.log("operation = ", operation);
+    //console.log("steps = ", steps);
     setInitialValue(initialValue);
     setOperation(operation);
     setSteps(steps);
@@ -173,7 +173,7 @@ export default function YearTwoGames() {
       [initialValue, operation, steps],
       answerInput
     );
-    console.log(questionResult, correctAnswer);
+    //console.log(questionResult, correctAnswer);
     setAnswerInput("");
     setResult("");
     setAnswerVisible(false);
@@ -191,7 +191,7 @@ export default function YearTwoGames() {
   }, []);
 
   const checkAnswer3 = () => {
-    console.log("Check answer called");
+    //console.log("Check answer called");
 
     let [questionResult, correctAnswer] = yearTwoPlanetThreeAnswer(
       [number, word],
@@ -215,8 +215,8 @@ export default function YearTwoGames() {
     let [number, word] = yearTwoPlanetThreeQuestion();
     setNumber(number);
     setWord(word);
-    console.log("number = ", number);
-    console.log("word = ", word);
+    //console.log("number = ", number);
+    //console.log("word = ", word);
     let [questionResult, correctAnswer] = yearTwoPlanetThreeAnswer(
       [number, word],
       answerInput
@@ -247,7 +247,7 @@ export default function YearTwoGames() {
       const data = await response.json();
       if (data.payload) {
         let newplaceValueArray = data.payload;
-        console.log(newplaceValueArray);
+        //console.log(newplaceValueArray);
         setplaceValueArray(data.payload);
         let randomID = randomNumberGenerator(10);
         setplaceValueImg(newplaceValueArray[randomID].img_url);
@@ -296,7 +296,7 @@ export default function YearTwoGames() {
     setFirstNumber(firstNumber);
     setSecondNumber(secondNumber);
     setThirdNumber(thirdNumber);
-    console.log(firstNumber, secondNumber, thirdNumber);
+    //console.log(firstNumber, secondNumber, thirdNumber);
   }, []);
 
   const checkAnswer5 = () => {
@@ -323,7 +323,7 @@ export default function YearTwoGames() {
     setFirstNumber(firstNumber);
     setSecondNumber(secondNumber);
     setThirdNumber(thirdNumber);
-    console.log(firstNumber, secondNumber, thirdNumber);
+    //console.log(firstNumber, secondNumber, thirdNumber);
     let [questionResult, correctAnswer] = yearTwoPlanetFiveAnswer(
       [firstNumber, secondNumber, thirdNumber],
       answerInput
@@ -443,7 +443,7 @@ export default function YearTwoGames() {
       ],
       answerInput
     );
-    console.log("result", questionResult, correctAnswer);
+    //console.log("result", questionResult, correctAnswer);
     setAnswerInput("");
     setResult("");
     setAnswerVisible(false);
@@ -510,7 +510,7 @@ export default function YearTwoGames() {
       }
     );
     const data = await response.json();
-    console.log(data);
+    //console.log(data);
   };
 
   if (noOfQuestions === 11) {
@@ -552,9 +552,9 @@ export default function YearTwoGames() {
           checkAnswer={checkAnswer1}
         />
         <div className="pointsHelpDiv">
-        <Score score={score} />
-        <ResourceButton url="https://www.youtube.com/watch?v=8nokRGhevCw" />
-      </div>
+          <Score score={score} />
+          <ResourceButton url="https://www.youtube.com/watch?v=8nokRGhevCw" />
+        </div>
       </div>
     );
   } else if (points < 20) {
@@ -578,14 +578,14 @@ export default function YearTwoGames() {
             checkAnswer={checkAnswer2}
           />
           <div className="pointsHelpDiv">
-          <Score score={score} />
-          <ResourceButton url="https://www.bbc.co.uk/bitesize/topics/zwv39j6/articles/zkd98xs" />
+            <Score score={score} />
+            <ResourceButton url="https://www.bbc.co.uk/bitesize/topics/zwv39j6/articles/zkd98xs" />
+          </div>
         </div>
-      </div>
       </div>
     );
   } else if (points < 30) {
-    console.log("10 points = ", points);
+    //console.log("10 points = ", points);
     return (
       <div className="gameDiv">
         <AnswerCard
@@ -604,11 +604,10 @@ export default function YearTwoGames() {
           checkAnswer={checkAnswer3}
         />
         <div className="pointsHelpDiv">
-        <Score score={score} />
-        <ResourceButton url="https://www.youtube.com/watch?v=bGetqbqDVaA" />
+          <Score score={score} />
+          <ResourceButton url="https://www.youtube.com/watch?v=bGetqbqDVaA" />
+        </div>
       </div>
-      </div>
-
     );
   } else if (points < 40) {
     return (
@@ -628,13 +627,13 @@ export default function YearTwoGames() {
           checkAnswer={checkAnswer4}
         />
         <div className="pointsHelpDiv">
-        <Score score={score} />
-        <ResourceButton url="https://www.youtube.com/watch?v=bGetqbqDVaA" />
-      </div>
+          <Score score={score} />
+          <ResourceButton url="https://www.youtube.com/watch?v=bGetqbqDVaA" />
+        </div>
       </div>
     );
   } else if (points < 50) {
-    console.log("15 points = ", points);
+    //console.log("15 points = ", points);
     return (
       <div className="gameDiv">
         <AnswerCard
@@ -656,13 +655,13 @@ export default function YearTwoGames() {
           checkAnswer={checkAnswer5}
         />
         <div className="pointsHelpDiv">
-        <Score score={score} />
-        <ResourceButton url="https://www.bbc.co.uk/bitesize/topics/zf72pv4/articles/zr68r2p" />
-      </div>
+          <Score score={score} />
+          <ResourceButton url="https://www.bbc.co.uk/bitesize/topics/zf72pv4/articles/zr68r2p" />
+        </div>
       </div>
     );
   } else if (points < 60) {
-    console.log("20 points = ", points);
+    //console.log("20 points = ", points);
     return (
       <div className="gameDiv">
         <AnswerCard
@@ -681,13 +680,13 @@ export default function YearTwoGames() {
           checkAnswer={checkAnswer6}
         />
         <div className="pointsHelpDiv">
-        <Score score={score} />
-        <ResourceButton url="https://www.bbc.co.uk/bitesize/topics/z3rbg82" />
-      </div>
+          <Score score={score} />
+          <ResourceButton url="https://www.bbc.co.uk/bitesize/topics/z3rbg82" />
+        </div>
       </div>
     );
   } else if (points < 70) {
-    console.log("25 points = ", points);
+    //console.log("25 points = ", points);
     return (
       <div className="gameDiv">
         <AnswerCard
@@ -707,13 +706,13 @@ export default function YearTwoGames() {
           checkAnswer={checkAnswer7}
         />
         <div className="pointsHelpDiv">
-        <Score score={score} />
-        <ResourceButton url="https://www.youtube.com/watch?v=bGetqbqDVaA" />
-      </div>
+          <Score score={score} />
+          <ResourceButton url="https://www.youtube.com/watch?v=bGetqbqDVaA" />
+        </div>
       </div>
     );
   } else if (points >= 80) {
-    console.log("30 points = ", points);
+    //console.log("30 points = ", points);
     return (
       <div className="gameDiv">
         <AnswerCard
@@ -731,9 +730,9 @@ export default function YearTwoGames() {
           checkAnswer={checkAnswer8}
         />
         <div className="pointsHelpDiv">
-        <Score score={score} />
-        <ResourceButton url="https://www.bbc.co.uk/bitesize/topics/z8sfr82/articles/z3cm8hv" />
-      </div>
+          <Score score={score} />
+          <ResourceButton url="https://www.bbc.co.uk/bitesize/topics/z8sfr82/articles/z3cm8hv" />
+        </div>
       </div>
     );
   }

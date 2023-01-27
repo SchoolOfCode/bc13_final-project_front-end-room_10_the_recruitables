@@ -53,7 +53,7 @@ export default function App() {
   };
   const navigateToGame = () => {
     let year = context.year;
-    console.log(year);
+    //console.log(year);
     if (year === 1) {
       navigate("/game");
     } else if (year === 2) {
@@ -61,19 +61,19 @@ export default function App() {
     } else if (year === 3) {
       navigate("/year-three-games");
     } else if (year === 4) {
-      console.log("year 4");
+      //console.log("year 4");
       navigate("/year-four-games");
     }
     setProfileHighlighted(false);
     setProgressHighlighted(false);
     setGameHighlighted(true);
     context.update();
-    console.log(navigate);
+    //console.log(navigate);
   };
   const navigateToRegister = () => {
     navigate("/register");
   };
-  console.log(authed.currentUser);
+  //console.log(authed.currentUser);
 
   const navigateToLeaderboard = () => {
     navigate("/leaderboard");

@@ -59,9 +59,9 @@ const YearFourGames = () => {
   let points = context.score;
   // let points = 898;
 
-  console.log(context);
+  //console.log(context);
 
-  console.log("Points = ", points);
+  //console.log("Points = ", points);
 
   useEffect(() => {
     if (noOfQuestions === 11) {
@@ -135,7 +135,7 @@ const YearFourGames = () => {
       [firstInt, operation, secondInt],
       answerInput
     );
-    console.log(firstInt, operation, secondInt, answerInput);
+    //console.log(firstInt, operation, secondInt, answerInput);
     setAnswerInput("");
     if (questionResult === true) {
       playCorrect();
@@ -271,7 +271,7 @@ const YearFourGames = () => {
       ],
       answerInput
     );
-    console.log("result", questionResult, correctAnswer);
+    //console.log("result", questionResult, correctAnswer);
     setAnswerInput("");
     setResult("");
     setAnswerVisible(false);
@@ -479,7 +479,7 @@ const YearFourGames = () => {
     setFirstMultiple(firstMultiple);
     setSecondMultiple(secondMultiple);
     setThirdMultiple(thirdMultiple);
-    console.log(firstMultiple, secondMultiple, thirdMultiple);
+    //console.log(firstMultiple, secondMultiple, thirdMultiple);
     let [questionResult, correctAnswer] = yearFourPlanetEightAnswer(
       [firstMultiple, secondMultiple, thirdMultiple],
       answerInput
@@ -505,7 +505,7 @@ const YearFourGames = () => {
       }
     );
     const data = await response.json();
-    console.log(data);
+    //console.log(data);
   };
 
   if (noOfQuestions === 11) {
@@ -549,9 +549,9 @@ const YearFourGames = () => {
             checkAnswer={checkAnswer1}
           />
           <div className="pointsHelpDiv">
-          <Score score={score} />
-          <ResourceButton url="https://www.bbc.co.uk/teach/supermovers/ks2-maths-the-6-times-table-with-fred-the-red/zrq3xyc" />
-        </div>
+            <Score score={score} />
+            <ResourceButton url="https://www.bbc.co.uk/teach/supermovers/ks2-maths-the-6-times-table-with-fred-the-red/zrq3xyc" />
+          </div>
         </div>
       </div>
     );
@@ -576,10 +576,10 @@ const YearFourGames = () => {
             checkAnswer={checkAnswer2}
           />
           <div className="pointsHelpDiv">
-          <Score score={score} />
-          <ResourceButton url="https://www.bbc.co.uk/bitesize/topics/zf72pv4/articles/zw267yc" />
+            <Score score={score} />
+            <ResourceButton url="https://www.bbc.co.uk/bitesize/topics/zf72pv4/articles/zw267yc" />
+          </div>
         </div>
-      </div>
       </div>
     );
   } else if (points < 30) {
@@ -603,14 +603,14 @@ const YearFourGames = () => {
             checkAnswer={checkAnswer3}
           />
           <div className="pointsHelpDiv">
-          <Score score={score} />
-          <ResourceButton url="https://www.bbc.co.uk/bitesize/topics/znwj6sg/articles/zxthnbk" />
+            <Score score={score} />
+            <ResourceButton url="https://www.bbc.co.uk/bitesize/topics/znwj6sg/articles/zxthnbk" />
+          </div>
         </div>
-      </div>
       </div>
     );
   } else if (points < 40) {
-    console.log("25 points = ", points);
+    //console.log("25 points = ", points);
     return (
       <div className="gameDiv">
         <AnswerCard
@@ -630,9 +630,9 @@ const YearFourGames = () => {
           checkAnswer={checkAnswer4}
         />
         <div className="pointsHelpDiv">
-        <Score score={score} />
-        <ResourceButton url="https://www.bbc.co.uk/bitesize/topics/zsjqtfr/articles/zhpq7nb" />
-      </div>
+          <Score score={score} />
+          <ResourceButton url="https://www.bbc.co.uk/bitesize/topics/zsjqtfr/articles/zhpq7nb" />
+        </div>
       </div>
     );
   } else if (points < 50) {
@@ -654,10 +654,10 @@ const YearFourGames = () => {
             checkAnswer={checkAnswer5}
           />
           <div className="pointsHelpDiv">
-          <Score score={score} />
-          <ResourceButton url="https://www.bbc.co.uk/bitesize/topics/zh8dmp3/articles/zpx2qty" />
+            <Score score={score} />
+            <ResourceButton url="https://www.bbc.co.uk/bitesize/topics/zh8dmp3/articles/zpx2qty" />
+          </div>
         </div>
-      </div>
       </div>
     );
   } else if (points < 60) {
@@ -683,10 +683,10 @@ const YearFourGames = () => {
             checkAnswer={checkAnswer6}
           />
           <div className="pointsHelpDiv">
-          <Score score={score} />
-          <ResourceButton url="https://www.bbc.co.uk/bitesize/topics/z4nsgk7/articles/z63qdp3" />
+            <Score score={score} />
+            <ResourceButton url="https://www.bbc.co.uk/bitesize/topics/z4nsgk7/articles/z63qdp3" />
+          </div>
         </div>
-      </div>
       </div>
     );
   } else if (points < 70) {
@@ -710,10 +710,10 @@ const YearFourGames = () => {
             checkAnswer={checkAnswer7}
           />
           <div className="pointsHelpDiv">
-          <Score score={score} />
-          <ResourceButton url="https://www.bbc.co.uk/teach/supermovers/times-table-collection/z4vv6v4" />
+            <Score score={score} />
+            <ResourceButton url="https://www.bbc.co.uk/teach/supermovers/times-table-collection/z4vv6v4" />
+          </div>
         </div>
-      </div>
       </div>
     );
   } else if (points < 80) {
@@ -739,9 +739,9 @@ const YearFourGames = () => {
             checkAnswer={checkAnswer8}
           />
           <div className="pointsHelpDiv">
-          <Score score={score} />
-          <ResourceButton url="https://www.bbc.co.uk/bitesize/topics/z36tyrd/articles/zr9xqfr" />
-        </div>
+            <Score score={score} />
+            <ResourceButton url="https://www.bbc.co.uk/bitesize/topics/z36tyrd/articles/zr9xqfr" />
+          </div>
         </div>
       </div>
     );
@@ -768,9 +768,9 @@ const YearFourGames = () => {
             checkAnswer={checkAnswer7}
           />
           <div className="pointsHelpDiv">
-          <Score score={score} />
-          <ResourceButton url="https://www.bbc.co.uk/teach/supermovers/times-table-collection/z4vv6v4" />
-        </div>
+            <Score score={score} />
+            <ResourceButton url="https://www.bbc.co.uk/teach/supermovers/times-table-collection/z4vv6v4" />
+          </div>
         </div>
       </div>
     );

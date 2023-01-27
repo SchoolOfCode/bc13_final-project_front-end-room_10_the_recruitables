@@ -27,7 +27,7 @@ function Register() {
     });
   }, []);
 
-  console.log(user);
+  //console.log(user);
 
   let navigate = useNavigate();
 
@@ -48,7 +48,7 @@ function Register() {
       }
     );
     const data = await response.json();
-    console.log(data);
+    //console.log(data);
   };
   const handleRegister = async (e) => {
     e.preventDefault();
@@ -67,7 +67,7 @@ function Register() {
       setTimeout(() => {
         navigate("/avatars");
       }, 1000);
-      console.log(scores);
+      //console.log(scores);
     } catch (error) {
       console.log(error);
     }
