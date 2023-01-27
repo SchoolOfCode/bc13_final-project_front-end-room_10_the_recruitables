@@ -1,70 +1,174 @@
-# Getting Started with Create React App
+**[DEMO LINK](https://frolicking-chaja-1991dd.netlify.app/)**
+---
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<img align="center" src="./cosmic-calc/src/images/Logo.png" width="150" height="150">
 
-## Available Scripts
+<br />
 
-In the project directory, you can run:
+## List of Contents
 
-### `npm start`
+1. [Introduction](#Cosmic-Calcs)
+2. [Demo](#Demo-Video)
+3. [Features](#Features)
+4. [Getting Started](#getting-started)
+5. [Tech Stack](#tech-stack)
+6. [Color Reference](#color-reference)
+7. [The Team](#The-Team)
+8. [Appendix](#appendix)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+<br/>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+<br/>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+ ## **_Cosmic Calcs_** 🚀
+ 
+ Welcome to Cosmic Calcs!
 
-### `npm run build`
+ A learning resource for teachers, parents and- most importantly- kids! 
+ 
+ We know homework can be dull. Cosmic Calcs turns teduious maths worksheets into short, vibrant games which hone mental maths skills for pupils aged 5 to 9. Play for points to progress to new challenges and unlock customisable features for your alien avatar.
+ 
+ ---
+ 
+  <br />
+  
+  ## **_Demo-Video_**
+  
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+ 
+ ## **_Features_** 📱
+ 
+ - Personalised profile based on your child's age and ability.
+ - Games progress in difficulty as your child practices and earns points. 
+ - Progress leaderboard visible only to teachers.
+ - Maths activities spanning the whole national cirriculum for KS1 and KS2 (year groups 1, 2, 3 and 4).
+ - Customisable avatar; keeping children engaged and incentivised.
+ - Sound effects and animation.
+ 
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<br />
 
-### `npm run eject`
+## **_Getting Started_** ✅
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### **Backend**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+The backend is deployed on Render. However, if you would like to run locally you will need to follow the steps below.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Git clone the backend repository by pasting the following into your terminal:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```bash
+  git clone https://github.com/SchoolOfCode/bc13_final-project_back-end-room_10_the_recruitables
+```
 
-## Learn More
+Install all required dependencies by running:
+  
+```bash
+  npm i
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Copy your database (e.g. ElephantSQL) URL into the .env file, following the format:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```bash
+  DATABASE_URL = <Database URL goes here>
+```
 
-### Code Splitting
+Create all tables in your database by running the following scripts in the terminal:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```bash
+  npm run db-create-tables
+```
 
-### Analyzing the Bundle Size
+Finally, to run the server locally use the following script within your terminal:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```bash
+  npm run dev
+```
 
-### Making a Progressive Web App
+### **Front-end**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
+To run the front-end locally follow the steps below:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+1. Git clone the front-end repository by pasting the following into your terminal:
 
-### Deployment
+```bash
+git clone https://github.com/SchoolOfCode/bc13_final-project_front-end-room_10_the_recruitables
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+2. Remember to navigate to the correct folder: bc13_final-project_front-end-room_10_the_recruitables/cosmic-calcs
 
-### `npm run build` fails to minify
+3. Install all necessary dependencies by running the following command in the terminal:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```bash
+  npm i
+```
+
+
+4. Start the app using:
+
+```bash
+  npm start
+```
+
+<br/>
+
+## **_Tech Stack⚙️_**
+
+**Client:** React.js, CSS, FireBase
+</br>
+
+**Server:** Node.js, Express, PostgreSQL
+</br>
+
+**Client-side Testing:** React Testing Library, Cypress, Jest
+</br>
+
+**Server-side Testing:** Supertest, Jest
+
+
+<br/>
+
+---
+
+## **_Colour Reference_** 🎨
+
+
+| Colour     | Hex                                                                     |
+| ---------- | ----------------------------------------------------------------------  |
+| Purple     | ![#501785](https://via.placeholder.com/15/501785/501785.png) `#448FFF`  |
+| Green      | ![#00621c](https://via.placeholder.com/15/00621c/00621c.png)`#00621c`   |
+| Pink       | ![#e79fc4](https://via.placeholder.com/15/e79fc4/e79fc4.png) `#e79fc4`  |
+| Yellow     | ![#fce30a](https://via.placeholder.com/15/fce30a/fce30a.png) `#fce30a`  |
+| Red        | ![#e60000](https://via.placeholder.com/15/e60000/e60000.png) `#e60000`  |
+| Blue       | ![#00a3e6](https://via.placeholder.com/15/00a3e6/00a3e6.png) `#00a3e6`  |
+| Orange     | ![#ff6600](https://via.placeholder.com/15/ff6600/ff6600.png) `#ff6600`  |
+    
+---
+<br/>
+
+## **_Our Team_** 🌍
+
+- [Seb French](https://github.com/sebfrench7)
+- [Lucy McHugh](https://github.com/L-McHugh)
+- [Emily Pritchard](https://github.com/EmilyPri)
+- [Jason Riley](https://github.com/JPR95)
+- [Louis Wright](https://github.com/LouWr)
+- [Jeremy Xiong](https://github.com/JeremyXZ)
+
+
+---
+<br/>
+
+## **_Appendix_** 🖊️
+
+
+- [React.js](https://reactjs.org/)
+- [Firebase](https://firebase.google.com/)
+- [ElephantSQL](https://api.elephantsql.com/)
+- [Cypress](https://www.cypress.io/)
+- [Netlify](https://www.netlify.com/)
+- [Render](https://render.com/)
