@@ -112,6 +112,10 @@ function Register() {
                 onChange={(e) => setYear(e.target.value)}
                 placeholder="What year are you in?"
               >
+                <option value="" disabled selected hidden>
+                  {" "}
+                  Year{" "}
+                </option>
                 <option value="1">Year 1</option>
                 <option value="2">Year 2</option>
                 <option value="3">Year 3</option>
