@@ -1,40 +1,51 @@
-.questionDiv {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
-    height: auto;
-    width: 70vw;
-    background-color: var(--colour-purple-transparent);
-    border-radius: 10px;
-    padding: 4vh;
-    border-color: var(--colour-purple);
-    border-style: solid;
-    border-width: 10px;
-    color: #fff;
-    margin: 5vh;
- } 
+.pics-questionDiv {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  height: auto;
+  width: 70vw;
+  background-color: var(--colour-purple-transparent);
+  border-radius: 10px;
+  padding: 4vh;
+  border-color: var(--colour-purple);
+  border-style: solid;
+  border-width: 10px;
+  color: #fff;
+  margin: 5vh;
+}
 
- .QuestionImg{
-    width: 40vw;
-    height: auto;
- }
+.pics-card-question-container {
+  display: flex;
+  flex-direction: row;
+  gap: 2vw;
+}
 
- .question-container{
-   display: flex;
-   flex-direction: row;
-   align-items: center;
- }
+.pics-NumberandImg {
+  display: flex;
+  flex-direction: column;
+}
 
- .inputGame{
-    border-radius: 10px;
-    background: white;
-    border-color: white;
-    border-style: solid;
-    border-width: 3px;
-    color: black;
-    width: 10vw;
-    height: 10vh;
-    text-align: center;
-    font-size: 2vw;
+.pics-QuestionImg {
+  width: 37vw;
+  height: auto;
+}
+
+.question-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.inputGame {
+  border-radius: 10px;
+  background: white;
+  border-color: white;
+  border-style: solid;
+  border-width: 3px;
+  color: black;
+  width: 10vw;
+  height: 10vh;
+  text-align: center;
+  font-size: 2vw;
 }
