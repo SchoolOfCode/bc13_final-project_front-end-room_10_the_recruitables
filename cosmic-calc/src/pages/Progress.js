@@ -87,7 +87,7 @@ export const Progress = () => {
       const data = await response.json();
       setPayload(data.payload);
       setTotalScore(data.payload.total_score);
-      console.log(data.payload);
+      //console.log(data.payload);
       return data.payload.total_score;
     };
     getScore(1);
@@ -96,7 +96,7 @@ export const Progress = () => {
         ...lockLevels.slice(0, Math.floor(payload.total_score / 10)),
       ];
       setLevels(unlockedLevels);
-      console.log(levels);
+      //console.log(levels);
     } else setLevels([1]);
   }, [payload.total_score]);
 
@@ -116,7 +116,7 @@ export const Progress = () => {
 
   const navigateToGame = () => {
     let year = context.year;
-    console.log(year);
+    //console.log(year);
     if (year === 1) {
       navigate("/game", { state: { totalScore: totalScore } });
     } else if (year === 2) {
@@ -124,11 +124,11 @@ export const Progress = () => {
     } else if (year === 3) {
       navigate("/year-three-games", { state: { totalScore: totalScore } });
     } else if (year === 4) {
-      console.log("year 4");
+      //console.log("year 4");
       navigate("/year-four-games", { state: { totalScore: totalScore } });
     }
   };
-  console.log(levels);
+  //console.log(levels);
 
   // onClick event handler to pass to buttons. If need to go depending on levels can add conditions based on button index 1-10
   function handleGotoLevel(level) {

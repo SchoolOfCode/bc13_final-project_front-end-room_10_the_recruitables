@@ -26,7 +26,7 @@ const AvatarBuilder = () => {
     Ants: 1,
   };
   if (context.score >= 10) {
-    let increment = Math.floor(context.score / 10);
+    let increment = Math.floor(context.score / 20);
     bodyPartAmounts.Heads += increment;
     bodyPartAmounts.Bodies += increment;
     bodyPartAmounts.Ants += increment;
@@ -41,7 +41,6 @@ const AvatarBuilder = () => {
       selectedHead !== bodyPartAmounts.Heads
     ) {
       setSelectedHead(selectedHead + 1);
-      console.log(selectedHead);
     }
 
     if (bodypart === "body" && direction === "left" && selectedBody !== 1) {
@@ -59,7 +58,7 @@ const AvatarBuilder = () => {
     } else if (
       bodypart === "ant" &&
       direction === "right" &&
-      selectedBody !== bodyPartAmounts.Ants
+      selectedAnt !== bodyPartAmounts.Ants
     ) {
       setSelectedAnt(selectedAnt + 1);
     }
@@ -73,7 +72,6 @@ const AvatarBuilder = () => {
     ) {
       setSelectedTeeth(selectedTeeth + 1);
     }
-    console.log("This is user Context", context.user.email);
   }
 
   //   onclick change body colour to red
@@ -102,7 +100,6 @@ const AvatarBuilder = () => {
         }
       );
       const data = await response.json();
-      console.log("data", data);
       setSelectedAnt(data.payload.antid);
       setSelectedBody(data.payload.bodyid);
       setSelectedHead(data.payload.headid);
@@ -130,7 +127,6 @@ const AvatarBuilder = () => {
   // }
 
   async function patchAvatars(email, bodyNum, antNum, headNum, avatarColor) {
-    console.log("hello");
     const response = await fetch(
       `https://cosmic-calculations-backend.onrender.com/api/users/avatars/${email}`,
       {
@@ -147,7 +143,7 @@ const AvatarBuilder = () => {
       }
     );
     const data = await response.json();
-    console.log(data);
+    //console.log(data);
   }
 
   return (

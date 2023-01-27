@@ -19,7 +19,7 @@ function Profile() {
   let context = useContext(ScoreContext);
 
   useEffect(() => {
-    console.log("hello world");
+    //console.log("hello world");
     context.update();
     //eslint-disable-next-line
   }, []);
@@ -41,13 +41,13 @@ function Profile() {
         }
       );
       const data = await response.json();
-      console.log(data);
+      //console.log(data);
       setSelectedAnt(data.payload.antid);
       setSelectedBody(data.payload.bodyid);
       setSelectedHead(data.payload.headid);
       setAvatarColor(data.payload.avcolour);
     }
-    console.log(context.email);
+    //console.log(context.email);
     getAvatars(context.email);
   }, [context.email]);
 
