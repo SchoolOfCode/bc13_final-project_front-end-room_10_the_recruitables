@@ -1,5 +1,6 @@
 import React from "react";
 import "./answerCard.css";
+import newQuestion from "../questioncard/nextQuestion";
 
 export default function AnswerCard(props) {
   return (
@@ -17,7 +18,7 @@ export default function AnswerCard(props) {
       <button
         data-testid="next-btn"
         className="newQuestionGameButton"
-        onClick={props.newQuestion}
+        onClick={() => newQuestion(props)}
         style={{ visibility: props.answerVisible ? "visible" : "hidden" }}
       >
         Next Question

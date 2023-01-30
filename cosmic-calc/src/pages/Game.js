@@ -16,6 +16,7 @@ import ShapesQuestionCard from "../components/shapesQuestionCard/ShapesQuestionC
 import Score from "../components/score/Score";
 import PicQuestionCard from "../components/picQuestionCard/picQuestionCard";
 import ResourceButton from "../components/questioncard/ResourceButton";
+import AnswerCard2 from "../components/questioncard/QuestionCard.js";
 
 import {
   yearOnePlanetFourQuestion,
@@ -36,7 +37,7 @@ import randomNumberGenerator from "../components/functions/rngFunction";
 
 export default function Game() {
   const [score, setScore] = useState(0);
-  const [answerInput, setAnswerInput] = useState("");
+  // const [answerInput, setAnswerInput] = useState("");
   const [answerVisible, setAnswerVisible] = useState(false);
   const [noOfQuestions, setNoOfQuestions] = useState(1);
   const [inputType, setInputType] = useState("");
@@ -66,368 +67,368 @@ export default function Game() {
     playWin();
   }
 
-  // yearOnePlanetOne
+  // // yearOnePlanetOne
 
-  const [numberLineImg, setNumberLineImg] = useState("");
-  const [correctAnswer1, setCorrectAnswer1] = useState(0);
-  const [numberLineArray, setNumberLineArray] = useState([]);
+  // const [numberLineImg, setNumberLineImg] = useState("");
+  // const [correctAnswer1, setCorrectAnswer1] = useState(0);
+  // const [numberLineArray, setNumberLineArray] = useState([]);
 
-  useEffect(() => {
-    async function getNumberLine() {
-      const response = await fetch(
-        `https://cosmic-calculations-backend.onrender.com/api/mathsQuestions/numberLines`,
-        {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
-      const data = await response.json();
-      if (data.payload) {
-        let newNumberLineArray = data.payload;
-        setNumberLineArray(data.payload);
-        let randomID = randomNumberGenerator(10);
+  // useEffect(() => {
+  //   async function getNumberLine() {
+  //     const response = await fetch(
+  //       `https://cosmic-calculations-backend.onrender.com/api/mathsQuestions/numberLines`,
+  //       {
+  //         method: "GET",
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //         },
+  //       }
+  //     );
+  //     const data = await response.json();
+  //     if (data.payload) {
+  //       let newNumberLineArray = data.payload;
+  //       setNumberLineArray(data.payload);
+  //       let randomID = randomNumberGenerator(10);
 
-        setNumberLineImg(newNumberLineArray[randomID].img_url);
-        setCorrectAnswer1(newNumberLineArray[randomID].answer);
-      }
-    }
-    getNumberLine();
-  }, []);
+  //       setNumberLineImg(newNumberLineArray[randomID].img_url);
+  //       setCorrectAnswer1(newNumberLineArray[randomID].answer);
+  //     }
+  //   }
+  //   getNumberLine();
+  // }, []);
 
-  const checkAnswer1 = () => {
-    let questionResult = "";
-    if (correctAnswer1 == answerInput) {
-      questionResult = true;
-    } else {
-      questionResult = false;
-    }
-    setAnswerInput("");
-    if (questionResult === true) {
-      playCorrect();
-      setResult("Correct!");
-      setScore(Number(score) + 1);
-      newQuestion1();
-    } else {
-      playWrong();
-      setResult(correctAnswer1);
-      setAnswerVisible(true);
-    }
-  };
+  // const checkAnswer1 = () => {
+  //   let questionResult = "";
+  //   if (correctAnswer1 == answerInput) {
+  //     questionResult = true;
+  //   } else {
+  //     questionResult = false;
+  //   }
+  //   setAnswerInput("");
+  //   if (questionResult === true) {
+  //     playCorrect();
+  //     setResult("Correct!");
+  //     setScore(Number(score) + 1);
+  //     newQuestion1();
+  //   } else {
+  //     playWrong();
+  //     setResult(correctAnswer1);
+  //     setAnswerVisible(true);
+  //   }
+  // };
 
-  const newQuestion1 = () => {
-    setNoOfQuestions(noOfQuestions + 1);
-    let randomID = randomNumberGenerator(10);
-    setNumberLineImg(numberLineArray[randomID].img_url);
-    setCorrectAnswer1(numberLineArray[randomID].answer);
-    setResult("");
-    setAnswerVisible(false);
-  };
+  // const newQuestion1 = () => {
+  //   setNoOfQuestions(noOfQuestions + 1);
+  //   let randomID = randomNumberGenerator(10);
+  //   setNumberLineImg(numberLineArray[randomID].img_url);
+  //   setCorrectAnswer1(numberLineArray[randomID].answer);
+  //   setResult("");
+  //   setAnswerVisible(false);
+  // };
 
-  //yearOnePlanetTwo
+  // //yearOnePlanetTwo
 
-  const [shape, setShape] = useState("square");
+  // const [shape, setShape] = useState("square");
 
-  useEffect(() => {
-    let newShape = giveRandomShape();
-    setShape(newShape);
-  }, []);
+  // useEffect(() => {
+  //   let newShape = giveRandomShape();
+  //   setShape(newShape);
+  // }, []);
 
-  function checkAnswer2(playerInput) {
-    let [questionResult, correctAnswer] = checkShapeAnswer(playerInput, shape);
-    if (questionResult === true) {
-      playCorrect();
-      setResult("Correct!");
-      setScore(Number(score) + 1);
-      newQuestion2();
-    } else {
-      playWrong();
-      setResult(correctAnswer);
-      setAnswerVisible(true);
-    }
-  }
+  // function checkAnswer2(playerInput) {
+  //   let [questionResult, correctAnswer] = checkShapeAnswer(playerInput, shape);
+  //   if (questionResult === true) {
+  //     playCorrect();
+  //     setResult("Correct!");
+  //     setScore(Number(score) + 1);
+  //     newQuestion2();
+  //   } else {
+  //     playWrong();
+  //     setResult(correctAnswer);
+  //     setAnswerVisible(true);
+  //   }
+  // }
 
-  const newQuestion2 = (playerInput) => {
-    setNoOfQuestions(noOfQuestions + 1);
-    let newShape = giveRandomShape();
-    setShape(newShape);
-    let [questionResult, correctAnswer] = checkShapeAnswer(
-      playerInput,
-      newShape
-    );
-    setResult("");
-    setAnswerVisible(false);
-    return [questionResult, correctAnswer];
-  };
+  // const newQuestion2 = (playerInput) => {
+  //   setNoOfQuestions(noOfQuestions + 1);
+  //   let newShape = giveRandomShape();
+  //   setShape(newShape);
+  //   let [questionResult, correctAnswer] = checkShapeAnswer(
+  //     playerInput,
+  //     newShape
+  //   );
+  //   setResult("");
+  //   setAnswerVisible(false);
+  //   return [questionResult, correctAnswer];
+  // };
 
-  //yearOnePlanetThree
-  const [Y1P3value1, setY1P3Value1] = useState(0);
-  const [Y1P3value2, setY1P3Value2] = useState(0);
-  const [Y1P3operation, setY1P3Operation] = useState("");
+  // //yearOnePlanetThree
+  // const [Y1P3value1, setY1P3Value1] = useState(0);
+  // const [Y1P3value2, setY1P3Value2] = useState(0);
+  // const [Y1P3operation, setY1P3Operation] = useState("");
 
-  useEffect(() => {
-    let [Y1P3value1, Y1P3operation, Y1P3value2] = yearOnePlanetFiveQuestion();
-    //console.log(Y1P3value1, Y1P3value2, Y1P3operation);
-    setY1P3Value1(Y1P3value1);
-    setY1P3Operation(Y1P3operation);
-    setY1P3Value2(Y1P3value2);
-  }, []);
+  // useEffect(() => {
+  //   let [Y1P3value1, Y1P3operation, Y1P3value2] = yearOnePlanetFiveQuestion();
+  //   //console.log(Y1P3value1, Y1P3value2, Y1P3operation);
+  //   setY1P3Value1(Y1P3value1);
+  //   setY1P3Operation(Y1P3operation);
+  //   setY1P3Value2(Y1P3value2);
+  // }, []);
 
-  const checkAnswer3 = () => {
-    let [questionResult, correctAnswer] = yearOnePlanetFiveAnswer(
-      [Y1P3value1, Y1P3operation, Y1P3value2],
-      answerInput
-    );
-    //console.log(questionResult, correctAnswer);
-    setAnswerInput("");
-    if (questionResult === true) {
-      playCorrect();
-      setResult("Correct!");
-      setScore(Number(score) + 1);
-      newQuestion3();
-    } else {
-      playWrong();
-      setResult(correctAnswer);
-      setAnswerVisible(true);
-    }
-  };
+  // const checkAnswer3 = () => {
+  //   let [questionResult, correctAnswer] = yearOnePlanetFiveAnswer(
+  //     [Y1P3value1, Y1P3operation, Y1P3value2],
+  //     answerInput
+  //   );
+  //   //console.log(questionResult, correctAnswer);
+  //   setAnswerInput("");
+  //   if (questionResult === true) {
+  //     playCorrect();
+  //     setResult("Correct!");
+  //     setScore(Number(score) + 1);
+  //     newQuestion3();
+  //   } else {
+  //     playWrong();
+  //     setResult(correctAnswer);
+  //     setAnswerVisible(true);
+  //   }
+  // };
 
-  const newQuestion3 = () => {
-    setNoOfQuestions(noOfQuestions + 1);
-    let [Y1P3value1, Y1P3operation, Y1P3value2] = yearOnePlanetFiveQuestion();
-    setY1P3Value1(Y1P3value1);
-    setY1P3Operation(Y1P3operation);
-    setY1P3Value2(Y1P3value2);
-    let [questionResult, correctAnswer] = yearOnePlanetFiveAnswer(
-      [Y1P3value1, Y1P3operation, Y1P3value2],
-      answerInput
-    );
-    setAnswerInput("");
-    setResult("");
-    setAnswerVisible(false);
-    return [questionResult, correctAnswer];
-  };
+  // const newQuestion3 = () => {
+  //   setNoOfQuestions(noOfQuestions + 1);
+  //   let [Y1P3value1, Y1P3operation, Y1P3value2] = yearOnePlanetFiveQuestion();
+  //   setY1P3Value1(Y1P3value1);
+  //   setY1P3Operation(Y1P3operation);
+  //   setY1P3Value2(Y1P3value2);
+  //   let [questionResult, correctAnswer] = yearOnePlanetFiveAnswer(
+  //     [Y1P3value1, Y1P3operation, Y1P3value2],
+  //     answerInput
+  //   );
+  //   setAnswerInput("");
+  //   setResult("");
+  //   setAnswerVisible(false);
+  //   return [questionResult, correctAnswer];
+  // };
 
-  // yearOnePlanetFour
-  const [Y1P4knownValue, setY1P4knownValue] = useState(0);
+  // // yearOnePlanetFour
+  // const [Y1P4knownValue, setY1P4knownValue] = useState(0);
 
-  useEffect(() => {
-    let Y1P4knownValue = yearOnePlanetFourQuestion();
-    setY1P4knownValue(Y1P4knownValue);
-  }, []);
+  // useEffect(() => {
+  //   let Y1P4knownValue = yearOnePlanetFourQuestion();
+  //   setY1P4knownValue(Y1P4knownValue);
+  // }, []);
 
-  const checkAnswer4 = () => {
-    let [questionResult, correctAnswer] = yearOnePlanetFourAnswer(
-      Y1P4knownValue,
-      answerInput
-    );
-    setAnswerInput("");
-    if (questionResult === true) {
-      playCorrect();
-      setResult("Correct!");
-      setScore(Number(score) + 1);
-      newQuestion4();
-      setInputType("number");
-    } else {
-      //console.log("wrong");
-      playWrong();
-      setInputType("hidden");
-      setResult(correctAnswer);
-      setAnswerVisible(true);
-      // newQuestion4();
-    }
-  };
+  // const checkAnswer4 = () => {
+  //   let [questionResult, correctAnswer] = yearOnePlanetFourAnswer(
+  //     Y1P4knownValue,
+  //     answerInput
+  //   );
+  //   setAnswerInput("");
+  //   if (questionResult === true) {
+  //     playCorrect();
+  //     setResult("Correct!");
+  //     setScore(Number(score) + 1);
+  //     newQuestion4();
+  //     setInputType("number");
+  //   } else {
+  //     //console.log("wrong");
+  //     playWrong();
+  //     setInputType("hidden");
+  //     setResult(correctAnswer);
+  //     setAnswerVisible(true);
+  //     // newQuestion4();
+  //   }
+  // };
 
-  const newQuestion4 = () => {
-    setNoOfQuestions(noOfQuestions + 1);
-    //console.log("new question 4");
-    let Y1P4knownValue = yearOnePlanetFourQuestion();
-    setY1P4knownValue(Y1P4knownValue);
+  // const newQuestion4 = () => {
+  //   setNoOfQuestions(noOfQuestions + 1);
+  //   //console.log("new question 4");
+  //   let Y1P4knownValue = yearOnePlanetFourQuestion();
+  //   setY1P4knownValue(Y1P4knownValue);
 
-    let [questionResult, correctAnswer] = yearOnePlanetFourAnswer(
-      Y1P4knownValue,
-      answerInput
-    );
-    setAnswerInput("");
-    setResult("");
-    setAnswerVisible(false);
-    return [questionResult, correctAnswer];
-  };
+  //   let [questionResult, correctAnswer] = yearOnePlanetFourAnswer(
+  //     Y1P4knownValue,
+  //     answerInput
+  //   );
+  //   setAnswerInput("");
+  //   setResult("");
+  //   setAnswerVisible(false);
+  //   return [questionResult, correctAnswer];
+  // };
 
-  //yearOnePlanetFive
-  const [value1, setValue1] = useState(0);
-  const [value2, setValue2] = useState(0);
-  const [operation, setOperation] = useState("");
+  // //yearOnePlanetFive
+  // // const [value1, setValue1] = useState(0);
+  // // const [value2, setValue2] = useState(0);
+  // // const [operation, setOperation] = useState("");
 
-  useEffect(() => {
-    let [value1, operation, value2] = yearOnePlanetFiveQuestion();
-    setValue1(value1);
-    setOperation(operation);
-    setValue2(value2);
-  }, []);
+  // // useEffect(() => {
+  // //   let [value1, operation, value2] = yearOnePlanetFiveQuestion();
+  // //   setValue1(value1);
+  // //   setOperation(operation);
+  // //   setValue2(value2);
+  // // }, []);
 
-  const checkAnswer5 = () => {
-    let [questionResult, correctAnswer] = yearOnePlanetFiveAnswer(
-      [value1, operation, value2],
-      answerInput
-    );
-    setAnswerInput("");
-    if (questionResult === true) {
-      playCorrect();
-      setResult("Correct!");
-      setScore(Number(score) + 1);
-      newQuestion5();
-    } else {
-      playWrong();
-      setResult(correctAnswer);
-      setAnswerVisible(true);
-    }
-  };
+  // // const checkAnswer5 = () => {
+  // //   let [questionResult, correctAnswer] = yearOnePlanetFiveAnswer(
+  // //     [value1, operation, value2],
+  // //     answerInput
+  // //   );
+  // //   setAnswerInput("");
+  // //   if (questionResult === true) {
+  // //     playCorrect();
+  // //     setResult("Correct!");
+  // //     setScore(Number(score) + 1);
+  // //     newQuestion5();
+  // //   } else {
+  // //     playWrong();
+  // //     setResult(correctAnswer);
+  // //     setAnswerVisible(true);
+  // //   }
+  // // };
 
-  const newQuestion5 = () => {
-    setNoOfQuestions(noOfQuestions + 1);
-    let [value1, operation, value2] = yearOnePlanetFiveQuestion();
-    setValue1(value1);
-    setValue2(value2);
-    setOperation(operation);
-    let [questionResult, correctAnswer] = yearOnePlanetFiveAnswer(
-      [value1, operation, value2],
-      answerInput
-    );
-    setAnswerInput("");
-    setResult("");
-    setAnswerVisible(false);
-    return [questionResult, correctAnswer];
-  };
+  // // const newQuestion5 = () => {
+  // //   setNoOfQuestions(noOfQuestions + 1);
+  // //   let [value1, operation, value2] = yearOnePlanetFiveQuestion();
+  // //   setValue1(value1);
+  // //   setValue2(value2);
+  // //   setOperation(operation);
+  // //   let [questionResult, correctAnswer] = yearOnePlanetFiveAnswer(
+  // //     [value1, operation, value2],
+  // //     answerInput
+  // //   );
+  // //   setAnswerInput("");
+  // //   setResult("");
+  // //   setAnswerVisible(false);
+  // //   return [questionResult, correctAnswer];
+  // // };
 
-  //yearOnePlanetSix
+  // //yearOnePlanetSix
 
-  const [number, setNumber] = useState(0);
-  const [word, setWord] = useState("");
+  // const [number, setNumber] = useState(0);
+  // const [word, setWord] = useState("");
 
-  useEffect(() => {
-    let [number, word] = yearOnePlanetSixQuestion();
-    setNumber(number);
-    setWord(word);
-  }, []);
+  // useEffect(() => {
+  //   let [number, word] = yearOnePlanetSixQuestion();
+  //   setNumber(number);
+  //   setWord(word);
+  // }, []);
 
-  const checkAnswer6 = () => {
-    let [questionResult, correctAnswer] = yearOnePlanetSixAnswer(
-      [number, word],
-      answerInput
-    );
-    setAnswerInput("");
-    if (questionResult === true) {
-      playCorrect();
-      setResult("Correct!");
-      setScore(Number(score) + 1);
-      newQuestion6();
-    } else {
-      playWrong();
-      setResult(correctAnswer);
-      setAnswerVisible(true);
-    }
-  };
+  // const checkAnswer6 = () => {
+  //   let [questionResult, correctAnswer] = yearOnePlanetSixAnswer(
+  //     [number, word],
+  //     answerInput
+  //   );
+  //   setAnswerInput("");
+  //   if (questionResult === true) {
+  //     playCorrect();
+  //     setResult("Correct!");
+  //     setScore(Number(score) + 1);
+  //     newQuestion6();
+  //   } else {
+  //     playWrong();
+  //     setResult(correctAnswer);
+  //     setAnswerVisible(true);
+  //   }
+  // };
 
-  const newQuestion6 = () => {
-    setNoOfQuestions(noOfQuestions + 1);
-    let [number, word] = yearOnePlanetSixQuestion();
-    setNumber(number);
-    setWord(word);
-    let [questionResult, correctAnswer] = yearOnePlanetSixAnswer(
-      [number, word],
-      answerInput
-    );
-    setAnswerInput("");
-    setResult("");
-    setAnswerVisible(false);
-    return [questionResult, correctAnswer];
-  };
+  // const newQuestion6 = () => {
+  //   setNoOfQuestions(noOfQuestions + 1);
+  //   let [number, word] = yearOnePlanetSixQuestion();
+  //   setNumber(number);
+  //   setWord(word);
+  //   let [questionResult, correctAnswer] = yearOnePlanetSixAnswer(
+  //     [number, word],
+  //     answerInput
+  //   );
+  //   setAnswerInput("");
+  //   setResult("");
+  //   setAnswerVisible(false);
+  //   return [questionResult, correctAnswer];
+  // };
 
-  //yearOnePlanetSeven
-  const [fractionWord, setFractionWord] = useState("");
+  // //yearOnePlanetSeven
+  // const [fractionWord, setFractionWord] = useState("");
 
-  useEffect(() => {
-    let newFractionWord = getFractionWord();
-    setFractionWord(newFractionWord);
-  }, []);
+  // useEffect(() => {
+  //   let newFractionWord = getFractionWord();
+  //   setFractionWord(newFractionWord);
+  // }, []);
 
-  function checkAnswer7(playerInput) {
-    //console.log(fractionWord);
-    //console.log(playerInput);
+  // function checkAnswer7(playerInput) {
+  //   //console.log(fractionWord);
+  //   //console.log(playerInput);
 
-    let [questionResult, correctAnswer] = yearOnePlanetSevenAnswer(
-      fractionWord,
-      playerInput
-    );
-    if (questionResult === true) {
-      playCorrect();
-      setResult("Correct!");
-      setScore(Number(score) + 1);
-      newQuestion7();
-    } else {
-      playWrong();
-      setResult(correctAnswer);
-      setAnswerVisible(true);
-    }
-  }
+  //   let [questionResult, correctAnswer] = yearOnePlanetSevenAnswer(
+  //     fractionWord,
+  //     playerInput
+  //   );
+  //   if (questionResult === true) {
+  //     playCorrect();
+  //     setResult("Correct!");
+  //     setScore(Number(score) + 1);
+  //     newQuestion7();
+  //   } else {
+  //     playWrong();
+  //     setResult(correctAnswer);
+  //     setAnswerVisible(true);
+  //   }
+  // }
 
-  const newQuestion7 = (playerInput) => {
-    setNoOfQuestions(noOfQuestions + 1);
-    let newFractionWord = getFractionWord();
-    setFractionWord(newFractionWord);
-    //console.log(`right answer${fractionWord} and input${playerInput}`);
-    let [correctAnswer, questionResult] = yearOnePlanetSevenAnswer(
-      fractionWord,
-      playerInput
-    );
-    setResult("");
-    setAnswerVisible(false);
-    return [questionResult, correctAnswer];
-  };
+  // const newQuestion7 = (playerInput) => {
+  //   setNoOfQuestions(noOfQuestions + 1);
+  //   let newFractionWord = getFractionWord();
+  //   setFractionWord(newFractionWord);
+  //   //console.log(`right answer${fractionWord} and input${playerInput}`);
+  //   let [correctAnswer, questionResult] = yearOnePlanetSevenAnswer(
+  //     fractionWord,
+  //     playerInput
+  //   );
+  //   setResult("");
+  //   setAnswerVisible(false);
+  //   return [questionResult, correctAnswer];
+  // };
 
-  // yearOnePlanetEight
-  const [Y1P8knownValue, setY1P8knownValue] = useState(0);
+  // // yearOnePlanetEight
+  // const [Y1P8knownValue, setY1P8knownValue] = useState(0);
 
-  useEffect(() => {
-    let Y1P8knownValue = yearOnePlanetEightQuestion();
-    setY1P8knownValue(Y1P8knownValue);
-  }, []);
+  // useEffect(() => {
+  //   let Y1P8knownValue = yearOnePlanetEightQuestion();
+  //   setY1P8knownValue(Y1P8knownValue);
+  // }, []);
 
-  const checkAnswer8 = () => {
-    let [questionResult, correctAnswer] = yearOnePlanetEightAnswer(
-      Y1P8knownValue,
-      answerInput
-    );
-    setAnswerInput("");
+  // const checkAnswer8 = () => {
+  //   let [questionResult, correctAnswer] = yearOnePlanetEightAnswer(
+  //     Y1P8knownValue,
+  //     answerInput
+  //   );
+  //   setAnswerInput("");
 
-    if (questionResult === true) {
-      playCorrect();
-      setResult("Correct!");
-      setScore(Number(score) + 1);
-      newQuestion8();
-    } else {
-      playWrong();
-      setResult(correctAnswer);
-      setAnswerVisible(true);
-    }
-  };
+  //   if (questionResult === true) {
+  //     playCorrect();
+  //     setResult("Correct!");
+  //     setScore(Number(score) + 1);
+  //     newQuestion8();
+  //   } else {
+  //     playWrong();
+  //     setResult(correctAnswer);
+  //     setAnswerVisible(true);
+  //   }
+  // };
 
-  const newQuestion8 = () => {
-    setNoOfQuestions(noOfQuestions + 1);
-    let Y1P8knownValue = yearOnePlanetEightQuestion();
-    setY1P8knownValue(Y1P8knownValue);
+  // const newQuestion8 = () => {
+  //   setNoOfQuestions(noOfQuestions + 1);
+  //   let Y1P8knownValue = yearOnePlanetEightQuestion();
+  //   setY1P8knownValue(Y1P8knownValue);
 
-    let [questionResult, correctAnswer] = yearOnePlanetEightAnswer(
-      Y1P8knownValue,
-      answerInput
-    );
-    setAnswerInput("");
-    setResult("");
-    setAnswerVisible(false);
-    return [questionResult, correctAnswer];
-  };
+  //   let [questionResult, correctAnswer] = yearOnePlanetEightAnswer(
+  //     Y1P8knownValue,
+  //     answerInput
+  //   );
+  //   setAnswerInput("");
+  //   setResult("");
+  //   setAnswerVisible(false);
+  //   return [questionResult, correctAnswer];
+  // };
 
   const updateScore = async (score, user) => {
     let email = await context.user.email;
@@ -465,202 +466,201 @@ export default function Game() {
         </div>
       </div>
     );
-  } else if (points < 10) {
-    return (
-      <div className="gameDiv">
-        <AnswerCard
-          answerVisible={answerVisible}
-          result={result}
-          newQuestion={newQuestion1}
-        />
-        <PicQuestionCard
-          inputType={inputType}
-          src={numberLineImg}
-          answerInput={answerInput}
-          noOfQuestions={noOfQuestions}
-          text={"Can you fill in the missing number?"}
-          setAnswerInput={setAnswerInput}
-          checkAnswer={checkAnswer1}
-        />
-        <div className="pointsHelpDiv">
-          <Score score={score} />
-          <ResourceButton url="https://www.youtube.com/watch?v=e0dJWfQHF8Y" />
-        </div>
-      </div>
-    );
-  } else if (points < 20) {
-    //console.log("In shapes game");
-
-    return (
-      <div className="gameDiv">
-        <AnswerCard
-          answerVisible={answerVisible}
-          result={result}
-          newQuestion={newQuestion2}
-        />
-        <ShapesQuestionCard
-          answerInput={answerInput}
-          noOfQuestions={noOfQuestions}
-          shape={shape}
-          checkAnswer={checkAnswer2}
-        />
-        <div className="pointsHelpDiv">
-          <Score score={score} />
-          <ResourceButton url="https://www.youtube.com/watch?v=WTeqUejf3D0" />
-        </div>
-      </div>
-    );
-  } else if (points < 30) {
-    //console.log("In counters game!");
-    //console.log("points = ", points);
-    return (
-      <div className="gameDiv">
-        <AnswerCard
-          answerVisible={answerVisible}
-          result={result}
-          newQuestion={newQuestion3}
-        />
-        <CountersQuestionCard
-          h1={
-            "Can you add and subtract the stars to work out the total number?"
           }
-          answerInput={answerInput}
-          noOfQuestions={noOfQuestions}
-          value1={Y1P3value1}
-          operation={Y1P3operation}
-          value2={Y1P3value2}
-          setAnswerInput={setAnswerInput}
-          checkAnswer={checkAnswer3}
-        />
-        <div className="pointsHelpDiv">
-          <Score score={score} />
-          <ResourceButton url="https://www.bbc.co.uk/bitesize/topics/zwv39j6/articles/zbpbrj6" />
-        </div>
-      </div>
-    );
-  } else if (points < 40) {
-    //console.log("Inside points < 20 if statement");
-    //console.log("points = ", points);
-    return (
-      <div className="gameDiv">
-        <AnswerCard
-          answerVisible={answerVisible}
-          result={result}
-          newQuestion={newQuestion4}
-        />
-        <QuestionCard
-          inputType={"hidden"}
-          h1={"Can you match up your number bonds to 10?"}
-          answerInput={answerInput}
-          noOfQuestions={noOfQuestions}
-          value1={`What do I need to add to ${Y1P4knownValue} to make 10?`}
-          setAnswerInput={setAnswerInput}
-          checkAnswer={checkAnswer4}
-        />
-        <div className="pointsHelpDiv">
-          <Score score={score} />
-          <ResourceButton url="https://www.bbc.co.uk/bitesize/topics/zwv39j6/articles/zkd98xs" />
-        </div>
-      </div>
-    );
-  } else if (points < 50) {
+  // } else if (points < 10) {
+  //   return (
+  //     <div className="gameDiv">
+  //       <AnswerCard
+  //         answerVisible={answerVisible}
+  //         result={result}
+  //         newQuestion={newQuestion1}
+  //       />
+  //       <PicQuestionCard
+  //         inputType={inputType}
+  //         src={numberLineImg}
+  //         answerInput={answerInput}
+  //         noOfQuestions={noOfQuestions}
+  //         text={"Can you fill in the missing number?"}
+  //         setAnswerInput={setAnswerInput}
+  //         checkAnswer={checkAnswer1}
+  //       />
+  //       <div className="pointsHelpDiv">
+  //         <Score score={score} />
+  //         <ResourceButton url="https://www.youtube.com/watch?v=e0dJWfQHF8Y" />
+  //       </div>
+  //     </div>
+  //   );
+  // } else if (points < 20) {
+  //   //console.log("In shapes game");
+
+  //   return (
+  //     <div className="gameDiv">
+  //       <AnswerCard
+  //         answerVisible={answerVisible}
+  //         result={result}
+  //         newQuestion={newQuestion2}
+  //       />
+  //       <ShapesQuestionCard
+  //         answerInput={answerInput}
+  //         noOfQuestions={noOfQuestions}
+  //         shape={shape}
+  //         checkAnswer={checkAnswer2}
+  //       />
+  //       <div className="pointsHelpDiv">
+  //         <Score score={score} />
+  //         <ResourceButton url="https://www.youtube.com/watch?v=WTeqUejf3D0" />
+  //       </div>
+  //     </div>
+  //   );
+  // } else if (points < 30) {
+  //   //console.log("In counters game!");
+  //   //console.log("points = ", points);
+  //   return (
+  //     <div className="gameDiv">
+  //       <AnswerCard
+  //         answerVisible={answerVisible}
+  //         result={result}
+  //         newQuestion={newQuestion3}
+  //       />
+  //       <CountersQuestionCard
+  //         h1={
+  //           "Can you add and subtract the stars to work out the total number?"
+  //         }
+  //         answerInput={answerInput}
+  //         noOfQuestions={noOfQuestions}
+  //         value1={Y1P3value1}
+  //         operation={Y1P3operation}
+  //         value2={Y1P3value2}
+  //         setAnswerInput={setAnswerInput}
+  //         checkAnswer={checkAnswer3}
+  //       />
+  //       <div className="pointsHelpDiv">
+  //         <Score score={score} />
+  //         <ResourceButton url="https://www.bbc.co.uk/bitesize/topics/zwv39j6/articles/zbpbrj6" />
+  //       </div>
+  //     </div>
+  //   );
+  // } else if (points < 40) {
+  //   //console.log("Inside points < 20 if statement");
+  //   //console.log("points = ", points);
+  //   return (
+  //     <div className="gameDiv">
+  //       <AnswerCard
+  //         answerVisible={answerVisible}
+  //         result={result}
+  //         newQuestion={newQuestion4}
+  //       />
+  //       <QuestionCard
+  //         inputType={"hidden"}
+  //         h1={"Can you match up your number bonds to 10?"}
+  //         answerInput={answerInput}
+  //         noOfQuestions={noOfQuestions}
+  //         value1={`What do I need to add to ${Y1P4knownValue} to make 10?`}
+  //         setAnswerInput={setAnswerInput}
+  //         checkAnswer={checkAnswer4}
+  //       />
+  //       <div className="pointsHelpDiv">
+  //         <Score score={score} />
+  //         <ResourceButton url="https://www.bbc.co.uk/bitesize/topics/zwv39j6/articles/zkd98xs" />
+  //       </div>
+  //     </div>
+  //   );
+  // } else if (points < 50) {
     //console.log("Inside 20 <= points < 50 if statement");
     //console.log("points = ", points);
+    else if (points < 50) {
     return (
       <div className="gameDiv">
         <AnswerCard
-          answerVisible={answerVisible}
-          result={result}
-          newQuestion={newQuestion5}
         />
         <QuestionCard
           h1={"How many sums can you get right?"}
           inputType={inputType}
-          answerInput={answerInput}
+          playCorrect={playCorrect}
+          setScore={setScore}
+          playWrong={playWrong}
+          score={score}
+          functionQuestion={yearOnePlanetFiveQuestion}
+          functionAnswer={yearOnePlanetFiveAnswer}
           noOfQuestions={noOfQuestions}
-          value1={value1}
-          operation={operation}
-          value2={value2}
-          equals={"="}
-          setAnswerInput={setAnswerInput}
-          checkAnswer={checkAnswer5}
+          setNoOfQuestions={setNoOfQuestions}
         />
         <div className="pointsHelpDiv">
           <Score score={score} />
           <ResourceButton url="https://www.bbc.co.uk/bitesize/topics/zwv39j6/articles/ztpmrwx" />
         </div>
       </div>
-    );
-  } else if (points < 60) {
-    return (
-      <div className="gameDiv">
-        <AnswerCard
-          answerVisible={answerVisible}
-          result={result}
-          newQuestion={newQuestion6}
-        />
-        <QuestionCard
-          h1={"Can you read your numbers from 1 to 10?"}
-          inputType={inputType}
-          answerInput={answerInput}
-          noOfQuestions={noOfQuestions}
-          value1={"What is"}
-          operation={word}
-          value2={"in numbers?"}
-          setAnswerInput={setAnswerInput}
-          checkAnswer={checkAnswer6}
-        />
-        <div className="pointsHelpDiv">
-          <Score score={score} />
-          <ResourceButton url="https://www.youtube.com/watch?gl=CO&hl=es-419&context=C38ccb90ADOEgsToPDskLi8_jjTLcMDO7pvUR7WrMl&v=e0dJWfQHF8Y" />
+    );} else if (points < 60) {
+      return (
+        <div className="gameDiv">
+          <AnswerCard
+            
+          />
+          <QuestionCard
+            h1={"Can you read your numbers from 1 to 10?"}
+            inputType={inputType}
+            playCorrect={playCorrect}
+            setScore={setScore}
+            playWrong={playWrong}
+            score={score}
+            functionQuestion={yearOnePlanetSixQuestion}
+            functionAnswer={yearOnePlanetSixAnswer}
+            noOfQuestions={noOfQuestions}
+            setNoOfQuestions={setNoOfQuestions}
+            
+          />
+          <div className="pointsHelpDiv">
+            <Score score={score} />
+            <ResourceButton url="https://www.youtube.com/watch?gl=CO&hl=es-419&context=C38ccb90ADOEgsToPDskLi8_jjTLcMDO7pvUR7WrMl&v=e0dJWfQHF8Y" />
+          </div>
         </div>
-      </div>
-    );
-  } else if (points < 70) {
-    return (
-      <div className="gameDiv">
-        <AnswerCard
-          answerVisible={answerVisible}
-          result={result}
-          newQuestion={newQuestion7}
-        />
-        <FractionsQuestionCard
-          h1={"How well do you know your fractions?"}
-          answerInput={answerInput}
-          noOfQuestions={noOfQuestions}
-          fractionWord={fractionWord}
-          checkAnswer={checkAnswer7}
-        />
-        <div className="pointsHelpDiv">
-          <Score score={score} />
-          <ResourceButton url="https://www.bbc.co.uk/bitesize/topics/z3rbg82" />
-        </div>
-      </div>
-    );
-  } else if (points >= 80) {
-    //console.log("Inside points >= 100 if statement");
-    //console.log("points = ", points);
-    return (
-      <div className="gameDiv">
-        <AnswerCard
-          answerVisible={answerVisible}
-          result={result}
-          newQuestion={newQuestion8}
-        />
-        <QuestionCard
-          h1={"Can you match up all your number bonds to 20?"}
-          inputType={inputType}
-          answerInput={answerInput}
-          noOfQuestions={noOfQuestions}
-          value1={`What do I need to add to ${Y1P8knownValue} to make 20?`}
-          setAnswerInput={setAnswerInput}
-          checkAnswer={checkAnswer8}
-        />
-        <div className="pointsHelpDiv">
-          <Score score={score} />
-          <ResourceButton url="https://www.bbc.co.uk/bitesize/topics/zwv39j6/articles/zx3982p" />
-        </div>
-      </div>
-    );
-  }
+      );}
+  
+  // } else if (points < 70) {
+  //   return (
+  //     <div className="gameDiv">
+  //       <AnswerCard
+  //         answerVisible={answerVisible}
+  //         result={result}
+  //         newQuestion={newQuestion7}
+  //       />
+  //       <FractionsQuestionCard
+  //         h1={"How well do you know your fractions?"}
+  //         answerInput={answerInput}
+  //         noOfQuestions={noOfQuestions}
+  //         fractionWord={fractionWord}
+  //         checkAnswer={checkAnswer7}
+  //       />
+  //       <div className="pointsHelpDiv">
+  //         <Score score={score} />
+  //         <ResourceButton url="https://www.bbc.co.uk/bitesize/topics/z3rbg82" />
+  //       </div>
+  //     </div>
+  //   );
+  // } else if (points >= 80) {
+  //   //console.log("Inside points >= 100 if statement");
+  //   //console.log("points = ", points);
+  //   return (
+  //     <div className="gameDiv">
+  //       <AnswerCard
+  //         answerVisible={answerVisible}
+  //         result={result}
+  //         newQuestion={newQuestion8}
+  //       />
+  //       <QuestionCard
+  //         h1={"Can you match up all your number bonds to 20?"}
+  //         inputType={inputType}
+  //         answerInput={answerInput}
+  //         noOfQuestions={noOfQuestions}
+  //         value1={`What do I need to add to ${Y1P8knownValue} to make 20?`}
+  //         setAnswerInput={setAnswerInput}
+  //         checkAnswer={checkAnswer8}
+  //       />
+  //       <div className="pointsHelpDiv">
+  //         <Score score={score} />
+  //         <ResourceButton url="https://www.bbc.co.uk/bitesize/topics/zwv39j6/articles/zx3982p" />
+  //       </div>
+  //     </div>
+  //   );
+  // }
 }
