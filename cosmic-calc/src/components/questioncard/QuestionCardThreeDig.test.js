@@ -12,6 +12,7 @@ describe("<QuestionCard/>", () => {
     value2: 20,
     value3: 30,
     operation: "-",
+    operation2: "+",
     answerInput: 70,
     equals: "=",
     checkAnswer: jest.fn(),
@@ -26,7 +27,7 @@ describe("<QuestionCard/>", () => {
 it("renders the provided 'value1', 'value2', 'value3', 'operation' and 'equals' prop content to the DOM", () => {
     render(<QuestionCardThreeDig  {...mockedProps} />);
   
-    expect(screen.getByTestId('threeDig').textContent).toBe("70 - 20 - 30 =");  
+    expect(screen.getByTestId('threeDig').textContent).toBe("70 - 20 + 30 =");  
  
     
     });

@@ -14,10 +14,9 @@ export default function QuestionCardColumn(props) {
             <h2 className="h2QuestionGame">{props.value1}</h2>
           </div>
           <div className="negativeMargins">
-            <h2 className="h2QuestionGame">
-              {props.operation}
-              {"  "}
-              {props.value2}
+            <h2 className="h2QuestionGame" data-testid='value2'>
+              {props.operation} 
+              {props.value2}                
             </h2>
           </div>
         </div>

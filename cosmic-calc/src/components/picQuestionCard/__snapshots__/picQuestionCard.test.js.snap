@@ -5,27 +5,32 @@ exports[`<PicQuestionCard/> successfully renders the component, matches snapshot
   <div
     class="questionDiv"
   >
-    <h2
-      class="h2QuestionGame"
+    <div
+      class="question-container"
     >
-      undefined)  
-    </h2>
-    <h2
-      class="h2QuestionGame"
-      data-testid="picQuestion"
-    >
-      50 * 2 =
-    </h2>
-    <img
-      alt="orange"
-      class="QuestionImg"
-      src="img_orange.jpg"
-    />
-    <input
-      class="inputGame"
-      type="number"
-      value="100"
-    />
+      <h2
+        class="h2QuestionGame"
+      >
+        undefined)  
+      </h2>
+      <h2
+        class="h2QuestionGame"
+        data-testid="picQuestion"
+      >
+        50 * 20
+      </h2>
+      <img
+        alt="orange"
+        class="QuestionImg"
+        src="img_orange.jpg"
+      />
+      <input
+        class="inputGame"
+        type="number"
+        value="100"
+      />
+    </div>
+     
   </div>
 </DocumentFragment>
 `;

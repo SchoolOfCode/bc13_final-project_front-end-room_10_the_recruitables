@@ -13,6 +13,7 @@ describe("<QuestionCard/>", () => {
     operation: "+",
     answerInput: 70,
     equals: "=",
+    inputType: 'number',    
     checkAnswer: jest.fn(),
     setAnswerInput: jest.fn()
   };
@@ -22,7 +23,7 @@ describe("<QuestionCard/>", () => {
     expect(asFragment()).toMatchSnapshot();
   });
 
-  it("renders the provided 'value1', 'value2', 'operation', 'equals' prop content to the DOM", () => {
+  it("renders the provided 'value1', 'value2', 'operation', 'equals' prop content to the DOM" , () => {
     render(<QuestionCard  {...mockedProps} />);
     expect(screen.getByTestId('questionCard').textContent).toBe("50 + 20 =");
     

@@ -7,11 +7,13 @@ export const ScoreContext = createContext();
 function ScoreProvider({ children }) {
   const [score, setScore] = useState(0);
   const [user, setUser] = useState(null);
+
   const [year, setYear] = useState(0);
   const [data, setData] = useState(null);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [mute, setMute] = useState(true);
+
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       retrieveUserData(user);
@@ -24,7 +26,7 @@ function ScoreProvider({ children }) {
   const retrieveUserData = async () => {
     let email = await user.email;
     const response = await fetch(
-      `https://cosmic-calculations-backend.onrender.com/api/users/email/${email}`
+      `http://localhost:3001/api/users/email/${email}`
     );
     const data = await response.json();
     setScore(data.payload.total_score);
@@ -34,6 +36,7 @@ function ScoreProvider({ children }) {
     setEmail(data.payload.email);
     return data.payload;
   };
+
 
   const [level, setLevel] = useState(0);
 

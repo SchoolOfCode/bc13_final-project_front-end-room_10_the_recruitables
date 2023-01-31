@@ -73,6 +73,7 @@ export default function App() {
   const navigateToRegister = () => {
     navigate("/register");
   };
+
   //console.log(authed.currentUser);
 
   const navigateToLeaderboard = () => {
@@ -146,7 +147,7 @@ export default function App() {
               onMouseOver={playHover}
               onClick={navigateToLogin}
             >
-              Login
+              Login more 
             </button>
           )}
           {location.pathname !== "/register" && (
@@ -162,6 +163,7 @@ export default function App() {
             <GoMute size={50} />
           </button> */}
         </div>
+      
       )}
       <Routes>
         <Route path="/" element={<Login />} />

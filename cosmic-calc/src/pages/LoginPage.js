@@ -77,7 +77,7 @@ function Login() {
             <input
               type="email"
               placeholder="email"
-              data-testid="emailInput"
+              // data-testid="emailInput"
               className="loginInput"
               value={loginEmail}
               onChange={(e) => setLoginEmail(e.target.value)}
@@ -85,7 +85,7 @@ function Login() {
             <input
               type="password"
               placeholder="password"
-              data-testid="passwordInput"
+              // data-testid="passwordInput"
               className="passwordInput"
               value={loginPassword}
               onChange={(e) => setLoginPassword(e.target.value)}

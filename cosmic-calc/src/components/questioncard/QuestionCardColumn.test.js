@@ -16,15 +16,17 @@ describe("<QuestionCardColumn/>", () => {
     setAnswerInput: jest.fn()
   };
 
-    it("renders the provided 'value1', 'value2', 'value3, 'noOfQuestions' prop content to the DOM", () => {
+    it("renders the provided 'value1', 'value2', 'noOfQuestions' prop content to the DOM", () => {
      render(<QuestionCardColumn  {...mockedProps} />);
     
     const value1 = screen.getByText(/50/i);
-    const value2 = screen.getByText(/20/i);
-    const operation = screen.getByText('+');
+    // const value2 = screen.getByText(/20/i);
+    // const operation = screen.getByText('+');
     expect(value1).toBeInTheDocument();
-    expect(value2).toBeInTheDocument();
-    expect(operation).toBeInTheDocument();
+    // expect(value2).toBeInTheDocument();
+    // expect(operation).toBeInTheDocument();
+    
+    expect(screen.getByTestId('value2').textContent).toBe('+20');
     });
 
   
