@@ -7,11 +7,10 @@
 } */
 
 .Login {
- 
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 80%;
+  height: 50vh;
 }
 
 .loginLogoDiv {
@@ -68,4 +67,19 @@
   min-height: 100px;
   text-align: center;
   object-fit: fill;
+}
+
+.loginCred {
+  font-family: sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  color: white;
+  background-color: black;
+}
+
+.loginCredDiv {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  gap: 2vw;
 }

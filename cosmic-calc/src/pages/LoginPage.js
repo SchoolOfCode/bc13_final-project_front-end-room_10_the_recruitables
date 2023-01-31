@@ -18,8 +18,8 @@ function Login() {
   const [, setUser] = useState(null);
 
   const [play, { stop }] = useSound(intro, {
-    soundEnabled: context.mute,
-    volume: 0.3,
+    forceSoundEnabled: context.mute,
+    volume: context.mute ? 0.3 : 0,
   });
 
   const [playHover] = useSound(buttonFX, {
@@ -104,6 +104,16 @@ function Login() {
             ></button>
           </div>
         </form>
+        <div className="loginCredDiv">
+          <div>
+            <h3 className="loginCred">Year 1: lucy@lucy.com "password"</h3>{" "}
+            <h3 className="loginCred">Year 2: seb@seb.com "password"</h3>
+          </div>
+          <div>
+            <h3 className="loginCred">Year 3: jeremy@jeremy.com "password"</h3>
+            <h3 className="loginCred">Year 4: louis@louis.com "password"</h3>
+          </div>
+        </div>
       </div>
     </div>
   );

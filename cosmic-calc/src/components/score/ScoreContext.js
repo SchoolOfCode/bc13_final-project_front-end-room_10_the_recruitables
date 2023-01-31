@@ -13,6 +13,7 @@ function ScoreProvider({ children }) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [mute, setMute] = useState(true);
+  console.log("mute", mute);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -37,13 +38,6 @@ function ScoreProvider({ children }) {
     return data.payload;
   };
 
-
-  const [level, setLevel] = useState(0);
-
-  function updateLevel(i) {
-    setLevel(i);
-  }
-
   const muteSound = () => {
     setMute(!mute);
   };
@@ -58,7 +52,6 @@ function ScoreProvider({ children }) {
         name: name,
         data: data,
         email: email,
-        updateLevel: updateLevel,
         year: year,
         muteSound: muteSound,
         mute: mute,

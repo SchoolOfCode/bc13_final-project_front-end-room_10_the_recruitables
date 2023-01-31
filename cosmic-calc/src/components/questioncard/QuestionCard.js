@@ -8,7 +8,7 @@ export default function QuestionCard(props) {
         <h1> {props.h1}</h1>
         <div className="questionDisplay">
           <h2 className="h2QuestionGame">{props.noOfQuestions + ")  "}</h2>
-          <h2 className="h2QuestionGame" data-testid='questionCard'>
+          <h2 className="h2QuestionGame" data-testid="questionCard">
             {props.value1} {props.operation} {props.value2} {props.equals}
           </h2>
           <input
