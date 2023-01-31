@@ -14,7 +14,6 @@ export default function CountersQuestionCard(props) {
         value={props.answerInput}
         onChange={(e) => props.setAnswerInput(e.target.value)}
         onKeyDown={(e) => {
-          // console.log(e);
           if (e.key === "Enter") {
             props.checkAnswer();
             props.setAnswerInput("");

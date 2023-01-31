@@ -7,25 +7,33 @@ export const ScoreContext = createContext();
 function ScoreProvider({ children }) {
   const [score, setScore] = useState(0);
   const [user, setUser] = useState(null);
-const [year, setYear] = useState(0)
+
+  const [year, setYear] = useState(0);
+  const [data, setData] = useState(null);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [mute, setMute] = useState(true);
+
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       retrieveUserData(user);
       setUser(user);
     });
     return unsubscribe;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const retrieveUserData = async () => {
-    console.log("retrieveUserData called");
     let email = await user.email;
     const response = await fetch(
       `http://localhost:3001/api/users/email/${email}`
     );
     const data = await response.json();
-    console.log(data.payload.total_score);
     setScore(data.payload.total_score);
     setYear(data.payload.year);
+    setData(data.payload);
+    setName(data.payload.name);
+    setEmail(data.payload.email);
     return data.payload;
   };
 
@@ -34,9 +42,11 @@ const [year, setYear] = useState(0)
 
   function updateLevel(i) {
     setLevel(i);
-    console.log("hello world");
   }
-  console.log(level);
+
+  const muteSound = () => {
+    setMute(!mute);
+  };
 
   // const value = useMemo(() => {
   return (
@@ -45,9 +55,13 @@ const [year, setYear] = useState(0)
         score: score,
         update: retrieveUserData,
         user: user,
-        // level: level,
+        name: name,
+        data: data,
+        email: email,
         updateLevel: updateLevel,
         year: year,
+        muteSound: muteSound,
+        mute: mute,
       }}
     >
       {children}
@@ -56,11 +70,3 @@ const [year, setYear] = useState(0)
 }
 
 export default ScoreProvider;
-//   return {
-//     score: score,
-//     update: retrieveUserData,
-//     user: user,
-//     level: level,
-//     updateLevel: updateLevel,
-//   };
-// }, [score, user, level]);

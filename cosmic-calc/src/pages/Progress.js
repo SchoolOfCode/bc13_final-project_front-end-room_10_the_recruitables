@@ -19,7 +19,6 @@ const captions1 = [
   "Reading Numbers",
   "Number Bonds to 20",
   "Halves and Quarters",
-  "Lucky Dip",
 ];
 
 const captions2 = [
@@ -31,7 +30,6 @@ const captions2 = [
   "Finding Fractions of Whole Numbers",
   "Putting Numbers in Order",
   "Comparing Values",
-  "Luykcy Dip",
 ];
 
 const captions3 = [
@@ -43,7 +41,6 @@ const captions3 = [
   "Units of Measurement",
   "Adding Fractions",
   "Times Tables- Timed!",
-  "Lucky Dip",
 ];
 
 const captions4 = [
@@ -71,6 +68,7 @@ export const Progress = () => {
   const [totalScore, setTotalScore] = useState();
 
   const [playProgress, { stop }] = useSound(progressFX, {
+    soundEnabled: context.soundEnabled,
     volume: 0.1,
   });
   const [playWoosh] = useSound(woosh, { playbackRate: 1.8, volume: 0.3 });
@@ -89,16 +87,16 @@ export const Progress = () => {
       const data = await response.json();
       setPayload(data.payload);
       setTotalScore(data.payload.total_score);
-      console.log(data.payload);
+      //console.log(data.payload);
       return data.payload.total_score;
     };
     getScore(1);
-    if (payload.total_score >= 50) {
+    if (payload.total_score >= 10) {
       let unlockedLevels = [
-        ...lockLevels.slice(0, Math.floor(payload.total_score / 50)),
+        ...lockLevels.slice(0, Math.floor(payload.total_score / 10)),
       ];
       setLevels(unlockedLevels);
-      console.log(levels);
+      //console.log(levels);
     } else setLevels([1]);
   }, [payload.total_score]);
 
@@ -118,7 +116,7 @@ export const Progress = () => {
 
   const navigateToGame = () => {
     let year = context.year;
-    console.log(year);
+    //console.log(year);
     if (year === 1) {
       navigate("/game", { state: { totalScore: totalScore } });
     } else if (year === 2) {
@@ -126,11 +124,11 @@ export const Progress = () => {
     } else if (year === 3) {
       navigate("/year-three-games", { state: { totalScore: totalScore } });
     } else if (year === 4) {
-      console.log("year 4");
+      //console.log("year 4");
       navigate("/year-four-games", { state: { totalScore: totalScore } });
     }
   };
-  console.log(levels);
+  //console.log(levels);
 
   // onClick event handler to pass to buttons. If need to go depending on levels can add conditions based on button index 1-10
   function handleGotoLevel(level) {

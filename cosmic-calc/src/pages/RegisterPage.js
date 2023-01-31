@@ -27,7 +27,7 @@ function Register() {
     });
   }, []);
 
-  console.log(user);
+  //console.log(user);
 
   let navigate = useNavigate();
 
@@ -48,7 +48,7 @@ function Register() {
       }
     );
     const data = await response.json();
-    console.log(data);
+    //console.log(data);
   };
   const handleRegister = async (e) => {
     e.preventDefault();
@@ -67,7 +67,7 @@ function Register() {
       setTimeout(() => {
         navigate("/avatars");
       }, 1000);
-      console.log(scores);
+      //console.log(scores);
     } catch (error) {
       console.log(error);
     }
@@ -112,6 +112,10 @@ function Register() {
                 onChange={(e) => setYear(e.target.value)}
                 placeholder="What year are you in?"
               >
+                <option value="" disabled selected hidden>
+                  {" "}
+                  Year{" "}
+                </option>
                 <option value="1">Year 1</option>
                 <option value="2">Year 2</option>
                 <option value="3">Year 3</option>

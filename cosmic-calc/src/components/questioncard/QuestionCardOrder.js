@@ -11,7 +11,7 @@ export default function QuestionCardOrder(props) {
           {props.value1}, {props.value2}, {props.value3}, {props.value4}
         </h2>
         <input
-          className="inputGame"
+          className="inputGameOrder"
           type="text"
           value={props.answerInput}
           onChange={(e) => props.setAnswerInput(e.target.value)}

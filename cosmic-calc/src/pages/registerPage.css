@@ -60,3 +60,19 @@
   margin: 2vw;
   font-size: 3vw;
 }
+
+.registerButton {
+  background-image: url(../images/Background_Buttons/register.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: rgba(34, 34, 170, 0);
+  width: 15vw;
+  height: 10vh;
+  min-width: 180px;
+  min-height: 100px;
+  text-align: center;
+  color: #ffffff00;
+}
+
+

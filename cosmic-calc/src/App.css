@@ -101,7 +101,7 @@
 
 .navButtonLogin {
   background-image: url(./images/Background_Buttons/loginButton.png);
-  background-size: cover;
+  background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
   background-color: rgba(0, 0, 255, 0);
@@ -114,7 +114,7 @@
 }
 
 .navButtonRegister {
-  background-image: url(./images/Background_Buttons/registerButton.png);
+  background-image: url(./images/Background_Buttons/register.png);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -148,7 +148,7 @@
 
 .progress-score {
   width: 15vw;
-  height: 10vh;
+  height: 8vh;
   display: flex;
   object-fit: scale-down;
   outline: #f70d11 5px groove;
@@ -160,8 +160,9 @@
   color: black;
   border-radius: 50%;
   /* text-shadow: #fff 1px 1px; */
+  margin-top: 2vh;
   z-index: 10;
-  padding: 0.5cm;
+  padding: 0.7cm;
   animation: rotation 2s infinite linear;
   transition: transform 1s ease-in-out;
 }
@@ -186,6 +187,18 @@
   transform: rotate(360deg);
 }
 
+.leaderboardButton {
+  display: flex;
+  background-color: #f70d11;
+  color: white;
+  contain: content;
+  font-size: 50%;
+  text-align: center;
+  font-weight: bold;
+  text-shadow: #000 1px 1px;
+  /* border-radius: 50%; */
+}
+=======
 @media screen and (max-width: 650px) {
   .navBarPageDiv {
    width: 110%;
@@ -197,3 +210,4 @@
     width: 160%;
   }
 }
+

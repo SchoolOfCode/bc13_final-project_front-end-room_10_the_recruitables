@@ -14,7 +14,7 @@ const Leaderboard = () => {
         }
       );
       const data = await response.json();
-      console.log(data.payload);
+      //console.log(data.payload);
       setAllUsers(data.payload);
     };
     getAllUsers();
