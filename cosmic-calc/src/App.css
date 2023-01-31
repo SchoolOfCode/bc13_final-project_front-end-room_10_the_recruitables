@@ -43,6 +43,7 @@
   text-align: center;
 }
 
+.navButtonProgressHighlighted,
 .navButtonProgress {
   background-image: url(./images/Background_Buttons/ProgressButtonE.png);
   background-size: contain;
@@ -73,20 +74,6 @@
 
 .navButtonGameHighlighted {
   background-image: url(./images/Background_Buttons/game_button_glow.png);
-
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-color: rgba(0, 0, 255, 0);
-  width: 10vw;
-  height: 10vh;
-  min-width: 140px;
-  min-height: 100px;
-  text-align: center;
-}
-
-.navButtonProgressHighlighted {
-  background-image: url(./images/Background_Buttons/progress_button_glow.png);
 
   background-size: cover;
   background-repeat: no-repeat;
@@ -198,10 +185,10 @@
   text-shadow: #000 1px 1px;
   /* border-radius: 50%; */
 }
-=======
+
 @media screen and (max-width: 650px) {
   .navBarPageDiv {
-   width: 110%;
+    width: 110%;
   }
 }
 
@@ -210,4 +197,3 @@
     width: 160%;
   }
 }
-

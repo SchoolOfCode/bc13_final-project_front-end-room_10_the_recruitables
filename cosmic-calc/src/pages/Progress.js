@@ -62,14 +62,15 @@ export const Progress = () => {
   // count for array of levels. New level pushed into array ever X amount of points. Then mapped below to return a new button each time score level reached.
   const [levels, setLevels] = useState([1]);
   //?does this need to be a useState? Can it be a const?
-  const [lockLevels, setLockLevels] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+  const [lockLevels] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
   const [completedLevels, setCompletedLevels] = useState([0]);
   const [payload, setPayload] = useState([]);
   const [totalScore, setTotalScore] = useState();
 
   const [playProgress, { stop }] = useSound(progressFX, {
-    soundEnabled: context.soundEnabled,
-    volume: 0.1,
+    forceSoundEnabled: context.mute,
+    soundEnabled: context.mute,
+    volume: context.mute ? 0.1 : 0,
   });
   const [playWoosh] = useSound(woosh, { playbackRate: 1.8, volume: 0.3 });
 
@@ -93,7 +94,7 @@ export const Progress = () => {
     getScore(1);
     if (payload.total_score >= 10) {
       let unlockedLevels = [
-        ...lockLevels.slice(0, Math.floor(payload.total_score / 10)),
+        ...lockLevels.slice(0, Math.floor(payload.total_score / 10 + 1)),
       ];
       setLevels(unlockedLevels);
       //console.log(levels);
@@ -101,7 +102,7 @@ export const Progress = () => {
   }, [payload.total_score]);
 
   useEffect(() => {
-    let newLevelArray = levels.slice(0, -1);
+    let newLevelArray = levels.slice(0, Math.floor(totalScore / 10));
     setCompletedLevels(newLevelArray);
   }, [levels]);
 

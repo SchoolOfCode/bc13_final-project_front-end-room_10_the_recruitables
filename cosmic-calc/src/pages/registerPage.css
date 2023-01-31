@@ -3,7 +3,8 @@
   justify-content: center;
   align-items: center;
   width: 100vw;
-  height: 15cm;
+  height: 50vh;
+
   flex-direction: row;
 }
 
@@ -74,5 +75,3 @@
   text-align: center;
   color: #ffffff00;
 }
-
-

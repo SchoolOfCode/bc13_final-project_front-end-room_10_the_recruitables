@@ -424,7 +424,7 @@ const YearThreeGames = () => {
       }
     );
     const data = await response.json();
-    //console.log(data);
+    console.log(data);
   };
 
   if (noOfQuestions === 11) {
@@ -451,22 +451,25 @@ const YearThreeGames = () => {
     return (
       <div>
         <div className="gameDiv">
-          <AnswerCard
-            answerVisible={answerVisible}
-            result={result}
-            newQuestion={newQuestion1}
-          />
-          <QuestionCard
-            h1="Can you add or subtract 1, 10, or 100?"
-            answerInput={answerInput}
-            noOfQuestions={noOfQuestions}
-            value1={initialValue}
-            operation={operation}
-            value2={multipleValue}
-            equals={"="}
-            setAnswerInput={setAnswerInput}
-            checkAnswer={checkAnswer1}
-          />
+          {answerVisible ? (
+            <AnswerCard
+              answerVisible={answerVisible}
+              result={result}
+              newQuestion={newQuestion1}
+            />
+          ) : (
+            <QuestionCard
+              h1="Can you add or subtract 1, 10, or 100?"
+              answerInput={answerInput}
+              noOfQuestions={noOfQuestions}
+              value1={initialValue}
+              operation={operation}
+              value2={multipleValue}
+              equals={"="}
+              setAnswerInput={setAnswerInput}
+              checkAnswer={checkAnswer1}
+            />
+          )}
           <div className="pointsHelpDiv">
             <Score score={score} />
             <ResourceButton url="https://www.bbc.co.uk/bitesize/topics/zy2mn39/articles/z7kw4xs" />
@@ -478,22 +481,25 @@ const YearThreeGames = () => {
     //console.log("25 points = ", points);
     return (
       <div className="gameDiv">
-        <AnswerCardOrder
-          answerVisible={answerVisible}
-          result={result}
-          newQuestion={newQuestion2}
-        />
-        <QuestionCardOrder
-          h1="Can you put these numbers in the right order?"
-          answerInput={answerInput}
-          noOfQuestions={noOfQuestions}
-          value1={firstNumberOrder}
-          value2={secondNumberOrder}
-          value3={thirdNumberOrder}
-          value4={fourthNumberOrder}
-          setAnswerInput={setAnswerInput}
-          checkAnswer={checkAnswer2}
-        />
+        {answerVisible ? (
+          <AnswerCardOrder
+            answerVisible={answerVisible}
+            result={result}
+            newQuestion={newQuestion2}
+          />
+        ) : (
+          <QuestionCardOrder
+            h1="Can you put these numbers in the right order?"
+            answerInput={answerInput}
+            noOfQuestions={noOfQuestions}
+            value1={firstNumberOrder}
+            value2={secondNumberOrder}
+            value3={thirdNumberOrder}
+            value4={fourthNumberOrder}
+            setAnswerInput={setAnswerInput}
+            checkAnswer={checkAnswer2}
+          />
+        )}
         <div className="pointsHelpDiv">
           <Score score={score} />
           <ResourceButton url="https://www.bbc.co.uk/bitesize/topics/zknsgk7/articles/z2pjwxs" />
@@ -504,21 +510,24 @@ const YearThreeGames = () => {
     return (
       <div>
         <div className="gameDiv">
-          <AnswerCard
-            answerVisible={answerVisible}
-            result={result}
-            newQuestion={newQuestion3}
-          />
-          <QuestionCardColumn
-            h1="Can you add these three-digit numbers?"
-            answerInput={answerInput}
-            noOfQuestions={noOfQuestions}
-            value1={firstNumber}
-            operation={"+"}
-            value2={secondNumber}
-            setAnswerInput={setAnswerInput}
-            checkAnswer={checkAnswer3}
-          />
+          {answerVisible ? (
+            <AnswerCard
+              answerVisible={answerVisible}
+              result={result}
+              newQuestion={newQuestion3}
+            />
+          ) : (
+            <QuestionCardColumn
+              h1="Can you add these three-digit numbers?"
+              answerInput={answerInput}
+              noOfQuestions={noOfQuestions}
+              value1={firstNumber}
+              operation={"+"}
+              value2={secondNumber}
+              setAnswerInput={setAnswerInput}
+              checkAnswer={checkAnswer3}
+            />
+          )}
           <div className="pointsHelpDiv">
             <Score score={score} />
             <ResourceButton url="https://www.bbc.co.uk/bitesize/topics/zy2mn39/articles/zvxxt39" />
@@ -530,21 +539,24 @@ const YearThreeGames = () => {
     return (
       <div>
         <div className="gameDiv">
-          <AnswerCard
-            answerVisible={answerVisible}
-            result={result}
-            newQuestion={newQuestion4}
-          />
-          <QuestionCardColumn
-            h1="Can you subtract using two- and three-digit numbers?"
-            answerInput={answerInput}
-            noOfQuestions={noOfQuestions}
-            value1={firstInt}
-            operation={"-"}
-            value2={secondInt}
-            setAnswerInput={setAnswerInput}
-            checkAnswer={checkAnswer4}
-          />
+          {answerVisible ? (
+            <AnswerCard
+              answerVisible={answerVisible}
+              result={result}
+              newQuestion={newQuestion4}
+            />
+          ) : (
+            <QuestionCardColumn
+              h1="Can you subtract using two- and three-digit numbers?"
+              answerInput={answerInput}
+              noOfQuestions={noOfQuestions}
+              value1={firstInt}
+              operation={"-"}
+              value2={secondInt}
+              setAnswerInput={setAnswerInput}
+              checkAnswer={checkAnswer4}
+            />
+          )}
           <div className="pointsHelpDiv">
             <Score score={score} />
             <ResourceButton url="https://www.youtube.com/watch?v=L3ANvTHKf7U" />
@@ -556,22 +568,25 @@ const YearThreeGames = () => {
     return (
       <div>
         <div className="gameDiv">
-          <AnswerCard
-            answerVisible={answerVisible}
-            result={result}
-            newQuestion={newQuestion5}
-          />
-          <QuestionCard
-            h1="Can you use your times tables skills to solve these problems?"
-            answerInput={answerInput}
-            noOfQuestions={noOfQuestions}
-            value1={firstMultiple}
-            operation={"x"}
-            value2={secondMultiple}
-            equals={"="}
-            setAnswerInput={setAnswerInput}
-            checkAnswer={checkAnswer5}
-          />
+          {answerVisible ? (
+            <AnswerCard
+              answerVisible={answerVisible}
+              result={result}
+              newQuestion={newQuestion5}
+            />
+          ) : (
+            <QuestionCard
+              h1="Can you use your times tables skills to solve these problems?"
+              answerInput={answerInput}
+              noOfQuestions={noOfQuestions}
+              value1={firstMultiple}
+              operation={"x"}
+              value2={secondMultiple}
+              equals={"="}
+              setAnswerInput={setAnswerInput}
+              checkAnswer={checkAnswer5}
+            />
+          )}
           <div className="pointsHelpDiv">
             <Score score={score} />
             <ResourceButton url="https://www.bbc.co.uk/teach/supermovers/ks2-maths-the-3-times-table/z6sw382" />
@@ -583,24 +598,27 @@ const YearThreeGames = () => {
     return (
       <div>
         <div className="gameDiv">
-          <AnswerCard
-            answerVisible={answerVisible}
-            result={result}
-            newQuestion={newQuestion8}
-          />
-          <QuestionCardUnit
-            h1="Can you add and subtract using units of measurement?"
-            answerInput={answerInput}
-            noOfQuestions={noOfQuestions}
-            value1={firstMeasurement}
-            operation={operationMeasurement}
-            value2={secondMeasurement}
-            unit={unit}
-            equals={"="}
-            conversionUnit={unit}
-            setAnswerInput={setAnswerInput}
-            checkAnswer={checkAnswer8}
-          />
+          {answerVisible ? (
+            <AnswerCard
+              answerVisible={answerVisible}
+              result={result}
+              newQuestion={newQuestion8}
+            />
+          ) : (
+            <QuestionCardUnit
+              h1="Can you add and subtract using units of measurement?"
+              answerInput={answerInput}
+              noOfQuestions={noOfQuestions}
+              value1={firstMeasurement}
+              operation={operationMeasurement}
+              value2={secondMeasurement}
+              unit={unit}
+              equals={"="}
+              conversionUnit={unit}
+              setAnswerInput={setAnswerInput}
+              checkAnswer={checkAnswer8}
+            />
+          )}
           <div className="pointsHelpDiv">
             <Score score={score} />
             <ResourceButton url="https://www.bbc.co.uk/bitesize/topics/z9sfr82/articles/z7mwr2p" />
@@ -611,17 +629,20 @@ const YearThreeGames = () => {
   } else if (points < 70) {
     return (
       <div className="gameDiv">
-        <AnswerCard
-          answerVisible={answerVisible}
-          result={result}
-          newQuestion={newQuestion7}
-        />
-        <ShapesFractionQuestionCard
-          answerInput={answerInput}
-          noOfQuestions={noOfQuestions}
-          shape={fraction}
-          checkAnswer={checkAnswer7}
-        />
+        {answerVisible ? (
+          <AnswerCard
+            answerVisible={answerVisible}
+            result={result}
+            newQuestion={newQuestion7}
+          />
+        ) : (
+          <ShapesFractionQuestionCard
+            answerInput={answerInput}
+            noOfQuestions={noOfQuestions}
+            shape={fraction}
+            checkAnswer={checkAnswer7}
+          />
+        )}
         <div className="pointsHelpDiv">
           <Score score={score} />
           <ResourceButton url="https://www.youtube.com/watch?v=WTeqUejf3D0" />
@@ -631,24 +652,27 @@ const YearThreeGames = () => {
   } else if (points >= 80) {
     return (
       <div className="gameDiv">
-        <AnswerCard
-          answerVisible={answerVisible}
-          result={result}
-          newQuestion={newQuestion5}
-        />
-        <QuestionCardTimer
-          h1="Can you use your times tables to solve these questions within the time?"
-          astronaut={astronaut}
-          score={score}
-          answerInput={answerInput}
-          noOfQuestions={noOfQuestions}
-          value1={firstMultiple}
-          operation={"x"}
-          value2={secondMultiple}
-          equals={"="}
-          setAnswerInput={setAnswerInput}
-          checkAnswer={checkAnswer5}
-        />
+        {answerVisible ? (
+          <AnswerCard
+            answerVisible={answerVisible}
+            result={result}
+            newQuestion={newQuestion5}
+          />
+        ) : (
+          <QuestionCardTimer
+            h1="Can you use your times tables to solve these questions within the time?"
+            astronaut={astronaut}
+            score={score}
+            answerInput={answerInput}
+            noOfQuestions={noOfQuestions}
+            value1={firstMultiple}
+            operation={"x"}
+            value2={secondMultiple}
+            equals={"="}
+            setAnswerInput={setAnswerInput}
+            checkAnswer={checkAnswer5}
+          />
+        )}
         <div className="pointsHelpDiv">
           <Score score={score} />
           <ResourceButton url="https://www.bbc.co.uk/teach/supermovers/times-table-collection/z4vv6v4" />

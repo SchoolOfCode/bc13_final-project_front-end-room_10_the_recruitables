@@ -60,6 +60,7 @@ export default function Game() {
         updateScore(score, user);
       });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [noOfQuestions, score]);
 
   if (noOfQuestions === 11) {
@@ -98,7 +99,7 @@ export default function Game() {
 
   const checkAnswer1 = () => {
     let questionResult = "";
-    if (correctAnswer1 == answerInput) {
+    if (correctAnswer1 === answerInput) {
       questionResult = true;
     } else {
       questionResult = false;
@@ -442,8 +443,10 @@ export default function Game() {
       }
     );
     const data = await response.json();
-    //console.log(data);
+    console.log(data);
   };
+
+  console.log(points);
 
   if (noOfQuestions === 11) {
     return (
@@ -468,20 +471,23 @@ export default function Game() {
   } else if (points < 10) {
     return (
       <div className="gameDiv">
-        <AnswerCard
-          answerVisible={answerVisible}
-          result={result}
-          newQuestion={newQuestion1}
-        />
-        <PicQuestionCard
-          inputType={inputType}
-          src={numberLineImg}
-          answerInput={answerInput}
-          noOfQuestions={noOfQuestions}
-          text={"Can you fill in the missing number?"}
-          setAnswerInput={setAnswerInput}
-          checkAnswer={checkAnswer1}
-        />
+        {answerVisible ? (
+          <AnswerCard
+            answerVisible={answerVisible}
+            result={result}
+            newQuestion={newQuestion1}
+          />
+        ) : (
+          <PicQuestionCard
+            inputType={inputType}
+            src={numberLineImg}
+            answerInput={answerInput}
+            noOfQuestions={noOfQuestions}
+            text={"Can you fill in the missing number?"}
+            setAnswerInput={setAnswerInput}
+            checkAnswer={checkAnswer1}
+          />
+        )}
         <div className="pointsHelpDiv">
           <Score score={score} />
           <ResourceButton url="https://www.youtube.com/watch?v=e0dJWfQHF8Y" />
@@ -493,17 +499,20 @@ export default function Game() {
 
     return (
       <div className="gameDiv">
-        <AnswerCard
-          answerVisible={answerVisible}
-          result={result}
-          newQuestion={newQuestion2}
-        />
-        <ShapesQuestionCard
-          answerInput={answerInput}
-          noOfQuestions={noOfQuestions}
-          shape={shape}
-          checkAnswer={checkAnswer2}
-        />
+        {answerVisible ? (
+          <AnswerCard
+            answerVisible={answerVisible}
+            result={result}
+            newQuestion={newQuestion2}
+          />
+        ) : (
+          <ShapesQuestionCard
+            answerInput={answerInput}
+            noOfQuestions={noOfQuestions}
+            shape={shape}
+            checkAnswer={checkAnswer2}
+          />
+        )}
         <div className="pointsHelpDiv">
           <Score score={score} />
           <ResourceButton url="https://www.youtube.com/watch?v=WTeqUejf3D0" />
@@ -515,23 +524,26 @@ export default function Game() {
     //console.log("points = ", points);
     return (
       <div className="gameDiv">
-        <AnswerCard
-          answerVisible={answerVisible}
-          result={result}
-          newQuestion={newQuestion3}
-        />
-        <CountersQuestionCard
-          h1={
-            "Can you add and subtract the stars to work out the total number?"
-          }
-          answerInput={answerInput}
-          noOfQuestions={noOfQuestions}
-          value1={Y1P3value1}
-          operation={Y1P3operation}
-          value2={Y1P3value2}
-          setAnswerInput={setAnswerInput}
-          checkAnswer={checkAnswer3}
-        />
+        {answerVisible ? (
+          <AnswerCard
+            answerVisible={answerVisible}
+            result={result}
+            newQuestion={newQuestion3}
+          />
+        ) : (
+          <CountersQuestionCard
+            h1={
+              "Can you add and subtract the stars to work out the total number?"
+            }
+            answerInput={answerInput}
+            noOfQuestions={noOfQuestions}
+            value1={Y1P3value1}
+            operation={Y1P3operation}
+            value2={Y1P3value2}
+            setAnswerInput={setAnswerInput}
+            checkAnswer={checkAnswer3}
+          />
+        )}
         <div className="pointsHelpDiv">
           <Score score={score} />
           <ResourceButton url="https://www.bbc.co.uk/bitesize/topics/zwv39j6/articles/zbpbrj6" />
@@ -543,20 +555,22 @@ export default function Game() {
     //console.log("points = ", points);
     return (
       <div className="gameDiv">
-        <AnswerCard
-          answerVisible={answerVisible}
-          result={result}
-          newQuestion={newQuestion4}
-        />
-        <QuestionCard
-          inputType={"hidden"}
-          h1={"Can you match up your number bonds to 10?"}
-          answerInput={answerInput}
-          noOfQuestions={noOfQuestions}
-          value1={`What do I need to add to ${Y1P4knownValue} to make 10?`}
-          setAnswerInput={setAnswerInput}
-          checkAnswer={checkAnswer4}
-        />
+        {answerVisible ? (
+          <AnswerCard
+            answerVisible={answerVisible}
+            result={result}
+            newQuestion={newQuestion4}
+          />
+        ) : (
+          <QuestionCard
+            h1={"Can you match up your number bonds to 10?"}
+            answerInput={answerInput}
+            noOfQuestions={noOfQuestions}
+            value1={`What do I need to add to ${Y1P4knownValue} to make 10?`}
+            setAnswerInput={setAnswerInput}
+            checkAnswer={checkAnswer4}
+          />
+        )}
         <div className="pointsHelpDiv">
           <Score score={score} />
           <ResourceButton url="https://www.bbc.co.uk/bitesize/topics/zwv39j6/articles/zkd98xs" />
@@ -568,23 +582,26 @@ export default function Game() {
     //console.log("points = ", points);
     return (
       <div className="gameDiv">
-        <AnswerCard
-          answerVisible={answerVisible}
-          result={result}
-          newQuestion={newQuestion5}
-        />
-        <QuestionCard
-          h1={"How many sums can you get right?"}
-          inputType={inputType}
-          answerInput={answerInput}
-          noOfQuestions={noOfQuestions}
-          value1={value1}
-          operation={operation}
-          value2={value2}
-          equals={"="}
-          setAnswerInput={setAnswerInput}
-          checkAnswer={checkAnswer5}
-        />
+        {answerVisible ? (
+          <AnswerCard
+            answerVisible={answerVisible}
+            result={value1 + operation + value2 + " = " + result}
+            newQuestion={newQuestion5}
+          />
+        ) : (
+          <QuestionCard
+            h1={"How many sums can you get right?"}
+            inputType={inputType}
+            answerInput={answerInput}
+            noOfQuestions={noOfQuestions}
+            value1={value1}
+            operation={operation}
+            value2={value2}
+            equals={"="}
+            setAnswerInput={setAnswerInput}
+            checkAnswer={checkAnswer5}
+          />
+        )}
         <div className="pointsHelpDiv">
           <Score score={score} />
           <ResourceButton url="https://www.bbc.co.uk/bitesize/topics/zwv39j6/articles/ztpmrwx" />
@@ -594,22 +611,25 @@ export default function Game() {
   } else if (points < 60) {
     return (
       <div className="gameDiv">
-        <AnswerCard
-          answerVisible={answerVisible}
-          result={result}
-          newQuestion={newQuestion6}
-        />
-        <QuestionCard
-          h1={"Can you read your numbers from 1 to 10?"}
-          inputType={inputType}
-          answerInput={answerInput}
-          noOfQuestions={noOfQuestions}
-          value1={"What is"}
-          operation={word}
-          value2={"in numbers?"}
-          setAnswerInput={setAnswerInput}
-          checkAnswer={checkAnswer6}
-        />
+        {answerVisible ? (
+          <AnswerCard
+            answerVisible={answerVisible}
+            result={result}
+            newQuestion={newQuestion6}
+          />
+        ) : (
+          <QuestionCard
+            h1={"Can you read your numbers from 1 to 10?"}
+            inputType={inputType}
+            answerInput={answerInput}
+            noOfQuestions={noOfQuestions}
+            value1={"What is"}
+            operation={word}
+            value2={"in numbers?"}
+            setAnswerInput={setAnswerInput}
+            checkAnswer={checkAnswer6}
+          />
+        )}
         <div className="pointsHelpDiv">
           <Score score={score} />
           <ResourceButton url="https://www.youtube.com/watch?gl=CO&hl=es-419&context=C38ccb90ADOEgsToPDskLi8_jjTLcMDO7pvUR7WrMl&v=e0dJWfQHF8Y" />
@@ -617,48 +637,54 @@ export default function Game() {
       </div>
     );
   } else if (points < 70) {
-    return (
-      <div className="gameDiv">
-        <AnswerCard
-          answerVisible={answerVisible}
-          result={result}
-          newQuestion={newQuestion7}
-        />
-        <FractionsQuestionCard
-          h1={"How well do you know your fractions?"}
-          answerInput={answerInput}
-          noOfQuestions={noOfQuestions}
-          fractionWord={fractionWord}
-          checkAnswer={checkAnswer7}
-        />
-        <div className="pointsHelpDiv">
-          <Score score={score} />
-          <ResourceButton url="https://www.bbc.co.uk/bitesize/topics/z3rbg82" />
-        </div>
-      </div>
-    );
-  } else if (points >= 80) {
     //console.log("Inside points >= 100 if statement");
     //console.log("points = ", points);
     return (
       <div className="gameDiv">
-        <AnswerCard
-          answerVisible={answerVisible}
-          result={result}
-          newQuestion={newQuestion8}
-        />
-        <QuestionCard
-          h1={"Can you match up all your number bonds to 20?"}
-          inputType={inputType}
-          answerInput={answerInput}
-          noOfQuestions={noOfQuestions}
-          value1={`What do I need to add to ${Y1P8knownValue} to make 20?`}
-          setAnswerInput={setAnswerInput}
-          checkAnswer={checkAnswer8}
-        />
+        {answerVisible ? (
+          <AnswerCard
+            answerVisible={answerVisible}
+            result={result}
+            newQuestion={newQuestion8}
+          />
+        ) : (
+          <QuestionCard
+            h1={"Can you match up all your number bonds to 20?"}
+            inputType={inputType}
+            answerInput={answerInput}
+            noOfQuestions={noOfQuestions}
+            value1={`What do I need to add to ${Y1P8knownValue} to make 20?`}
+            setAnswerInput={setAnswerInput}
+            checkAnswer={checkAnswer8}
+          />
+        )}
         <div className="pointsHelpDiv">
           <Score score={score} />
           <ResourceButton url="https://www.bbc.co.uk/bitesize/topics/zwv39j6/articles/zx3982p" />
+        </div>
+      </div>
+    );
+  } else if (points >= 80) {
+    return (
+      <div className="gameDiv">
+        {answerVisible ? (
+          <AnswerCard
+            answerVisible={answerVisible}
+            result={result}
+            newQuestion={newQuestion7}
+          />
+        ) : (
+          <FractionsQuestionCard
+            h1={"How well do you know your fractions?"}
+            answerInput={answerInput}
+            noOfQuestions={noOfQuestions}
+            fractionWord={fractionWord}
+            checkAnswer={checkAnswer7}
+          />
+        )}
+        <div className="pointsHelpDiv">
+          <Score score={score} />
+          <ResourceButton url="https://www.bbc.co.uk/bitesize/topics/z3rbg82" />
         </div>
       </div>
     );

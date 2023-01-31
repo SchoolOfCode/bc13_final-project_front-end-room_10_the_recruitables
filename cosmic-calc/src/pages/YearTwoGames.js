@@ -536,21 +536,24 @@ export default function YearTwoGames() {
   } else if (points < 10) {
     return (
       <div className="gameDiv">
-        <AnswerCard
-          answerVisible={answerVisible}
-          result={result}
-          newQuestion={newQuestion1}
-        />
-        <PicQuestionCard
-          h1={"Can you count in 2s, 5s and 10s from 0?"}
-          text="What number is missing?"
-          src={coinCountingImg}
-          answerInput={answerInput}
-          noOfQuestions={noOfQuestions}
-          value1={"Which number is missing?"}
-          setAnswerInput={setAnswerInput}
-          checkAnswer={checkAnswer1}
-        />
+        {answerVisible ? (
+          <AnswerCard
+            answerVisible={answerVisible}
+            result={result}
+            newQuestion={newQuestion1}
+          />
+        ) : (
+          <PicQuestionCard
+            h1={"Can you count in 2s, 5s and 10s from 0?"}
+            text="What number is missing?"
+            src={coinCountingImg}
+            answerInput={answerInput}
+            noOfQuestions={noOfQuestions}
+            value1={"Which number is missing?"}
+            setAnswerInput={setAnswerInput}
+            checkAnswer={checkAnswer1}
+          />
+        )}
         <div className="pointsHelpDiv">
           <Score score={score} />
           <ResourceButton url="https://www.youtube.com/watch?v=8nokRGhevCw" />
@@ -561,22 +564,25 @@ export default function YearTwoGames() {
     return (
       <div>
         <div className="gameDiv">
-          <AnswerCard
-            answerVisible={answerVisible}
-            result={result}
-            newQuestion={newQuestion2}
-          />
-          <QuestionCard
-            h1="Let's practice addition and subtraction!"
-            answerInput={answerInput}
-            noOfQuestions={noOfQuestions}
-            value1={initialValue}
-            operation={operation}
-            value2={steps}
-            equals={"="}
-            setAnswerInput={setAnswerInput}
-            checkAnswer={checkAnswer2}
-          />
+          {answerVisible ? (
+            <AnswerCard
+              answerVisible={answerVisible}
+              result={result}
+              newQuestion={newQuestion2}
+            />
+          ) : (
+            <QuestionCard
+              h1="Let's practice addition and subtraction!"
+              answerInput={answerInput}
+              noOfQuestions={noOfQuestions}
+              value1={initialValue}
+              operation={operation}
+              value2={steps}
+              equals={"="}
+              setAnswerInput={setAnswerInput}
+              checkAnswer={checkAnswer2}
+            />
+          )}
           <div className="pointsHelpDiv">
             <Score score={score} />
             <ResourceButton url="https://www.bbc.co.uk/bitesize/topics/zwv39j6/articles/zkd98xs" />
@@ -588,21 +594,24 @@ export default function YearTwoGames() {
     //console.log("10 points = ", points);
     return (
       <div className="gameDiv">
-        <AnswerCard
-          answerVisible={answerVisible}
-          result={result}
-          newQuestion={newQuestion3}
-        />
-        <QuestionCard
-          h1="Can you read and write your numbers up to 100?"
-          answerInput={answerInput}
-          noOfQuestions={noOfQuestions}
-          value1={"What is"}
-          operation={word}
-          value2={"in numbers?"}
-          setAnswerInput={setAnswerInput}
-          checkAnswer={checkAnswer3}
-        />
+        {answerVisible ? (
+          <AnswerCard
+            answerVisible={answerVisible}
+            result={result}
+            newQuestion={newQuestion3}
+          />
+        ) : (
+          <QuestionCard
+            h1="Can you read and write your numbers up to 100?"
+            answerInput={answerInput}
+            noOfQuestions={noOfQuestions}
+            value1={"What is"}
+            operation={word}
+            value2={"in numbers?"}
+            setAnswerInput={setAnswerInput}
+            checkAnswer={checkAnswer3}
+          />
+        )}
         <div className="pointsHelpDiv">
           <Score score={score} />
           <ResourceButton url="https://www.youtube.com/watch?v=bGetqbqDVaA" />
@@ -612,20 +621,23 @@ export default function YearTwoGames() {
   } else if (points < 40) {
     return (
       <div className="gameDiv">
-        <AnswerCard
-          answerVisible={answerVisible}
-          result={result}
-          newQuestion={newQuestion4}
-        />
-        <PicQuestionCard
-          h1="Can you count up the coins?"
-          src={placeValueImg}
-          answerInput={answerInput}
-          noOfQuestions={noOfQuestions}
-          value1={"Which does this equal?"}
-          setAnswerInput={setAnswerInput}
-          checkAnswer={checkAnswer4}
-        />
+        {answerVisible ? (
+          <AnswerCard
+            answerVisible={answerVisible}
+            result={result}
+            newQuestion={newQuestion4}
+          />
+        ) : (
+          <PicQuestionCard
+            h1="Can you count up the coins?"
+            src={placeValueImg}
+            answerInput={answerInput}
+            noOfQuestions={noOfQuestions}
+            value1={"Which does this equal?"}
+            setAnswerInput={setAnswerInput}
+            checkAnswer={checkAnswer4}
+          />
+        )}
         <div className="pointsHelpDiv">
           <Score score={score} />
           <ResourceButton url="https://www.youtube.com/watch?v=bGetqbqDVaA" />
@@ -636,24 +648,27 @@ export default function YearTwoGames() {
     //console.log("15 points = ", points);
     return (
       <div className="gameDiv">
-        <AnswerCard
-          answerVisible={answerVisible}
-          result={result}
-          newQuestion={newQuestion5}
-        />
-        <QuestionCardThreeDig
-          h1="Can you add three numbers together?"
-          answerInput={answerInput}
-          noOfQuestions={noOfQuestions}
-          value1={firstNumber}
-          operation={"+"}
-          value2={secondNumber}
-          operation2={"+"}
-          value3={thirdNumber}
-          equals={"="}
-          setAnswerInput={setAnswerInput}
-          checkAnswer={checkAnswer5}
-        />
+        {answerVisible ? (
+          <AnswerCard
+            answerVisible={answerVisible}
+            result={result}
+            newQuestion={newQuestion5}
+          />
+        ) : (
+          <QuestionCardThreeDig
+            h1="Can you add three numbers together?"
+            answerInput={answerInput}
+            noOfQuestions={noOfQuestions}
+            value1={firstNumber}
+            operation={"+"}
+            value2={secondNumber}
+            operation2={"+"}
+            value3={thirdNumber}
+            equals={"="}
+            setAnswerInput={setAnswerInput}
+            checkAnswer={checkAnswer5}
+          />
+        )}
         <div className="pointsHelpDiv">
           <Score score={score} />
           <ResourceButton url="https://www.bbc.co.uk/bitesize/topics/zf72pv4/articles/zr68r2p" />
@@ -664,21 +679,24 @@ export default function YearTwoGames() {
     //console.log("20 points = ", points);
     return (
       <div className="gameDiv">
-        <AnswerCard
-          answerVisible={answerVisible}
-          result={result}
-          newQuestion={newQuestion6}
-        />
-        <QuestionCardFraction
-          h1="Can you find the fractions of these amounts?"
-          answerInput={answerInput}
-          noOfQuestions={noOfQuestions}
-          value1={numerator}
-          value2={denominator}
-          value3={otherValue}
-          setAnswerInput={setAnswerInput}
-          checkAnswer={checkAnswer6}
-        />
+        {answerVisible ? (
+          <AnswerCard
+            answerVisible={answerVisible}
+            result={result}
+            newQuestion={newQuestion6}
+          />
+        ) : (
+          <QuestionCardFraction
+            h1="Can you find the fractions of these amounts?"
+            answerInput={answerInput}
+            noOfQuestions={noOfQuestions}
+            value1={numerator}
+            value2={denominator}
+            value3={otherValue}
+            setAnswerInput={setAnswerInput}
+            checkAnswer={checkAnswer6}
+          />
+        )}
         <div className="pointsHelpDiv">
           <Score score={score} />
           <ResourceButton url="https://www.bbc.co.uk/bitesize/topics/z3rbg82" />
@@ -689,22 +707,25 @@ export default function YearTwoGames() {
     //console.log("25 points = ", points);
     return (
       <div className="gameDiv">
-        <AnswerCard
-          answerVisible={answerVisible}
-          result={result}
-          newQuestion={newQuestion7}
-        />
-        <QuestionCardOrder
-          h1="Can you order these numbers from smallest to largest?"
-          answerInput={answerInput}
-          noOfQuestions={noOfQuestions}
-          value1={firstNumberOrder}
-          value2={secondNumberOrder}
-          value3={thirdNumberOrder}
-          value4={fourthNumberOrder}
-          setAnswerInput={setAnswerInput}
-          checkAnswer={checkAnswer7}
-        />
+        {answerVisible ? (
+          <AnswerCard
+            answerVisible={answerVisible}
+            result={result}
+            newQuestion={newQuestion7}
+          />
+        ) : (
+          <QuestionCardOrder
+            h1="Can you order these numbers from smallest to largest?"
+            answerInput={answerInput}
+            noOfQuestions={noOfQuestions}
+            value1={firstNumberOrder}
+            value2={secondNumberOrder}
+            value3={thirdNumberOrder}
+            value4={fourthNumberOrder}
+            setAnswerInput={setAnswerInput}
+            checkAnswer={checkAnswer7}
+          />
+        )}
         <div className="pointsHelpDiv">
           <Score score={score} />
           <ResourceButton url="https://www.youtube.com/watch?v=bGetqbqDVaA" />
@@ -715,20 +736,23 @@ export default function YearTwoGames() {
     //console.log("30 points = ", points);
     return (
       <div className="gameDiv">
-        <AnswerCard
-          answerVisible={answerVisible}
-          result={result}
-          newQuestion={newQuestion8}
-        />
-        <QuestionCardCompare
-          h1="Use your crocodiles (> and <)  to compare these numbers!"
-          answerInput={answerInput}
-          noOfQuestions={noOfQuestions}
-          value1={firstNumberCompare}
-          value2={secondNumberCompare}
-          setAnswerInput={setAnswerInput}
-          checkAnswer={checkAnswer8}
-        />
+        {answerVisible ? (
+          <AnswerCard
+            answerVisible={answerVisible}
+            result={result}
+            newQuestion={newQuestion8}
+          />
+        ) : (
+          <QuestionCardCompare
+            h1="Use your crocodiles (> and <)  to compare these numbers!"
+            answerInput={answerInput}
+            noOfQuestions={noOfQuestions}
+            value1={firstNumberCompare}
+            value2={secondNumberCompare}
+            setAnswerInput={setAnswerInput}
+            checkAnswer={checkAnswer8}
+          />
+        )}
         <div className="pointsHelpDiv">
           <Score score={score} />
           <ResourceButton url="https://www.bbc.co.uk/bitesize/topics/z8sfr82/articles/z3cm8hv" />
