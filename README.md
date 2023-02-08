@@ -1,4 +1,4 @@
-**[DEMO LINK](https://frolicking-chaja-1991dd.netlify.app/)**
+**[DEMO LINK](https://cosmic-calculations.netlify.app/)**
 ---
 
 <img align="center" src="https://i.ibb.co/6HBpxks/banner.png" width="1000" height="280">
