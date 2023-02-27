@@ -105,14 +105,14 @@ function Login() {
           </div>
         </form>
         <div className="loginCredDiv">
-          <div>
+          {/* <div>
             <h3 className="loginCred">Year 1: lucy@lucy.com "password"</h3>{" "}
             <h3 className="loginCred">Year 2: seb@seb.com "password"</h3>
           </div>
           <div>
             <h3 className="loginCred">Year 3: jeremy@jeremy.com "password"</h3>
             <h3 className="loginCred">Year 4: louis@louis.com "password"</h3>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>
